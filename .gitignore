@@ -1,0 +1,22 @@
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+public/vendor
+__pycache__
+.env*
+.tmp/
+.idea/
+.vscode/
+
+# Unity generated project state
+UnityRealLook/[Ll]ibrary/
+UnityRealLook/[Tt]emp/
+UnityRealLook/[Ll]ogs/
+UnityRealLook/[Uu]ser[Ss]ettings/
+UnityRealLook/.vs/
+UnityRealLook/.vscode/
+UnityRealLook/*.csproj
+UnityRealLook/*.sln*
+UnityRealLook/build-real-look.log

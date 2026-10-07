@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/PageHeader";
 import { Passport } from "@/components/passport/Passport";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DataGate } from "@/components/ui";
@@ -12,7 +11,6 @@ export const metadata: Metadata = {
 export default function PassportPage() {
   return (
     <>
-      <PageHeader n={6} title="pp.title" dek="pp.dek" />
       <DataGate>
         <Passport />
       </DataGate>

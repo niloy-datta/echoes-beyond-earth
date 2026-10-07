@@ -10,9 +10,11 @@ export interface Passport {
   ripples: string[]; // legacy ripples explored
   pathSteps: Record<string, string[]>; // path id → object ids visited along it
   firstVisit: string | null;
+  /** A playful, locally generated explorer number — never sent anywhere. */
+  explorerId: string | null;
 }
 
-const EMPTY: Passport = { discovered: [], capsules: [], signals: [], lenses: [], ripples: [], pathSteps: {}, firstVisit: null };
+const EMPTY: Passport = { discovered: [], capsules: [], signals: [], lenses: [], ripples: [], pathSteps: {}, firstVisit: null, explorerId: null };
 export type PassportList = "discovered" | "capsules" | "signals" | "lenses" | "ripples";
 
 interface Ctx {
@@ -24,13 +26,18 @@ interface Ctx {
 
 const PassportCtx = createContext<Ctx | null>(null);
 
+function newExplorerId() {
+  const n = Math.floor(1000 + Math.random() * 9000);
+  return `EBE-${new Date().getFullYear()}-${n}`;
+}
+
 export function PassportProvider({ children }: { children: ReactNode }) {
   const [passport, setPassport] = useState<Passport>(EMPTY);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const stored = readStore<Partial<Passport>>("passport", {});
-    setPassport({ ...EMPTY, ...stored, firstVisit: stored.firstVisit ?? new Date().toISOString().slice(0, 10) });
+    setPassport({ ...EMPTY, ...stored, firstVisit: stored.firstVisit ?? new Date().toISOString().slice(0, 10), explorerId: stored.explorerId ?? newExplorerId() });
     setReady(true);
   }, []);
 
@@ -52,7 +59,7 @@ export function PassportProvider({ children }: { children: ReactNode }) {
 
   const reset = useCallback(() => {
     clearStore("passport");
-    setPassport({ ...EMPTY, firstVisit: new Date().toISOString().slice(0, 10) });
+    setPassport({ ...EMPTY, firstVisit: new Date().toISOString().slice(0, 10), explorerId: newExplorerId() });
   }, []);
 
   const value = useMemo(() => ({ passport, mark, markPathStep, reset }), [passport, mark, markPathStep, reset]);

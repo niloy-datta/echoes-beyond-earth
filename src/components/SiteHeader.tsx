@@ -14,7 +14,7 @@ export const NAV: { href: string; key: StringKey; dek: StringKey; short?: String
   { href: "/lens/", key: "nav.lens", dek: "nav.lens.dek", short: "nav.short.lens" },
   { href: "/legacy/", key: "nav.legacy", dek: "nav.legacy.dek", short: "nav.short.legacy" },
   { href: "/paths/", key: "nav.paths", dek: "nav.paths.dek" },
-  { href: "/passport/", key: "nav.passport", dek: "nav.passport.dek" },
+  { href: "/passport/", key: "nav.passport", dek: "nav.passport.dek", short: "nav.short.passport" },
   { href: "/archive/", key: "nav.archive", dek: "nav.archive.dek" },
   { href: "/sources/", key: "nav.sources", dek: "nav.sources.dek", short: "nav.short.evidence" },
 ];

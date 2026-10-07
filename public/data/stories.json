@@ -1906,6 +1906,34 @@
           "verification": "verified"
         }
       ]
+    },
+    {
+      "id": "mer",
+      "from": "opportunity",
+      "title": {
+        "en": "After Opportunity",
+        "bn": "অপরচুনিটির পরে"
+      },
+      "rings": [
+        {
+          "to": "curiosity",
+          "relation": {
+            "en": "The next generation of NASA Mars rover — NASA's “three generations” comparison places Curiosity after the Mars Exploration Rovers",
+            "bn": "নাসার পরবর্তী প্রজন্মের মঙ্গল-রোভার — নাসার “তিন প্রজন্ম” তুলনায় মার্স এক্সপ্লোরেশন রোভারের পরে কিউরিওসিটি"
+          },
+          "source": "cap:PIA11436",
+          "verification": "verified"
+        },
+        {
+          "to": "perseverance",
+          "relation": {
+            "en": "The rover line continues at Jezero crater (design heritage: Source verification required)",
+            "bn": "জেজেরো খাদে রোভার-ধারা চলতে থাকে (নকশা-উত্তরাধিকার: উৎস যাচাই প্রয়োজন)"
+          },
+          "source": null,
+          "verification": "required"
+        }
+      ]
     }
   ],
   "timeline": [

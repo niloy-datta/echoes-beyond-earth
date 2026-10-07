@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { LastSignal } from "@/components/last-signal/LastSignal";
-import { PageHeader } from "@/components/PageHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DataGate } from "@/components/ui";
 
@@ -12,7 +11,6 @@ export const metadata: Metadata = {
 export default function LastSignalPage() {
   return (
     <>
-      <PageHeader n={2} title="ls.title" dek="ls.dek" />
       <DataGate>
         <LastSignal />
       </DataGate>

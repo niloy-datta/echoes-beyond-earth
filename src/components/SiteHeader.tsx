@@ -8,27 +8,52 @@ import { useSettings } from "@/lib/settings";
 import { useSound } from "@/lib/sound";
 import { localizeDigits } from "@/lib/dates";
 
-export const NAV: { href: string; key: StringKey; dek: StringKey }[] = [
-  { href: "/explore/", key: "nav.explore", dek: "nav.explore.dek" },
-  { href: "/last-signal/", key: "nav.lastSignal", dek: "nav.lastSignal.dek" },
-  { href: "/archive/", key: "nav.archive", dek: "nav.archive.dek" },
+export const NAV: { href: string; key: StringKey; dek: StringKey; short?: StringKey }[] = [
+  { href: "/explore/", key: "nav.explore", dek: "nav.explore.dek", short: "nav.short.explore" },
+  { href: "/last-signal/", key: "nav.lastSignal", dek: "nav.lastSignal.dek", short: "nav.short.lastSignal" },
+  { href: "/lens/", key: "nav.lens", dek: "nav.lens.dek", short: "nav.short.lens" },
+  { href: "/legacy/", key: "nav.legacy", dek: "nav.legacy.dek", short: "nav.short.legacy" },
   { href: "/paths/", key: "nav.paths", dek: "nav.paths.dek" },
-  { href: "/lens/", key: "nav.lens", dek: "nav.lens.dek" },
-  { href: "/legacy/", key: "nav.legacy", dek: "nav.legacy.dek" },
-  { href: "/sources/", key: "nav.sources", dek: "nav.sources.dek" },
   { href: "/passport/", key: "nav.passport", dek: "nav.passport.dek" },
+  { href: "/archive/", key: "nav.archive", dek: "nav.archive.dek" },
+  { href: "/sources/", key: "nav.sources", dek: "nav.sources.dek", short: "nav.short.evidence" },
 ];
 
 function Wordmark() {
   return (
-    <span className="flex items-center gap-3">
-      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden className="text-signal">
-        <circle cx="9" cy="9" r="2" fill="currentColor" />
-        <circle cx="9" cy="9" r="5.5" fill="none" stroke="currentColor" strokeOpacity="0.5" strokeWidth="0.8" />
-        <circle cx="9" cy="9" r="8.5" fill="none" stroke="currentColor" strokeOpacity="0.22" strokeWidth="0.8" />
-      </svg>
-      <span className="whitespace-nowrap font-mono text-[10px] tracking-[0.12em] text-lunar sm:text-[11px] sm:tracking-[0.24em]">ECHOES BEYOND EARTH</span>
+    <span className="flex flex-col leading-none">
+      <span className="whitespace-nowrap font-mono text-[13px] tracking-[0.42em] text-lunar sm:text-[15px]">ECHOES</span>
+      <span className="mt-1.5 whitespace-nowrap font-mono text-[8px] tracking-[0.34em] text-lunar-2 sm:text-[9px]">BEYOND EARTH</span>
     </span>
+  );
+}
+
+/** Desktop inline navigation — the most-visited exhibits; the menu holds all eight. */
+function InlineNav({ pathname }: { pathname: string }) {
+  const { t } = useT();
+  const items = [{ href: "/", short: "nav.short.home" as StringKey }, ...NAV.filter((n) => n.short).map((n) => ({ href: n.href, short: n.short! }))];
+  return (
+    <nav aria-label={t("nav.menu")} className="hidden xl:block">
+      <ul className="flex items-center gap-1">
+        {items.map((n) => {
+          const active = n.href === "/" ? pathname === "/" : pathname.startsWith(n.href.slice(0, -1));
+          return (
+            <li key={n.href}>
+              <Link
+                href={n.href}
+                aria-current={active ? "page" : undefined}
+                className={`relative block px-5 py-2 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors hover:text-lunar ${
+                  active ? "text-lunar" : "text-lunar-2/80"
+                }`}
+              >
+                {t(n.short)}
+                {active && <span aria-hidden className="absolute bottom-0 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-signal shadow-[0_0_8px_#63e6ef]" />}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }
 
@@ -144,6 +169,7 @@ export function SiteHeader() {
           <Link href="/" aria-label={t("site.title")} className="shrink-0">
             <Wordmark />
           </Link>
+          <InlineNav pathname={pathname} />
           <div className="flex items-center gap-1.5 sm:gap-3">
             <LanguageToggle />
             <SoundToggle />

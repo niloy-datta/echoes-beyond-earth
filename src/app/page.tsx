@@ -1,16 +1,15 @@
-import { Hero } from "@/components/landing/Hero";
-import { Exhibits, LensTeaser, Mirror, Prologue, Silence } from "@/components/landing/Sections";
+import { ExpeditionHero } from "@/components/landing/ExpeditionHero";
+import { LensTeaser, Mirror, Prologue, Silence } from "@/components/landing/Sections";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export default function Home() {
   return (
     <>
-      <Hero />
+      <ExpeditionHero />
       <Prologue />
       <Mirror />
       <Silence />
       <LensTeaser />
-      <Exhibits />
       <SiteFooter />
     </>
   );

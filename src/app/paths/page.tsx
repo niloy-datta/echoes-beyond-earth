@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function PathsPage() {
   return (
     <>
-      <PageHeader n={4} title="paths.title" dek="paths.dek" />
+      <PageHeader n={5} title="paths.title" dek="paths.dek" />
       <DataGate>
         <Paths />
       </DataGate>

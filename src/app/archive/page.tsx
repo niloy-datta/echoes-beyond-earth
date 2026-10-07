@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ArchivePage() {
   return (
     <>
-      <PageHeader n={3} title="archive.title" dek="archive.dek" />
+      <PageHeader n={7} title="archive.title" dek="archive.dek" />
       <DataGate>
         <Archive />
       </DataGate>

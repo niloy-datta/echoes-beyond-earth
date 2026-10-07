@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function PassportPage() {
   return (
     <>
-      <PageHeader n={8} title="pp.title" dek="pp.dek" />
+      <PageHeader n={6} title="pp.title" dek="pp.dek" />
       <DataGate>
         <Passport />
       </DataGate>

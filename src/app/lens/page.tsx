@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function LensPage() {
   return (
     <>
-      <PageHeader n={5} title="lens.title" dek="lens.dek" />
+      <PageHeader n={3} title="lens.title" dek="lens.dek" />
       <DataGate>
         <MemoryLens />
       </DataGate>

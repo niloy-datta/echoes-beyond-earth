@@ -12,7 +12,8 @@ IDS = ["as08-14-2383", "art002e021278", "GSFC_20171208_Archive_e001861",
        "PIA13037", "as16-113-18347", "as17-147-22548", "PIA12910", "PIA00381",
        "PIA03165", "PIA04023", "PIA04318", "PIA03250", "PIA22909", "PIA23178",
        "PIA10701", "PIA25287", "PIA23177", "PIA19807", "PIA24542", "PIA26236", "PIA26482",
-       "as11-40-5948", "PIA26635", "PIA24263", "PIA16208", "PIA24482"]
+       "as11-40-5948", "PIA26635", "PIA24263", "PIA16208", "PIA24482",
+       "GSFC_20171208_Archive_e000678"]
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "public", "images", "nasa")
 API = "https://images-api.nasa.gov"

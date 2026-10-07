@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { NAV } from "@/components/SiteHeader";
 import { NasaImage, SourceLink, VerificationBadge } from "@/components/ui";
 import { useCapsule } from "@/lib/capsule";
 import { useMuseum } from "@/lib/data";
@@ -213,38 +212,6 @@ export function LensTeaser() {
             </figure>
           ))}
         </motion.div>
-      </div>
-    </section>
-  );
-}
-
-export function Exhibits() {
-  const { t, lang } = useT();
-  return (
-    <section aria-labelledby="exhibits-title" className="border-t border-hairline py-[clamp(5rem,12vw,10rem)]">
-      <div className="container-x">
-        <motion.div {...reveal} className="mb-12">
-          <p className="label mb-6">{t("exhibits.kicker")}</p>
-          <h2 id="exhibits-title" className="display text-[clamp(2.2rem,5.2vw,4.4rem)]">
-            {t("exhibits.title")}
-          </h2>
-        </motion.div>
-        <ol className="border-t border-hairline">
-          {NAV.map((n, i) => (
-            <motion.li key={n.href} {...reveal} transition={{ ...reveal.transition, delay: i * 0.04 }}>
-              <Link href={n.href} className="group grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-baseline gap-4 border-b border-hairline py-6 md:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1fr)_auto] md:py-8">
-                <span className="label">{localizeDigits(String(i + 1).padStart(2, "0"), lang)}</span>
-                <span className="text-[clamp(1.3rem,2.6vw,2rem)] font-medium tracking-tight text-lunar-2 transition-colors group-hover:text-lunar">
-                  {t(n.key)}
-                </span>
-                <span className="col-span-2 col-start-2 row-start-2 text-sm text-dust md:col-span-1 md:col-start-3 md:row-start-1">{t(n.dek)}</span>
-                <span aria-hidden className="text-dust transition-all group-hover:translate-x-1 group-hover:text-signal">
-                  →
-                </span>
-              </Link>
-            </motion.li>
-          ))}
-        </ol>
       </div>
     </section>
   );

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function LegacyPage() {
   return (
     <>
-      <PageHeader n={6} title="legacy.title" dek="legacy.dek" />
+      <PageHeader n={4} title="legacy.title" dek="legacy.dek" />
       <DataGate>
         <LegacyRipple />
       </DataGate>

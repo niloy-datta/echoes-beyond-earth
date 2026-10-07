@@ -341,6 +341,17 @@
       "center": "JPL",
       "credit": "NASA/JPL-Caltech",
       "page": "https://images.nasa.gov/details/PIA24482"
+    },
+    "GSFC_20171208_Archive_e000678": {
+      "file": "/images/nasa/gsfc_20171208_archive_e000678.jpg",
+      "thumb": "/images/nasa/gsfc_20171208_archive_e000678-thumb.jpg",
+      "width": 1920,
+      "height": 1920,
+      "title": "NASA Captures 'EPIC' Earth Image",
+      "date": "2017-12-08",
+      "center": "GSFC",
+      "credit": "NASA/GSFC (DSCOVR EPIC)",
+      "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000678"
     }
   },
   "references": [
@@ -865,6 +876,15 @@
       "kind": "dataset",
       "verification": "verified",
       "note": "NASA PDS explicitly gives the average one-way Earth–Moon light time as 1.28 seconds and notes that it varies with the Moon's orbit."
+    },
+    {
+      "id": "img:GSFC_20171208_Archive_e000678",
+      "title": "NASA Captures 'EPIC' Earth Image",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000678",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
     }
   ]
 }

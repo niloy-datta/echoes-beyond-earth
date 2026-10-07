@@ -326,6 +326,26 @@ function TimeMachine({
             </button>
             <button
               type="button"
+              onClick={() => setYear(year - 1)}
+              disabled={year <= YEAR_MIN}
+              aria-label={t("explore.previousYear")}
+              className="btn-ghost whitespace-nowrap !px-3 !py-2 disabled:pointer-events-none disabled:opacity-35"
+            >
+              <span aria-hidden>←</span>
+              <span className="hidden sm:inline">{t("explore.previousYear")}</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setYear(year + 1)}
+              disabled={year >= YEAR_MAX}
+              aria-label={t("explore.nextYear")}
+              className="btn-ghost whitespace-nowrap !px-3 !py-2 disabled:pointer-events-none disabled:opacity-35"
+            >
+              <span className="hidden sm:inline">{t("explore.nextYear")}</span>
+              <span aria-hidden>→</span>
+            </button>
+            <button
+              type="button"
               onClick={togglePlay}
               aria-pressed={playing}
               aria-label={playing ? t("explore.pause") : t("explore.play")}

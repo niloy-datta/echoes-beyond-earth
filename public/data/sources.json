@@ -1,0 +1,870 @@
+{
+  "compiled": "2026-10-07",
+  "images": {
+    "as08-14-2383": {
+      "file": "/images/nasa/as08-14-2383.jpg",
+      "thumb": "/images/nasa/as08-14-2383-thumb.jpg",
+      "width": 1920,
+      "height": 1920,
+      "title": "Apollo 8 Mission image, Earth over the horizon of the moon",
+      "date": "1968-12-24",
+      "center": "JSC",
+      "credit": "NASA/JSC",
+      "page": "https://images.nasa.gov/details/as08-14-2383"
+    },
+    "art002e021278": {
+      "file": "/images/nasa/art002e021278.jpg",
+      "thumb": "/images/nasa/art002e021278-thumb.jpg",
+      "width": 3000,
+      "height": 2000,
+      "title": "A Breathtaking Earthset from Orion",
+      "date": "2026-04-06",
+      "center": "JSC",
+      "credit": "NASA/JSC",
+      "page": "https://images.nasa.gov/details/art002e021278"
+    },
+    "GSFC_20171208_Archive_e001861": {
+      "file": "/images/nasa/gsfc_20171208_archive_e001861.jpg",
+      "thumb": "/images/nasa/gsfc_20171208_archive_e001861-thumb.jpg",
+      "width": 1920,
+      "height": 1920,
+      "title": "Full Moon",
+      "date": "2017-12-08",
+      "center": "GSFC",
+      "credit": "NASA/GSFC",
+      "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001861"
+    },
+    "as11-37-5551": {
+      "file": "/images/nasa/as11-37-5551.jpg",
+      "thumb": "/images/nasa/as11-37-5551-thumb.jpg",
+      "width": 1920,
+      "height": 1920,
+      "title": "Components of the Early Apollo Scientific Experiments Package (EASEP)",
+      "date": "1969-07-20",
+      "center": "JSC",
+      "credit": "NASA/JSC",
+      "page": "https://images.nasa.gov/details/as11-37-5551"
+    },
+    "PIA12909": {
+      "file": "/images/nasa/pia12909.jpg",
+      "thumb": "/images/nasa/pia12909-thumb.jpg",
+      "width": 800,
+      "height": 800,
+      "title": "Apollo 11: Second Look",
+      "date": "2009-09-29",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA12909"
+    },
+    "AS12-48-7133": {
+      "file": "/images/nasa/as12-48-7133.jpg",
+      "thumb": "/images/nasa/as12-48-7133-thumb.jpg",
+      "width": 1920,
+      "height": 1920,
+      "title": "View of two U.S. spacecraft on the surface of the moon",
+      "date": "1969-11-20",
+      "center": "JSC",
+      "credit": "NASA/JSC",
+      "page": "https://images.nasa.gov/details/AS12-48-7133"
+    },
+    "as12-48-7121": {
+      "file": "/images/nasa/as12-48-7121.jpg",
+      "thumb": "/images/nasa/as12-48-7121-thumb.jpg",
+      "width": 1920,
+      "height": 1920,
+      "title": "View of Surveyor III in its crater",
+      "date": "1969-11-20",
+      "center": "JSC",
+      "credit": "NASA/JSC",
+      "page": "https://images.nasa.gov/details/as12-48-7121"
+    },
+    "as14-67-09361": {
+      "file": "/images/nasa/as14-67-09361.jpg",
+      "thumb": "/images/nasa/as14-67-09361-thumb.jpg",
+      "width": 1917,
+      "height": 1920,
+      "title": "Apollo 14 Mission image - View of the ALSEP Station",
+      "date": "1971-02-05",
+      "center": "JSC",
+      "credit": "NASA/JSC",
+      "page": "https://images.nasa.gov/details/as14-67-09361"
+    },
+    "PIA13037": {
+      "file": "/images/nasa/pia13037.jpg",
+      "thumb": "/images/nasa/pia13037-thumb.jpg",
+      "width": 752,
+      "height": 752,
+      "title": "The Apollo 15 Lunar Laser Ranging Retroreflector - A Fundamental Point on the Moon",
+      "date": "2010-04-13",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA13037"
+    },
+    "as16-113-18347": {
+      "file": "/images/nasa/as16-113-18347.jpg",
+      "thumb": "/images/nasa/as16-113-18347-thumb.jpg",
+      "width": 1919,
+      "height": 1920,
+      "title": "Partial view of the deployed Apollo Lunar Surface Experiments Package",
+      "date": "1972-04-21",
+      "center": "JSC",
+      "credit": "NASA/JSC",
+      "page": "https://images.nasa.gov/details/as16-113-18347"
+    },
+    "as17-147-22548": {
+      "file": "/images/nasa/as17-147-22548.jpg",
+      "thumb": "/images/nasa/as17-147-22548-thumb.jpg",
+      "width": 1919,
+      "height": 1878,
+      "title": "Apollo 17 ALSEP Panarama taken during EVA 1",
+      "date": "1972-12-11",
+      "center": "JSC",
+      "credit": "NASA/JSC",
+      "page": "https://images.nasa.gov/details/as17-147-22548"
+    },
+    "PIA12910": {
+      "file": "/images/nasa/pia12910.jpg",
+      "thumb": "/images/nasa/pia12910-thumb.jpg",
+      "width": 1000,
+      "height": 1000,
+      "title": "Surveyor 1 -- America First Soft Lunar Landing",
+      "date": "2009-09-30",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA12910"
+    },
+    "PIA00381": {
+      "file": "/images/nasa/pia00381.jpg",
+      "thumb": "/images/nasa/pia00381-thumb.jpg",
+      "width": 1439,
+      "height": 512,
+      "title": "First Photograph Taken On Mars Surface",
+      "date": "1996-12-12",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA00381"
+    },
+    "PIA03165": {
+      "file": "/images/nasa/pia03165.jpg",
+      "thumb": "/images/nasa/pia03165-thumb.jpg",
+      "width": 2000,
+      "height": 433,
+      "title": "Afternoon on Chryse Planitia - Viking Lander 1 Camera 1 Mosaic",
+      "date": "2001-07-30",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA03165"
+    },
+    "PIA04023": {
+      "file": "/images/nasa/pia04023.jpg",
+      "thumb": "/images/nasa/pia04023-thumb.jpg",
+      "width": 319,
+      "height": 922,
+      "title": "Viking Lander 2 Anniversary",
+      "date": "2002-12-13",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA04023"
+    },
+    "PIA04318": {
+      "file": "/images/nasa/pia04318.jpg",
+      "thumb": "/images/nasa/pia04318-thumb.jpg",
+      "width": 819,
+      "height": 415,
+      "title": "Sojourner Sits Near \"Rock Garden\"",
+      "date": "2003-02-01",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA04318"
+    },
+    "PIA03250": {
+      "file": "/images/nasa/pia03250.jpg",
+      "thumb": "/images/nasa/pia03250-thumb.jpg",
+      "width": 3200,
+      "height": 387,
+      "title": "Sweeping View of the Columbia",
+      "date": "2005-12-23",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA03250"
+    },
+    "PIA22909": {
+      "file": "/images/nasa/pia22909.jpg",
+      "thumb": "/images/nasa/pia22909-thumb.jpg",
+      "width": 900,
+      "height": 201,
+      "title": "Opportunity Legacy Pan (True Color)",
+      "date": "2019-03-12",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA22909"
+    },
+    "PIA23178": {
+      "file": "/images/nasa/pia23178.jpg",
+      "thumb": "/images/nasa/pia23178-thumb.jpg",
+      "width": 1920,
+      "height": 1481,
+      "title": "Opportunity's Final Traverse Map",
+      "date": "2019-04-25",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA23178"
+    },
+    "PIA10701": {
+      "file": "/images/nasa/pia10701.jpg",
+      "thumb": "/images/nasa/pia10701-thumb.jpg",
+      "width": 508,
+      "height": 600,
+      "title": "Color Image of Phoenix Lander on Mars Surface",
+      "date": "2008-05-27",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA10701"
+    },
+    "PIA25287": {
+      "file": "/images/nasa/pia25287.jpg",
+      "thumb": "/images/nasa/pia25287-thumb.jpg",
+      "width": 1920,
+      "height": 1152,
+      "title": "InSight's Final Selfie",
+      "date": "2022-05-23",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA25287"
+    },
+    "PIA23177": {
+      "file": "/images/nasa/pia23177.jpg",
+      "thumb": "/images/nasa/pia23177-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "title": "InSight's Seismometer on the Martian Surface",
+      "date": "2019-04-23",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA23177"
+    },
+    "PIA19807": {
+      "file": "/images/nasa/pia19807.jpg",
+      "thumb": "/images/nasa/pia19807-thumb.jpg",
+      "width": 1920,
+      "height": 1148,
+      "title": "Curiosity Low-Angle Self-Portrait at Buckskin Drilling Site on Mount Sharp",
+      "date": "2015-08-19",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA19807"
+    },
+    "PIA24542": {
+      "file": "/images/nasa/pia24542.jpg",
+      "thumb": "/images/nasa/pia24542-thumb.jpg",
+      "width": 1920,
+      "height": 1412,
+      "title": "Perseverance's Selfie with Ingenuity",
+      "date": "2021-04-07",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA24542"
+    },
+    "PIA26236": {
+      "file": "/images/nasa/pia26236.jpg",
+      "thumb": "/images/nasa/pia26236-thumb.jpg",
+      "width": 1920,
+      "height": 907,
+      "title": "Perseverance Spots Ingenuity at Its Final Airfield",
+      "date": "2024-02-06",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA26236"
+    },
+    "PIA26482": {
+      "file": "/images/nasa/pia26482.jpg",
+      "thumb": "/images/nasa/pia26482-thumb.jpg",
+      "width": 1920,
+      "height": 1117,
+      "title": "Ingenuity's Hard Landing",
+      "date": "2024-12-11",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA26482"
+    },
+    "as11-40-5948": {
+      "file": "/images/nasa/as11-40-5948.jpg",
+      "thumb": "/images/nasa/as11-40-5948-thumb.jpg",
+      "width": 1920,
+      "height": 1920,
+      "title": "Astronaut Edwin Aldrin after deployment of EASEP on surface of moon",
+      "date": "1969-07-20",
+      "center": "JSC",
+      "credit": "NASA/JSC",
+      "page": "https://images.nasa.gov/details/as11-40-5948"
+    },
+    "PIA26635": {
+      "file": "/images/nasa/pia26635.jpg",
+      "thumb": "/images/nasa/pia26635-thumb.jpg",
+      "width": 1920,
+      "height": 1503,
+      "title": "Giant Impacts on Ancient Mars (Artist's Concept)",
+      "date": "2025-08-28",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA26635"
+    },
+    "PIA24263": {
+      "file": "/images/nasa/pia24263.jpg",
+      "thumb": "/images/nasa/pia24263-thumb.jpg",
+      "width": 1012,
+      "height": 1012,
+      "title": "InSight's Mole Comes to Rest",
+      "date": "2021-01-14",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA24263"
+    },
+    "PIA16208": {
+      "file": "/images/nasa/pia16208.jpg",
+      "thumb": "/images/nasa/pia16208-thumb.jpg",
+      "width": 398,
+      "height": 408,
+      "title": "Curiosity at Bradbury Landing Site in 3-D",
+      "date": "2012-10-10",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA16208"
+    },
+    "PIA24482": {
+      "file": "/images/nasa/pia24482.jpg",
+      "thumb": "/images/nasa/pia24482-thumb.jpg",
+      "width": 1280,
+      "height": 960,
+      "title": "Perseverance Hazcam First Drive",
+      "date": "2021-03-05",
+      "center": "JPL",
+      "credit": "NASA/JPL-Caltech",
+      "page": "https://images.nasa.gov/details/PIA24482"
+    }
+  },
+  "references": [
+    {
+      "id": "img:as08-14-2383",
+      "title": "Apollo 8 Mission image, Earth over the horizon of the moon",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/as08-14-2383",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:art002e021278",
+      "title": "A Breathtaking Earthset from Orion",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/art002e021278",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:GSFC_20171208_Archive_e001861",
+      "title": "Full Moon",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001861",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:as11-37-5551",
+      "title": "Components of the Early Apollo Scientific Experiments Package (EASEP)",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/as11-37-5551",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA12909",
+      "title": "Apollo 11: Second Look",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA12909",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:AS12-48-7133",
+      "title": "View of two U.S. spacecraft on the surface of the moon",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/AS12-48-7133",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:as12-48-7121",
+      "title": "View of Surveyor III in its crater",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/as12-48-7121",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:as14-67-09361",
+      "title": "Apollo 14 Mission image - View of the ALSEP Station",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/as14-67-09361",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA13037",
+      "title": "The Apollo 15 Lunar Laser Ranging Retroreflector - A Fundamental Point on the Moon",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA13037",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:as16-113-18347",
+      "title": "Partial view of the deployed Apollo Lunar Surface Experiments Package",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/as16-113-18347",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:as17-147-22548",
+      "title": "Apollo 17 ALSEP Panarama taken during EVA 1",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/as17-147-22548",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA12910",
+      "title": "Surveyor 1 -- America First Soft Lunar Landing",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA12910",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA00381",
+      "title": "First Photograph Taken On Mars Surface",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA00381",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA03165",
+      "title": "Afternoon on Chryse Planitia - Viking Lander 1 Camera 1 Mosaic",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA03165",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA04023",
+      "title": "Viking Lander 2 Anniversary",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA04023",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA04318",
+      "title": "Sojourner Sits Near \"Rock Garden\"",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA04318",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA03250",
+      "title": "Sweeping View of the Columbia",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA03250",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA22909",
+      "title": "Opportunity Legacy Pan (True Color)",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA22909",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA23178",
+      "title": "Opportunity's Final Traverse Map",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA23178",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA10701",
+      "title": "Color Image of Phoenix Lander on Mars Surface",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA10701",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA25287",
+      "title": "InSight's Final Selfie",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA25287",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA23177",
+      "title": "InSight's Seismometer on the Martian Surface",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA23177",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA19807",
+      "title": "Curiosity Low-Angle Self-Portrait at Buckskin Drilling Site on Mount Sharp",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA19807",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA24542",
+      "title": "Perseverance's Selfie with Ingenuity",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA24542",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA26236",
+      "title": "Perseverance Spots Ingenuity at Its Final Airfield",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA26236",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA26482",
+      "title": "Ingenuity's Hard Landing",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA26482",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:as11-40-5948",
+      "title": "Astronaut Edwin Aldrin after deployment of EASEP on surface of moon",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/as11-40-5948",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA26635",
+      "title": "Giant Impacts on Ancient Mars (Artist's Concept)",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA26635",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA24263",
+      "title": "InSight's Mole Comes to Rest",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA24263",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA16208",
+      "title": "Curiosity at Bradbury Landing Site in 3-D",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA16208",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "img:PIA24482",
+      "title": "Perseverance Hazcam First Drive",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA24482",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "cap:PIA17064",
+      "title": "From Glenelg to Mount Sharp",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA17064",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "cap:PIA24447",
+      "title": "LCAM Views the Heat Shield After Being Released from Mars 2020 Spacecraft",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA24447",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "cap:PIA11436",
+      "title": "Newest is Biggest: Three Generations of NASA Mars Rovers",
+      "publisher": "NASA Image and Video Library",
+      "url": "https://images.nasa.gov/details/PIA11436",
+      "kind": "image-caption",
+      "verification": "verified",
+      "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
+    },
+    {
+      "id": "nssdca:1964-041A",
+      "title": "Ranger 7 — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1964-041A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1966-045A",
+      "title": "Surveyor 1 — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1966-045A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1967-035A",
+      "title": "Surveyor 3 — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1967-035A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1969-059C",
+      "title": "Apollo 11 Lunar Module / EASEP — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1969-099C",
+      "title": "Apollo 12 Lunar Module / ALSEP — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1971-008C",
+      "title": "Apollo 14 Lunar Module / ALSEP — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-008C",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1971-063C",
+      "title": "Apollo 15 Lunar Module / ALSEP — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1972-031C",
+      "title": "Apollo 16 Lunar Module / ALSEP — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-031C",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1972-096C",
+      "title": "Apollo 17 Lunar Module / ALSEP — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-096C",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:2009-031B",
+      "title": "LCROSS — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2009-031B",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:2011-046A",
+      "title": "GRAIL A (Ebb) — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2011-046A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1975-075C",
+      "title": "Viking 1 Lander — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1975-075C",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1975-083C",
+      "title": "Viking 2 Lander — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1975-083C",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1999-001A",
+      "title": "Mars Polar Lander — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1999-001A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:1996-068A",
+      "title": "Mars Pathfinder — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1996-068A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:2003-027A",
+      "title": "Spirit (MER-A) — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-027A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:2003-032A",
+      "title": "Opportunity (MER-B) — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-032A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:2007-034A",
+      "title": "Phoenix — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2007-034A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:2011-070A",
+      "title": "Curiosity (MSL) — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2011-070A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:2018-042A",
+      "title": "InSight — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2018-042A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "nssdca:2020-052A",
+      "title": "Perseverance (Mars 2020) — NSSDCA Master Catalog",
+      "publisher": "NASA Space Science Data Coordinated Archive",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2020-052A",
+      "kind": "catalog",
+      "verification": "required",
+      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+    },
+    {
+      "id": "trek:moon",
+      "title": "LRO WAC Global Mosaic 303 ppd v02 (basemap)",
+      "publisher": "NASA Moon Trek",
+      "url": "https://trek.nasa.gov/moon/",
+      "kind": "dataset",
+      "verification": "verified",
+      "note": "Tiles were downloaded from trek.nasa.gov and re-projected locally to Web Mercator (scripts/build_tiles.py)."
+    },
+    {
+      "id": "trek:mars",
+      "title": "Viking MDIM 2.1 Colorized Global Mosaic 232 m (basemap)",
+      "publisher": "NASA Mars Trek",
+      "url": "https://trek.nasa.gov/mars/",
+      "kind": "dataset",
+      "verification": "verified",
+      "note": "Tiles were downloaded from trek.nasa.gov and re-projected locally to Web Mercator (scripts/build_tiles.py)."
+    },
+    {
+      "id": "calc:moon-light-time",
+      "title": "Light travel time, Earth → Moon",
+      "publisher": "Calculated by the team",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html",
+      "kind": "dataset",
+      "verification": "required",
+      "note": "384,400 km (mean distance, NASA Moon Fact Sheet) ÷ 299,792 km/s ≈ 1.28 s. Confirm the distance figure on the fact sheet."
+    }
+  ]
+}

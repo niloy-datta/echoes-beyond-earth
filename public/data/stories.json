@@ -1,0 +1,1967 @@
+{
+  "stories": [
+    {
+      "id": "apollo-11",
+      "object": "apollo-11",
+      "title": {
+        "en": "The mirror that never stopped answering",
+        "bn": "যে আয়না কখনো উত্তর দেওয়া থামায়নি"
+      },
+      "dek": {
+        "en": "Apollo 11 left two experiments on the Sea of Tranquility. One needed power. One only needed light.",
+        "bn": "অ্যাপোলো ১১ প্রশান্তি সাগরে দুটি পরীক্ষা রেখে এসেছিল। একটির দরকার ছিল বিদ্যুৎ, অন্যটির শুধু আলো।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "20 July 1969",
+            "bn": "২০ জুলাই ১৯৬৯"
+          },
+          "title": {
+            "en": "Two instruments in the dust",
+            "bn": "ধুলোয় দুটি যন্ত্র"
+          },
+          "body": {
+            "en": "Edwin Aldrin deployed the Early Apollo Scientific Experiments Package. In the foreground: the Passive Seismic Experiment Package. Beyond it: the Laser Ranging Retro-Reflector. Neil Armstrong took the photograph with a 70 mm lunar surface camera.",
+            "bn": "এডউইন অলড্রিন আর্লি অ্যাপোলো সায়েন্টিফিক এক্সপেরিমেন্টস প্যাকেজ স্থাপন করেন। সামনে প্যাসিভ সিসমিক এক্সপেরিমেন্ট প্যাকেজ, তার পেছনে লেজার রেঞ্জিং রেট্রো-রিফ্লেক্টর। ছবিটি নিল আর্মস্ট্রং ৭০ মিমি লুনার সারফেস ক্যামেরায় তোলেন।"
+          },
+          "image": "as11-40-5948"
+        },
+        {
+          "kicker": {
+            "en": "From inside Eagle",
+            "bn": "ঈগলের ভেতর থেকে"
+          },
+          "title": {
+            "en": "Footprints and instruments",
+            "bn": "পদচিহ্ন আর যন্ত্র"
+          },
+          "body": {
+            "en": "Seen from the Lunar Module window, the seismometer and the retroreflector sit among the astronauts' footprints — the first science station people built on another world.",
+            "bn": "লুনার মডিউলের জানালা থেকে দেখা যায়, নভোচারীদের পদচিহ্নের মাঝে বসে আছে সিসমোমিটার ও রেট্রোরিফ্লেক্টর — অন্য কোনো জগতে মানুষের গড়া প্রথম বিজ্ঞান-কেন্দ্র।"
+          },
+          "image": "as11-37-5551"
+        },
+        {
+          "kicker": {
+            "en": "Forty years later",
+            "bn": "চল্লিশ বছর পর"
+          },
+          "title": {
+            "en": "Seen again from orbit",
+            "bn": "কক্ষপথ থেকে আবার দেখা"
+          },
+          "body": {
+            "en": "In 2009, NASA's Lunar Reconnaissance Orbiter passed over Tranquility Base again and returned a new view of the historic site.",
+            "bn": "২০০৯ সালে নাসার লুনার রিকনিস্যান্স অরবিটার আবার ট্রাঙ্কুইলিটি বেসের ওপর দিয়ে উড়ে গিয়ে ঐতিহাসিক স্থানটির নতুন ছবি পাঠায়।"
+          },
+          "image": "PIA12909"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "20 July 1969",
+            "bn": "২০ জুলাই ১৯৬৯"
+          },
+          "source": "img:as11-40-5948",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Site",
+            "bn": "স্থান"
+          },
+          "value": {
+            "en": "Sea of Tranquility",
+            "bn": "প্রশান্তি সাগর"
+          },
+          "source": "img:as11-40-5948",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Instruments",
+            "bn": "যন্ত্র"
+          },
+          "value": {
+            "en": "Passive Seismic Experiment Package · Laser Ranging Retro-Reflector",
+            "bn": "প্যাসিভ সিসমিক এক্সপেরিমেন্ট প্যাকেজ · লেজার রেঞ্জিং রেট্রো-রিফ্লেক্টর"
+          },
+          "source": "img:as11-37-5551",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Revisited from orbit",
+            "bn": "কক্ষপথ থেকে পুনর্দর্শন"
+          },
+          "value": {
+            "en": "Lunar Reconnaissance Orbiter, 2009",
+            "bn": "লুনার রিকনিস্যান্স অরবিটার, ২০০৯"
+          },
+          "source": "img:PIA12909",
+          "verification": "verified"
+        }
+      ],
+      "lastSignal": null,
+      "kept": {
+        "en": "The retroreflector is passive: it needs no power, so it cannot fall silent. Observatories have kept aiming lasers at the Apollo reflectors for decades. (Current ranging activity: Source verification required.)",
+        "bn": "রেট্রোরিফ্লেক্টরটি নিষ্ক্রিয় — বিদ্যুৎ লাগে না, তাই এটি নীরব হতে পারে না। দশকের পর দশক মানমন্দিরগুলো অ্যাপোলোর আয়নার দিকে লেজার তাক করেছে। (বর্তমান রেঞ্জিং কার্যক্রম: উৎস যাচাই প্রয়োজন।)"
+      }
+    },
+    {
+      "id": "surveyor-3",
+      "object": "surveyor-3",
+      "title": {
+        "en": "When one machine visited another",
+        "bn": "যখন এক যন্ত্র আরেক যন্ত্রকে দেখতে গেল"
+      },
+      "dek": {
+        "en": "Surveyor 3 waited in its crater for two and a half years. Then Apollo 12 landed about 600 feet away.",
+        "bn": "সার্ভেয়ার ৩ আড়াই বছর তার খাদে অপেক্ষা করেছিল। তারপর প্রায় ৬০০ ফুট দূরে নামল অ্যাপোলো ১২।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "19 April 1967",
+            "bn": "১৯ এপ্রিল ১৯৬৭"
+          },
+          "title": {
+            "en": "A robot on a crater wall",
+            "bn": "খাদের ঢালে এক রোবট"
+          },
+          "body": {
+            "en": "Surveyor 3 landed on the side of a small crater in the Ocean of Storms.",
+            "bn": "সার্ভেয়ার ৩ ঝড়ের মহাসাগরের একটি ছোট খাদের ঢালে অবতরণ করে।"
+          },
+          "image": "as12-48-7121"
+        },
+        {
+          "kicker": {
+            "en": "20 November 1969",
+            "bn": "২০ নভেম্বর ১৯৬৯"
+          },
+          "title": {
+            "en": "Two U.S. spacecraft in one frame",
+            "bn": "এক ফ্রেমে দুটি মার্কিন মহাকাশযান"
+          },
+          "body": {
+            "en": "During Apollo 12's second moonwalk, Charles Conrad examined the Surveyor's television camera before detaching it. The camera and several other pieces were carried back to Earth for scientific examination.",
+            "bn": "অ্যাপোলো ১২-এর দ্বিতীয় চন্দ্র-হাঁটায় চার্লস কনরাড সার্ভেয়ারের টেলিভিশন ক্যামেরা খুলে নেওয়ার আগে পরীক্ষা করেন। ক্যামেরা ও আরও কিছু অংশ বৈজ্ঞানিক পরীক্ষার জন্য পৃথিবীতে ফিরিয়ে আনা হয়।"
+          },
+          "image": "AS12-48-7133"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "19 April 1967 (per NASA caption)",
+            "bn": "১৯ এপ্রিল ১৯৬৭ (নাসার ক্যাপশন অনুযায়ী)"
+          },
+          "source": "img:as12-48-7121",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Apollo 12 landing distance",
+            "bn": "অ্যাপোলো ১২-এর অবতরণ দূরত্ব"
+          },
+          "value": {
+            "en": "About 600 feet",
+            "bn": "প্রায় ৬০০ ফুট"
+          },
+          "source": "img:AS12-48-7133",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Returned to Earth",
+            "bn": "পৃথিবীতে ফেরত"
+          },
+          "value": {
+            "en": "Television camera and several other pieces",
+            "bn": "টেলিভিশন ক্যামেরা ও আরও কিছু অংশ"
+          },
+          "source": "img:AS12-48-7133",
+          "verification": "verified"
+        }
+      ],
+      "lastSignal": null,
+      "kept": {
+        "en": "Parts of a silent machine came home, so scientists on Earth could study what years on the lunar surface had done to them.",
+        "bn": "এক নীরব যন্ত্রের অংশ ঘরে ফিরল, যাতে পৃথিবীর বিজ্ঞানীরা দেখতে পারেন চাঁদের পৃষ্ঠে কাটানো বছরগুলো সেগুলোর কী করেছে।"
+      }
+    },
+    {
+      "id": "surveyor-1",
+      "object": "surveyor-1",
+      "title": {
+        "en": "The first to land softly",
+        "bn": "প্রথম কোমল অবতরণ"
+      },
+      "dek": {
+        "en": "Before anyone walked on the Moon, a robot had to prove the ground would hold.",
+        "bn": "কেউ চাঁদে হাঁটার আগে, এক রোবটকে প্রমাণ করতে হয়েছিল যে মাটি ভার সইবে।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "2 June 1966",
+            "bn": "২ জুন ১৯৬৬"
+          },
+          "title": {
+            "en": "Sitting silently on Oceanus Procellarum",
+            "bn": "ওশেনাস প্রোসেলারামে নীরবে বসে"
+          },
+          "body": {
+            "en": "NASA describes Surveyor 1 as America's first soft lunar landing. Decades later, the Lunar Reconnaissance Orbiter photographed it still sitting on the plain.",
+            "bn": "নাসা সার্ভেয়ার ১-কে আমেরিকার প্রথম কোমল চন্দ্রাবতরণ বলে বর্ণনা করে। কয়েক দশক পর লুনার রিকনিস্যান্স অরবিটার সমভূমিতে এখনও বসে থাকা যানটির ছবি তোলে।"
+          },
+          "image": "PIA12910"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "2 June 1966",
+            "bn": "২ জুন ১৯৬৬"
+          },
+          "source": "img:PIA12910",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Site",
+            "bn": "স্থান"
+          },
+          "value": {
+            "en": "Oceanus Procellarum",
+            "bn": "ওশেনাস প্রোসেলারাম"
+          },
+          "source": "img:PIA12910",
+          "verification": "verified"
+        }
+      ],
+      "lastSignal": null,
+      "kept": {
+        "en": "Its landing data helped show that the lunar surface could support a spacecraft — knowledge Apollo depended on. (Specific engineering hand-offs: Source verification required.)",
+        "bn": "এর অবতরণ-তথ্য দেখিয়েছিল যে চাঁদের পৃষ্ঠ মহাকাশযানের ভার বইতে পারে — যে জ্ঞানের ওপর অ্যাপোলো নির্ভর করেছিল। (নির্দিষ্ট প্রকৌশল-হস্তান্তর: উৎস যাচাই প্রয়োজন।)"
+      }
+    },
+    {
+      "id": "apollo-14",
+      "object": "apollo-14",
+      "title": {
+        "en": "A station at Fra Mauro",
+        "bn": "ফ্রা মাউরোর একটি কেন্দ্র"
+      },
+      "dek": {
+        "en": "Alan Shepard and Edgar Mitchell set up a science station and left it listening.",
+        "bn": "অ্যালান শেপার্ড ও এডগার মিচেল একটি বিজ্ঞান-কেন্দ্র বসিয়ে তাকে শোনার কাজে রেখে আসেন।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "5 February 1971",
+            "bn": "৫ ফেব্রুয়ারি ১৯৭১"
+          },
+          "title": {
+            "en": "The ALSEP central station",
+            "bn": "এএলএসইপি কেন্দ্রীয় স্টেশন"
+          },
+          "body": {
+            "en": "During the first moonwalk the crew deployed the Apollo Lunar Surface Experiments Package. In this view: the central station, and the mortar package of the active seismic experiment. Stuart Roosa stayed in lunar orbit.",
+            "bn": "প্রথম চন্দ্র-হাঁটায় নভোচারীরা অ্যাপোলো লুনার সারফেস এক্সপেরিমেন্টস প্যাকেজ স্থাপন করেন। ছবিতে কেন্দ্রীয় স্টেশন ও সক্রিয় সিসমিক পরীক্ষার মর্টার প্যাকেজ। স্টুয়ার্ট রুসা চন্দ্র-কক্ষপথে ছিলেন।"
+          },
+          "image": "as14-67-09361"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "ALSEP deployed",
+            "bn": "এএলএসইপি স্থাপন"
+          },
+          "value": {
+            "en": "5 February 1971",
+            "bn": "৫ ফেব্রুয়ারি ১৯৭১"
+          },
+          "source": "img:as14-67-09361",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Crew on surface",
+            "bn": "পৃষ্ঠে নভোচারী"
+          },
+          "value": {
+            "en": "Alan B. Shepard Jr., Edgar D. Mitchell",
+            "bn": "অ্যালান বি. শেপার্ড জুনিয়র, এডগার ডি. মিচেল"
+          },
+          "source": "img:as14-67-09361",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Laser retroreflector",
+            "bn": "লেজার রেট্রোরিফ্লেক্টর"
+          },
+          "value": {
+            "en": "Deployed at this site",
+            "bn": "এই স্থানে স্থাপিত"
+          },
+          "source": "nssdca:1971-008C",
+          "verification": "required"
+        }
+      ],
+      "lastSignal": {
+        "date": "1977-09-30",
+        "verification": "required",
+        "text": {
+          "en": "The Apollo surface experiment stations were switched off from Earth.",
+          "bn": "পৃথিবী থেকে অ্যাপোলোর পৃষ্ঠ-পরীক্ষা কেন্দ্রগুলো বন্ধ করে দেওয়া হয়।"
+        }
+      },
+      "kept": {
+        "en": "The station stopped transmitting; its recorded data did not stop being useful.",
+        "bn": "কেন্দ্রটি সম্প্রচার থামাল; কিন্তু তার রেকর্ড করা তথ্যের প্রয়োজন ফুরোয়নি।"
+      }
+    },
+    {
+      "id": "apollo-15",
+      "object": "apollo-15",
+      "title": {
+        "en": "A fundamental point on the Moon",
+        "bn": "চাঁদের এক মৌলিক বিন্দু"
+      },
+      "dek": {
+        "en": "At Hadley–Apennine, Apollo 15 left a larger laser reflector array.",
+        "bn": "হ্যাডলি–অ্যাপেনাইনে অ্যাপোলো ১৫ একটি বড় লেজার প্রতিফলক রেখে আসে।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "Hadley–Apennine",
+            "bn": "হ্যাডলি–অ্যাপেনাইন"
+          },
+          "title": {
+            "en": "A fundamental point",
+            "bn": "এক মৌলিক বিন্দু"
+          },
+          "body": {
+            "en": "NASA titled this view “The Apollo 15 Lunar Laser Ranging Retroreflector — A Fundamental Point on the Moon.”",
+            "bn": "নাসা এই ছবির শিরোনাম দিয়েছে “অ্যাপোলো ১৫ লুনার লেজার রেঞ্জিং রেট্রোরিফ্লেক্টর — চাঁদের এক মৌলিক বিন্দু।”"
+          },
+          "image": "PIA13037"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "30 July 1971",
+            "bn": "৩০ জুলাই ১৯৭১"
+          },
+          "source": "nssdca:1971-063C",
+          "verification": "required"
+        },
+        {
+          "label": {
+            "en": "Laser retroreflector",
+            "bn": "লেজার রেট্রোরিফ্লেক্টর"
+          },
+          "value": {
+            "en": "Deployed at this site",
+            "bn": "এই স্থানে স্থাপিত"
+          },
+          "source": "img:PIA13037",
+          "verification": "verified"
+        }
+      ],
+      "lastSignal": {
+        "date": "1977-09-30",
+        "verification": "required",
+        "text": {
+          "en": "The powered ALSEP station was switched off; the passive reflector was not affected.",
+          "bn": "বিদ্যুৎচালিত এএলএসইপি বন্ধ হলো; নিষ্ক্রিয় প্রতিফলকের কিছু হয়নি।"
+        }
+      },
+      "kept": {
+        "en": "Every laser pulse returned from this array is a new measurement from 1971 hardware.",
+        "bn": "এই প্রতিফলক থেকে ফেরা প্রতিটি লেজার স্পন্দন ১৯৭১ সালের যন্ত্র থেকে নতুন এক পরিমাপ।"
+      }
+    },
+    {
+      "id": "apollo-16",
+      "object": "apollo-16",
+      "title": {
+        "en": "Listening in the highlands",
+        "bn": "উচ্চভূমিতে কান পেতে"
+      },
+      "dek": {
+        "en": "John Young and Charles Duke set a seismometer into the Descartes highlands.",
+        "bn": "জন ইয়াং ও চার্লস ডিউক দেকার্ত উচ্চভূমিতে একটি সিসমোমিটার বসান।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "21 April 1972",
+            "bn": "২১ এপ্রিল ১৯৭২"
+          },
+          "title": {
+            "en": "Powered by an RTG",
+            "bn": "আরটিজি-চালিত"
+          },
+          "body": {
+            "en": "The Passive Seismic Experiment sits in the foreground, the central station behind it, and the Radioisotope Thermoelectric Generator to the left. The crew had landed in the Lunar Module “Orion”.",
+            "bn": "সামনে প্যাসিভ সিসমিক এক্সপেরিমেন্ট, পেছনে কেন্দ্রীয় স্টেশন, বাঁয়ে রেডিওআইসোটোপ থার্মোইলেকট্রিক জেনারেটর। নভোচারীরা “ওরিয়ন” লুনার মডিউলে অবতরণ করেছিলেন।"
+          },
+          "image": "as16-113-18347"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "ALSEP deployed",
+            "bn": "এএলএসইপি স্থাপন"
+          },
+          "value": {
+            "en": "21 April 1972",
+            "bn": "২১ এপ্রিল ১৯৭২"
+          },
+          "source": "img:as16-113-18347",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Crew on surface",
+            "bn": "পৃষ্ঠে নভোচারী"
+          },
+          "value": {
+            "en": "John W. Young, Charles M. Duke Jr.",
+            "bn": "জন ডব্লিউ. ইয়াং, চার্লস এম. ডিউক জুনিয়র"
+          },
+          "source": "img:as16-113-18347",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Lunar Module",
+            "bn": "লুনার মডিউল"
+          },
+          "value": {
+            "en": "Orion",
+            "bn": "ওরিয়ন"
+          },
+          "source": "img:as16-113-18347",
+          "verification": "verified"
+        }
+      ],
+      "lastSignal": {
+        "date": "1977-09-30",
+        "verification": "required",
+        "text": {
+          "en": "The Apollo surface experiment stations were switched off from Earth.",
+          "bn": "পৃথিবী থেকে অ্যাপোলোর পৃষ্ঠ-পরীক্ষা কেন্দ্রগুলো বন্ধ করে দেওয়া হয়।"
+        }
+      },
+      "kept": {
+        "en": "Its seismic records joined the Apollo network archive that later missions and researchers return to. (Archive access details: Source verification required.)",
+        "bn": "এর সিসমিক রেকর্ড অ্যাপোলো নেটওয়ার্কের সংরক্ষণাগারে যুক্ত হয়, যেখানে পরবর্তী গবেষকেরা বারবার ফিরে আসেন। (সংরক্ষণাগারের বিবরণ: উৎস যাচাই প্রয়োজন।)"
+      }
+    },
+    {
+      "id": "apollo-17",
+      "object": "apollo-17",
+      "title": {
+        "en": "The last station",
+        "bn": "শেষ কেন্দ্র"
+      },
+      "dek": {
+        "en": "In the Taurus–Littrow valley, the final Apollo crew set up the final Apollo science station.",
+        "bn": "টরাস–লিট্রো উপত্যকায় অ্যাপোলোর শেষ নভোচারী দল বসায় অ্যাপোলোর শেষ বিজ্ঞান-কেন্দ্র।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "11 December 1972",
+            "bn": "১১ ডিসেম্বর ১৯৭২"
+          },
+          "title": {
+            "en": "Gnomon, flag, station, massif",
+            "bn": "নোমন, পতাকা, কেন্দ্র, পর্বত"
+          },
+          "body": {
+            "en": "A gnomon in the foreground; the ALSEP and the North Massif behind; the Lunar Roving Vehicle to the right. Eugene Cernan and Harrison Schmitt landed in “Challenger” while Ronald Evans orbited in “America”.",
+            "bn": "সামনে নোমন; পেছনে এএলএসইপি ও নর্থ ম্যাসিফ; ডানে লুনার রোভিং ভেহিকল। ইউজিন সারনান ও হ্যারিসন শ্মিট “চ্যালেঞ্জার”-এ অবতরণ করেন, রোনাল্ড ইভান্স “আমেরিকা”-তে কক্ষপথে ছিলেন।"
+          },
+          "image": "as17-147-22548"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "ALSEP deployed",
+            "bn": "এএলএসইপি স্থাপন"
+          },
+          "value": {
+            "en": "11 December 1972",
+            "bn": "১১ ডিসেম্বর ১৯৭২"
+          },
+          "source": "img:as17-147-22548",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Crew on surface",
+            "bn": "পৃষ্ঠে নভোচারী"
+          },
+          "value": {
+            "en": "Eugene A. Cernan, Harrison H. Schmitt",
+            "bn": "ইউজিন এ. সারনান, হ্যারিসন এইচ. শ্মিট"
+          },
+          "source": "img:as17-147-22548",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Site",
+            "bn": "স্থান"
+          },
+          "value": {
+            "en": "Taurus–Littrow",
+            "bn": "টরাস–লিট্রো"
+          },
+          "source": "img:as17-147-22548",
+          "verification": "verified"
+        }
+      ],
+      "lastSignal": {
+        "date": "1977-09-30",
+        "verification": "required",
+        "text": {
+          "en": "The Apollo surface experiment stations were switched off from Earth.",
+          "bn": "পৃথিবী থেকে অ্যাপোলোর পৃষ্ঠ-পরীক্ষা কেন্দ্রগুলো বন্ধ করে দেওয়া হয়।"
+        }
+      },
+      "kept": {
+        "en": "Fifty-three years later, Artemis II flew past the Moon with a crew again (April 2026).",
+        "bn": "তিপ্পান্ন বছর পর, ২০২৬ সালের এপ্রিলে আর্টেমিস ২ আবার নভোচারী নিয়ে চাঁদের পাশ দিয়ে উড়ে যায়।"
+      }
+    },
+    {
+      "id": "viking-1",
+      "object": "viking-1",
+      "title": {
+        "en": "The first photograph from the surface of Mars",
+        "bn": "মঙ্গলের পৃষ্ঠ থেকে প্রথম ছবি"
+      },
+      "dek": {
+        "en": "Minutes after touchdown, Viking 1 looked down at its own footpad.",
+        "bn": "অবতরণের কয়েক মিনিট পর, ভাইকিং ১ নিজের পায়ের দিকে তাকাল।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "20 July 1976",
+            "bn": "২০ জুলাই ১৯৭৬"
+          },
+          "title": {
+            "en": "Rocks, sand, dust",
+            "bn": "পাথর, বালি, ধুলো"
+          },
+          "body": {
+            "en": "NASA's caption: the first photograph ever taken on the surface of Mars, obtained just minutes after the spacecraft landed. The centre of the image is about 1.4 metres from the camera.",
+            "bn": "নাসার ক্যাপশন: মঙ্গলের পৃষ্ঠে তোলা প্রথম ছবি, যানটি অবতরণের মাত্র কয়েক মিনিট পর। ছবির কেন্দ্র ক্যামেরা থেকে প্রায় ১.৪ মিটার দূরে।"
+          },
+          "image": "PIA00381"
+        },
+        {
+          "kicker": {
+            "en": "Chryse Planitia",
+            "bn": "ক্রাইসি প্ল্যানিশিয়া"
+          },
+          "title": {
+            "en": "An afternoon on Mars",
+            "bn": "মঙ্গলে এক বিকেল"
+          },
+          "body": {
+            "en": "Viking Lander 1 kept photographing its plain through morning and afternoon light.",
+            "bn": "ভাইকিং ল্যান্ডার ১ সকাল-বিকেলের আলোয় তার সমভূমির ছবি তুলে চলেছিল।"
+          },
+          "image": "PIA03165"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "20 July 1976",
+            "bn": "২০ জুলাই ১৯৭৬"
+          },
+          "source": "img:PIA00381",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Site",
+            "bn": "স্থান"
+          },
+          "value": {
+            "en": "Chryse Planitia",
+            "bn": "ক্রাইসি প্ল্যানিশিয়া"
+          },
+          "source": "img:PIA03165",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "value": {
+            "en": "November 1982",
+            "bn": "নভেম্বর ১৯৮২"
+          },
+          "source": "nssdca:1975-075C",
+          "verification": "required"
+        }
+      ],
+      "lastSignal": {
+        "date": "1982-11",
+        "verification": "required",
+        "text": {
+          "en": "Contact with Viking Lander 1 ended.",
+          "bn": "ভাইকিং ল্যান্ডার ১-এর সাথে যোগাযোগ শেষ হয়।"
+        }
+      },
+      "kept": {
+        "en": "Its images are still among the reference views of Chryse Planitia.",
+        "bn": "এর ছবিগুলো এখনও ক্রাইসি প্ল্যানিশিয়ার অন্যতম ভিত্তি-দৃশ্য।"
+      }
+    },
+    {
+      "id": "viking-2",
+      "object": "viking-2",
+      "title": {
+        "en": "A lander whose exact spot is still uncertain",
+        "bn": "যে ল্যান্ডারের সঠিক অবস্থান এখনও অনিশ্চিত"
+      },
+      "dek": {
+        "en": "The second landing on Mars took place in Utopia Planitia.",
+        "bn": "মঙ্গলে দ্বিতীয় অবতরণ হয়েছিল ইউটোপিয়া প্ল্যানিশিয়ায়।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "3 September 1976",
+            "bn": "৩ সেপ্টেম্বর ১৯৭৬"
+          },
+          "title": {
+            "en": "No landmarks to triangulate",
+            "bn": "চিহ্নিত করার মতো ভূচিহ্ন নেই"
+          },
+          "body": {
+            "en": "NASA notes that Lander 2's exact location is not as well established as Lander 1's, because there were no clearly identifiable features in its images. This Mars Odyssey view marks the site with an X.",
+            "bn": "নাসা জানায়, ল্যান্ডার ২-এর সঠিক অবস্থান ল্যান্ডার ১-এর মতো নিশ্চিত নয়, কারণ এর ছবিতে স্পষ্ট শনাক্তযোগ্য ভূচিহ্ন ছিল না। মার্স ওডিসির এই ছবিতে স্থানটি X দিয়ে চিহ্নিত।"
+          },
+          "image": "PIA04023"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "3 September 1976",
+            "bn": "৩ সেপ্টেম্বর ১৯৭৬"
+          },
+          "source": "img:PIA04023",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Site",
+            "bn": "স্থান"
+          },
+          "value": {
+            "en": "Utopia Planitia",
+            "bn": "ইউটোপিয়া প্ল্যানিশিয়া"
+          },
+          "source": "img:PIA04023",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Location certainty",
+            "bn": "অবস্থানের নিশ্চয়তা"
+          },
+          "value": {
+            "en": "Less established than Viking 1",
+            "bn": "ভাইকিং ১-এর চেয়ে কম নিশ্চিত"
+          },
+          "source": "img:PIA04023",
+          "verification": "verified"
+        }
+      ],
+      "lastSignal": {
+        "date": "1980-04",
+        "verification": "required",
+        "text": {
+          "en": "Contact with Viking Lander 2 ended.",
+          "bn": "ভাইকিং ল্যান্ডার ২-এর সাথে যোগাযোগ শেষ হয়।"
+        }
+      },
+      "kept": {
+        "en": "NASA's caption notes the two Viking landers operated for over six years — nearly four Martian years — after landing.",
+        "bn": "নাসার ক্যাপশন অনুযায়ী দুটি ভাইকিং ল্যান্ডার অবতরণের পর ছয় বছরেরও বেশি — প্রায় চার মঙ্গল-বছর — কাজ করেছিল।"
+      }
+    },
+    {
+      "id": "pathfinder",
+      "object": "pathfinder",
+      "title": {
+        "en": "Small wheels, first tracks",
+        "bn": "ছোট চাকা, প্রথম চাকার দাগ"
+      },
+      "dek": {
+        "en": "Sojourner was the first of NASA's Mars rovers.",
+        "bn": "সোজার্নার ছিল নাসার মঙ্গল-রোভারদের প্রথমটি।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "Ares Vallis",
+            "bn": "এরেস ভ্যালিস"
+          },
+          "title": {
+            "en": "Near the Rock Garden",
+            "bn": "রক গার্ডেনের কাছে"
+          },
+          "body": {
+            "en": "The Imager for Mars Pathfinder watched Sojourner approach the rock nicknamed “Wedge”, with part of the “Rock Garden” beyond.",
+            "bn": "ইমেজার ফর মার্স পাথফাইন্ডার দেখছিল সোজার্নার “ওয়েজ” নামের পাথরের দিকে এগোচ্ছে, পেছনে “রক গার্ডেন”-এর একাংশ।"
+          },
+          "image": "PIA04318"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "4 July 1997",
+            "bn": "৪ জুলাই ১৯৯৭"
+          },
+          "source": "nssdca:1996-068A",
+          "verification": "required"
+        },
+        {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "value": {
+            "en": "27 September 1997",
+            "bn": "২৭ সেপ্টেম্বর ১৯৯৭"
+          },
+          "source": "nssdca:1996-068A",
+          "verification": "required"
+        },
+        {
+          "label": {
+            "en": "Rover lineage",
+            "bn": "রোভার-বংশধারা"
+          },
+          "value": {
+            "en": "Sojourner → Spirit & Opportunity → Curiosity",
+            "bn": "সোজার্নার → স্পিরিট ও অপরচুনিটি → কিউরিওসিটি"
+          },
+          "source": "cap:PIA11436",
+          "verification": "verified"
+        }
+      ],
+      "lastSignal": {
+        "date": "1997-09-27",
+        "verification": "required",
+        "text": {
+          "en": "The last data transmission from Mars Pathfinder.",
+          "bn": "মার্স পাথফাইন্ডারের শেষ তথ্য-সম্প্রচার।"
+        }
+      },
+      "kept": {
+        "en": "NASA itself frames Sojourner, the Mars Exploration Rovers and Curiosity as three generations of one family.",
+        "bn": "নাসা নিজেই সোজার্নার, মার্স এক্সপ্লোরেশন রোভার ও কিউরিওসিটিকে এক পরিবারের তিন প্রজন্ম হিসেবে দেখায়।"
+      }
+    },
+    {
+      "id": "spirit",
+      "object": "spirit",
+      "title": {
+        "en": "The rover that kept looking at the hills",
+        "bn": "যে রোভার পাহাড়ের দিকে তাকিয়ে থাকত"
+      },
+      "dek": {
+        "en": "Spirit explored Gusev crater and climbed into the Columbia Hills.",
+        "bn": "স্পিরিট গুসেভ খাদ ঘুরে কলাম্বিয়া হিলসে উঠেছিল।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "Gusev crater",
+            "bn": "গুসেভ খাদ"
+          },
+          "title": {
+            "en": "A sweeping view of the Columbia Hills",
+            "bn": "কলাম্বিয়া হিলসের বিস্তৃত দৃশ্য"
+          },
+          "body": {
+            "en": "Spirit assembled this stereo panorama of the terrain around it in Gusev crater.",
+            "bn": "স্পিরিট গুসেভ খাদে তার চারপাশের ভূমির এই স্টেরিও প্যানোরামা তৈরি করেছিল।"
+          },
+          "image": "PIA03250"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "January 2004",
+            "bn": "জানুয়ারি ২০০৪"
+          },
+          "source": "nssdca:2003-027A",
+          "verification": "required"
+        },
+        {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "value": {
+            "en": "22 March 2010",
+            "bn": "২২ মার্চ ২০১০"
+          },
+          "source": "nssdca:2003-027A",
+          "verification": "required"
+        }
+      ],
+      "lastSignal": {
+        "date": "2010-03-22",
+        "verification": "required",
+        "text": {
+          "en": "Spirit's last communication with Earth.",
+          "bn": "পৃথিবীর সাথে স্পিরিটের শেষ যোগাযোগ।"
+        }
+      },
+      "kept": {
+        "en": "Its twin, Opportunity, kept driving for eight more years.",
+        "bn": "এর যমজ অপরচুনিটি আরও আট বছর চলতে থাকে।"
+      }
+    },
+    {
+      "id": "opportunity",
+      "object": "opportunity",
+      "title": {
+        "en": "The last panorama",
+        "bn": "শেষ প্যানোরামা"
+      },
+      "dek": {
+        "en": "Opportunity's final 360° view was still being assembled when a planet-wide dust storm closed in.",
+        "bn": "গ্রহজুড়ে ধুলোঝড় ঘনিয়ে আসার সময়ও অপরচুনিটির শেষ ৩৬০° দৃশ্য তৈরি হচ্ছিল।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "13 May – 10 June 2018",
+            "bn": "১৩ মে – ১০ জুন ২০১৮"
+          },
+          "title": {
+            "en": "354 images",
+            "bn": "৩৫৪টি ছবি"
+          },
+          "body": {
+            "en": "The Legacy Pan combines 354 Pancam images taken over sols 5,084 to 5,111. NASA calls it the last panorama Opportunity acquired before the solar-powered rover succumbed to a global Martian dust storm on 10 June.",
+            "bn": "লেগ্যাসি প্যান ৩৫৪টি প্যানক্যাম ছবি জুড়ে তৈরি, তোলা হয় ৫,০৮৪ থেকে ৫,১১১ সলের মধ্যে। নাসার ভাষায়, ১০ জুন গ্রহব্যাপী ধুলোঝড়ে সৌরচালিত রোভারটি হার মানার আগে এটিই অপরচুনিটির শেষ প্যানোরামা।"
+          },
+          "image": "PIA22909"
+        },
+        {
+          "kicker": {
+            "en": "45.16 kilometres",
+            "bn": "৪৫.১৬ কিলোমিটার"
+          },
+          "title": {
+            "en": "From Eagle crater to Perseverance Valley",
+            "bn": "ঈগল খাদ থেকে পারসিভিয়ারেন্স ভ্যালি"
+          },
+          "body": {
+            "en": "The final traverse map runs from the landing site, Eagle crater, to the rover's final resting spot on the rim of Endeavour crater. It was descending into Perseverance Valley when the storm ended its mission.",
+            "bn": "শেষ ভ্রমণ-মানচিত্রটি অবতরণস্থল ঈগল খাদ থেকে এনডেভার খাদের কিনারায় রোভারের শেষ বিশ্রামস্থল পর্যন্ত। ঝড় যখন মিশন থামাল, রোভারটি তখন পারসিভিয়ারেন্স ভ্যালিতে নামছিল।"
+          },
+          "image": "PIA23178"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "value": {
+            "en": "10 June 2018",
+            "bn": "১০ জুন ২০১৮"
+          },
+          "source": "img:PIA23178",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Distance driven",
+            "bn": "অতিক্রান্ত দূরত্ব"
+          },
+          "value": {
+            "en": "45.16 km (28.06 miles)",
+            "bn": "৪৫.১৬ কিমি (২৮.০৬ মাইল)"
+          },
+          "source": "img:PIA23178",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Final panorama",
+            "bn": "শেষ প্যানোরামা"
+          },
+          "value": {
+            "en": "354 images, sols 5,084–5,111",
+            "bn": "৩৫৪টি ছবি, সল ৫,০৮৪–৫,১১১"
+          },
+          "source": "img:PIA22909",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Often-quoted “last words”",
+            "bn": "বহুল উদ্ধৃত “শেষ কথা”"
+          },
+          "value": {
+            "en": "A popular paraphrase, not a transmitted message",
+            "bn": "একটি জনপ্রিয় ভাবানুবাদ, পাঠানো কোনো বার্তা নয়"
+          },
+          "source": null,
+          "verification": "required"
+        }
+      ],
+      "lastSignal": {
+        "date": "2018-06-10",
+        "verification": "verified",
+        "text": {
+          "en": "The last date Opportunity made contact with its engineering team.",
+          "bn": "যেদিন শেষবার অপরচুনিটি তার প্রকৌশল দলের সাথে যোগাযোগ করে।"
+        }
+      },
+      "kept": {
+        "en": "The panorama was finished from data already on Earth — the rover's last view arrived whole after it went quiet.",
+        "bn": "প্যানোরামাটি সম্পূর্ণ হয় পৃথিবীতে আগেই পৌঁছানো তথ্য দিয়ে — রোভার নীরব হওয়ার পরও তার শেষ দৃশ্য পুরোটা এসে পৌঁছায়।"
+      }
+    },
+    {
+      "id": "phoenix",
+      "object": "phoenix",
+      "title": {
+        "en": "Seen from above",
+        "bn": "ওপর থেকে দেখা"
+      },
+      "dek": {
+        "en": "Phoenix landed far north, on the plains where Martian winter arrives hard.",
+        "bn": "ফিনিক্স নেমেছিল অনেক উত্তরে, যেখানে মঙ্গলের শীত নামে কঠোরভাবে।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "May 2008",
+            "bn": "মে ২০০৮"
+          },
+          "title": {
+            "en": "Solar panels open",
+            "bn": "সৌর প্যানেল খোলা"
+          },
+          "body": {
+            "en": "The HiRISE camera on Mars Reconnaissance Orbiter photographed Phoenix on the surface with its solar panels deployed.",
+            "bn": "মার্স রিকনিস্যান্স অরবিটারের হাইরাইজ ক্যামেরা সৌর প্যানেল মেলে থাকা অবস্থায় ফিনিক্সের ছবি তোলে।"
+          },
+          "image": "PIA10701"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "25 May 2008",
+            "bn": "২৫ মে ২০০৮"
+          },
+          "source": "nssdca:2007-034A",
+          "verification": "required"
+        },
+        {
+          "label": {
+            "en": "Imaged from orbit",
+            "bn": "কক্ষপথ থেকে ছবি"
+          },
+          "value": {
+            "en": "HiRISE, Mars Reconnaissance Orbiter",
+            "bn": "হাইরাইজ, মার্স রিকনিস্যান্স অরবিটার"
+          },
+          "source": "img:PIA10701",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "value": {
+            "en": "November 2008",
+            "bn": "নভেম্বর ২০০৮"
+          },
+          "source": "nssdca:2007-034A",
+          "verification": "required"
+        }
+      ],
+      "lastSignal": {
+        "date": "2008-11",
+        "verification": "required",
+        "text": {
+          "en": "Phoenix fell silent as northern winter approached.",
+          "bn": "উত্তরের শীত ঘনিয়ে আসতেই ফিনিক্স নীরব হয়ে যায়।"
+        }
+      },
+      "kept": {
+        "en": "An orbiter photographed a lander: machines at Mars watching over each other.",
+        "bn": "এক অরবিটার এক ল্যান্ডারের ছবি তুলল: মঙ্গলে যন্ত্রেরা একে অপরকে দেখে রাখে।"
+      }
+    },
+    {
+      "id": "insight",
+      "object": "insight",
+      "title": {
+        "en": "Listening to the inside of a planet",
+        "bn": "এক গ্রহের ভেতরের শব্দ শোনা"
+      },
+      "dek": {
+        "en": "InSight's seismometer kept listening until dust covered the panels that powered it.",
+        "bn": "যে প্যানেলগুলো ইনসাইটকে শক্তি দিত সেগুলো ধুলোয় ঢাকা পড়া পর্যন্ত এর সিসমোমিটার শুনে গেছে।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "Sol 110",
+            "bn": "সল ১১০"
+          },
+          "title": {
+            "en": "A dome on the surface",
+            "bn": "পৃষ্ঠে এক গম্বুজ"
+          },
+          "body": {
+            "en": "The domed Wind and Thermal Shield covers SEIS, the Seismic Experiment for Interior Structure.",
+            "bn": "গম্বুজাকৃতি উইন্ড অ্যান্ড থার্মাল শিল্ড ঢেকে রেখেছে সিসমিক এক্সপেরিমেন্ট ফর ইন্টেরিয়র স্ট্রাকচার, অর্থাৎ এসইআইএস-কে।"
+          },
+          "image": "PIA23177"
+        },
+        {
+          "kicker": {
+            "en": "9 January 2021",
+            "bn": "৯ জানুয়ারি ২০২১"
+          },
+          "title": {
+            "en": "The mole comes to rest",
+            "bn": "মোল থেমে গেল"
+          },
+          "body": {
+            "en": "The heat probe had tried since February 2019 to burrow in. The soil clumped and gave it too little friction; the team called an end to the effort.",
+            "bn": "তাপ-প্রোবটি ২০১৯ সালের ফেব্রুয়ারি থেকে মাটিতে ঢোকার চেষ্টা করছিল। মাটি দলা বেঁধে যাওয়ায় যথেষ্ট ঘর্ষণ মেলেনি; দলটি চেষ্টায় ইতি টানে।"
+          },
+          "image": "PIA24263"
+        },
+        {
+          "kicker": {
+            "en": "24 April 2022 · Sol 1,211",
+            "bn": "২৪ এপ্রিল ২০২২ · সল ১,২১১"
+          },
+          "title": {
+            "en": "The final selfie",
+            "bn": "শেষ সেলফি"
+          },
+          "body": {
+            "en": "Far dustier than in its first selfie. With power falling, the team planned to put the robotic arm into its “retirement pose” for the last time in May 2022.",
+            "bn": "প্রথম সেলফির চেয়ে অনেক বেশি ধুলোমাখা। শক্তি কমে আসায়, দলটি ২০২২ সালের মে মাসে শেষবারের মতো রোবটিক বাহুকে “অবসর ভঙ্গিতে” রাখার পরিকল্পনা করে।"
+          },
+          "image": "PIA25287"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Final selfie",
+            "bn": "শেষ সেলফি"
+          },
+          "value": {
+            "en": "24 April 2022, sol 1,211",
+            "bn": "২৪ এপ্রিল ২০২২, সল ১,২১১"
+          },
+          "source": "img:PIA25287",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Mission ended",
+            "bn": "মিশন সমাপ্ত"
+          },
+          "value": {
+            "en": "2022",
+            "bn": "২০২২"
+          },
+          "source": "img:PIA26635",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Results published after silence",
+            "bn": "নীরবতার পরে প্রকাশিত ফল"
+          },
+          "value": {
+            "en": "Science, 28 August 2025",
+            "bn": "সায়েন্স, ২৮ আগস্ট ২০২৫"
+          },
+          "source": "img:PIA26635",
+          "verification": "verified"
+        }
+      ],
+      "lastSignal": {
+        "date": "2022",
+        "verification": "verified",
+        "text": {
+          "en": "InSight's mission ended in 2022 (exact last-contact date: Source verification required).",
+          "bn": "২০২২ সালে ইনসাইটের মিশন শেষ হয় (শেষ যোগাযোগের সঠিক তারিখ: উৎস যাচাই প্রয়োজন)।"
+        }
+      },
+      "kept": {
+        "en": "Three years after it fell silent, InSight data revealed debris from ancient giant impacts buried deep in the Martian mantle — published in Science on 28 August 2025.",
+        "bn": "নীরব হওয়ার তিন বছর পর, ইনসাইটের তথ্য মঙ্গলের ম্যান্টলের গভীরে প্রাচীন বিশাল সংঘর্ষের ধ্বংসাবশেষ উন্মোচন করে — প্রকাশিত হয় সায়েন্স সাময়িকীতে, ২৮ আগস্ট ২০২৫।"
+      }
+    },
+    {
+      "id": "curiosity",
+      "object": "curiosity",
+      "title": {
+        "en": "Still climbing",
+        "bn": "এখনও আরোহণ"
+      },
+      "dek": {
+        "en": "Not every machine in this museum is silent.",
+        "bn": "এই জাদুঘরের সব যন্ত্র নীরব নয়।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "Sol 1,065 · 5 August 2015",
+            "bn": "সল ১,০৬৫ · ৫ আগস্ট ২০১৫"
+          },
+          "title": {
+            "en": "Buckskin",
+            "bn": "বাকস্কিন"
+          },
+          "body": {
+            "en": "A low-angle self-portrait above the “Buckskin” target in lower Mount Sharp, where Curiosity collected its seventh drilled sample. The wheels are 50 cm in diameter.",
+            "bn": "মাউন্ট শার্পের নিচের অংশে “বাকস্কিন” লক্ষ্যের ওপরে এক নিচু-কোণের আত্মপ্রতিকৃতি, যেখানে কিউরিওসিটি তার সপ্তম ড্রিল-নমুনা সংগ্রহ করে। চাকার ব্যাস ৫০ সেমি।"
+          },
+          "image": "PIA19807"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "August 2012 · Bradbury Landing, Gale crater",
+            "bn": "আগস্ট ২০১২ · ব্র্যাডবেরি ল্যান্ডিং, গেল খাদ"
+          },
+          "source": "cap:PIA17064",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Seventh drill sample",
+            "bn": "সপ্তম ড্রিল-নমুনা"
+          },
+          "value": {
+            "en": "“Buckskin”, 2015",
+            "bn": "“বাকস্কিন”, ২০১৫"
+          },
+          "source": "img:PIA19807",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Status",
+            "bn": "অবস্থা"
+          },
+          "value": {
+            "en": "Listed as active — Source verification required",
+            "bn": "সক্রিয় হিসেবে তালিকাভুক্ত — উৎস যাচাই প্রয়োজন"
+          },
+          "source": "nssdca:2011-070A",
+          "verification": "required"
+        }
+      ],
+      "lastSignal": null,
+      "kept": {
+        "en": "Curiosity is a descendant of Sojourner and the Mars Exploration Rovers.",
+        "bn": "কিউরিওসিটি সোজার্নার ও মার্স এক্সপ্লোরেশন রোভারদের উত্তরসূরি।"
+      }
+    },
+    {
+      "id": "perseverance",
+      "object": "perseverance",
+      "title": {
+        "en": "Collecting pieces of Mars",
+        "bn": "মঙ্গলের টুকরো সংগ্রহ"
+      },
+      "dek": {
+        "en": "Perseverance was designed to be the first mission to collect and cache Martian rock and regolith.",
+        "bn": "পারসিভিয়ারেন্স নকশা করা হয়েছিল মঙ্গলের পাথর ও রেগোলিথ সংগ্রহ ও সংরক্ষণকারী প্রথম মিশন হিসেবে।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "18 February 2021",
+            "bn": "১৮ ফেব্রুয়ারি ২০২১"
+          },
+          "title": {
+            "en": "Descent",
+            "bn": "অবতরণ"
+          },
+          "body": {
+            "en": "The heat shield dropped away during descent through the Martian atmosphere on 18 February 2021.",
+            "bn": "১৮ ফেব্রুয়ারি ২০২১ মঙ্গলের বায়ুমণ্ডলে নামার সময় তাপ-ঢালটি খসে পড়ে।"
+          }
+        },
+        {
+          "kicker": {
+            "en": "4 March 2021",
+            "bn": "৪ মার্চ ২০২১"
+          },
+          "title": {
+            "en": "First drive",
+            "bn": "প্রথম চলা"
+          },
+          "body": {
+            "en": "A Hazcam captured the rover's first short traverse and turn from its landing site in Jezero crater.",
+            "bn": "একটি হ্যাজক্যাম জেজেরো খাদে অবতরণস্থল থেকে রোভারের প্রথম ছোট চলা ও বাঁক নেওয়ার ছবি তোলে।"
+          },
+          "image": "PIA24482"
+        },
+        {
+          "kicker": {
+            "en": "6 April 2021 · Sol 46",
+            "bn": "৬ এপ্রিল ২০২১ · সল ৪৬"
+          },
+          "title": {
+            "en": "A selfie with a helicopter",
+            "bn": "হেলিকপ্টারের সাথে সেলফি"
+          },
+          "body": {
+            "en": "Ingenuity stands about 3.9 metres from the rover. The selfie is stitched from 62 images.",
+            "bn": "ইনজেনুইটি রোভার থেকে প্রায় ৩.৯ মিটার দূরে। সেলফিটি ৬২টি ছবি জোড়া দিয়ে তৈরি।"
+          },
+          "image": "PIA24542"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Landed",
+            "bn": "অবতরণ"
+          },
+          "value": {
+            "en": "18 February 2021 · Jezero crater",
+            "bn": "১৮ ফেব্রুয়ারি ২০২১ · জেজেরো খাদ"
+          },
+          "source": "cap:PIA24447",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "First drive",
+            "bn": "প্রথম চলা"
+          },
+          "value": {
+            "en": "4 March 2021",
+            "bn": "৪ মার্চ ২০২১"
+          },
+          "source": "img:PIA24482",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Status",
+            "bn": "অবস্থা"
+          },
+          "value": {
+            "en": "Listed as active — Source verification required",
+            "bn": "সক্রিয় হিসেবে তালিকাভুক্ত — উৎস যাচাই প্রয়োজন"
+          },
+          "source": "nssdca:2020-052A",
+          "verification": "required"
+        }
+      ],
+      "lastSignal": null,
+      "kept": {
+        "en": "Sealed sample tubes are a message addressed to future missions. (Sample-return plans: Source verification required.)",
+        "bn": "সিল করা নমুনা-টিউবগুলো ভবিষ্যৎ মিশনের উদ্দেশে লেখা এক বার্তা। (নমুনা ফেরত আনার পরিকল্পনা: উৎস যাচাই প্রয়োজন।)"
+      }
+    },
+    {
+      "id": "ingenuity",
+      "object": "ingenuity",
+      "title": {
+        "en": "Seventy-two flights",
+        "bn": "বাহাত্তরটি উড্ডয়ন"
+      },
+      "dek": {
+        "en": "The first aircraft to fly on another planet ended its mission on a sand ripple.",
+        "bn": "অন্য গ্রহে ওড়া প্রথম আকাশযান তার মিশন শেষ করল এক বালির ঢেউয়ের ওপর।"
+      },
+      "chapters": [
+        {
+          "kicker": {
+            "en": "18 January 2024 · Flight 72",
+            "bn": "১৮ জানুয়ারি ২০২৪ · উড্ডয়ন ৭২"
+          },
+          "title": {
+            "en": "Thirty-two seconds",
+            "bn": "বত্রিশ সেকেন্ড"
+          },
+          "body": {
+            "en": "A brief vertical hop: Ingenuity climbed to 12 metres, hovered, and took images. It began descending at 19 seconds; by 32 seconds it was back on the surface and had halted communications.",
+            "bn": "এক সংক্ষিপ্ত খাড়া লাফ: ইনজেনুইটি ১২ মিটার উঠে ভেসে থেকে ছবি তোলে। ১৯ সেকেন্ডে নামা শুরু করে; ৩২ সেকেন্ডে পৃষ্ঠে ফিরে আসে এবং যোগাযোগ থেমে যায়।"
+          },
+          "image": "PIA26482"
+        },
+        {
+          "kicker": {
+            "en": "4 February 2024",
+            "bn": "৪ ফেব্রুয়ারি ২০২৪"
+          },
+          "title": {
+            "en": "“Valinor Hills”",
+            "bn": "“ভ্যালিনর হিলস”"
+          },
+          "body": {
+            "en": "From about 450 metres away, Perseverance's Mastcam-Z photographed the helicopter at its final airfield, rotor blades damaged.",
+            "bn": "প্রায় ৪৫০ মিটার দূর থেকে পারসিভিয়ারেন্সের মাস্টক্যাম-জেড শেষ বিমানক্ষেত্রে ক্ষতিগ্রস্ত রোটর-ব্লেডসহ হেলিকপ্টারটির ছবি তোলে।"
+          },
+          "image": "PIA26236"
+        }
+      ],
+      "facts": [
+        {
+          "label": {
+            "en": "Final flight",
+            "bn": "শেষ উড্ডয়ন"
+          },
+          "value": {
+            "en": "Flight 72, 18 January 2024",
+            "bn": "উড্ডয়ন ৭২, ১৮ জানুয়ারি ২০২৪"
+          },
+          "source": "img:PIA26236",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Most likely cause",
+            "bn": "সবচেয়ে সম্ভাব্য কারণ"
+          },
+          "value": {
+            "en": "Navigation found too few surface features; a hard touchdown on a sloping ripple snapped all four blades",
+            "bn": "নেভিগেশন যথেষ্ট ভূচিহ্ন পায়নি; ঢালু বালির ঢেউয়ে কঠিন অবতরণে চারটি ব্লেডই ভেঙে যায়"
+          },
+          "source": "img:PIA26482",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Final airfield",
+            "bn": "শেষ বিমানক্ষেত্র"
+          },
+          "value": {
+            "en": "“Valinor Hills”",
+            "bn": "“ভ্যালিনর হিলস”"
+          },
+          "source": "img:PIA26236",
+          "verification": "verified"
+        },
+        {
+          "label": {
+            "en": "Coordinates",
+            "bn": "স্থানাঙ্ক"
+          },
+          "value": {
+            "en": "Source verification required",
+            "bn": "উৎস যাচাই প্রয়োজন"
+          },
+          "source": null,
+          "verification": "required"
+        }
+      ],
+      "lastSignal": {
+        "date": "2024-01-18",
+        "verification": "verified",
+        "text": {
+          "en": "Flight 72 ended with a hard landing and a loss of communications.",
+          "bn": "উড্ডয়ন ৭২ শেষ হলো কঠিন অবতরণ ও যোগাযোগ বিচ্ছিন্নতায়।"
+        }
+      },
+      "kept": {
+        "en": "Engineers turned its last flight into an agency technical assessment — a lesson written for every future Mars aircraft.",
+        "bn": "প্রকৌশলীরা এর শেষ উড্ডয়নকে একটি সংস্থা-পর্যায়ের কারিগরি মূল্যায়নে রূপ দেন — ভবিষ্যতের প্রতিটি মঙ্গল-আকাশযানের জন্য লেখা এক শিক্ষা।"
+      }
+    }
+  ],
+  "lens": [
+    {
+      "id": "earthrise",
+      "title": {
+        "en": "The same horizon, 57 years apart",
+        "bn": "একই দিগন্ত, ৫৭ বছরের ব্যবধানে"
+      },
+      "caption": {
+        "en": "Apollo 8 photographed Earth rising about five degrees above the lunar horizon on 24 December 1968. On 6 April 2026, the Artemis II crew photographed Earth setting behind it.",
+        "bn": "১৯৬৮ সালের ২৪ ডিসেম্বর অ্যাপোলো ৮ চাঁদের দিগন্তের প্রায় পাঁচ ডিগ্রি ওপরে পৃথিবীর উদয় ক্যামেরাবন্দি করে। ২০২৬ সালের ৬ এপ্রিল আর্টেমিস ২-এর নভোচারীরা সেই দিগন্তের পেছনে পৃথিবীর অস্ত যাওয়ার ছবি তোলেন।"
+      },
+      "then": {
+        "image": "as08-14-2383",
+        "year": "1968"
+      },
+      "now": {
+        "image": "art002e021278",
+        "year": "2026"
+      }
+    },
+    {
+      "id": "tranquility",
+      "title": {
+        "en": "Tranquility Base, from the ground and from orbit",
+        "bn": "ট্রাঙ্কুইলিটি বেস — মাটি থেকে ও কক্ষপথ থেকে"
+      },
+      "caption": {
+        "en": "Aldrin beside the newly deployed experiments in 1969; the Lunar Reconnaissance Orbiter's look at the same site in 2009.",
+        "bn": "১৯৬৯ সালে সদ্য স্থাপিত পরীক্ষার পাশে অলড্রিন; ২০০৯ সালে একই স্থানে লুনার রিকনিস্যান্স অরবিটারের দৃষ্টি।"
+      },
+      "then": {
+        "image": "as11-40-5948",
+        "year": "1969"
+      },
+      "now": {
+        "image": "PIA12909",
+        "year": "2009"
+      }
+    },
+    {
+      "id": "insight-dust",
+      "title": {
+        "en": "What dust does to a lander",
+        "bn": "ধুলো একটি ল্যান্ডারের কী করে"
+      },
+      "caption": {
+        "en": "InSight's seismometer shield on sol 110 (2019) and its final selfie on sol 1,211 (2022).",
+        "bn": "সল ১১০-এ (২০১৯) ইনসাইটের সিসমোমিটার-ঢাল এবং সল ১,২১১-এ (২০২২) তার শেষ সেলফি।"
+      },
+      "then": {
+        "image": "PIA23177",
+        "year": "2019"
+      },
+      "now": {
+        "image": "PIA25287",
+        "year": "2022"
+      }
+    },
+    {
+      "id": "ingenuity",
+      "title": {
+        "en": "Ingenuity: first selfie, final airfield",
+        "bn": "ইনজেনুইটি: প্রথম সেলফি, শেষ বিমানক্ষেত্র"
+      },
+      "caption": {
+        "en": "Beside Perseverance on sol 46 (April 2021); at “Valinor Hills” after its 72nd flight (February 2024).",
+        "bn": "সল ৪৬-এ পারসিভিয়ারেন্সের পাশে (এপ্রিল ২০২১); ৭২তম উড্ডয়নের পর “ভ্যালিনর হিলস”-এ (ফেব্রুয়ারি ২০২৪)।"
+      },
+      "then": {
+        "image": "PIA24542",
+        "year": "2021"
+      },
+      "now": {
+        "image": "PIA26236",
+        "year": "2024"
+      }
+    }
+  ],
+  "paths": [
+    {
+      "id": "mirrors",
+      "title": {
+        "en": "Mirrors still answering",
+        "bn": "আয়নারা এখনও উত্তর দেয়"
+      },
+      "dek": {
+        "en": "Follow the experiments that need no power — and so never went silent.",
+        "bn": "যে পরীক্ষাগুলোর বিদ্যুৎ লাগে না — তাই কখনো নীরব হয়নি — সেগুলো অনুসরণ করুন।"
+      },
+      "steps": [
+        {
+          "object": "apollo-11",
+          "note": {
+            "en": "The first laser retroreflector, deployed beside the first seismometer.",
+            "bn": "প্রথম লেজার রেট্রোরিফ্লেক্টর, প্রথম সিসমোমিটারের পাশে স্থাপিত।"
+          }
+        },
+        {
+          "object": "apollo-14",
+          "note": {
+            "en": "A second reflector at Fra Mauro (Source verification required).",
+            "bn": "ফ্রা মাউরোতে দ্বিতীয় প্রতিফলক (উৎস যাচাই প্রয়োজন)।"
+          }
+        },
+        {
+          "object": "apollo-15",
+          "note": {
+            "en": "“A fundamental point on the Moon.”",
+            "bn": "“চাঁদের এক মৌলিক বিন্দু।”"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stations",
+      "title": {
+        "en": "The silent stations",
+        "bn": "নীরব কেন্দ্রগুলো"
+      },
+      "dek": {
+        "en": "Five Apollo crews left science stations listening on the Moon.",
+        "bn": "পাঁচটি অ্যাপোলো দল চাঁদে শোনার জন্য বিজ্ঞান-কেন্দ্র রেখে আসে।"
+      },
+      "steps": [
+        {
+          "object": "apollo-12",
+          "note": {
+            "en": "A station beside a robot that landed in 1967.",
+            "bn": "১৯৬৭ সালে নামা এক রোবটের পাশে এক কেন্দ্র।"
+          }
+        },
+        {
+          "object": "apollo-14",
+          "note": {
+            "en": "Central station and an active seismic experiment.",
+            "bn": "কেন্দ্রীয় স্টেশন ও সক্রিয় সিসমিক পরীক্ষা।"
+          }
+        },
+        {
+          "object": "apollo-15",
+          "note": {
+            "en": "Hadley–Apennine.",
+            "bn": "হ্যাডলি–অ্যাপেনাইন।"
+          }
+        },
+        {
+          "object": "apollo-16",
+          "note": {
+            "en": "Powered by a radioisotope generator.",
+            "bn": "রেডিওআইসোটোপ জেনারেটরে চালিত।"
+          }
+        },
+        {
+          "object": "apollo-17",
+          "note": {
+            "en": "The last station Apollo built.",
+            "bn": "অ্যাপোলোর গড়া শেষ কেন্দ্র।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "goodbyes",
+      "title": {
+        "en": "The long goodbyes on Mars",
+        "bn": "মঙ্গলে দীর্ঘ বিদায়"
+      },
+      "dek": {
+        "en": "Every Mars surface mission ends. Here is how each one went quiet.",
+        "bn": "মঙ্গলের প্রতিটি পৃষ্ঠ-মিশনই একদিন শেষ হয়। দেখুন, কে কীভাবে নীরব হলো।"
+      },
+      "steps": [
+        {
+          "object": "viking-1",
+          "note": {
+            "en": "The first photograph from the surface.",
+            "bn": "পৃষ্ঠ থেকে প্রথম ছবি।"
+          }
+        },
+        {
+          "object": "pathfinder",
+          "note": {
+            "en": "The first rover's tracks.",
+            "bn": "প্রথম রোভারের চাকার দাগ।"
+          }
+        },
+        {
+          "object": "spirit",
+          "note": {
+            "en": "A twin that went quiet first.",
+            "bn": "যে যমজ আগে নীরব হলো।"
+          }
+        },
+        {
+          "object": "opportunity",
+          "note": {
+            "en": "A last panorama, finished after the silence.",
+            "bn": "শেষ প্যানোরামা, নীরবতার পরে সম্পূর্ণ।"
+          }
+        },
+        {
+          "object": "insight",
+          "note": {
+            "en": "Discoveries published three years later.",
+            "bn": "তিন বছর পরে প্রকাশিত আবিষ্কার।"
+          }
+        },
+        {
+          "object": "ingenuity",
+          "note": {
+            "en": "Thirty-two seconds, then silence.",
+            "bn": "বত্রিশ সেকেন্ড, তারপর নীরবতা।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "meetings",
+      "title": {
+        "en": "Machines that met machines",
+        "bn": "যন্ত্রের সাথে যন্ত্রের দেখা"
+      },
+      "dek": {
+        "en": "Visits, photographs and selfies between spacecraft.",
+        "bn": "মহাকাশযানদের মধ্যে সাক্ষাৎ, ছবি আর সেলফি।"
+      },
+      "steps": [
+        {
+          "object": "surveyor-3",
+          "note": {
+            "en": "Visited by Apollo 12 astronauts.",
+            "bn": "অ্যাপোলো ১২-এর নভোচারীরা দেখতে আসেন।"
+          }
+        },
+        {
+          "object": "surveyor-1",
+          "note": {
+            "en": "Photographed by an orbiter decades later.",
+            "bn": "কয়েক দশক পরে এক অরবিটার ছবি তোলে।"
+          }
+        },
+        {
+          "object": "phoenix",
+          "note": {
+            "en": "Photographed by HiRISE from orbit.",
+            "bn": "কক্ষপথ থেকে হাইরাইজের তোলা ছবি।"
+          }
+        },
+        {
+          "object": "perseverance",
+          "note": {
+            "en": "A selfie with a helicopter.",
+            "bn": "হেলিকপ্টারের সাথে সেলফি।"
+          }
+        },
+        {
+          "object": "ingenuity",
+          "note": {
+            "en": "Watched over at its final airfield.",
+            "bn": "শেষ বিমানক্ষেত্রে নজরদারিতে।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "inside",
+      "title": {
+        "en": "Listening inside worlds",
+        "bn": "জগতের ভেতর শোনা"
+      },
+      "dek": {
+        "en": "Seismometers on the Moon and Mars.",
+        "bn": "চাঁদ ও মঙ্গলে সিসমোমিটার।"
+      },
+      "steps": [
+        {
+          "object": "apollo-11",
+          "note": {
+            "en": "The Passive Seismic Experiment Package.",
+            "bn": "প্যাসিভ সিসমিক এক্সপেরিমেন্ট প্যাকেজ।"
+          }
+        },
+        {
+          "object": "apollo-16",
+          "note": {
+            "en": "The Passive Seismic Experiment in the highlands.",
+            "bn": "উচ্চভূমিতে প্যাসিভ সিসমিক এক্সপেরিমেন্ট।"
+          }
+        },
+        {
+          "object": "insight",
+          "note": {
+            "en": "SEIS, under its domed shield.",
+            "bn": "গম্বুজ-ঢালের নিচে এসইআইএস।"
+          }
+        }
+      ]
+    }
+  ],
+  "ripples": [
+    {
+      "id": "tranquility",
+      "from": "apollo-11",
+      "title": {
+        "en": "From one mirror",
+        "bn": "একটি আয়না থেকে"
+      },
+      "rings": [
+        {
+          "to": "apollo-14",
+          "relation": {
+            "en": "More retroreflectors were placed by later crews",
+            "bn": "পরবর্তী দলগুলো আরও রেট্রোরিফ্লেক্টর স্থাপন করে"
+          },
+          "source": "nssdca:1971-008C",
+          "verification": "required"
+        },
+        {
+          "to": "apollo-15",
+          "relation": {
+            "en": "A larger array: “a fundamental point on the Moon”",
+            "bn": "আরও বড় বিন্যাস: “চাঁদের এক মৌলিক বিন্দু”"
+          },
+          "source": "img:PIA13037",
+          "verification": "verified"
+        },
+        {
+          "to": "apollo-16",
+          "relation": {
+            "en": "Seismometry continued across the Apollo stations",
+            "bn": "অ্যাপোলো কেন্দ্রগুলো জুড়ে সিসমোমিতি চলতে থাকে"
+          },
+          "source": "img:as16-113-18347",
+          "verification": "verified"
+        },
+        {
+          "to": "insight",
+          "relation": {
+            "en": "Planetary seismology carried to Mars (lineage framing: Source verification required)",
+            "bn": "গ্রহ-ভূকম্পবিদ্যা পৌঁছায় মঙ্গলে (ধারাবাহিকতার ব্যাখ্যা: উৎস যাচাই প্রয়োজন)"
+          },
+          "source": null,
+          "verification": "required"
+        }
+      ]
+    },
+    {
+      "id": "rovers",
+      "from": "pathfinder",
+      "title": {
+        "en": "Three generations of rovers",
+        "bn": "রোভারের তিন প্রজন্ম"
+      },
+      "rings": [
+        {
+          "to": "spirit",
+          "relation": {
+            "en": "Second generation: Mars Exploration Rovers",
+            "bn": "দ্বিতীয় প্রজন্ম: মার্স এক্সপ্লোরেশন রোভার"
+          },
+          "source": "cap:PIA11436",
+          "verification": "verified"
+        },
+        {
+          "to": "opportunity",
+          "relation": {
+            "en": "Second generation: Mars Exploration Rovers",
+            "bn": "দ্বিতীয় প্রজন্ম: মার্স এক্সপ্লোরেশন রোভার"
+          },
+          "source": "cap:PIA11436",
+          "verification": "verified"
+        },
+        {
+          "to": "curiosity",
+          "relation": {
+            "en": "Third generation: “Newest is biggest”",
+            "bn": "তৃতীয় প্রজন্ম: “সবচেয়ে নতুন, সবচেয়ে বড়”"
+          },
+          "source": "cap:PIA11436",
+          "verification": "verified"
+        },
+        {
+          "to": "perseverance",
+          "relation": {
+            "en": "Next in the line (design heritage: Source verification required)",
+            "bn": "ধারার পরবর্তী (নকশা-উত্তরাধিকার: উৎস যাচাই প্রয়োজন)"
+          },
+          "source": null,
+          "verification": "required"
+        }
+      ]
+    },
+    {
+      "id": "surveyor",
+      "from": "surveyor-3",
+      "title": {
+        "en": "A robot's camera comes home",
+        "bn": "এক রোবটের ক্যামেরা ঘরে ফেরে"
+      },
+      "rings": [
+        {
+          "to": "apollo-12",
+          "relation": {
+            "en": "Astronauts removed the TV camera and other parts for study on Earth",
+            "bn": "নভোচারীরা পৃথিবীতে পরীক্ষার জন্য টিভি ক্যামেরা ও অন্যান্য অংশ খুলে আনেন"
+          },
+          "source": "img:AS12-48-7133",
+          "verification": "verified"
+        }
+      ]
+    },
+    {
+      "id": "insight",
+      "from": "insight",
+      "title": {
+        "en": "Knowledge after silence",
+        "bn": "নীরবতার পরের জ্ঞান"
+      },
+      "rings": [
+        {
+          "to": "perseverance",
+          "relation": {
+            "en": "Mars surface science continues while InSight's data is still being analysed",
+            "bn": "ইনসাইটের তথ্য বিশ্লেষণ চলাকালীন মঙ্গলের পৃষ্ঠ-বিজ্ঞান এগিয়ে চলে"
+          },
+          "source": "img:PIA26635",
+          "verification": "required"
+        }
+      ]
+    },
+    {
+      "id": "ingenuity",
+      "from": "ingenuity",
+      "title": {
+        "en": "The first flight's last lesson",
+        "bn": "প্রথম উড্ডয়নের শেষ শিক্ষা"
+      },
+      "rings": [
+        {
+          "to": "perseverance",
+          "relation": {
+            "en": "The rover photographed the final airfield to help reconstruct Flight 72",
+            "bn": "উড্ডয়ন ৭২ পুনর্গঠনে রোভারটি শেষ বিমানক্ষেত্রের ছবি তোলে"
+          },
+          "source": "img:PIA26236",
+          "verification": "verified"
+        }
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "date": "1968-12-24",
+      "object": null,
+      "source": "img:as08-14-2383",
+      "text": {
+        "en": "Apollo 8 photographs Earth rising over the lunar horizon.",
+        "bn": "অ্যাপোলো ৮ চাঁদের দিগন্তের ওপরে পৃথিবীর উদয়ের ছবি তোলে।"
+      }
+    },
+    {
+      "date": "1977-09-30",
+      "object": "apollo-17",
+      "source": null,
+      "text": {
+        "en": "The Apollo lunar surface experiment stations are switched off. (Source verification required)",
+        "bn": "অ্যাপোলোর চন্দ্রপৃষ্ঠ পরীক্ষা কেন্দ্রগুলো বন্ধ করা হয়। (উৎস যাচাই প্রয়োজন)"
+      }
+    },
+    {
+      "date": "2009-09-29",
+      "object": "apollo-11",
+      "source": "img:PIA12909",
+      "text": {
+        "en": "The Lunar Reconnaissance Orbiter revisits Tranquility Base.",
+        "bn": "লুনার রিকনিস্যান্স অরবিটার ট্রাঙ্কুইলিটি বেস পুনরায় পরিদর্শন করে।"
+      }
+    },
+    {
+      "date": "2019-03-12",
+      "object": "opportunity",
+      "source": "img:PIA22909",
+      "text": {
+        "en": "NASA releases Opportunity's last panorama, assembled after the rover fell silent.",
+        "bn": "রোভার নীরব হওয়ার পর তৈরি অপরচুনিটির শেষ প্যানোরামা প্রকাশ করে নাসা।"
+      }
+    },
+    {
+      "date": "2025-08-28",
+      "object": "insight",
+      "source": "img:PIA26635",
+      "text": {
+        "en": "InSight findings about ancient impact debris in the Martian mantle are published in Science.",
+        "bn": "মঙ্গলের ম্যান্টলে প্রাচীন সংঘর্ষের ধ্বংসাবশেষ নিয়ে ইনসাইটের ফলাফল সায়েন্স সাময়িকীতে প্রকাশিত হয়।"
+      }
+    },
+    {
+      "date": "2026-04-06",
+      "object": null,
+      "source": "img:art002e021278",
+      "text": {
+        "en": "Artemis II photographs Earthset during its lunar flyby.",
+        "bn": "চন্দ্র-পাশ দিয়ে ওড়ার সময় আর্টেমিস ২ পৃথিবী-অস্তের ছবি তোলে।"
+      }
+    }
+  ]
+}

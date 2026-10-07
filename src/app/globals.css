@@ -1,0 +1,341 @@
+@import "tailwindcss";
+
+/* ───────────────────────── ECHOES BEYOND EARTH · visual system ─────────────────────────
+   Void-black space, lunar-white type, one signal-cyan accent.
+   Amber is reserved for one meaning only: "Source verification required".        */
+
+@theme {
+  --color-void: #030405;
+  --color-void-2: #07090b;
+  --color-void-3: #0d1013;
+  --color-lunar: #ecebe6;
+  --color-lunar-2: #b9b8b2;
+  --color-dust: #7d7c78;
+  --color-ash: #4a4a48;
+  --color-hairline: rgb(236 235 230 / 0.12);
+  --color-hairline-strong: rgb(236 235 230 / 0.24);
+  --color-signal: #63e6ef;
+  --color-signal-dim: rgb(99 230 239 / 0.16);
+  --color-mars: #c8754f;
+  --color-caution: #d9b26f;
+
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-bangla: var(--font-noto-bengali), var(--font-inter-tight), sans-serif;
+
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+  --tracking-label: 0.22em;
+}
+
+:root {
+  color-scheme: dark;
+  --header-h: 64px;
+}
+
+html {
+  background: var(--color-void);
+  color: var(--color-lunar);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+html[data-motion="reduce"] {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--color-void);
+  font-family: var(--font-sans);
+  min-height: 100svh;
+  overflow-x: hidden;
+}
+
+/* Bangla: switch the whole stack, relax tracking and uppercase, raise leading. */
+html[data-lang="bn"] body {
+  font-family: var(--font-bangla);
+}
+html[data-lang="bn"] .label,
+html[data-lang="bn"] .display {
+  letter-spacing: 0;
+  text-transform: none;
+}
+html[data-lang="bn"] .display {
+  line-height: 1.22;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-void);
+}
+
+/* Focus is part of the design: a cyan signal ring, always visible for keyboard users. */
+:focus-visible {
+  outline: 1.5px solid var(--color-signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@layer components {
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-dust);
+  }
+  .display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+  .hairline {
+    border-color: var(--color-hairline);
+  }
+  .container-x {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 3.5rem);
+  }
+  .btn-signal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    border: 1px solid rgb(99 230 239 / 0.55);
+    color: var(--color-lunar);
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    transition: background-color 0.4s var(--ease-cinematic), color 0.4s var(--ease-cinematic), border-color 0.4s;
+  }
+  .btn-signal:hover {
+    background: var(--color-signal);
+    color: var(--color-void);
+    border-color: var(--color-signal);
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid var(--color-hairline-strong);
+    color: var(--color-lunar-2);
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+  }
+  .btn-ghost:hover {
+    color: var(--color-lunar);
+    border-color: var(--color-lunar-2);
+  }
+  .btn-ghost[aria-pressed="true"] {
+    color: var(--color-void);
+    background: var(--color-lunar);
+    border-color: var(--color-lunar);
+  }
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.45s var(--ease-cinematic);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* Signal pulse used by the CTA dot and active markers */
+@keyframes signal-pulse {
+  0% { transform: scale(1); opacity: 0.75; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+.pulse-ring {
+  animation: signal-pulse 2.4s var(--ease-cinematic) infinite;
+}
+html[data-motion="reduce"] .pulse-ring {
+  animation: none;
+  opacity: 0;
+}
+
+/* Thin, quiet scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ash) transparent;
+}
+
+/* Range input — used by the Time Machine and the Memory Lens */
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+}
+.range::-webkit-slider-runnable-track {
+  height: 1px;
+  background: var(--color-hairline-strong);
+}
+.range::-moz-range-track {
+  height: 1px;
+  background: var(--color-hairline-strong);
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -6.5px;
+  border-radius: 999px;
+  background: var(--color-void);
+  border: 1.5px solid var(--color-signal);
+  box-shadow: 0 0 0 4px rgb(99 230 239 / 0.12);
+}
+.range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--color-void);
+  border: 1.5px solid var(--color-signal);
+}
+.range:focus-visible {
+  outline: none;
+}
+.range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 6px rgb(99 230 239 / 0.35);
+}
+.range:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 6px rgb(99 230 239 / 0.35);
+}
+
+/* MapLibre — strip the default chrome so the planet reads as an exhibit, not a GIS tool */
+.maplibregl-map {
+  font-family: var(--font-sans);
+  background: transparent;
+}
+.maplibregl-ctrl-attrib {
+  background: rgb(3 4 5 / 0.6) !important;
+  color: var(--color-dust) !important;
+  font-family: var(--font-mono);
+  font-size: 10px !important;
+}
+.maplibregl-ctrl-attrib a {
+  color: var(--color-lunar-2) !important;
+}
+.maplibregl-ctrl-group {
+  background: rgb(7 9 11 / 0.85) !important;
+  border: 1px solid var(--color-hairline);
+  box-shadow: none !important;
+}
+.maplibregl-ctrl-group button + button {
+  border-top: 1px solid var(--color-hairline) !important;
+}
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  filter: invert(1) brightness(0.85);
+}
+
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Explorer markers — one button per machine. State comes from the Time Machine year. */
+.tls-marker {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.tls-marker .tls-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-lunar-2);
+  transition: transform 0.4s var(--ease-cinematic), background-color 0.6s, box-shadow 0.6s;
+}
+.tls-marker .tls-ring {
+  position: absolute;
+  inset: 6px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: border-color 0.4s, inset 0.4s var(--ease-cinematic);
+}
+.tls-marker[data-state="transmitting"] .tls-core {
+  background: var(--color-signal);
+  box-shadow: 0 0 14px rgb(99 230 239 / 0.85);
+}
+.tls-marker[data-state="transmitting"] .tls-ring {
+  border-color: rgb(99 230 239 / 0.5);
+  animation: signal-pulse 2.4s var(--ease-cinematic) infinite;
+}
+.tls-marker[data-state="silent"] .tls-core {
+  background: rgb(185 184 178 / 0.85);
+}
+.tls-marker[data-state="unrecorded"] .tls-core {
+  background: transparent;
+  border: 1.5px solid rgb(185 184 178 / 0.85);
+}
+.tls-marker:hover .tls-core,
+.tls-marker:focus-visible .tls-core {
+  transform: scale(1.5);
+}
+.tls-marker[data-selected="true"] .tls-ring {
+  inset: 0;
+  border-color: var(--color-lunar);
+  animation: none;
+}
+.tls-marker:focus-visible {
+  outline: none;
+}
+.tls-marker:focus-visible .tls-ring {
+  inset: 0;
+  border-color: var(--color-signal);
+}
+html[data-motion="reduce"] .tls-marker .tls-ring {
+  animation: none !important;
+}
+
+/* Bangla: Latin display faces have no Bengali glyphs. Letter-spacing would split conjuncts
+   apart and synthetic italics would slant the script — so both are switched off. */
+html[data-lang="bn"] .font-mono,
+html[data-lang="bn"] .label,
+html[data-lang="bn"] .btn-signal,
+html[data-lang="bn"] .btn-ghost,
+html[data-lang="bn"] svg text {
+  font-family: var(--font-bangla);
+  letter-spacing: 0 !important;
+  text-transform: none;
+}
+html[data-lang="bn"] .label {
+  font-size: 0.78rem;
+}
+html[data-lang="bn"] .btn-signal,
+html[data-lang="bn"] .btn-ghost {
+  font-size: 0.85rem;
+}
+html[data-lang="bn"] .font-serif {
+  font-family: var(--font-bangla);
+  font-style: normal;
+  font-weight: 300;
+}

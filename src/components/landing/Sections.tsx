@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { NAV } from "@/components/SiteHeader";
-import { NasaImage, VerificationBadge } from "@/components/ui";
+import { NasaImage, SourceLink, VerificationBadge } from "@/components/ui";
 import { useCapsule } from "@/lib/capsule";
 import { useMuseum } from "@/lib/data";
 import { localizeDigits, yearOf } from "@/lib/dates";
@@ -46,6 +46,7 @@ export function Mirror() {
   const { data } = useMuseum();
   const { reducedMotion } = useSettings();
   const moon = data?.image("GSFC_20171208_Archive_e001861");
+  const lightTimeSource = data?.reference("calc:moon-light-time");
   return (
     <section aria-labelledby="mirror-title" className="relative overflow-hidden border-t border-hairline py-[clamp(5rem,12vw,10rem)]">
       <div className="container-x grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
@@ -78,9 +79,12 @@ export function Mirror() {
           <div className="mt-12 border-t border-hairline pt-6">
             <p className="font-serif text-[clamp(3.2rem,7vw,5.5rem)] leading-none">{t("mirror.stat")}</p>
             <p className="mt-3 max-w-sm text-sm text-dust">{t("mirror.statLabel")}</p>
-            <div className="mt-3">
-              <VerificationBadge status="required" />
-            </div>
+            {lightTimeSource && (
+              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+                <VerificationBadge status={lightTimeSource.verification} />
+                <SourceLink id={lightTimeSource.id} />
+              </div>
+            )}
           </div>
         </motion.div>
       </div>

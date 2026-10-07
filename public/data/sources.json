@@ -859,12 +859,12 @@
     },
     {
       "id": "calc:moon-light-time",
-      "title": "Light travel time, Earth → Moon",
-      "publisher": "Calculated by the team",
-      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html",
+      "title": "Lunar Prospector: Level 0 Volume Software Interface Specification",
+      "publisher": "NASA Planetary Data System",
+      "url": "https://pds.nasa.gov/data/lp-l-6-position-v1.0/lp_0017/document/volsis.htm",
       "kind": "dataset",
-      "verification": "required",
-      "note": "384,400 km (mean distance, NASA Moon Fact Sheet) ÷ 299,792 km/s ≈ 1.28 s. Confirm the distance figure on the fact sheet."
+      "verification": "verified",
+      "note": "NASA PDS explicitly gives the average one-way Earth–Moon light time as 1.28 seconds and notes that it varies with the Moon's orbit."
     }
   ]
 }

@@ -1471,11 +1471,51 @@
       },
       "then": {
         "image": "as08-14-2383",
-        "year": "1968"
+        "year": "1968",
+        "hotspots": [
+          {
+            "x": 61,
+            "y": 52,
+            "label": {
+              "en": "Earth, about five degrees above the lunar horizon",
+              "bn": "পৃথিবী, চাঁদের দিগন্তের প্রায় পাঁচ ডিগ্রি ওপরে"
+            },
+            "source": "img:as08-14-2383"
+          },
+          {
+            "x": 22,
+            "y": 82,
+            "label": {
+              "en": "Lunar horizon, about 570 km from the spacecraft",
+              "bn": "চাঁদের দিগন্ত, মহাকাশযান থেকে প্রায় ৫৭০ কিমি দূরে"
+            },
+            "source": "img:as08-14-2383"
+          }
+        ]
       },
       "now": {
         "image": "art002e021278",
-        "year": "2026"
+        "year": "2026",
+        "hotspots": [
+          {
+            "x": 47,
+            "y": 52,
+            "label": {
+              "en": "Earth setting behind the Moon's far side",
+              "bn": "চাঁদের দূরপ্রান্তের পেছনে অস্ত যাওয়া পৃথিবী"
+            },
+            "source": "img:art002e021278"
+          }
+        ]
+      },
+      "object": null,
+      "short": {
+        "en": "Earthrise → Earthset",
+        "bn": "পৃথিবী-উদয় → পৃথিবী-অস্ত"
+      },
+      "matters": {
+        "en": "Two crews, fifty-seven years apart, looked back at the same Earth from beside the same Moon.",
+        "bn": "সাতান্ন বছরের ব্যবধানে দুটি নভোচারী দল একই চাঁদের পাশ থেকে একই পৃথিবীর দিকে ফিরে তাকিয়েছেন।"
       }
     },
     {
@@ -1490,11 +1530,55 @@
       },
       "then": {
         "image": "as11-40-5948",
-        "year": "1969"
+        "year": "1969",
+        "hotspots": [
+          {
+            "x": 40,
+            "y": 60,
+            "label": {
+              "en": "Passive Seismic Experiment Package",
+              "bn": "প্যাসিভ সিসমিক এক্সপেরিমেন্ট প্যাকেজ"
+            },
+            "source": "img:as11-40-5948"
+          },
+          {
+            "x": 40,
+            "y": 49,
+            "label": {
+              "en": "Laser Ranging Retro-Reflector",
+              "bn": "লেজার রেঞ্জিং রেট্রো-রিফ্লেক্টর"
+            },
+            "source": "img:as11-40-5948"
+          },
+          {
+            "x": 48.5,
+            "y": 40,
+            "label": {
+              "en": "United States flag",
+              "bn": "যুক্তরাষ্ট্রের পতাকা"
+            },
+            "source": "img:as11-40-5948"
+          },
+          {
+            "x": 71,
+            "y": 36,
+            "label": {
+              "en": "Lunar Module “Eagle”",
+              "bn": "লুনার মডিউল “ঈগল”"
+            },
+            "source": "img:as11-40-5948"
+          }
+        ]
       },
       "now": {
         "image": "PIA12909",
-        "year": "2009"
+        "year": "2009",
+        "hotspots": []
+      },
+      "object": "apollo-11",
+      "short": {
+        "en": "Tranquility Base",
+        "bn": "ট্রাঙ্কুইলিটি বেস"
       }
     },
     {
@@ -1509,11 +1593,28 @@
       },
       "then": {
         "image": "PIA23177",
-        "year": "2019"
+        "year": "2019",
+        "hotspots": [
+          {
+            "x": 45,
+            "y": 64,
+            "label": {
+              "en": "Wind and Thermal Shield covering the SEIS seismometer",
+              "bn": "এসইআইএস সিসমোমিটার ঢেকে রাখা উইন্ড অ্যান্ড থার্মাল শিল্ড"
+            },
+            "source": "img:PIA23177"
+          }
+        ]
       },
       "now": {
         "image": "PIA25287",
-        "year": "2022"
+        "year": "2022",
+        "hotspots": []
+      },
+      "object": "insight",
+      "short": {
+        "en": "InSight",
+        "bn": "ইনসাইট"
       }
     },
     {
@@ -1528,11 +1629,28 @@
       },
       "then": {
         "image": "PIA24542",
-        "year": "2021"
+        "year": "2021",
+        "hotspots": [
+          {
+            "x": 48,
+            "y": 37,
+            "label": {
+              "en": "Ingenuity, about 3.9 m from the rover",
+              "bn": "ইনজেনুইটি, রোভার থেকে প্রায় ৩.৯ মিটার দূরে"
+            },
+            "source": "img:PIA24542"
+          }
+        ]
       },
       "now": {
         "image": "PIA26236",
-        "year": "2024"
+        "year": "2024",
+        "hotspots": []
+      },
+      "object": "ingenuity",
+      "short": {
+        "en": "Ingenuity",
+        "bn": "ইনজেনুইটি"
       }
     }
   ],

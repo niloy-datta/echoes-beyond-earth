@@ -67,7 +67,18 @@ for (const s of stories.stories) {
     ver(s.lastSignal.verification, `${w}.lastSignal`);
   }
 }
-for (const l of stories.lens) ["then", "now"].forEach((k) => img(l[k].image, `lens ${l.id}.${k}`));
+for (const l of stories.lens) {
+  if (l.object != null && !ids.has(l.object)) errors.push(`lens ${l.id}: unknown object "${l.object}"`);
+  loc(l.short, `lens ${l.id}`);
+  ["then", "now"].forEach((k) => {
+    img(l[k].image, `lens ${l.id}.${k}`);
+    (l[k].hotspots ?? []).forEach((h, i) => {
+      if (!(h.x >= 0 && h.x <= 100 && h.y >= 0 && h.y <= 100)) errors.push(`lens ${l.id}.${k} hotspot ${i}: position out of range`);
+      loc(h.label, `lens ${l.id}.${k} hotspot ${i}`);
+      src(h.source, `lens ${l.id}.${k} hotspot ${i}`);
+    });
+  });
+}
 for (const p of stories.paths) p.steps.forEach((s) => ids.has(s.object) || errors.push(`path ${p.id}: unknown object "${s.object}"`));
 for (const r of stories.ripples) {
   if (!ids.has(r.from)) errors.push(`ripple ${r.id}: unknown origin`);

@@ -57,7 +57,7 @@ export function LastSignal() {
     <div className="relative isolate min-h-svh overflow-hidden">
       <SpaceBackdrop groundImage={ground} tone={selected.properties.body === "mars" ? "ember" : "cool"} />
       <div className="container-x relative pb-8 pt-[calc(var(--header-h)+1.5rem)]">
-        <div className="grid gap-10 xl:grid-cols-[260px_minmax(0,1fr)_340px] xl:gap-8">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-10 xl:grid-cols-[260px_minmax(0,1fr)_340px] xl:gap-8">
           <div className="order-2 xl:order-1">
             <MachineRail title={t("ls2.choose")} dek={t("ls2.chooseDek")} items={rail} selectedId={selected.id} onSelect={select} />
           </div>

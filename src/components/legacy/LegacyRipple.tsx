@@ -61,7 +61,7 @@ export function LegacyRipple() {
     <div className="relative isolate min-h-svh overflow-hidden">
       <Backdrop feature={selected} />
       <div className="container-x relative pb-8 pt-[calc(var(--header-h)+1.5rem)]">
-        <div className="grid gap-10 xl:grid-cols-[250px_minmax(0,1fr)] xl:gap-10">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-10 xl:grid-cols-[250px_minmax(0,1fr)] xl:gap-10">
           <div className="order-2 xl:order-1">
             <MachineRail title={t("lg2.railTitle")} dek={t("lg2.railDek")} items={rail} selectedId={selected.id} onSelect={select} />
           </div>

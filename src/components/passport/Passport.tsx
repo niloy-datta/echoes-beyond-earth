@@ -33,7 +33,7 @@ export function Passport() {
     <div className="relative isolate overflow-hidden">
       <Backdrop />
       <div className="container-x relative pb-16 pt-[calc(var(--header-h)+1.5rem)]">
-        <div className="grid gap-8 xl:grid-cols-[190px_minmax(0,1fr)_310px] xl:gap-7">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-8 xl:grid-cols-[190px_minmax(0,1fr)_310px] xl:gap-7">
           <ExplorerMenu />
           <div className="min-w-0">
             <Header />

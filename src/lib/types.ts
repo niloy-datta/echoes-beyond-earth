@@ -78,12 +78,24 @@ export interface Story {
   kept: Localized;
 }
 
+export interface Hotspot {
+  /** position on the photograph, in % of its width/height */
+  x: number;
+  y: number;
+  label: Localized;
+  source: string | null;
+}
+
 export interface LensPair {
   id: string;
+  /** related museum object, when the pair belongs to one */
+  object: string | null;
+  short: Localized;
   title: Localized;
   caption: Localized;
-  then: { image: string; year: string };
-  now: { image: string; year: string };
+  matters?: Localized;
+  then: { image: string; year: string; hotspots?: Hotspot[] };
+  now: { image: string; year: string; hotspots?: Hotspot[] };
 }
 
 export interface DiscoveryPath {

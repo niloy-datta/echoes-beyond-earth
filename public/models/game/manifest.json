@@ -1,0 +1,106 @@
+{
+  "generator": "scripts/assets/build-all.mjs",
+  "license": "Original work for Echoes Beyond Earth (see ASSETS.md)",
+  "files": {
+    "models/game/explorer-ultra.glb": {
+      "bytes": 669688,
+      "sha256": "39e9e57a8304f494c220a4fd19b691773448255f3765b95e5a6e5c968b0bd863"
+    },
+    "models/game/explorer-high.glb": {
+      "bytes": 615040,
+      "sha256": "b227d6f448e2f9f6346f8c1586ed0b162297bd19df3804bbb44f8a9a5faee1ec"
+    },
+    "models/game/explorer-low.glb": {
+      "bytes": 387788,
+      "sha256": "67bc3a97c16b18afc04c3a7a3813d4cdb76716a6928127386beea3132db379ee"
+    },
+    "models/game/eko-high.glb": {
+      "bytes": 150848,
+      "sha256": "f0c5ed19c99d5a21bed36309e4f9974f7a92fe20af5d3a4842ea2c2fb6053f8f"
+    },
+    "models/game/eko-low.glb": {
+      "bytes": 96172,
+      "sha256": "f9c8dc8e74ced127a35a83a8aa44ba05c84ac14849320b4d72ccb750c0fa06c4"
+    },
+    "textures/game/regolith-base.webp": {
+      "bytes": 37496,
+      "sha256": "2512c33d3f493b9310386b925d46bee96324e5ec483380ef7477768642814ddb"
+    },
+    "textures/game/regolith-normal.webp": {
+      "bytes": 316902,
+      "sha256": "68adc7ede0c0ff5a5979d0ecb67bc5e3dcdaaf9b8ddd44dce19e53405aede4b6"
+    },
+    "textures/game/regolith-orm.webp": {
+      "bytes": 31826,
+      "sha256": "abf0c97a39b5b57421807fb50537da77c073a532a959b4491c93e3b84f72b548"
+    },
+    "textures/game/rock-base.webp": {
+      "bytes": 36230,
+      "sha256": "415c16873810e4579621582ad9a33ee5934ec78acf91afa52271513beb67431c"
+    },
+    "textures/game/rock-normal.webp": {
+      "bytes": 340662,
+      "sha256": "0a5fe8448349f3a3e2f8dc0692dd3b2d978188e03fea1a91b96dff24b48c7466"
+    },
+    "textures/game/rock-orm.webp": {
+      "bytes": 48294,
+      "sha256": "d66a216529abf084f61c5bbaa0d0d6270aa14de60c21d9c8b4e748927c807cea"
+    }
+  },
+  "stats": {
+    "explorer-ultra": {
+      "triangles": 43016,
+      "bones": 22,
+      "clips": [
+        "idle",
+        "look_around",
+        "walk",
+        "run",
+        "turn",
+        "jump",
+        "land",
+        "interact",
+        "scan",
+        "kneel",
+        "examine",
+        "wave"
+      ]
+    },
+    "explorer-high": {
+      "triangles": 35998,
+      "bones": 22,
+      "clips": [
+        "idle",
+        "look_around",
+        "walk",
+        "run",
+        "turn",
+        "jump",
+        "land",
+        "interact",
+        "scan",
+        "kneel",
+        "examine",
+        "wave"
+      ]
+    },
+    "explorer-low": {
+      "triangles": 12282,
+      "bones": 22,
+      "clips": [
+        "idle",
+        "look_around",
+        "walk",
+        "run",
+        "turn",
+        "jump",
+        "land",
+        "interact",
+        "scan",
+        "kneel",
+        "examine",
+        "wave"
+      ]
+    }
+  }
+}

@@ -1,0 +1,87 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Validate, build and publish museum, EKO demo and The Last Light game
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout merged main
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/configure-pages@v5
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Validate NASA data and EKO unit tests
+        run: |
+          npm run validate
+          npm test
+          npm run typecheck
+          node --check public/eko-sw.js
+          node --check scripts/e2e-eko.mjs
+          node --check scripts/e2e-game.mjs
+
+      - name: Build production museum with EKO
+        shell: bash
+        run: |
+          set -euo pipefail
+          repo_name="${GITHUB_REPOSITORY#*/}"
+          if [[ "$repo_name" == "${GITHUB_REPOSITORY_OWNER}.github.io" ]]; then
+            export NEXT_PUBLIC_BASE_PATH=""
+          else
+            export NEXT_PUBLIC_BASE_PATH="/$repo_name"
+          fi
+          export NEXT_PUBLIC_SITE_ORIGIN="https://${GITHUB_REPOSITORY_OWNER}.github.io"
+          npm run build
+
+      - name: Enforce EKO integrity and static export budget
+        run: npm run quality:eko
+
+      - name: Assemble site with backward-compatible demo redirects
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p site/eko-preview/play/teacher
+          cp -a out/. site/
+          touch site/.nojekyll
+          printf '%s\n' '<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../play/"><a href="../play/">Open EKO Mars demo</a></html>' > site/eko-preview/index.html
+          printf '%s\n' '<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../../play/"><a href="../../play/">Open EKO Mars demo</a></html>' > site/eko-preview/play/index.html
+          printf '%s\n' '<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../../../play/teacher/"><a href="../../../play/teacher/">Open EKO teacher kit</a></html>' > site/eko-preview/play/teacher/index.html
+          test -s site/index.html
+          test -s site/play/index.html
+          test -s site/play/teacher/index.html
+          test -s site/play/game/index.html
+          test -s site/vendor/draco/draco_decoder.wasm
+          test -s site/models/opportunity-mer-b.glb
+          test -s site/eko-sw.js
+          test -f site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

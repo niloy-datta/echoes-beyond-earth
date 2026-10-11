@@ -1,0 +1,35 @@
+# Experimental pre-event practice only. No deployment or submission automation.
+name: EKO Prototype Quality Check
+on:
+  push:
+    branches:
+      - prototype/eko-opportunity-pre-event
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Static data validation
+        run: npm run validate
+      - name: EKO unit and NASA data tests
+        run: npm test
+      - name: Check offline service worker syntax
+        run: node --check public/eko-sw.js
+      - name: Check browser test syntax
+        run: node --check scripts/e2e-eko.mjs
+      - name: TypeScript
+        run: npm run typecheck
+      - name: Build static export
+        run: npm run build
+      - name: Verify NASA sources and asset budgets
+        run: npm run quality:eko

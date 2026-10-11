@@ -1,0 +1,55 @@
+# Cross-browser smoke checks for the independent EKO educational demo. Not competition approval.
+name: EKO Browser Smoke
+on:
+  push:
+    branches:
+      - main
+      - prototype/eko-opportunity-pre-event
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: eko-browser-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Build the static museum
+        run: npm run build
+      - name: EKO source and export budget check
+        run: npm run quality:eko
+      - name: Validate browser test syntax
+        run: |
+          node --check scripts/e2e-eko.mjs
+          node --check scripts/e2e-game.mjs
+      - name: Install Playwright browser
+        run: |
+          npm install --no-save --package-lock=false playwright@1.56.1
+          npx playwright install --with-deps ${{ matrix.browser }}
+      - name: Verify routes, quiz, bilingual UI, rover GLB, mobile
+        shell: bash
+        run: |
+          python3 -m http.server 4173 --directory out > /tmp/eko-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid || true' EXIT
+          for i in $(seq 1 25); do
+            if curl -fsS http://127.0.0.1:4173/play/ >/dev/null; then break; fi
+            sleep 1
+          done
+          EKO_BROWSER=${{ matrix.browser }} node scripts/e2e-eko.mjs
+          EKO_BROWSER=${{ matrix.browser }} node scripts/e2e-game.mjs

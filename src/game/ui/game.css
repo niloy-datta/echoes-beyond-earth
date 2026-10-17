@@ -139,7 +139,7 @@ kbd { font-family: var(--font-mono); font-size: 0.68em; padding: 0.1em 0.45em; b
 .ll-letterbox--top { top: 0; } .ll-letterbox--bottom { bottom: 0; }
 .ll-cutscene-label { position: absolute; top: calc(11vh + 0.8rem); left: 1.2rem; font: 600 0.64rem var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ll-amber);
   padding: 0.35rem 0.6rem; background: rgb(0 0 0 / 0.55); border: 1px solid rgb(231 169 79 / 0.35); }
-.ll-skip { position: absolute; right: 1.2rem; bottom: calc(11vh + 0.8rem); padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.8rem; background: rgb(0 0 0 / 0.55); border: 1px solid var(--ll-line); }
+.ll-skip { position: absolute; right: 1.2rem; bottom: calc(11vh + 0.8rem); padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.8rem; background: rgb(0 0 0 / 0.55); border: 1px solid var(--ll-line); z-index: 10; pointer-events: auto; }
 .ll-skip:hover { border-color: var(--ll-cyan); }
 .ll-storm-badge { position: absolute; top: 3.4rem; left: 50%; transform: translateX(-50%); font: 600 0.6rem var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ll-amber); opacity: 0.85; }
 .ll-perf { position: absolute; left: 50%; bottom: 0.4rem; transform: translateX(-50%); font: 0.62rem var(--font-mono); color: var(--ll-muted); }
@@ -310,6 +310,97 @@ kbd { font-family: var(--font-mono); font-size: 0.68em; padding: 0.1em 0.45em; b
   .ll-toasts { top: auto; bottom: 14.5rem; right: 0.6rem; }
   .ll-quickbar { left: 0.6rem; right: 0.6rem; top: auto; bottom: 0.5rem; }
   .ll-quickbar kbd { display: none; }
+  .ll-skip { z-index: 10; top: calc(11vh + 0.8rem); bottom: auto; }
   .ll-subtitle { bottom: 13.5rem; }
   .ll-prompt { bottom: 28%; }
 }
+
+/* ── Evidence Board & Pinboard ────────────────────────────── */
+.ll-board-modal { max-width: 72rem; }
+.ll-board__header { margin-bottom: 1rem; border-bottom: 1px solid var(--ll-line); padding-bottom: 0.8rem; }
+.ll-board-tabs { display: inline-flex; background: rgba(0, 0, 0, 0.4); padding: 3px; border-radius: 8px; border: 1px solid var(--ll-line); }
+.ll-board-tab { padding: 0.35rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: var(--ll-muted); border-radius: 6px; border: none; background: transparent; cursor: pointer; transition: all 0.2s; }
+.ll-board-tab.is-active { color: #fff; background: rgba(230, 168, 77, 0.25); border: 1px solid var(--ll-amber); }
+
+.ll-board-body { display: grid; gap: 1rem; }
+.ll-board-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ll-board-pill { padding: 0.35rem 0.75rem; font-size: 0.75rem; font-weight: 500; color: var(--ll-muted); border-radius: 9999px; border: 1px solid var(--ll-line); background: rgba(255, 255, 255, 0.04); cursor: pointer; transition: all 0.2s; }
+.ll-board-pill:hover { color: #fff; border-color: rgba(255, 255, 255, 0.3); }
+.ll-board-pill.is-selected { color: var(--ll-amber); background: rgba(230, 168, 77, 0.15); border-color: var(--ll-amber); }
+
+.ll-board-layout { display: grid; grid-template-columns: 1fr; gap: 1.2rem; min-height: 24rem; }
+@media (min-width: 860px) {
+  .ll-board-layout { grid-template-columns: 1.4fr 1fr; }
+}
+
+.ll-board-pinboard { background: radial-gradient(circle at 50% 30%, rgba(35, 20, 15, 0.6), rgba(8, 6, 5, 0.85)); border: 1px solid var(--ll-line); border-radius: 12px; padding: 1rem; overflow-y: auto; max-height: 32rem; }
+.ll-board-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 0.8rem; }
+
+.ll-pin-card { position: relative; background: rgba(20, 14, 12, 0.85); border: 1px solid var(--ll-line); border-radius: 10px; padding: 0.6rem; cursor: pointer; transition: all 0.2s ease-out; text-align: left; }
+.ll-pin-card:hover { transform: translateY(-2px); border-color: rgba(230, 168, 77, 0.6); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); }
+.ll-pin-card.is-selected { border-color: var(--ll-amber); background: rgba(35, 24, 18, 0.95); box-shadow: 0 0 12px rgba(230, 168, 77, 0.3); }
+.ll-pin-card.is-connected { border-color: #64b5f6; box-shadow: 0 0 8px rgba(100, 181, 246, 0.3); }
+.ll-pin-card.is-locked { opacity: 0.6; cursor: default; }
+
+.ll-pin-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; }
+.ll-pin-tack { width: 8px; height: 8px; border-radius: 50%; background: #e57373; box-shadow: 0 0 6px #e57373; }
+.ll-pin-category { color: var(--ll-muted); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.65rem; }
+.ll-pin-pia { font-size: 0.65rem; }
+
+.ll-pin-thumb { width: 100%; aspect-ratio: 16/10; border-radius: 6px; overflow: hidden; margin-bottom: 0.4rem; background: #000; }
+.ll-pin-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.ll-pin-placeholder { width: 100%; aspect-ratio: 16/10; border-radius: 6px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.03); color: var(--ll-muted); font-size: 1.2rem; margin-bottom: 0.4rem; }
+
+.ll-pin-content h4 { font-size: 0.8rem; font-weight: 600; color: #fff; margin: 0 0 0.2rem; line-height: 1.2; }
+.ll-pin-badge { display: inline-block; padding: 0.15rem 0.45rem; font-size: 0.65rem; border-radius: 4px; background: rgba(230, 168, 77, 0.15); color: var(--ll-amber); border: 1px solid rgba(230, 168, 77, 0.3); }
+.ll-pin-links { margin-top: 0.35rem; }
+
+.ll-board-detail { background: rgba(15, 12, 10, 0.9); border: 1px solid var(--ll-line); border-radius: 12px; padding: 1.2rem; }
+.ll-inspect-fig { margin: 0 0 0.8rem; border-radius: 8px; overflow: hidden; background: #000; }
+.ll-inspect-fig img { width: 100%; height: auto; max-height: 12rem; object-fit: cover; display: block; }
+.ll-inspect-fig figcaption { padding: 0.4rem 0.6rem; background: rgba(0, 0, 0, 0.6); }
+
+.ll-conn-chip { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.25rem 0.55rem; font-size: 0.7rem; border-radius: 6px; border: 1px solid var(--ll-line); background: rgba(255, 255, 255, 0.05); color: var(--ll-bone); cursor: pointer; transition: all 0.15s; }
+.ll-conn-chip.is-available:hover { border-color: var(--ll-amber); color: #fff; }
+.ll-conn-chip.is-locked { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Optical Comparison Viewer ────────────────────────────── */
+.ll-compare-viewer { display: grid; gap: 0.8rem; margin: 0.6rem 0; }
+.ll-compare-container { position: relative; width: 100%; height: 16rem; border-radius: 10px; overflow: hidden; background: #000; border: 1px solid var(--ll-line); }
+.ll-compare-layer { position: absolute; inset: 0; }
+.ll-compare-layer img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ll-compare-layer--after img { filter: brightness(0.18) contrast(1.5) sepia(0.2) hue-rotate(-15deg); }
+.ll-compare-badge { position: absolute; bottom: 0.6rem; padding: 0.35rem 0.6rem; border-radius: 6px; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.2); }
+.ll-compare-badge strong { display: block; font-size: 0.75rem; color: #fff; }
+.ll-compare-badge small { display: block; font-size: 0.65rem; color: var(--ll-muted); font-family: var(--font-mono); }
+.ll-compare-badge--left { left: 0.6rem; }
+.ll-compare-badge--right { right: 0.6rem; }
+
+.ll-compare-divider { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; transform: translateX(-50%); pointer-events: none; box-shadow: 0 0 8px rgba(0, 0, 0, 0.8); }
+.ll-compare-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); }
+
+.ll-compare-metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.8rem; margin-top: 0.6rem; }
+.ll-metric-card { padding: 0.7rem 0.9rem; border-radius: 8px; border: 1px solid var(--ll-line); background: rgba(255, 255, 255, 0.03); }
+.ll-metric-label { display: block; font-size: 0.75rem; color: var(--ll-muted); font-weight: 500; }
+.ll-metric-val { display: block; font-size: 1.1rem; font-weight: 700; margin: 0.2rem 0; }
+
+/* ── Conclusion & Hypothesis Testing ──────────────────────── */
+.ll-conclusion-puzzle { display: grid; gap: 1.2rem; }
+.ll-conclusion-step { display: grid; gap: 0.5rem; }
+.ll-evidence-selector-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.3rem; }
+.ll-evidence-chip { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.75rem; border-radius: 6px; border: 1px solid var(--ll-line); background: rgba(255, 255, 255, 0.04); color: var(--ll-bone); font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+.ll-evidence-chip:hover { border-color: rgba(255, 255, 255, 0.3); }
+.ll-evidence-chip.is-selected { background: rgba(230, 168, 77, 0.18); border-color: var(--ll-amber); color: #fff; }
+
+.ll-hypotheses-list { display: grid; gap: 0.6rem; }
+.ll-hypothesis-card { padding: 0.75rem 0.9rem; border-radius: 8px; border: 1px solid var(--ll-line); background: rgba(255, 255, 255, 0.03); cursor: pointer; transition: all 0.2s; text-align: left; }
+.ll-hypothesis-card:hover { border-color: rgba(230, 168, 77, 0.5); transform: translateY(-1px); }
+.ll-hypothesis-card.is-selected { border-color: var(--ll-amber); background: rgba(230, 168, 77, 0.12); box-shadow: 0 0 10px rgba(230, 168, 77, 0.2); }
+.ll-hypothesis-header { display: flex; align-items: center; gap: 0.5rem; }
+.ll-radio-dot { font-size: 0.9rem; color: var(--ll-amber); }
+.ll-hypothesis-reason { margin: 0.3rem 0 0 1.4rem; }
+
+.ll-synthesis-card { padding: 1rem; border-radius: 8px; background: radial-gradient(ellipse at 50% 50%, rgba(230, 168, 77, 0.18), rgba(20, 12, 8, 0.9)); border: 1px solid var(--ll-amber); margin-top: 0.8rem; animation: ll-pop 0.3s ease-out; }
+.ll-synthesis-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--ll-amber); margin: 0 0 0.4rem; }
+.ll-synthesis-card p { font-size: 0.85rem; line-height: 1.5; color: var(--ll-bone); margin: 0; }
+

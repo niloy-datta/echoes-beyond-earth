@@ -5,6 +5,7 @@
  * invented telemetry, a quotation, or a simulated rover message.
  */
 export type L = { en: string; bn: string };
+export type EvidenceCategory = "locomotion" | "power" | "imaging" | "telemetry";
 
 export interface Evidence {
   id: string;
@@ -15,6 +16,14 @@ export interface Evidence {
   image?: { src: string; alt: L; credit: string };
   /** Year/date chip shown in the journal; null when only ordinal order is known. */
   when: string | null;
+  /** Primary scientific domain for the NASA Evidence Board. */
+  category: EvidenceCategory;
+  /** Related evidence item IDs linked on the investigative pinboard. */
+  connections: readonly string[];
+  /** NASA JPL Photojournal or mission identifier. */
+  piaId?: string;
+  /** Short evidence badge tag. */
+  tag: L;
 }
 
 export const EVIDENCE: readonly Evidence[] = [
@@ -32,6 +41,10 @@ export const EVIDENCE: readonly Evidence[] = [
       credit: "NASA/JPL-Caltech",
     },
     when: "2019",
+    category: "locomotion",
+    connections: ["wheels", "rim", "sol"],
+    piaId: "PIA23178",
+    tag: { en: "Traverse: 45.16 km", bn: "যাত্রাপথ: ৪৫.১৬ কিমি" },
   },
   {
     id: "wheels",
@@ -42,6 +55,10 @@ export const EVIDENCE: readonly Evidence[] = [
     },
     source: { label: "NASA / Opportunity's final traverse map", url: "https://science.nasa.gov/photojournal/opportunitys-final-traverse-map/" },
     when: null,
+    category: "locomotion",
+    connections: ["traverse", "twin", "sol"],
+    piaId: "PIA05208",
+    tag: { en: "Rocker-Bogie 6-Wheel", bn: "রকার-বগি ৬ চাকা" },
   },
   {
     id: "solar",
@@ -52,6 +69,10 @@ export const EVIDENCE: readonly Evidence[] = [
     },
     source: { label: "NASA / Opportunity mission ends", url: "https://science.nasa.gov/missions/mer/nasas-opportunity-rover-mission-on-mars-comes-to-end/" },
     when: null,
+    category: "power",
+    connections: ["storm", "last-image", "recovery"],
+    piaId: "PIA04318",
+    tag: { en: "Photovoltaic Array", bn: "সৌরবিদ্যুৎ প্যানেল" },
   },
   {
     id: "pancam",
@@ -67,6 +88,10 @@ export const EVIDENCE: readonly Evidence[] = [
       credit: "NASA/JPL-Caltech",
     },
     when: "2018",
+    category: "imaging",
+    connections: ["legacy-release", "last-image", "sol"],
+    piaId: "PIA22909",
+    tag: { en: "Stereoscopic Mast", bn: "স্টিরিওস্কোপিক মাস্ট" },
   },
   {
     id: "storm",
@@ -77,6 +102,10 @@ export const EVIDENCE: readonly Evidence[] = [
     },
     source: { label: "NASA / Opportunity mission ends", url: "https://science.nasa.gov/missions/mer/nasas-opportunity-rover-mission-on-mars-comes-to-end/" },
     when: "2018",
+    category: "power",
+    connections: ["solar", "last-image", "recovery"],
+    piaId: "PIA22929",
+    tag: { en: "Tau > 10.8 Dust Storm", bn: "টাউ > ১০.৮ ধুলিঝড়" },
   },
   {
     id: "last-image",
@@ -87,6 +116,10 @@ export const EVIDENCE: readonly Evidence[] = [
     },
     source: { label: "NASA / Opportunity's Last Message (PIA22929)", url: "https://science.nasa.gov/photojournal/opportunitys-last-message/" },
     when: "2018",
+    category: "imaging",
+    connections: ["storm", "pancam", "recovery"],
+    piaId: "PIA22929",
+    tag: { en: "Sol 5111 Telemetry", bn: "সল ৫১১১ টেলিমেট্রি" },
   },
   {
     id: "recovery",
@@ -97,6 +130,10 @@ export const EVIDENCE: readonly Evidence[] = [
     },
     source: { label: "NASA / Opportunity mission", url: "https://science.nasa.gov/mission/mer-opportunity/" },
     when: "2019",
+    category: "telemetry",
+    connections: ["solar", "storm", "legacy-release"],
+    piaId: "MER-B",
+    tag: { en: "Deep Space Network", bn: "ডিপ স্পেস নেটওয়ার্ক" },
   },
   {
     id: "legacy-release",
@@ -112,6 +149,10 @@ export const EVIDENCE: readonly Evidence[] = [
       credit: "NASA/JPL-Caltech",
     },
     when: "2019",
+    category: "imaging",
+    connections: ["pancam", "recovery", "traverse"],
+    piaId: "PIA22909",
+    tag: { en: "Final 354-Frame Mosaic", bn: "চূড়ান্ত ৩৫৪-ফ্রেম মোজাইক" },
   },
   // ── Optional side discoveries ─────────────────────────────────────────────
   {
@@ -123,6 +164,10 @@ export const EVIDENCE: readonly Evidence[] = [
     },
     source: { label: "NASA / PIA11436 three generations of rovers", url: "https://images.nasa.gov/details/PIA11436" },
     when: null,
+    category: "locomotion",
+    connections: ["wheels", "traverse"],
+    piaId: "PIA11436",
+    tag: { en: "Spirit & Opportunity", bn: "স্পিরিট ও অপরচুনিটি" },
   },
   {
     id: "rim",
@@ -133,6 +178,10 @@ export const EVIDENCE: readonly Evidence[] = [
     },
     source: { label: "NASA / PIA23178 Opportunity's Final Traverse Map", url: "https://images.nasa.gov/details/PIA23178" },
     when: "2018",
+    category: "locomotion",
+    connections: ["traverse", "sol"],
+    piaId: "PIA23178",
+    tag: { en: "Endeavour Crater Rim", bn: "এনডেভার খাদের কিনারা" },
   },
   {
     id: "sol",
@@ -143,6 +192,10 @@ export const EVIDENCE: readonly Evidence[] = [
     },
     source: { label: "NASA / PIA22909 Opportunity Legacy Pan", url: "https://images.nasa.gov/details/PIA22909" },
     when: null,
+    category: "telemetry",
+    connections: ["traverse", "pancam", "wheels"],
+    piaId: "MER-Time",
+    tag: { en: "Martian Sol (24h 39m)", bn: "মঙ্গলীয় সল (২৪ঘ ৩৯মি)" },
   },
 ] as const;
 

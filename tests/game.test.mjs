@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { CHAPTERS, SIDE_DISCOVERIES, ACHIEVEMENTS, ALL_OBJECTIVES, OBJECTIVE_BY_ID } from "../src/game/content/chapters.ts";
 import { EVIDENCE, EVIDENCE_BY_ID } from "../src/game/content/evidence.ts";
-import { PUZZLES, PUZZLE_BY_ID, checkMatch, checkOrder, checkPower, checkQuiz, shuffledOrder, illustrativeLight } from "../src/game/content/puzzles.ts";
+import { PUZZLES, PUZZLE_BY_ID, checkMatch, checkOrder, checkPower, checkQuiz, checkCompare, checkConclusion, shuffledOrder, illustrativeLight } from "../src/game/content/puzzles.ts";
 import { CUTSCENES, CUTSCENE_BY_ID, cutsceneDuration } from "../src/game/content/cutscenes.ts";
 import { POIS, POI_BY_ID, WORLD_RADIUS } from "../src/game/content/world.ts";
 import { heightAt, generateRocks, CollisionGrid, resolveCircles } from "../src/game/core/terrain.ts";
@@ -84,11 +84,17 @@ test("puzzles: validators accept only the right answers", () => {
   assert.ok(!checkPower(power, (power.correct + 1) % 3, 1));
   assert.ok(illustrativeLight(1) < illustrativeLight(0));
 
-  const quiz = PUZZLE_BY_ID.get("final-assembly");
-  assert.ok(checkQuiz(quiz, quiz.questions.map((q) => q.correct)));
-  assert.ok(!checkQuiz(quiz, quiz.questions.map(() => 99)));
-  for (const q of quiz.questions) assert.ok(EVIDENCE_BY_ID.has(q.evidence));
-  assert.equal(PUZZLES.length, 4);
+  const comp = PUZZLE_BY_ID.get("optical-compare");
+  assert.ok(checkCompare(comp, comp.correct, true));
+  assert.ok(!checkCompare(comp, comp.correct, false), "must explore the slider first");
+  assert.ok(!checkCompare(comp, (comp.correct + 1) % 3, true));
+
+  const conc = PUZZLE_BY_ID.get("final-assembly");
+  assert.ok(checkConclusion(conc, conc.requiredEvidence, conc.correctHypothesis));
+  assert.ok(!checkConclusion(conc, ["solar"], conc.correctHypothesis), "must include all required evidence");
+  assert.ok(!checkConclusion(conc, conc.requiredEvidence, "h-wheels"), "must choose the supported hypothesis");
+  for (const e of conc.requiredEvidence) assert.ok(EVIDENCE_BY_ID.has(e));
+  assert.equal(PUZZLES.length, 5);
 });
 
 test("terrain: deterministic, finite, POIs are walkable and rock-free", () => {

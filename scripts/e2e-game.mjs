@@ -27,7 +27,7 @@ const state = (page) => page.evaluate(() => {
   return {
     chapter: s.progress.chapter, done: [...s.progress.done], active: s.active.map((o) => o.id),
     player: { x: s.player.x, z: s.player.z }, cutscene: s.cutscene?.id ?? null, puzzle: s.puzzle, card: !!s.evidenceCard,
-    prompt: s.prompt?.id ?? null, completed: s.completed, finished: s.progress.finished, engine: window.__LAST_LIGHT__.engine?.() ?? null,
+    prompt: s.prompt?.id ?? null, chapterCard: !!s.chapterCard, paused: s.paused, action: s.action?.clip ?? null, focus: document.activeElement?.tagName + "#" + (document.activeElement?.getAttribute("aria-label") ?? document.activeElement?.textContent?.slice(0, 30) ?? ""), completed: s.completed, finished: s.progress.finished, engine: window.__LAST_LIGHT__.engine?.() ?? null,
   };
 });
 const waitFor = async (page, predicate, label, timeout = 20000) => {
@@ -70,7 +70,7 @@ async function walkTo(page, target, done, label, timeout = 150000) {
         side = side === "KeyD" ? "KeyA" : "KeyD";
         lastProgress = Date.now();
       }
-      if (Date.now() - start > timeout) throw new Error(`walk to ${label} timed out (${d.toFixed(1)} m left)`);
+      if (Date.now() - start > timeout) throw new Error(`walk to ${label} timed out (${d.toFixed(1)} m left): ${JSON.stringify(st)}`);
       await page.waitForTimeout(80);
     }
   } finally {
@@ -98,6 +98,36 @@ async function walk2d(page, target, done, label, timeout) {
   } finally {
     for (const k of held) await page.keyboard.up(k);
     await page.keyboard.up("ShiftLeft");
+  }
+}
+
+/**
+ * Advance the story through the session's accessible "travel to" action (the
+ * same action the 2D console offers screen-reader users) until objective
+ * `stopAt` is active, or the campaign completes. It never completes an
+ * objective directly: reach goals still need the player inside the radius,
+ * scans need a prompt, puzzles go through answerPuzzle. Bounded by wall time,
+ * not iterations, because chapter cards and cutscene delays run on game time.
+ */
+async function driveStory(page, stopAt, label, timeout = 120000) {
+  const deadline = Date.now() + timeout;
+  for (;;) {
+    const r = await page.evaluate((stop) => {
+      const ses = window.__LAST_LIGHT__.session;
+      if (stop ? ses.active.some((o) => o.id === stop) : ses.completed) return "done";
+      if (ses.chapterCard) return "wait";
+      if (ses.cutscene) { ses.skipCutscene(); return "step"; }
+      if (ses.evidenceCard) { ses.closeEvidence(); return "step"; }
+      if (ses.puzzle) { ses.answerPuzzle(true); return "step"; }
+      const o = ses.active[0];
+      if (!o || o.kind === "cutscene") return "wait";
+      ses.travelTo(o.target);
+      if (o.kind !== "reach") ses.interact();
+      return "step";
+    }, stopAt);
+    if (r === "done") return state(page);
+    if (Date.now() > deadline) throw new Error(`Timed out driving the story to ${label}: ${JSON.stringify(await state(page))}`);
+    await page.waitForTimeout(r === "wait" ? 150 : 40);
   }
 }
 
@@ -172,6 +202,24 @@ try {
   await page.getByRole("button", { name: /resume/i }).click();
   step("Tab / M / J / pause panels open and close");
 
+  // Regression: Resume returns focus to the pause button; movement keys must
+  // still reach the game (they were ignored while any button had focus).
+  const focusTag = await page.evaluate(() => document.activeElement?.tagName);
+  const beforeW = await state(page);
+  if (!beforeW.cutscene && !beforeW.chapterCard) {
+    // Poll rather than sleep: software renderers in CI can run at 1–5 FPS.
+    await page.keyboard.down("KeyW");
+    let after = beforeW, moved = 0;
+    try {
+      for (const end = Date.now() + 8000; Date.now() < end && !after.cutscene && moved <= 0.3; await page.waitForTimeout(150)) {
+        after = await state(page);
+        moved = Math.hypot(after.player.x - beforeW.player.x, after.player.z - beforeW.player.z);
+      }
+    } finally { await page.keyboard.up("KeyW"); }
+    assert.ok(after.cutscene || moved > 0.3, `W moves after Resume (focus on ${focusTag}, moved ${moved.toFixed(2)} m, ${JSON.stringify(after)})`);
+    step(`movement keys work after Pause → Resume (focus on ${focusTag})`);
+  }
+
   // Outro cinematic → chapter 2 begins.
   s = await waitFor(page, (x) => x.cutscene === "ch1-outro" || x.chapter === 1, "chapter 1 outro");
   if (s.cutscene) await page.keyboard.press("Enter");
@@ -223,29 +271,43 @@ try {
   s = await waitFor(page, (x) => x.done.includes("c2-puzzle"), "resumed progress");
   step("progress survives a reload and Continue resumes it");
 
-  // Finish the campaign via the session (the remaining paths are covered above and in unit tests).
-  await page.evaluate(async () => {
-    const ses = window.__LAST_LIGHT__.session;
-    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-    for (let i = 0; i < 300 && !ses.completed; i++) {
-      if (ses.chapterCard) { await sleep(200); continue; }
-      if (ses.cutscene) { ses.skipCutscene(); await sleep(50); continue; }
-      if (ses.evidenceCard) { ses.closeEvidence(); continue; }
-      if (ses.puzzle) { ses.answerPuzzle(true); continue; }
-      const o = ses.active[0];
-      if (!o) { await sleep(100); continue; }
-      if (o.kind === "cutscene") { await sleep(150); continue; }
-      ses.travelTo(o.target);
-      await sleep(30);
-      if (o.kind !== "reach") ses.interact();
-    }
-  });
+  // Chapter 3 through the travel action, then walk into the chapter-4 archive
+  // on foot: c4-reach is where CI previously stalled.
+  await driveStory(page, "c3-power", "storm lab");
+  if ((await state(page)).card) await page.getByRole("dialog").getByRole("button", { name: /keep exploring/i }).click();
+  await waitFor(page, (x) => !x.chapterCard && !x.cutscene && !x.card, "chapter 3 free play", 30000);
+  await page.evaluate(() => window.__LAST_LIGHT__.session.travelTo("storm-terminal"));
+  await waitFor(page, (x) => x.prompt === "c3-power", "storm terminal prompt");
+  await page.keyboard.press("KeyE");
+  const lab = page.getByRole("dialog", { name: /power in the storm/i });
+  await lab.waitFor();
+  const slider = lab.getByRole("slider");
+  assert.equal(await slider.isDisabled(), true, "experiment is locked until a prediction is made");
+  await lab.getByRole("radiogroup", { name: /your prediction/i }).getByRole("radio", { name: /about half/i }).click();
+  await slider.fill("1000");
+  await lab.getByTestId("storm-compare").waitFor();
+  const compare = await lab.getByTestId("storm-compare").innerText();
+  assert.match(compare, /OBSERVED/); assert.match(compare, /SIMULATED/); assert.match(compare, /disagrees/i);
+  await lab.getByRole("radio", { name: /wind recharged/i }).click();
+  await lab.getByRole("button", { name: /check answer/i }).click();
+  assert.match(await lab.getByTestId("storm-hint").innerText(), /solar panels and rechargeable batteries/i);
+  await lab.getByRole("radio", { name: /less sunlight/i }).click();
+  await shot(page, "10b-storm-lab");
+  await lab.getByRole("button", { name: /check answer/i }).click();
+  await waitFor(page, (x) => x.done.includes("c3-power"), "storm lab solved");
+  step("storm lab: prediction gates the experiment; model vs NASA record compared; wrong answer explained; right answer accepted");
+
+  await driveStory(page, "c4-reach", "chapter 4");
+  await waitFor(page, (x) => !x.chapterCard, "chapter 4 card", 30000);
+  s = await walkTo(page, { x: -38, z: -30 }, (st) => st.done.includes("c4-reach"), "archive", 150000);
+  step("walks into the chapter 4 archive (c4-reach)");
+  await driveStory(page, null, "campaign completion", 180000);
   await waitFor(page, (x) => x.completed, "campaign completion", 60000);
   await page.getByRole("dialog", { name: /mission complete/i }).waitFor();
   await shot(page, "11-complete");
   const passport = await page.evaluate(() => JSON.parse(localStorage.getItem("the-last-signal:passport") || "{}"));
   assert.ok(passport.discovered?.includes("opportunity"), "completion stamps the Explorer Passport");
-  step("all five chapters complete; completion screen and passport stamp");
+  step("all five chapters complete (remaining steps driven by the travel action; ch4-5 puzzle UIs answered via the session API, not clicked); completion screen and passport stamp");
 
   // Museum navigation still works from the game.
   await page.getByRole("link", { name: /open explorer passport/i }).click();

@@ -1,8 +1,11 @@
 name: Deploy to GitHub Pages
 
+# Production is served by Render (https://echoes-beyond-earth.onrender.com).
+# GitHub Pages is not enabled for this repository, so this workflow no longer
+# runs on every push to main (it failed with "Get Pages site failed: Not Found").
+# To use Pages as a mirror: Settings → Pages → Source: "GitHub Actions", then
+# run this workflow manually from the Actions tab.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -31,6 +34,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Check that GitHub Pages is enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh api "repos/${GITHUB_REPOSITORY}/pages" --silent; then
+            echo "::error::GitHub Pages is not enabled. Settings → Pages → Source: GitHub Actions, then re-run."
+            exit 1
+          fi
       - uses: actions/configure-pages@v5
 
       - name: Install locked dependencies

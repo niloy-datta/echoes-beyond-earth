@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - prototype/eko-opportunity-pre-event
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:

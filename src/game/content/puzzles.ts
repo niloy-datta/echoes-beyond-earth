@@ -16,7 +16,11 @@ export type Puzzle =
     }
   | {
       id: string; kind: "power"; title: L; intro: L;
+      /** HYPOTHESIZE: committed before the experiment unlocks; never graded. */
+      prediction: { question: L; options: readonly { id: PowerPrediction; label: L }[] };
       question: L; options: readonly L[]; correct: number;
+      /** Why a wrong option fails, pointing back at the evidence (index-aligned; null for the correct one). */
+      hints: readonly (L | null)[];
     }
   | {
       id: string; kind: "order"; title: L; intro: L;
@@ -62,6 +66,17 @@ export const PUZZLES: readonly Puzzle[] = [
       en: "Drag the dust slider and watch the illustrative light gauge. This is a teaching model, not rover telemetry.",
       bn: "ধুলার স্লাইডার টেনে আলোর নির্দেশক দেখো। এটি শেখানোর মডেল, রোভারের টেলিমেট্রি নয়।",
     },
+    prediction: {
+      question: {
+        en: "Predict first: if the dust thickens from a usual sky (τ ≈ 0.5) to the June 2018 storm (τ ≈ 10.8), what happens to the direct sunlight on the panels?",
+        bn: "আগে অনুমান করো: ধুলা স্বাভাবিক আকাশ (τ ≈ ০.৫) থেকে জুন ২০১৮-র ঝড়ে (τ ≈ ১০.৮) ঘন হলে প্যানেলে সরাসরি সূর্যালোকের কী হবে?",
+      },
+      options: [
+        { id: "same", label: { en: "It barely changes", bn: "প্রায় একই থাকে" } },
+        { id: "half", label: { en: "It drops to about half", bn: "প্রায় অর্ধেকে নামে" } },
+        { id: "nearly-none", label: { en: "Almost none gets through", bn: "প্রায় কিছুই পৌঁছায় না" } },
+      ],
+    },
     question: { en: "What did the thickening storm do to Opportunity's power source?", bn: "ঘন হতে থাকা ঝড় অপরচুনিটির শক্তির উৎসে কী প্রভাব ফেলেছিল?" },
     options: [
       { en: "Less sunlight reached the solar panels", bn: "সৌর প্যানেলে কম সূর্যের আলো পৌঁছাত" },
@@ -69,6 +84,17 @@ export const PUZZLES: readonly Puzzle[] = [
       { en: "The dust made the rover heavier so it could not move", bn: "ধুলায় রোভার ভারী হয়ে নড়তে পারত না" },
     ],
     correct: 0,
+    hints: [
+      null,
+      {
+        en: "Check the hardware you scanned in Chapter 02: Opportunity's power came from solar panels and rechargeable batteries. Nothing on it turned wind into electricity.",
+        bn: "অধ্যায় ০২-এ স্ক্যান করা যন্ত্রাংশ মনে করো: অপরচুনিটির শক্তি আসত সৌর প্যানেল আর রিচার্জেবল ব্যাটারি থেকে। বাতাস থেকে বিদ্যুৎ বানানোর কোনো যন্ত্র ছিল না।",
+      },
+      {
+        en: "Look at what your experiment changed: τ measures dust in the air between the Sun and the panels, not dust on the rover. Which quantity in the gauge fell?",
+        bn: "তোমার পরীক্ষায় কী বদলেছে দেখো: τ মাপে সূর্য আর প্যানেলের মাঝের বাতাসে ধুলা, রোভারের গায়ের ধুলা নয়। মিটারে কোন মান কমেছে?",
+      },
+    ],
   },
   {
     id: "timeline",
@@ -126,6 +152,34 @@ export function checkPower(p: Extract<Puzzle, { kind: "power" }>, choice: number
 }
 export function checkQuiz(p: Extract<Puzzle, { kind: "quiz" }>, answers: readonly number[]): boolean {
   return answers.length === p.questions.length && p.questions.every((q, i) => answers[i] === q.correct);
+}
+
+export type PowerPrediction = "same" | "half" | "nearly-none";
+
+/** Published τ anchors (JPL estimates, OBSERVED) used by the Chapter 03 lab. */
+export const TAU_USUAL = 0.5;
+export const TAU_RECHARGE = 2;
+export const TAU_STORM_PEAK = 10.8;
+
+/**
+ * SIMULATED: fraction of the direct solar beam that crosses a dusty column with
+ * the sun overhead (Beer–Lambert, e^−τ). An explanatory model, not telemetry:
+ * it ignores scattered light, sun angle, panel dust and the rover's actual load.
+ */
+export const directBeam = (tau: number) => Math.exp(-Math.max(0, Number.isFinite(tau) ? tau : 0));
+
+/** Which prediction the model supports when τ rises from `from` to `to`. */
+export function modelOutcome(from: number, to: number): PowerPrediction {
+  const ratio = directBeam(to) / directBeam(from);
+  if (ratio > 0.8) return "same";
+  if (ratio > 0.2) return "half";
+  return "nearly-none";
+}
+
+/** VERIFY: compare a committed prediction with the model, usual sky → storm peak. */
+export function comparePrediction(prediction: PowerPrediction): { matches: boolean; outcome: PowerPrediction; ratio: number } {
+  const outcome = modelOutcome(TAU_USUAL, TAU_STORM_PEAK);
+  return { matches: prediction === outcome, outcome, ratio: directBeam(TAU_STORM_PEAK) / directBeam(TAU_USUAL) };
 }
 
 /** Illustrative relative light reaching a panel for a 0..1 dust slider (not telemetry). */

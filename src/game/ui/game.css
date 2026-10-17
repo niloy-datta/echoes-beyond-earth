@@ -313,3 +313,14 @@ kbd { font-family: var(--font-mono); font-size: 0.68em; padding: 0.1em 0.45em; b
   .ll-subtitle { bottom: 13.5rem; }
   .ll-prompt { bottom: 28%; }
 }
+
+/* Chapter 03 storm lab: hypothesize → experiment → verify → explain */
+.ll-lab-step { margin-top: 0.9rem; }
+.ll-lab-step[aria-disabled="true"] { opacity: 0.55; }
+.ll-step { display: inline-block; margin-right: 0.35rem; font-family: ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ll-cyan); }
+.ll-tag { display: inline-block; padding: 0.05rem 0.4rem; border: 1px solid var(--ll-line); border-radius: 0.3rem; font-family: ui-monospace, monospace; font-size: 0.66rem; letter-spacing: 0.05em; color: var(--ll-text); }
+.ll-tag--observed { border-color: #7fe3a5; color: #7fe3a5; }
+.ll-tag--simulated { border-color: var(--ll-amber); color: var(--ll-amber); }
+.ll-compare ul { display: grid; gap: 0.5rem; margin: 0.4rem 0 0; padding: 0; list-style: none; font-size: 0.88rem; }
+.ll-feedback.is-info { color: var(--ll-cyan); }
+.ll-hint { margin-top: 0.5rem; padding: 0.55rem 0.7rem; border-left: 2px solid var(--ll-cyan); background: var(--ll-cyan-dim); border-radius: 0.3rem; }

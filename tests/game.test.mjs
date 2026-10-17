@@ -504,3 +504,31 @@ test("input: movement keys still work while a HUD button has focus (pause → re
   key("Escape", "INPUT");
   assert.deepEqual(actions, ["pause"]);
 });
+
+import { comparePrediction, directBeam, modelOutcome, TAU_USUAL, TAU_RECHARGE, TAU_STORM_PEAK } from "../src/game/content/puzzles.ts";
+
+test("storm lab: Beer–Lambert model, prediction comparison and explanatory hints", () => {
+  // SIMULATED model: e^−τ, monotonic, bounded, safe on bad input.
+  assert.equal(directBeam(0), 1);
+  assert.ok(Math.abs(directBeam(1) - Math.exp(-1)) < 1e-12);
+  assert.ok(directBeam(TAU_STORM_PEAK) < directBeam(TAU_RECHARGE) && directBeam(TAU_RECHARGE) < directBeam(TAU_USUAL));
+  assert.equal(directBeam(-3), 1); assert.equal(directBeam(Number.NaN), 1);
+  // OBSERVED anchors stay the JPL-published estimates.
+  assert.deepEqual([TAU_USUAL, TAU_RECHARGE, TAU_STORM_PEAK], [0.5, 2, 10.8]);
+  // Outcome classification.
+  assert.equal(modelOutcome(0.5, 0.6), "same");
+  assert.equal(modelOutcome(0.5, 1.2), "half");
+  assert.equal(modelOutcome(0.5, 10.8), "nearly-none");
+  // Prediction comparison is informative, never a gate.
+  const right = comparePrediction("nearly-none"), wrong = comparePrediction("half");
+  assert.equal(right.matches, true); assert.equal(wrong.matches, false);
+  assert.equal(wrong.outcome, "nearly-none");
+  assert.ok(right.ratio > 0 && right.ratio < 1e-4, "storm peak leaves ~0.003% of the usual direct beam");
+  // Every wrong option explains itself bilingually; the right one has no hint.
+  const power = PUZZLE_BY_ID.get("storm-power");
+  assert.equal(power.hints.length, power.options.length);
+  power.hints.forEach((h, i) => (i === power.correct ? assert.equal(h, null) : assert.ok(bilingual(h))));
+  assert.deepEqual(power.prediction.options.map((o) => o.id).sort(), ["half", "nearly-none", "same"]);
+  power.prediction.options.forEach((o) => assert.ok(bilingual(o.label)));
+  assert.ok(bilingual(power.prediction.question));
+});

@@ -43,7 +43,7 @@ export function EvidenceBoard({
   const compareBefore = {
     src: "/images/nasa/pia22909.jpg",
     label: { en: "Legacy Pan Composite (PIA22909)", bn: "লেগ্যাসি প্যান মোজাইক (PIA22909)" },
-    date: "2018-05-13 to 2018-06-10 (Sols 5078–5111)",
+    date: "2018-05-13 to 2018-06-10 (Sols 5084–5111)",
     tau: "Estimated ~0.6–0.9",
     pia: "PIA22909 (354-frame mosaic)",
   };
@@ -143,18 +143,21 @@ export function EvidenceBoard({
                 <span className="ll-metric-val font-mono text-signal">Estimated Tau ~0.6–0.9</span>
                 <p className="text-xs ll-muted">
                   {lang === "bn"
-                    ? "পারসিভিয়ারেন্স ভ্যালিতে একাধিক সলে (৫০৭৮–৫১১১) প্যানক্যামের ৩৫৪টি ফ্রেম একত্র করে প্রস্তুত মোজাইক।"
-                    : "Composite of 354 individual Pancam frames acquired across multiple sols (5078–5111) overlooking Endeavour Crater."}
+                    ? "পারসিভিয়ারেন্স ভ্যালিতে একাধিক সলে (৫০৮৪–৫১১১) প্যানক্যামের ৩৫৪টি ফ্রেম একত্র করে প্রস্তুত মোজাইক।"
+                    : "Composite of 354 individual Pancam frames acquired across multiple sols (5084–5111) overlooking Endeavour Crater."}
                 </p>
               </div>
               <div className="ll-metric-card">
-                <span className="ll-metric-label">{lang === "bn" ? "শেষ পাঠানো ট্রান্সমিশন ও থাম্বনেইল (PIA22929 / PIA22930)" : "Last Transmitted Frame & Thumbnails (PIA22929 / PIA22930)"}</span>
+                <span className="ll-metric-label">{lang === "bn" ? "শেষ পাঠানো ট্রান্সমিশন ও শেষ ধারণকৃত ফ্রেম (PIA22929 / PIA22930)" : "Last Transmitted Frame & Last Captured Frame (PIA22929 / PIA22930)"}</span>
                 <span className="ll-metric-val font-mono text-caution">Estimated Tau ≈ 10.8</span>
-                <p className="text-xs ll-muted">
-                  {lang === "bn"
-                    ? "সাদা ফুটকিগুলো ক্যামেরার স্বাভাবিক সেন্সর নয়েজ যা চরম অন্ধকারে স্পষ্ট হয়। সম্প্রচারের সময় যোগাযোগ বিচ্ছিন্ন হওয়ায় নিচের সারি কাটা পড়েছিল। ৩ মিনিট পরের থাম্বনেইল (PIA22930) থেকে টাউ ≈ ১০.৮ অনুমান করা হয়।"
-                    : "White speckles are camera sensor noise accentuated by dark sky; missing bottom rows occurred when communication dropped during transmission. Pancam thumbnails (PIA22930) taken 3 min later provided the Tau ≈ 10.8 estimate."}
-                </p>
+                <div className="flex items-center gap-3 mt-2">
+                  <img src={assetPath("/images/nasa/pia22930.jpg")} alt="PIA22930 last captured frame" className="w-12 h-12 object-contain border border-dust/30 rounded bg-black flex-shrink-0" />
+                  <p className="text-xs ll-muted m-0">
+                    {lang === "bn"
+                      ? "PIA22929 ছিল শেষ প্রেরিত অসম্পূর্ণ ফ্রেম (সংযোগ বিচ্ছিন্ন হওয়ায় নিচের সারি কাটা পড়ে)। ৩ মিনিট পরের থাম্বনেইল (PIA22930) ছিল অপরচুনিটির শেষ ধারণকৃত ফ্রেম।"
+                      : "PIA22929 was the last transmitted partial frame (interrupted by loss of signal). Thumbnails captured 3 min later (PIA22930) were Opportunity's final captured frames."}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

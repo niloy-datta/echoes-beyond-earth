@@ -11,7 +11,7 @@ import { createRig, stepRig, applyLook, PITCH_MAX } from "../src/game/core/camer
 import { createCompanion, stepCompanion, emote } from "../src/game/core/companion.ts";
 import {
   newProgress, sanitizeProgress, activeObjectives, completeObjective, attemptPuzzle, discoverSide, startChapter,
-  xpOf, levelOf, levelXp, evidenceOf, unlockedChapters, stormLevel, addStats, MAX_XP, SAVE_VERSION,
+  xpOf, levelOf, levelXp, evidenceOf, unlockedChapters, stormLevel, addStats, MAX_XP, SAVE_VERSION, demoProgress,
 } from "../src/game/core/progress.ts";
 import { wrapAngle } from "../src/game/core/math.ts";
 
@@ -537,4 +537,12 @@ test("storm lab: Beer–Lambert model, prediction comparison and explanatory hin
   assert.deepEqual(power.prediction.options.map((o) => o.id).sort(), ["half", "nearly-none", "same"]);
   power.prediction.options.forEach((o) => assert.ok(bilingual(o.label)));
   assert.ok(bilingual(power.prediction.question));
+});
+
+test("progression: demoProgress grants complete access for 90s judge evaluation", () => {
+  const demo = demoProgress();
+  assert.equal(demo.finished, true);
+  assert.equal(unlockedChapters(demo).length, 5);
+  assert.ok(evidenceOf(demo).length >= 8);
+  assert.equal(demo.done.length, ALL_OBJECTIVES.length);
 });

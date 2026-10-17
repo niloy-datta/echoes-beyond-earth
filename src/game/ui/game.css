@@ -51,6 +51,8 @@ kbd { font-family: var(--font-mono); font-size: 0.68em; padding: 0.1em 0.45em; b
 .ll-menu__item small { color: var(--ll-muted); font-size: 0.75rem; font-family: var(--font-mono); }
 .ll-menu__item:hover:not(:disabled), .ll-menu__item:focus-visible { background: linear-gradient(90deg, var(--ll-cyan-dim), transparent); border-left-color: var(--ll-cyan); padding-left: 1.4rem; }
 .ll-menu__item.is-primary { border-left-color: var(--ll-amber); }
+.ll-menu__item.is-demo { border-left-color: var(--ll-cyan); background: linear-gradient(90deg, var(--ll-cyan-dim), transparent); }
+.ll-menu__item.is-demo:hover { background: linear-gradient(90deg, rgb(99 230 239 / 0.28), transparent); }
 .ll-menu__item:disabled { opacity: 0.35; cursor: not-allowed; }
 .ll-menu__mode { margin-top: 1.4rem; display: inline-flex; border: 1px solid var(--ll-line); border-radius: 999px; padding: 3px; background: var(--ll-glass); }
 .ll-menu__mode button { padding: 0.4rem 0.9rem; border-radius: 999px; font-size: 0.78rem; color: var(--ll-muted); }

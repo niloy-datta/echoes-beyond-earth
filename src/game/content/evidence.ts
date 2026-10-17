@@ -78,8 +78,8 @@ export const EVIDENCE: readonly Evidence[] = [
     id: "pancam",
     title: { en: "The Pancam mast", bn: "প্যানক্যাম মাস্ট" },
     fact: {
-      en: "The Legacy Pan combines 354 Pancam images taken over sols 5,078 to 5,111 (May 13 – June 10, 2018). NASA calls it the last panorama Opportunity acquired.",
-      bn: "লেগ্যাসি প্যান ৩৫৪টি প্যানক্যাম ছবি জুড়ে তৈরি, তোলা হয় ৫,০৭৮ থেকে ৫,১১১ সলের মধ্যে (১৩ মে – ১০ জুন ২০১৮)। NASA বলে, এটিই অপরচুনিটির তোলা শেষ প্যানোরামা।",
+      en: "The Legacy Pan combines 354 Pancam images taken over sols 5,084 to 5,111 (May 13 – June 10, 2018). NASA calls it the last panorama Opportunity acquired.",
+      bn: "লেগ্যাসি প্যান ৩৫৪টি প্যানক্যাম ছবি জুড়ে তৈরি, তোলা হয় ৫,০৮৪ থেকে ৫,১১১ সলের মধ্যে (১৩ মে – ১০ জুন ২০১৮)। NASA বলে, এটিই অপরচুনিটির তোলা শেষ প্যানোরামা।",
     },
     source: { label: "NASA / PIA22909 Opportunity Legacy Pan", url: "https://images.nasa.gov/details/PIA22909" },
     image: {

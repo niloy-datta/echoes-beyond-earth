@@ -154,6 +154,25 @@ try {
   await shot(page, "01-menu");
   step(`main menu renders (${has3d ? "3D canvas" : "no WebGL → 2D"})`);
 
+  // Test 90s Judge Walkthrough button functionality
+  const judgeBtn = page.getByTestId("judge-walkthrough-button");
+  assert.equal(await judgeBtn.count(), 1, "90s judge walkthrough button is present on main menu");
+  await judgeBtn.click();
+  const chDialog = page.getByRole("dialog", { name: /chapter select/i });
+  await chDialog.waitFor();
+  const chapterButtons = await chDialog.locator(".ll-chapter").all();
+  assert.equal(chapterButtons.length, 5, "all 5 chapters available in judge demo mode");
+  for (const btn of chapterButtons) {
+    assert.equal(await btn.isDisabled(), false, "all chapters unlocked in judge demo");
+  }
+  await page.keyboard.press("Escape");
+  await chDialog.waitFor({ state: "detached" });
+  step("90s judge demo walkthrough immediately unlocks all five chapters and NASA evidence");
+  // Clear save and reload so the full campaign walk starts with a clean slate
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.getByTestId("main-menu").waitFor({ timeout: 20000 });
+
   await page.getByRole("button", { name: /new game/i }).click();
   await page.getByTestId("hud").waitFor();
   let s = await waitFor(page, (x) => x.cutscene === "intro", "intro cinematic");
@@ -365,9 +384,14 @@ try {
   await driveStory(page, null, "campaign completion", 60000);
   await waitFor(page, (x) => x.completed, "campaign completion", 60000);
   await page.getByRole("dialog", { name: /mission complete/i }).waitFor();
-  await shot(page, "11-complete");
-  const passport = await page.evaluate(() => JSON.parse(localStorage.getItem("the-last-signal:passport") || "{}"));
-  assert.ok(passport.discovered?.includes("opportunity"), "completion stamps the Explorer Passport");
+  await page.waitForFunction(() => {
+    try {
+      const p = JSON.parse(localStorage.getItem("the-last-signal:passport") || "{}");
+      return p.discovered && p.discovered.includes("opportunity");
+    } catch {
+      return false;
+    }
+  }, { timeout: 10000 });
   step("all five chapters complete with verified Chapter 3-5 UI interactions; completion screen and passport stamp");
 
   // Museum navigation still works from the game.

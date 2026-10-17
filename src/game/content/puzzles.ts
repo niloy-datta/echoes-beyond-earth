@@ -134,7 +134,7 @@ export const PUZZLES: readonly Puzzle[] = [
     before: {
       title: { en: "Legacy Pan Composite (PIA22909)", bn: "লেগ্যাসি প্যান মোজাইক (PIA22909)" },
       image: "/images/nasa/pia22909.jpg",
-      sol: "Sols 5078–5111 (May–June 2018)",
+      sol: "Sols 5084–5111 (May 13 – June 10, 2018)",
       tau: "Estimated ~0.6–0.9 (Pre-storm baseline)",
       description: {
         en: "Panoramic camera composite of 354 individual frames collected across multiple sols overlooking Endeavour Crater.",
@@ -255,8 +255,8 @@ export const PUZZLES: readonly Puzzle[] = [
         testedEvidence: "solar",
         verdict: "supported",
         reason: {
-          en: "Planet-wide dust storm (estimated Tau ≈ 10.8) dropped daily energy to ~22 Wh (far below the ~100 Wh/sol needed for survival heaters); prolonged winter cold led to loss of battery and clock function.",
-          bn: "গ্রহজুড়ে ধুলিঝড়ে (আনুমানিক টাউ ≈ ১০.৮) দৈনিক বিদ্যুৎ মাত্র ২২ ওয়াট-ঘণ্টায় নেমে যায় (হিটার ও সিস্টেম চালাতে যা লাগত প্রায় ১০০ ওয়াট-ঘণ্টা); শীতকালীন চরম ঠান্ডায় ব্যাটারি ও ঘড়ি অচল হয়ে মিশন সমাপ্ত হয়।",
+          en: "Planet-wide dust storm (estimated Tau ≈ 10.8) dropped daily energy to ~22 Wh (far below the ~100 Wh/sol needed for survival heaters); JPL's primary hypothesis is that inability to heat the rover through Martian winter caused low-power and mission clock faults.",
+          bn: "গ্রহজুড়ে ধুলিঝড়ে (আনুমানিক টাউ ≈ ১০.৮) দৈনিক বিদ্যুৎ নেমে যায় মাত্র ২২ ওয়াট-ঘণ্টায় (হিটার চালাতে যা লাগত প্রায় ১০০ ওয়াট-ঘণ্টা); JPL-এর প্রধান অনুসিদ্ধান্ত অনুযায়ী মঙ্গলের তীব্র শীতে হিটার বন্ধ থাকায় লো-পাওয়ার ও মিশন ক্লক ফল্ট দেখা দেয়।",
         },
         hint: {
           en: "Supported by evidence: The solar panels and storm records prove sunlight fell below the power needed to keep survival heaters running during sub-zero Martian nights.",

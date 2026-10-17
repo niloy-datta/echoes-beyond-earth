@@ -280,6 +280,19 @@ function ComparePuzzle({ p, lang, submit }: { p: Extract<Puzzle, { kind: "compar
             onChange={(e) => onSliderChange(Number(e.target.value))}
           />
         </label>
+        <div className="flex items-center gap-3 p-2 rounded bg-white/5 border border-white/10 mt-2">
+          <img
+            src={assetPath("/images/nasa/pia22930.jpg")}
+            alt={lang === "bn" ? "PIA22930 শেষ ধারণকৃত ফ্রেম" : "PIA22930 final captured frame"}
+            className="w-10 h-10 object-contain border border-dust/40 rounded bg-black flex-shrink-0"
+          />
+          <p className="ll-muted text-xs m-0">
+            <strong>PIA22930:</strong>{" "}
+            {lang === "bn"
+              ? "PIA22929-এর ৩ মিনিট পর উত্তোলিত এই থাম্বনেইলগুলোই ছিল অপরচুনিটির শেষ ফ্রেম, যা টাউ ≈ ১০.৮ প্রমাণ করে।"
+              : "Thumbnails captured 3 min after PIA22929 — the absolute last frames taken by Pancam, confirming Tau ≈ 10.8."}
+          </p>
+        </div>
         <p className="ll-muted text-xs">
           {lang === "bn"
             ? "NASA JPL Photojournal PIA22909 (লেগ্যাসি প্যান মোজাইক), PIA22929 (সল ৫১১১ শেষ বার্তা) এবং PIA22930 (শেষ ধারণকৃত ফ্রেমের থাম্বনেইল) থেকে সংকলিত।"

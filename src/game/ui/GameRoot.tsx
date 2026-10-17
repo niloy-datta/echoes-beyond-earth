@@ -7,7 +7,7 @@ import { readStore, writeStore } from "@/lib/storage";
 import { assetPath } from "@/lib/asset-path";
 import { GameAudio, type Mood } from "../audio";
 import { GameSession, type Cue } from "../core/session";
-import { SAVE_KEY, newProgress, sanitizeProgress, type GameProgress } from "../core/progress";
+import { SAVE_KEY, newProgress, sanitizeProgress, demoProgress, type GameProgress } from "../core/progress";
 import type { Engine, EngineView } from "../engine/Engine";
 import { InputController, type UiAction } from "../input";
 import { DEFAULT_GAME_SETTINGS, GAME_SETTINGS_KEY, SUIT_COLORS, autoPreset, sanitizeGameSettings, type GameSettings, type QualityPreset } from "../settings";
@@ -297,6 +297,12 @@ export function GameRoot() {
     begin(old ? { ...fresh, achievements: old.achievements, bestXp: old.bestXp } : fresh);
   };
   const pickChapter = (i: number) => begin(loadSave() ?? newProgress(), i);
+  const startJudgeDemo = () => {
+    const demo = demoProgress();
+    persist(demo);
+    setSave(demo);
+    setOverlay("chapters");
+  };
   const toMenu = () => {
     session?.save();
     setOverlay(null);
@@ -358,6 +364,7 @@ export function GameRoot() {
         <MainMenu
           lang={lang} save={save} webgl={webgl} loading={mode === "3d" && !engineReady} mode={mode}
           onContinue={continueGame} onNew={newGame} onChapter={() => setOverlay("chapters")}
+          onDemo={startJudgeDemo}
           onSettings={() => setOverlay("settings")} onControls={() => setOverlay("controls")} onMode={setMode}
         />
       )}

@@ -101,6 +101,8 @@ export const S = {
   scientificLegacy: { en: "Scientific Legacy", bn: "বৈজ্ঞানিক উত্তরাধিকার" },
   filterBy: { en: "Filter Domain", bn: "বিভাগ বাছাই" },
   sliderInstruction: { en: "Drag slider to analyze optical degradation across Tau levels", bn: "টাউ মাত্রায় অপটিক্যাল পরিবর্তন দেখতে স্লাইডারটি টানুন" },
+  judgeWalkthrough: { en: "90s Judge Walkthrough", bn: "৯০ সেকেন্ড জাজ ডেমো" },
+  judgeWalkthroughDesc: { en: "Direct access to all 5 chapters, NASA Evidence Board & synthesis", bn: "সব ৫টি অধ্যায়, NASA প্রমাণ বোর্ড ও বৈজ্ঞানিক সিদ্ধান্তে সরাসরি প্রবেশ" },
 } satisfies Record<string, L>;
 
 export type UiKey = keyof typeof S;

@@ -172,7 +172,7 @@ export const CHAPTERS: readonly Chapter[] = [
         id: "c4-compare", kind: "puzzle", puzzle: "optical-compare", target: "archive-core", xp: 100,
         text: { en: "Analyze optical evidence and storm opacity at the archive core", bn: "আর্কাইভ কেন্দ্রে অপটিক্যাল প্রমাণ ও ঝড়ের আলোহীনতা বিশ্লেষণ করো" },
         onStart: [{ speaker: "eko", emotion: "curious", text: { en: "Let's analyze the images: look at the clear panorama versus the dark frame sent in June 2018.", bn: "ছবিগুলো বিশ্লেষণ করি: পরিষ্কার প্যানোরামা এবং ২০১৮ সালের জুনের অন্ধকার ফ্রেম পাশাপাশি দেখো।" } }],
-        onComplete: [{ speaker: "eko", emotion: "discovery", text: { en: "Analysis complete! Extreme dust opacity choked power mid-transmission.", bn: "বিশ্লেষণ সফল! চরম ধুলার কারণে সম্প্রচার চলাকালেই বিদ্যুৎ শেষ হয়ে যায়।" } }],
+        onComplete: [{ speaker: "eko", emotion: "discovery", text: { en: "Analysis complete! Extreme dust opacity dropped power to critical levels and transmission was interrupted by loss of signal.", bn: "বিশ্লেষণ সফল! চরম ধুলার কারণে শক্তি সংকট দেখা দেয় এবং সংকেত বিচ্ছিন্ন হওয়ায় সম্প্রচার অসম্পূর্ণ থাকে।" } }],
       }],
       [{
         id: "c4-timeline", kind: "puzzle", puzzle: "timeline", target: "archive-core", xp: 140,

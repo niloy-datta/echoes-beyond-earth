@@ -357,12 +357,12 @@ function ConclusionPuzzle({ p, lang, submit, session }: { p: Extract<Puzzle, { k
   const onSubmit = () => {
     if (!chosenHypothesis) return;
     const ok = checkConclusion(p, selectedEvidence, chosenHypothesis, session ? evidenceOf(session.progress) : undefined);
-    const accepted = submit(ok);
-    if (accepted) {
+    if (ok) {
       setState("right");
       setShowSynthesis(true);
       setWrongHint(null);
     } else {
+      submit(false);
       setState("wrong");
       if (!hasAllEvidence) {
         setWrongHint(
@@ -468,14 +468,24 @@ function ConclusionPuzzle({ p, lang, submit, session }: { p: Extract<Puzzle, { k
       )}
 
       <div className="ll-actions">
-        <button
-          type="button"
-          className="ll-btn ll-btn--primary"
-          disabled={!hasAllEvidence || !chosenHypothesis}
-          onClick={onSubmit}
-        >
-          {S.check[lang]}
-        </button>
+        {state === "right" ? (
+          <button
+            type="button"
+            className="ll-btn ll-btn--primary"
+            onClick={() => submit(true)}
+          >
+            {lang === "bn" ? "মিশন সম্পন্ন করো" : "Complete Mission"}
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="ll-btn ll-btn--primary"
+            disabled={!hasAllEvidence || !chosenHypothesis}
+            onClick={onSubmit}
+          >
+            {S.check[lang]}
+          </button>
+        )}
       </div>
     </div>
   );

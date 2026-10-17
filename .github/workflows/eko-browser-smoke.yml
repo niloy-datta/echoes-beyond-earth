@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main
+      - "feature/**"
       - prototype/eko-opportunity-pre-event
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - "feature/**"
   workflow_dispatch:
 
 permissions:
@@ -31,6 +34,11 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+      - name: Validate data, unit tests and types
+        run: |
+          npm run validate
+          npm test
+          npm run typecheck
       - name: Build the static museum
         run: npm run build
       - name: EKO source and export budget check

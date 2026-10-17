@@ -319,17 +319,17 @@ try {
   await page.evaluate(() => window.__LAST_LIGHT__.session.travelTo("archive-core"));
   await waitFor(page, (x) => x.prompt === "c4-compare", "archive core compare prompt");
   await page.keyboard.press("KeyE");
-  const compareDialog = page.getByRole("dialog", { name: /optical record comparison/i });
+  const compareDialog = page.getByRole("dialog", { name: /optical evidence analysis/i });
   await compareDialog.waitFor();
   const compareSlider = compareDialog.getByRole("slider");
   await compareSlider.fill("10");
   await compareSlider.fill("90");
   // Wrong first with hint check
-  await compareDialog.getByRole("radio").first().click();
+  await compareDialog.getByRole("radio").nth(1).click();
   await compareDialog.getByRole("button", { name: /check answer/i }).click();
   assert.match(await compareDialog.getByTestId("compare-hint").innerText(), /EKO/i);
   // Correct answer
-  await compareDialog.getByRole("radio", { name: /camera noise/i }).click();
+  await compareDialog.getByRole("radio", { name: /camera sensor noise/i }).click();
   await shot(page, "10c-optical-compare");
   await compareDialog.getByRole("button", { name: /check answer/i }).click();
   await waitFor(page, (x) => x.done.includes("c4-compare"), "optical compare solved");
@@ -345,11 +345,11 @@ try {
   const conclusionDialog = page.getByRole("dialog", { name: /scientific conclusion/i });
   await conclusionDialog.waitFor();
   // Select supporting evidence chips
-  for (const evName of ["solar", "storm", "last-image"]) {
-    await conclusionDialog.getByRole("button", { name: new RegExp(evName, "i") }).click();
+  for (const evName of [/solar panels/i, /dust storm/i, /last transmitted/i]) {
+    await conclusionDialog.getByRole("button", { name: evName }).click();
   }
   // Wrong hypothesis first
-  await conclusionDialog.getByRole("radio", { name: /flash memory|software/i }).click();
+  await conclusionDialog.getByRole("radio", { name: /flash memory|software|telemetry/i }).click();
   await conclusionDialog.getByRole("button", { name: /check answer/i }).click();
   assert.match(await conclusionDialog.getByTestId("conclusion-hint").innerText(), /EKO/i);
   // Correct hypothesis
@@ -357,7 +357,7 @@ try {
   await shot(page, "10d-conclusion-puzzle");
   await conclusionDialog.getByRole("button", { name: /check answer/i }).click();
   // Verify synthesis card is displayed and complete
-  await conclusionDialog.getByRole("heading", { name: /NASA Scientific Legacy Synthesis/i }).waitFor();
+  await conclusionDialog.getByText(/NASA Scientific Legacy Synthesis/i).waitFor();
   await conclusionDialog.getByRole("button", { name: /complete mission/i }).click();
   await waitFor(page, (x) => x.done.includes("c5-assemble"), "conclusion solved");
   step("Chapter 5 conclusion UI: multi-evidence selection, wrong hypothesis hint, authentic NASA synthesis card, solved via UI");

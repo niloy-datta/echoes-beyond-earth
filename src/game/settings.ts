@@ -76,3 +76,56 @@ export function autoPreset(env: { coarsePointer: boolean; cores: number; width: 
   if (env.cores >= 8 && env.width >= 1400) return "high";
   return "medium";
 }
+
+export type QualityTier = Exclude<QualityPreset, "auto">;
+export const QUALITY_LADDER: readonly QualityTier[] = ["low", "medium", "high", "ultra"];
+/** Render-resolution steps tried before geometry/shadow quality drops. */
+export const RESOLUTION_STEPS: readonly number[] = [1, 0.85, 0.72];
+
+export interface AdaptiveState {
+  tier: QualityTier;
+  /** Index into RESOLUTION_STEPS. */
+  res: number;
+  /** Highest tier auto may climb back to (the initial auto guess). */
+  ceiling: QualityTier;
+  lowWindows: number;
+  goodWindows: number;
+  /** How often each tier has been abandoned for low frame rate. */
+  drops: Partial<Record<QualityTier, number>>;
+}
+
+export function createAdaptive(tier: QualityTier): AdaptiveState {
+  return { tier, res: 0, ceiling: tier, lowWindows: 0, goodWindows: 0, drops: {} };
+}
+
+/**
+ * Auto quality, evaluated once per measurement window (~2.5 s).
+ *
+ * Down: two consecutive slow windows lower render resolution first (cheap, no
+ * shader recompile), then the full tier: Ultra → High → Medium → Low.
+ * Up (hysteresis): eight consecutive windows with clear headroom restore
+ * resolution, then one tier, never above the initial guess, and never back to
+ * a tier that has already been abandoned twice, so it cannot oscillate.
+ */
+export function adaptQuality(s: AdaptiveState, fps: number, coarse: boolean): AdaptiveState {
+  const slow = coarse ? 26 : 42;
+  const smooth = coarse ? 45 : 57;
+  if (!Number.isFinite(fps) || fps <= 0) return s;
+  const i = QUALITY_LADDER.indexOf(s.tier);
+  if (fps < slow) {
+    const lowWindows = s.lowWindows + 1;
+    if (lowWindows < 2) return { ...s, lowWindows, goodWindows: 0 };
+    if (s.res < RESOLUTION_STEPS.length - 1) return { ...s, res: s.res + 1, lowWindows: 0, goodWindows: 0 };
+    if (i === 0) return { ...s, lowWindows: 0, goodWindows: 0 };
+    return { ...s, tier: QUALITY_LADDER[i - 1], res: 0, lowWindows: 0, goodWindows: 0, drops: { ...s.drops, [s.tier]: (s.drops[s.tier] ?? 0) + 1 } };
+  }
+  if (fps < smooth) return { ...s, lowWindows: 0, goodWindows: 0 };
+  const goodWindows = s.goodWindows + 1;
+  if (goodWindows < 8) return { ...s, lowWindows: 0, goodWindows };
+  if (s.res > 0) return { ...s, res: s.res - 1, lowWindows: 0, goodWindows: 0 };
+  const up = QUALITY_LADDER[i + 1];
+  if (up && i < QUALITY_LADDER.indexOf(s.ceiling) && (s.drops[up] ?? 0) < 2) {
+    return { ...s, tier: up, res: RESOLUTION_STEPS.length - 1, lowWindows: 0, goodWindows: 0 };
+  }
+  return { ...s, lowWindows: 0, goodWindows: 0 };
+}

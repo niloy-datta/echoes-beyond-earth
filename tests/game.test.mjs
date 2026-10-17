@@ -364,3 +364,143 @@ test("session: replay chapter and storm lighting", () => {
   playSession(session, { stopAtChapter: 3 });
   assert.ok(session.storm > calm || session.progress.chapter === 3);
 });
+
+import { MAX_FRAME } from "../src/game/core/session.ts";
+import { adaptQuality, createAdaptive, QUALITY_LADDER, RESOLUTION_STEPS } from "../src/game/settings.ts";
+
+/** Steer like a player: aim the camera at the goal and hold W + Shift, sidestepping when stuck. */
+function walkSession(session, goal, until, maxSeconds = 60, fps = 30) {
+  let stuck = 0, last = { x: session.player.x, z: session.player.z };
+  for (let t = 0; t < maxSeconds && !until(); t += 1 / fps) {
+    const dx = goal.x - session.player.x, dz = goal.z - session.player.z;
+    session.rig = { ...session.rig, yaw: Math.atan2(-dx, -dz), idle: 0 };
+    const side = stuck > 0.6 ? 1 : 0;
+    session.advance(1 / fps, { ...idle, y: 1, x: side, sprint: true });
+    const moved = Math.hypot(session.player.x - last.x, session.player.z - last.z);
+    stuck = moved < 0.01 ? stuck + 1 / fps : Math.max(0, stuck - 2 / fps);
+    last = { x: session.player.x, z: session.player.z };
+  }
+  return until();
+}
+
+/** Play up to (not into) the first objective with the given id. */
+function playUntilActive(session, id) {
+  let guard = 0;
+  while (!session.active.some((o) => o.id === id) && guard++ < 400) {
+    if (session.chapterCard) { run(session, 4); continue; }
+    if (session.cutscene) { session.skipCutscene(); continue; }
+    if (session.evidenceCard) { session.closeEvidence(); continue; }
+    if (session.puzzle) { session.answerPuzzle(true); continue; }
+    const o = session.active[0];
+    if (o.kind === "cutscene") { run(session, 0.6); continue; }
+    session.travelTo(o.target);
+    if (o.kind !== "reach") session.interact();
+  }
+  assert.ok(session.active.some((o) => o.id === id), `${id} becomes active`);
+}
+
+test("session: advance() keeps real-time pace at low frame rates (CI regression)", () => {
+  // At 4 FPS one clamped tick per frame ran the game at 40% speed; substeps keep it real time.
+  const session = new GameSession(null);
+  run(session, 1); session.skipCutscene();
+  playUntilActive(session, "c4-reach");
+  // Leaving chapter 3 shows the chapter-4 card (3.6 s). At 4 FPS it must clear within ~3.6 s of wall time.
+  assert.ok(session.chapterCard, "chapter card is showing");
+  let wall = 0;
+  while (session.chapterCard && wall < 20) { session.advance(0.25, idle); wall += 0.25; }
+  assert.ok(wall <= 4, `chapter card cleared after ${wall}s of wall time at 4 FPS`);
+  // A stalled frame (tab switch, GC pause) is capped, and garbage time is ignored.
+  const card = { chapter: 3, t: 0 };
+  session.chapterCard = card;
+  session.advance(1e9, idle);
+  assert.ok(Math.abs(card.t - MAX_FRAME) < 1e-9, "catch-up is capped at MAX_FRAME");
+  session.advance(Number.NaN, idle);
+  assert.ok(Number.isFinite(session.player.x) && Number.isFinite(session.player.z));
+});
+
+test("session: chapter 4 archive is reachable on foot at 30 and 4 FPS (c4-reach regression)", () => {
+  for (const fps of [30, 4]) {
+    const session = new GameSession(null);
+    run(session, 1); session.skipCutscene();
+    playUntilActive(session, "c4-reach");
+    while (session.chapterCard) session.advance(1 / fps, idle);
+    // Player stands where chapter 3 ended (storm-record-3), ~37 m from the archive, rocks in between.
+    const start = { x: session.player.x, z: session.player.z };
+    const archive = POI_BY_ID.get("archive").position;
+    assert.ok(Math.hypot(archive.x - start.x, archive.z - start.z) > 20, "real distance to cover");
+    const reached = walkSession(session, archive, () => session.progress.done.includes("c4-reach"), 60, fps);
+    assert.ok(reached, `walked into the archive at ${fps} FPS: player ${session.player.x.toFixed(1)},${session.player.z.toFixed(1)}`);
+    // Every pedestal and the core are reachable through the travel action and give a prompt.
+    run(session, 0.5);
+    if (session.cutscene) session.skipCutscene();
+    for (const o of session.active) {
+      session.travelTo(o.target);
+      assert.equal(session.prompt?.id, o.id, `prompt for ${o.id}`);
+    }
+  }
+});
+
+test("settings: adaptive quality ladder Ultra → High → Medium → Low with hysteresis", () => {
+  let s = createAdaptive("ultra");
+  const slowWindow = () => { s = adaptQuality(s, 20, false); };
+  const tiers = [];
+  for (let i = 0; i < 40; i++) { slowWindow(); if (tiers.at(-1) !== s.tier) tiers.push(s.tier); }
+  assert.deepEqual(tiers, ["ultra", "high", "medium", "low"], "steps through every tier, including Ultra → High");
+  assert.equal(s.res, RESOLUTION_STEPS.length - 1, "lowest tier also lowers resolution");
+  // Resolution drops before the tier does.
+  let r = createAdaptive("high");
+  r = adaptQuality(r, 30, false); assert.equal(r.tier, "high"); assert.equal(r.res, 0, "one slow window is tolerated");
+  r = adaptQuality(r, 30, false); assert.equal(r.tier, "high"); assert.equal(r.res, 1, "second slow window lowers resolution first");
+  // A single good window between slow ones resets the strike counter.
+  r = adaptQuality(r, 30, false); r = adaptQuality(r, 50, false); r = adaptQuality(r, 30, false);
+  assert.equal(r.res, 1);
+  // Touch devices use a lower threshold.
+  assert.equal(adaptQuality(adaptQuality(createAdaptive("low"), 28, true), 28, true).res, 0);
+  // Recovery: needs 8 smooth windows per step; never above the initial ceiling.
+  let u = { ...createAdaptive("high"), tier: "medium", res: 0 };
+  for (let i = 0; i < 7; i++) u = adaptQuality(u, 60, false);
+  assert.equal(u.tier, "medium", "no upgrade before 8 smooth windows");
+  u = adaptQuality(u, 60, false);
+  assert.equal(u.tier, "high", "climbs back after sustained headroom");
+  for (let i = 0; i < 80; i++) u = adaptQuality(u, 60, false);
+  assert.equal(u.tier, "high", "never exceeds the initial auto guess");
+  assert.equal(u.res, 0);
+  // No oscillation: a tier abandoned twice is not retried.
+  let o = createAdaptive("high");
+  for (let cycle = 0; cycle < 4; cycle++) {
+    while (o.tier === "high") o = adaptQuality(o, 30, false);
+    for (let i = 0; i < 40; i++) o = adaptQuality(o, 60, false);
+  }
+  assert.equal(o.tier, "medium");
+  assert.equal(o.drops.high, 2);
+  // Garbage measurements are ignored.
+  assert.deepEqual(adaptQuality(createAdaptive("ultra"), Number.NaN, false), createAdaptive("ultra"));
+  assert.deepEqual(QUALITY_LADDER, ["low", "medium", "high", "ultra"]);
+});
+
+import { InputController } from "../src/game/input.ts";
+
+test("input: movement keys still work while a HUD button has focus (pause → resume regression)", () => {
+  const actions = [];
+  const input = new InputController((a) => actions.push(a));
+  const key = (code, tagName, extra = {}) => {
+    let prevented = false;
+    input.keyDown({ code, target: { tagName }, repeat: false, ctrlKey: false, metaKey: false, altKey: false, preventDefault: () => { prevented = true; }, ...extra });
+    return prevented;
+  };
+  key("KeyW", "BUTTON"); key("ShiftLeft", "BUTTON");
+  let out = input.consume();
+  assert.equal(out.y, 1, "W moves although the pause button is focused");
+  assert.equal(out.sprint, true);
+  // The focused button keeps Space (its native activation), so no jump is queued.
+  assert.equal(key("Space", "BUTTON"), false);
+  assert.equal(input.consume().jump, false);
+  key("KeyE", "A");
+  assert.equal(input.consume().interact, true, "E interacts with a link focused");
+  // Typing in a form field never moves the explorer.
+  input.reset();
+  key("KeyW", "INPUT");
+  assert.equal(input.consume().y, 0);
+  key("Escape", "INPUT");
+  assert.deepEqual(actions, ["pause"]);
+});

@@ -72,8 +72,10 @@ export class InputController {
     if (e.code === "KeyJ") { this.onAction("journal"); return; }
     if (e.code === "KeyV") { this.onAction("view"); return; }
     if (e.code === "Enter") { this.onAction("advance"); return; }
-    // Buttons own Space/Enter while focused; game keys need the scene focused.
-    if (tag === "BUTTON" || tag === "A") return;
+    // A focused button or link keeps Space (its activation key); movement and E
+    // still drive the game, so clicking a HUD button (e.g. Pause → Resume, which
+    // returns focus to the pause button) never leaves WASD dead.
+    if ((tag === "BUTTON" || tag === "A") && e.code === "Space") return;
     if (MOVE_KEYS[e.code] || e.code === "Space" || e.code === "KeyE") e.preventDefault();
     if (e.code === "KeyE" && !e.repeat) this.interactQueued = true;
     if (e.code === "Space" && !e.repeat) this.jumpQueued = true;

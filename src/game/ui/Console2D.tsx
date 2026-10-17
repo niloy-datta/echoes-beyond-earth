@@ -35,12 +35,12 @@ export function Console2D({ session, lang, consume, onTravel, paused, onStorm }:
     session.options = { ...session.options, autoCamera: false };
     const loop = (now: number) => {
       raf = requestAnimationFrame(loop);
-      const dt = Math.min(0.1, (now - last) / 1000);
+      const dt = (now - last) / 1000;
       last = now;
       // North-up: camera yaw 0 means "forward" walks toward -z (up on the map).
       session.rig = { ...session.rig, yaw: 0 };
       const input = consume();
-      if (!pausedRef.current) session.tick(dt, { ...input, lookX: 0, lookY: 0, zoom: 0 });
+      if (!pausedRef.current) session.advance(dt, { ...input, lookX: 0, lookY: 0, zoom: 0 });
       const p = session.player;
       if (player.current) {
         player.current.style.left = `${mapPct(p.x)}%`;

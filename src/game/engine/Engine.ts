@@ -13,7 +13,7 @@ import { clamp, smoothstep } from "../core/math";
 import type { GameSession } from "../core/session";
 import { heightAt } from "../core/terrain";
 import type { InputController } from "../input";
-import { qualityProfile, type QualityProfile, type QualityPreset } from "../settings";
+import { adaptQuality, createAdaptive, qualityProfile, RESOLUTION_STEPS, type AdaptiveState, type QualityProfile, type QualityPreset } from "../settings";
 import { Astronaut, EkoBot, blobShadow, loadOpportunity, stylizedRover } from "./actors";
 import { Archive, Beacon, ComponentMarker, MemoryLights, Terminal, type PanelSpec, type PropState } from "./props";
 import { createDust, createMesas, createRocks, createSky, createTerrain, createTracks, horizonColor, SUN_DIR } from "./world";
@@ -78,7 +78,7 @@ export class Engine {
   private disposed = false;
   private frames: number[] = [];
   private perfTimer = 0;
-  private lowStrikes = 0;
+  private adaptive: AdaptiveState;
   private resizeObserver: ResizeObserver;
   private tmpA = new THREE.Vector3();
   private tmpB = new THREE.Vector3();
@@ -88,6 +88,7 @@ export class Engine {
 
   constructor(private canvas: HTMLCanvasElement, private session: GameSession, private input: InputController, private options: EngineOptions) {
     this.view.quality = options.initialQuality;
+    this.adaptive = createAdaptive(options.initialQuality);
     this.profile = qualityProfile(options.initialQuality, window.devicePixelRatio || 1);
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: this.profile.antialias, powerPreference: "high-performance", alpha: false, stencil: false });
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -180,6 +181,8 @@ export class Engine {
   setPreset(preset: QualityPreset) {
     this.options.preset = preset;
     if (preset !== "auto") this.setQuality(preset);
+    this.adaptive = createAdaptive(this.view.quality);
+    this.applyResolution();
   }
 
   private setQuality(q: Exclude<QualityPreset, "auto">) {
@@ -190,9 +193,16 @@ export class Engine {
     this.options.onQualityChange(q);
   }
 
+  /** Render resolution = tier pixel ratio × the adaptive resolution step. */
+  private applyResolution() {
+    const ratio = this.profile.pixelRatio * (this.options.preset === "auto" ? RESOLUTION_STEPS[this.adaptive.res] : 1);
+    if (Math.abs(this.renderer.getPixelRatio() - ratio) > 1e-3) { this.renderer.setPixelRatio(ratio); this.resize(); }
+    this.dust.uniforms.uPixel.value = ratio;
+  }
+
   private applyProfile() {
     const p = this.profile;
-    this.renderer.setPixelRatio(p.pixelRatio);
+    this.applyResolution();
     this.renderer.shadowMap.enabled = p.shadows > 0;
     this.sun.castShadow = p.shadows > 0;
     if (p.shadows > 0 && this.sun.shadow.mapSize.x !== p.shadows) {
@@ -203,7 +213,6 @@ export class Engine {
     this.rocks.count = Math.min(p.rocks, this.session.rocks.length);
     this.dust.setCount(p.dust);
     this.eko.light.visible = p.shadows >= 1024;
-    this.dust.uniforms.uPixel.value = p.pixelRatio;
     this.scene.traverse((o) => { const m = (o as THREE.Mesh).material as THREE.Material | undefined; if (m) m.needsUpdate = true; });
     this.resize();
   }
@@ -241,7 +250,7 @@ export class Engine {
     this.clock += dt;
     const time = this.clock;
 
-    if (!this.options.attract) s.tick(dt, this.input.consume());
+    if (!this.options.attract) s.advance(real, this.input.consume());
     else this.input.consume();
 
     // ── Camera: cutscene, attract orbit, or gameplay rig ─────────────────
@@ -321,14 +330,12 @@ export class Engine {
       this.frames = [];
       this.perfTimer = 0;
       if (this.options.preset === "auto" && !this.options.attract) {
-        const coarse = window.matchMedia?.("(pointer: coarse)").matches;
-        const threshold = coarse ? 26 : 42;
-        this.lowStrikes = this.view.fps < threshold ? this.lowStrikes + 1 : 0;
-        if (this.lowStrikes >= 2) {
-          this.lowStrikes = 0;
-          if (this.view.quality === "high") this.setQuality("medium");
-          else if (this.view.quality === "medium") this.setQuality("low");
-        }
+        const coarse = !!window.matchMedia?.("(pointer: coarse)").matches;
+        const next = adaptQuality(this.adaptive, this.view.fps, coarse);
+        const tierChanged = next.tier !== this.adaptive.tier, resChanged = next.res !== this.adaptive.res;
+        this.adaptive = next;
+        if (tierChanged) this.setQuality(next.tier);
+        else if (resChanged) this.applyResolution();
       }
     }
     this.options.onFrame?.(this.view);
@@ -432,7 +439,7 @@ export class Engine {
 
   /** Expose a few debug values for automated browser tests. */
   debugInfo() {
-    return { rover: this.rover.userData.source ?? "loading", quality: this.view.quality, fps: this.view.fps, calls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles };
+    return { rover: this.rover.userData.source ?? "loading", quality: this.view.quality, resolution: this.renderer.getPixelRatio(), fps: this.view.fps, frameMs: this.view.frameMs, calls: this.renderer.info.render.calls, footprints: this.astronaut.effects.printCount, triangles: this.renderer.info.render.triangles };
   }
 
   dispose() {

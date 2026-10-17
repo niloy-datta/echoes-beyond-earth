@@ -49,6 +49,10 @@ export interface SessionOptions {
 }
 
 export const ROCK_COUNT = 900;
+/** Largest simulation step (s); keeps collision and jumps stable. */
+export const MAX_STEP = 1 / 15;
+/** Longest real frame (s) the simulation catches up on; longer stalls are dropped. */
+export const MAX_FRAME = 0.25;
 
 let toastKey = 1;
 
@@ -134,6 +138,23 @@ export class GameSession {
   }
 
   // ── Main loop ───────────────────────────────────────────────────────────
+  /**
+   * Advance by real elapsed time. Slow frames are split into substeps of at
+   * most MAX_STEP, so the game keeps real-time pace down to ~4 FPS instead of
+   * slowing into slow motion (one clamped tick per frame did that below 10 FPS).
+   * One-shot input (look, zoom, interact, jump) applies to the first substep only.
+   */
+  advance(elapsed: number, input: SessionInput) {
+    let left = clamp(Number.isFinite(elapsed) ? elapsed : 0, 0, MAX_FRAME);
+    let step = input;
+    do {
+      const dt = Math.min(left, MAX_STEP);
+      this.tick(dt, step);
+      step = { ...input, lookX: 0, lookY: 0, zoom: 0, interact: false, jump: false };
+      left -= dt;
+    } while (left > 1e-6);
+  }
+
   tick(dt: number, input: SessionInput) {
     dt = clamp(Number.isFinite(dt) ? dt : 0, 0, 0.1);
     if (this.paused) return;

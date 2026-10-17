@@ -10,9 +10,9 @@ import { S } from "./strings";
 
 type Lang = "en" | "bn";
 
-export function MainMenu({ lang, save, webgl, loading, onContinue, onNew, onChapter, onSettings, onControls, onMode, mode }: {
+export function MainMenu({ lang, save, webgl, loading, onContinue, onNew, onChapter, onDemo, onSettings, onControls, onMode, mode }: {
   lang: Lang; save: GameProgress | null; webgl: boolean; loading: boolean; mode: "3d" | "2d";
-  onContinue: () => void; onNew: () => void; onChapter: () => void; onSettings: () => void; onControls: () => void; onMode: (m: "3d" | "2d") => void;
+  onContinue: () => void; onNew: () => void; onChapter: () => void; onDemo?: () => void; onSettings: () => void; onControls: () => void; onMode: (m: "3d" | "2d") => void;
 }) {
   const hasSave = !!save && (save.done.length > 0 || save.finished);
   const chapter = save ? CHAPTERS[save.chapter] : null;
@@ -32,6 +32,12 @@ export function MainMenu({ lang, save, webgl, loading, onContinue, onNew, onChap
           )}
           <button type="button" className={`ll-menu__item ${hasSave ? "" : "is-primary"}`} onClick={onNew}><span>{S.newGame[lang]}</span></button>
           <button type="button" className="ll-menu__item" onClick={onChapter} disabled={!hasSave}><span>{S.chapterSelect[lang]}</span></button>
+          {onDemo && (
+            <button type="button" className="ll-menu__item is-demo" onClick={onDemo} data-testid="judge-walkthrough-button">
+              <span>⚡ {S.judgeWalkthrough[lang]}</span>
+              <small>{S.judgeWalkthroughDesc[lang]}</small>
+            </button>
+          )}
           <button type="button" className="ll-menu__item" onClick={onSettings}><span>{S.settings[lang]}</span></button>
           <button type="button" className="ll-menu__item" onClick={onControls}><span>{S.controls[lang]}</span></button>
         </nav>

@@ -42,7 +42,7 @@ export function Eko2DMap({
           const discovered = scanned.includes(stop.id);
           const label = stop.name[lang].split(" / ").at(-1) || stop.name[lang];
           return (
-            <button key={stop.id} type="button" onClick={() => onOpen(stop.id)}
+            <button key={stop.id} type="button" onClick={(e) => { e.currentTarget.focus(); onOpen(stop.id); }}
               aria-label={bn ? `২ডি প্রমাণ খুলুন: ${label}` : `Open ${label} 2D hotspot`}
               className={`group relative z-10 flex min-h-28 flex-col justify-center gap-2 border p-3 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal sm:min-h-32 sm:p-5 ${discovered ? "border-[#88d4a5]/60 bg-[#132f2c]/90" : "border-[#dc9870]/50 bg-[#301e1e]/90 hover:border-signal hover:bg-[#4b2c29]"}`}>
               <span className="flex items-center justify-between font-mono text-xs">

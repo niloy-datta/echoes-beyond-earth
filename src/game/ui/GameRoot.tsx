@@ -7,7 +7,7 @@ import { readStore, writeStore } from "@/lib/storage";
 import { assetPath } from "@/lib/asset-path";
 import { GameAudio, type Mood } from "../audio";
 import { GameSession, type Cue } from "../core/session";
-import { SAVE_KEY, newProgress, sanitizeProgress, type GameProgress } from "../core/progress";
+import { SAVE_KEY, newProgress, sanitizeProgress, demoProgress, type GameProgress } from "../core/progress";
 import type { Engine, EngineView } from "../engine/Engine";
 import { InputController, type UiAction } from "../input";
 import { DEFAULT_GAME_SETTINGS, GAME_SETTINGS_KEY, SUIT_COLORS, autoPreset, sanitizeGameSettings, type GameSettings, type QualityPreset } from "../settings";
@@ -17,12 +17,13 @@ import {
 } from "./Hud";
 import { ChapterSelect, CompletionScreen, Confirm, ControlsHelp, MainMenu, PauseMenu, SettingsPanel } from "./Menus";
 import { EvidenceCard, Inventory, Journal, MissionMap } from "./Panels";
+import { EvidenceBoard } from "./EvidenceBoard";
 import { PuzzleDialog } from "./Puzzles";
 import { Modal } from "./Modal";
 import { S } from "./strings";
 import "./game.css";
 
-type Overlay = null | "pause" | "inventory" | "map" | "journal" | "settings" | "controls" | "chapters" | "confirm-new";
+type Overlay = null | "pause" | "inventory" | "map" | "journal" | "settings" | "controls" | "chapters" | "confirm-new" | "evidence-board";
 type Phase = "menu" | "playing";
 
 const noopSubscribe = () => () => {};
@@ -97,6 +98,7 @@ export function GameRoot() {
     }
     if (a === "advance") { if (s.cutscene) s.skipCutscene(); else s.advanceDialogue(); return; }
     if (a === "view") { if (engineRef.current && !current) { engineRef.current.firstPerson = !engineRef.current.firstPerson; setFirstPerson(engineRef.current.firstPerson); } return; }
+    if (a === "hint") { s.requestHint(); return; }
     if (s.puzzle || s.evidenceCard || s.completed) return;
     if (current && current !== a) return;
     setOverlay(current === a ? null : a);
@@ -295,6 +297,12 @@ export function GameRoot() {
     begin(old ? { ...fresh, achievements: old.achievements, bestXp: old.bestXp } : fresh);
   };
   const pickChapter = (i: number) => begin(loadSave() ?? newProgress(), i);
+  const startJudgeDemo = () => {
+    const demo = demoProgress();
+    persist(demo);
+    setSave(demo);
+    setOverlay("chapters");
+  };
   const toMenu = () => {
     session?.save();
     setOverlay(null);
@@ -338,7 +346,16 @@ export function GameRoot() {
       >
         {mode === "3d" && webgl && <canvas key={engineKey} ref={canvasRef} className="ll-canvas" data-testid="game-canvas" />}
         {mode === "2d" && session && (
-          <Console2D session={session} lang={lang} paused={blockedByUi} consume={consume} onTravel={onTravel} onStorm={onConsoleStorm} />
+          <Console2D
+            session={session}
+            lang={lang}
+            paused={blockedByUi}
+            consume={consume}
+            onTravel={onTravel}
+            onStorm={onConsoleStorm}
+            onOpenBoard={() => setOverlay("evidence-board")}
+            onHint={() => session.requestHint()}
+          />
         )}
         {mode === "3d" && <div className="ll-grade" aria-hidden />}
       </div>
@@ -347,6 +364,7 @@ export function GameRoot() {
         <MainMenu
           lang={lang} save={save} webgl={webgl} loading={mode === "3d" && !engineReady} mode={mode}
           onContinue={continueGame} onNew={newGame} onChapter={() => setOverlay("chapters")}
+          onDemo={startJudgeDemo}
           onSettings={() => setOverlay("settings")} onControls={() => setOverlay("controls")} onMode={setMode}
         />
       )}
@@ -363,8 +381,10 @@ export function GameRoot() {
               <StormBadge session={s} lang={lang} />
               <div className="ll-quickbar">
                 <button type="button" onClick={() => setOverlay("inventory")}>{S.inventory[lang]} <kbd>Tab</kbd></button>
+                <button type="button" onClick={() => setOverlay("evidence-board")}>{S.evidenceBoard[lang]} <kbd>B</kbd></button>
                 <button type="button" onClick={() => setOverlay("map")}>{S.map[lang]} <kbd>M</kbd></button>
                 <button type="button" onClick={() => setOverlay("journal")}>{S.journal[lang]} <kbd>J</kbd></button>
+                <button type="button" onClick={() => s.requestHint()} title={S.hint[lang]}>💡 {S.hint[lang]} <kbd>H</kbd></button>
                 {mode === "3d" && (
                   <button type="button" aria-pressed={firstPerson} onClick={() => { const e = engineRef.current; if (e) { e.firstPerson = !e.firstPerson; setFirstPerson(e.firstPerson); } }}>
                     {firstPerson ? S.view3p[lang] : S.view1p[lang]} <kbd>V</kbd>
@@ -403,6 +423,7 @@ export function GameRoot() {
         />
       )}
       {overlay === "inventory" && playing && <Inventory session={s} lang={lang} onClose={() => setOverlay(null)} />}
+      {overlay === "evidence-board" && playing && <EvidenceBoard session={s} lang={lang} onClose={() => setOverlay(null)} />}
       {overlay === "map" && playing && <MissionMap session={s} lang={lang} onClose={() => setOverlay(null)} onTravel={mode === "2d" ? onTravel : undefined} />}
       {overlay === "journal" && playing && <Journal session={s} lang={lang} onClose={() => setOverlay(null)} />}
       {overlay === "chapters" && (

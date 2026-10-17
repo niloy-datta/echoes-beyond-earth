@@ -27,7 +27,7 @@ const state = (page) => page.evaluate(() => {
   return {
     chapter: s.progress.chapter, done: [...s.progress.done], active: s.active.map((o) => o.id),
     player: { x: s.player.x, z: s.player.z }, cutscene: s.cutscene?.id ?? null, puzzle: s.puzzle, card: !!s.evidenceCard,
-    prompt: s.prompt?.id ?? null, completed: s.completed, finished: s.progress.finished, engine: window.__LAST_LIGHT__.engine?.() ?? null,
+    prompt: s.prompt?.id ?? null, chapterCard: !!s.chapterCard, paused: s.paused, action: s.action?.clip ?? null, focus: document.activeElement?.tagName + "#" + (document.activeElement?.getAttribute("aria-label") ?? document.activeElement?.textContent?.slice(0, 30) ?? ""), completed: s.completed, finished: s.progress.finished, engine: window.__LAST_LIGHT__.engine?.() ?? null,
   };
 });
 const waitFor = async (page, predicate, label, timeout = 20000) => {
@@ -70,7 +70,7 @@ async function walkTo(page, target, done, label, timeout = 150000) {
         side = side === "KeyD" ? "KeyA" : "KeyD";
         lastProgress = Date.now();
       }
-      if (Date.now() - start > timeout) throw new Error(`walk to ${label} timed out (${d.toFixed(1)} m left)`);
+      if (Date.now() - start > timeout) throw new Error(`walk to ${label} timed out (${d.toFixed(1)} m left): ${JSON.stringify(st)}`);
       await page.waitForTimeout(80);
     }
   } finally {
@@ -101,6 +101,36 @@ async function walk2d(page, target, done, label, timeout) {
   }
 }
 
+/**
+ * Advance the story through the session's accessible "travel to" action (the
+ * same action the 2D console offers screen-reader users) until objective
+ * `stopAt` is active, or the campaign completes. It never completes an
+ * objective directly: reach goals still need the player inside the radius,
+ * scans need a prompt, puzzles go through answerPuzzle. Bounded by wall time,
+ * not iterations, because chapter cards and cutscene delays run on game time.
+ */
+async function driveStory(page, stopAt, label, timeout = 120000) {
+  const deadline = Date.now() + timeout;
+  for (;;) {
+    const r = await page.evaluate((stop) => {
+      const ses = window.__LAST_LIGHT__.session;
+      if (stop ? ses.active.some((o) => o.id === stop) : ses.completed) return "done";
+      if (ses.chapterCard) return "wait";
+      if (ses.cutscene) { ses.skipCutscene(); return "step"; }
+      if (ses.evidenceCard) { ses.closeEvidence(); return "step"; }
+      if (ses.puzzle) { ses.answerPuzzle(true); return "step"; }
+      const o = ses.active[0];
+      if (!o || o.kind === "cutscene") return "wait";
+      ses.travelTo(o.target);
+      if (o.kind !== "reach") ses.interact();
+      return "step";
+    }, stopAt);
+    if (r === "done") return state(page);
+    if (Date.now() > deadline) throw new Error(`Timed out driving the story to ${label}: ${JSON.stringify(await state(page))}`);
+    await page.waitForTimeout(r === "wait" ? 150 : 40);
+  }
+}
+
 let passed = 0;
 const step = (msg) => { passed++; console.log(`[game-e2e] ✓ ${msg}`); };
 
@@ -123,6 +153,25 @@ try {
   await page.waitForTimeout(2500);
   await shot(page, "01-menu");
   step(`main menu renders (${has3d ? "3D canvas" : "no WebGL → 2D"})`);
+
+  // Test 90s Judge Walkthrough button functionality
+  const judgeBtn = page.getByTestId("judge-walkthrough-button");
+  assert.equal(await judgeBtn.count(), 1, "90s judge walkthrough button is present on main menu");
+  await judgeBtn.click();
+  const chDialog = page.getByRole("dialog", { name: /chapter select/i });
+  await chDialog.waitFor();
+  const chapterButtons = await chDialog.locator(".ll-chapter").all();
+  assert.equal(chapterButtons.length, 5, "all 5 chapters available in judge demo mode");
+  for (const btn of chapterButtons) {
+    assert.equal(await btn.isDisabled(), false, "all chapters unlocked in judge demo");
+  }
+  await page.keyboard.press("Escape");
+  await chDialog.waitFor({ state: "detached" });
+  step("90s judge demo walkthrough immediately unlocks all five chapters and NASA evidence");
+  // Clear save and reload so the full campaign walk starts with a clean slate
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.getByTestId("main-menu").waitFor({ timeout: 20000 });
 
   await page.getByRole("button", { name: /new game/i }).click();
   await page.getByTestId("hud").waitFor();
@@ -171,6 +220,24 @@ try {
   await page.getByRole("dialog", { name: /paused/i }).waitFor();
   await page.getByRole("button", { name: /resume/i }).click();
   step("Tab / M / J / pause panels open and close");
+
+  // Regression: Resume returns focus to the pause button; movement keys must
+  // still reach the game (they were ignored while any button had focus).
+  const focusTag = await page.evaluate(() => document.activeElement?.tagName);
+  const beforeW = await state(page);
+  if (!beforeW.cutscene && !beforeW.chapterCard) {
+    // Poll rather than sleep: software renderers in CI can run at 1–5 FPS.
+    await page.keyboard.down("KeyW");
+    let after = beforeW, moved = 0;
+    try {
+      for (const end = Date.now() + 8000; Date.now() < end && !after.cutscene && moved <= 0.3; await page.waitForTimeout(150)) {
+        after = await state(page);
+        moved = Math.hypot(after.player.x - beforeW.player.x, after.player.z - beforeW.player.z);
+      }
+    } finally { await page.keyboard.up("KeyW"); }
+    assert.ok(after.cutscene || moved > 0.3, `W moves after Resume (focus on ${focusTag}, moved ${moved.toFixed(2)} m, ${JSON.stringify(after)})`);
+    step(`movement keys work after Pause → Resume (focus on ${focusTag})`);
+  }
 
   // Outro cinematic → chapter 2 begins.
   s = await waitFor(page, (x) => x.cutscene === "ch1-outro" || x.chapter === 1, "chapter 1 outro");
@@ -223,29 +290,109 @@ try {
   s = await waitFor(page, (x) => x.done.includes("c2-puzzle"), "resumed progress");
   step("progress survives a reload and Continue resumes it");
 
-  // Finish the campaign via the session (the remaining paths are covered above and in unit tests).
-  await page.evaluate(async () => {
-    const ses = window.__LAST_LIGHT__.session;
-    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-    for (let i = 0; i < 300 && !ses.completed; i++) {
-      if (ses.chapterCard) { await sleep(200); continue; }
-      if (ses.cutscene) { ses.skipCutscene(); await sleep(50); continue; }
-      if (ses.evidenceCard) { ses.closeEvidence(); continue; }
-      if (ses.puzzle) { ses.answerPuzzle(true); continue; }
-      const o = ses.active[0];
-      if (!o) { await sleep(100); continue; }
-      if (o.kind === "cutscene") { await sleep(150); continue; }
-      ses.travelTo(o.target);
-      await sleep(30);
-      if (o.kind !== "reach") ses.interact();
-    }
-  });
+  // Evidence Board navigation
+  await page.keyboard.press("KeyB");
+  const eb = page.getByRole("dialog", { name: /evidence board/i });
+  await eb.waitFor();
+  assert.ok((await eb.getByRole("button").count()) > 0, "evidence board displays recovered evidence");
+  await shot(page, "09b-evidence-board");
+  await page.keyboard.press("Escape");
+  await eb.waitFor({ state: "detached" });
+  step("Evidence Board opens via keyboard, displays recovered NASA records, and closes");
+
+  // Chapter 3 through the travel action, then walk into the chapter-4 archive
+  // on foot: c4-reach is where CI previously stalled.
+  await driveStory(page, "c3-power", "storm lab");
+  if ((await state(page)).card) await page.getByRole("dialog").getByRole("button", { name: /keep exploring/i }).click();
+  await waitFor(page, (x) => !x.chapterCard && !x.cutscene && !x.card, "chapter 3 free play", 30000);
+  await page.evaluate(() => window.__LAST_LIGHT__.session.travelTo("storm-terminal"));
+  await waitFor(page, (x) => x.prompt === "c3-power", "storm terminal prompt");
+  await page.keyboard.press("KeyE");
+  const lab = page.getByRole("dialog", { name: /power in the storm/i });
+  await lab.waitFor();
+  const slider = lab.getByRole("slider");
+  assert.equal(await slider.isDisabled(), true, "experiment is locked until a prediction is made");
+  await lab.getByRole("radiogroup", { name: /your prediction/i }).getByRole("radio", { name: /about half/i }).click();
+  await slider.fill("1000");
+  await lab.getByTestId("storm-compare").waitFor();
+  const compare = await lab.getByTestId("storm-compare").innerText();
+  assert.match(compare, /OBSERVED/); assert.match(compare, /SIMULATED/); assert.match(compare, /disagrees/i);
+  await lab.getByRole("radio", { name: /wind recharged/i }).click();
+  await lab.getByRole("button", { name: /check answer/i }).click();
+  assert.match(await lab.getByTestId("storm-hint").innerText(), /solar panels and rechargeable batteries/i);
+  await lab.getByRole("radio", { name: /less sunlight/i }).click();
+  await shot(page, "10b-storm-lab");
+  await lab.getByRole("button", { name: /check answer/i }).click();
+  await waitFor(page, (x) => x.done.includes("c3-power"), "storm lab solved");
+  step("storm lab: prediction gates the experiment; model vs NASA record compared; wrong answer explained; right answer accepted");
+
+  await driveStory(page, "c4-reach", "chapter 4");
+  await waitFor(page, (x) => !x.chapterCard, "chapter 4 card", 30000);
+  s = await walkTo(page, { x: -38, z: -30 }, (st) => st.done.includes("c4-reach"), "archive", 150000);
+  step("walks into the chapter 4 archive (c4-reach)");
+
+  // Chapter 4 archive scans and optical compare UI
+  await driveStory(page, "c4-compare", "archive compare terminal");
+  if ((await state(page)).card) await page.getByRole("dialog").getByRole("button", { name: /keep exploring/i }).click();
+  await waitFor(page, (x) => !x.chapterCard && !x.cutscene && !x.card, "chapter 4 core free play", 30000);
+  await page.evaluate(() => window.__LAST_LIGHT__.session.travelTo("archive-core"));
+  await waitFor(page, (x) => x.prompt === "c4-compare", "archive core compare prompt");
+  await page.keyboard.press("KeyE");
+  const compareDialog = page.getByRole("dialog", { name: /optical evidence analysis/i });
+  await compareDialog.waitFor();
+  const compareSlider = compareDialog.getByRole("slider");
+  await compareSlider.fill("10");
+  await compareSlider.fill("90");
+  // Wrong first with hint check
+  await compareDialog.getByRole("radio").nth(1).click();
+  await compareDialog.getByRole("button", { name: /check answer/i }).click();
+  assert.match(await compareDialog.getByTestId("compare-hint").innerText(), /EKO/i);
+  // Correct answer
+  await compareDialog.getByRole("radio", { name: /camera sensor noise/i }).click();
+  await shot(page, "10c-optical-compare");
+  await compareDialog.getByRole("button", { name: /check answer/i }).click();
+  await waitFor(page, (x) => x.done.includes("c4-compare"), "optical compare solved");
+  step("Chapter 4 optical compare UI: slider comparison, wrong choice hint, authentic NASA image verification, solved via UI");
+
+  // Chapter 5 rover return and conclusion UI
+  await driveStory(page, "c5-assemble", "rover return conclusion");
+  if ((await state(page)).card) await page.getByRole("dialog").getByRole("button", { name: /keep exploring/i }).click();
+  await waitFor(page, (x) => !x.chapterCard && !x.cutscene && !x.card, "chapter 5 conclusion free play", 30000);
+  await page.evaluate(() => window.__LAST_LIGHT__.session.travelTo("rover-return"));
+  await waitFor(page, (x) => x.prompt === "c5-assemble", "conclusion prompt");
+  await page.keyboard.press("KeyE");
+  const conclusionDialog = page.getByRole("dialog", { name: /scientific conclusion/i });
+  await conclusionDialog.waitFor();
+  // Select supporting evidence chips
+  for (const evName of [/solar panels/i, /dust storm/i, /last transmitted/i]) {
+    await conclusionDialog.getByRole("button", { name: evName }).click();
+  }
+  // Wrong hypothesis first
+  await conclusionDialog.getByRole("radio", { name: /flash memory|software|telemetry/i }).click();
+  await conclusionDialog.getByRole("button", { name: /check answer/i }).click();
+  assert.match(await conclusionDialog.getByTestId("conclusion-hint").innerText(), /EKO/i);
+  // Correct hypothesis
+  await conclusionDialog.getByRole("radio", { name: /atmospheric dust starved solar panels/i }).click();
+  await shot(page, "10d-conclusion-puzzle");
+  await conclusionDialog.getByRole("button", { name: /check answer/i }).click();
+  // Verify synthesis card is displayed and complete
+  await conclusionDialog.getByText(/NASA Scientific Legacy Synthesis/i).waitFor();
+  await conclusionDialog.getByRole("button", { name: /complete mission/i }).click();
+  await waitFor(page, (x) => x.done.includes("c5-assemble"), "conclusion solved");
+  step("Chapter 5 conclusion UI: multi-evidence selection, wrong hypothesis hint, authentic NASA synthesis card, solved via UI");
+
+  await driveStory(page, null, "campaign completion", 60000);
   await waitFor(page, (x) => x.completed, "campaign completion", 60000);
   await page.getByRole("dialog", { name: /mission complete/i }).waitFor();
-  await shot(page, "11-complete");
-  const passport = await page.evaluate(() => JSON.parse(localStorage.getItem("the-last-signal:passport") || "{}"));
-  assert.ok(passport.discovered?.includes("opportunity"), "completion stamps the Explorer Passport");
-  step("all five chapters complete; completion screen and passport stamp");
+  await page.waitForFunction(() => {
+    try {
+      const p = JSON.parse(localStorage.getItem("the-last-signal:passport") || "{}");
+      return p.discovered && p.discovered.includes("opportunity");
+    } catch {
+      return false;
+    }
+  }, { timeout: 10000 });
+  step("all five chapters complete with verified Chapter 3-5 UI interactions; completion screen and passport stamp");
 
   // Museum navigation still works from the game.
   await page.getByRole("link", { name: /open explorer passport/i }).click();

@@ -297,3 +297,29 @@ export function startChapter(progress: GameProgress, index: number): GameProgres
 export function spawnFor(progress: GameProgress): { x: number; z: number; yaw: number } {
   return progress.player ?? { ...CHAPTERS[progress.chapter].spawn };
 }
+
+/**
+ * 90-second judge/demo walkthrough state:
+ * Grants complete chapter access, all evidence unlocked in the Evidence Board,
+ * and enables immediate evaluation of all five chapters, puzzles, and scientific synthesis.
+ */
+export function demoProgress(): GameProgress {
+  const allDone = [...OBJECTIVE_BY_ID.keys()];
+  const allSides = SIDE_DISCOVERIES.map((s) => s.id);
+  const allPuzzles = PUZZLES.map((p) => p.id);
+  const allAchievements = ACHIEVEMENTS.map((a) => a.id);
+  return {
+    v: SAVE_VERSION,
+    chapter: 0,
+    done: allDone,
+    sides: allSides,
+    firstTry: allPuzzles,
+    missed: [],
+    achievements: allAchievements,
+    bestXp: MAX_XP,
+    finished: true,
+    player: null,
+    stats: { distance: 45160, seconds: 5400 },
+    savedAt: new Date().toISOString(),
+  };
+}

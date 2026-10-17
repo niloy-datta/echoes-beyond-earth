@@ -36,6 +36,7 @@ export interface Chapter {
   /** Dust level at the start and at the end of the chapter (0 clear .. 1 dense). */
   storm: [number, number];
   mood: EkoEmotion;
+  hints: readonly L[];
   steps: readonly (readonly Objective[])[];
 }
 
@@ -50,6 +51,10 @@ export const CHAPTERS: readonly Chapter[] = [
     spawn: { x: 0, z: 70, yaw: Math.PI },
     storm: [0, 0.02],
     mood: "curious",
+    hints: [
+      { en: "Follow EKO toward the glowing waypoint on the ridge.", bn: "ঢালের উজ্জ্বল নির্দেশক চিহ্নের দিকে ইকোকে অনুসরণ করো।" },
+      { en: "Press Shift to sprint, and press E near the beacon to scan.", bn: "দ্রুত যেতে Shift চাপো এবং বিকনের কাছে E চেপে স্ক্যান করো।" },
+    ],
     steps: [
       [{ id: "c1-intro", kind: "cutscene", cutscene: "intro", xp: 0, text: { en: "Wake up", bn: "জেগে ওঠো" } }],
       [{
@@ -75,6 +80,10 @@ export const CHAPTERS: readonly Chapter[] = [
     spawn: { x: -9, z: 33, yaw: Math.PI * 0.8 },
     storm: [0.02, 0.12],
     mood: "curious",
+    hints: [
+      { en: "Follow the rover tire tracks south-east to reach Opportunity.", bn: "অপরচুনিটির কাছে যেতে দক্ষিণ-পূর্বে চাকার দাগ ধরে চলো।" },
+      { en: "Inspect all three key subsystems: wheels, solar panels, and the Pancam mast.", bn: "তিনটি প্রধান অংশই পরীক্ষা করো: চাকা, সৌর প্যানেল ও প্যানক্যাম মাস্ট।" },
+    ],
     steps: [
       [{
         id: "c2-reach", kind: "reach", target: "rover-site", xp: 50,
@@ -107,6 +116,10 @@ export const CHAPTERS: readonly Chapter[] = [
     spawn: { x: 14, z: -6, yaw: Math.PI * 1.05 },
     storm: [0.2, 0.95],
     mood: "concerned",
+    hints: [
+      { en: "In the dense dust storm, use your compass and audio pings to locate records.", bn: "ঘন ধুলিঝড়ে কম্পাস ও অডিও সংকেত অনুসরণ করে রেকর্ড খুঁজুন।" },
+      { en: "Drag the dust slider past 80% to see how extreme atmospheric Tau cuts light.", bn: "চরম বায়ুমণ্ডলীয় ধুলার প্রভাব দেখতে স্লাইডার ৮০%-এর ওপরে টানুন।" },
+    ],
     steps: [
       [{ id: "c3-intro", kind: "cutscene", cutscene: "ch3-intro", xp: 0, text: { en: "The sky changes", bn: "আকাশ বদলায়" } }],
       [{
@@ -138,6 +151,10 @@ export const CHAPTERS: readonly Chapter[] = [
     spawn: { x: -18, z: -50, yaw: Math.PI * 0.25 },
     storm: [0.45, 0.3],
     mood: "hopeful",
+    hints: [
+      { en: "Head north-west toward the archive structure and activate all four glowing pedestals.", bn: "উত্তর-পশ্চিমে আর্কাইভ কাঠামোর দিকে যান এবং চারটি উজ্জ্বল বেদি সক্রিয় করুন।" },
+      { en: "Compare the optical frames at the terminal, then arrange the mission timeline from earliest to latest.", bn: "টার্মিনালে অপটিক্যাল ছবিগুলো তুলনা করুন, এরপর সময়রেখাটি ক্রমে সাজান।" },
+    ],
     steps: [
       [{
         id: "c4-reach", kind: "reach", target: "archive", xp: 50,
@@ -152,9 +169,15 @@ export const CHAPTERS: readonly Chapter[] = [
         { id: "c4-frag-image", kind: "scan", target: "frag-image", evidence: "last-image", xp: 40, text: { en: "Restore fragment: the last image", bn: "খণ্ড পুনরুদ্ধার: শেষ ছবি" } },
       ],
       [{
+        id: "c4-compare", kind: "puzzle", puzzle: "optical-compare", target: "archive-core", xp: 100,
+        text: { en: "Analyze optical evidence and storm opacity at the archive core", bn: "আর্কাইভ কেন্দ্রে অপটিক্যাল প্রমাণ ও ঝড়ের আলোহীনতা বিশ্লেষণ করো" },
+        onStart: [{ speaker: "eko", emotion: "curious", text: { en: "Let's analyze the images: look at the clear panorama versus the dark frame sent in June 2018.", bn: "ছবিগুলো বিশ্লেষণ করি: পরিষ্কার প্যানোরামা এবং ২০১৮ সালের জুনের অন্ধকার ফ্রেম পাশাপাশি দেখো।" } }],
+        onComplete: [{ speaker: "eko", emotion: "discovery", text: { en: "Analysis complete! Extreme dust opacity dropped power to critical levels and transmission was interrupted by loss of signal.", bn: "বিশ্লেষণ সফল! চরম ধুলার কারণে শক্তি সংকট দেখা দেয় এবং সংকেত বিচ্ছিন্ন হওয়ায় সম্প্রচার অসম্পূর্ণ থাকে।" } }],
+      }],
+      [{
         id: "c4-timeline", kind: "puzzle", puzzle: "timeline", target: "archive-core", xp: 140,
         text: { en: "Reconstruct the timeline at the archive core", bn: "আর্কাইভ কেন্দ্রে সময়রেখা সাজাও" },
-        onStart: [{ speaker: "eko", emotion: "excited", text: { en: "All four fragments glow. Now put the events in order at the core.", bn: "চারটি খণ্ডই জ্বলছে। এবার কেন্দ্রে ঘটনাগুলো ক্রমে সাজাও।" } }],
+        onStart: [{ speaker: "eko", emotion: "excited", text: { en: "All fragments analyzed. Now put the historical events in chronological order.", bn: "সব খণ্ড বিশ্লেষণ হয়েছে। এবার ঐতিহাসিক ঘটনাগুলো সময়ানুক্রমে সাজাও।" } }],
         onComplete: [{ speaker: "eko", emotion: "discovery", text: { en: "The archive unlocked a final record — the panorama NASA released after the silence.", bn: "আর্কাইভ একটি শেষ রেকর্ড খুলেছে — নীরবতার পরে NASA-র প্রকাশ করা প্যানোরামা।" } }],
         evidence: "legacy-release",
       }],
@@ -165,10 +188,14 @@ export const CHAPTERS: readonly Chapter[] = [
     id: "last-light",
     number: "05",
     title: { en: "The Last Light", bn: "শেষ আলো" },
-    dek: { en: "Return to Oppy. Assemble the evidence.", bn: "অপির কাছে ফিরে যাও। প্রমাণ একত্র করো।" },
+    dek: { en: "Return to Oppy. Synthesize scientific evidence.", bn: "অপির কাছে ফিরে যাও। বৈজ্ঞানিক প্রমাণ সংশ্লেষণ করো।" },
     spawn: { x: -28, z: -20, yaw: -Math.PI * 0.6 },
     storm: [0.3, 0.55],
     mood: "hopeful",
+    hints: [
+      { en: "Head east back to Opportunity where the memorial beacons are placed.", bn: "স্মৃতি-বিকনগুলোর কাছে পূর্বে অপরচুনিটির মূল স্থানে ফিরে যান।" },
+      { en: "Test the three scientific hypotheses using your gathered evidence to form the final NASA conclusion.", bn: "সংগৃহীত প্রমাণের সাহায্যে তিনটি অনুসিদ্ধান্ত পরীক্ষা করে চূড়ান্ত বৈজ্ঞানিক সিদ্ধান্তে পৌঁছান।" },
+    ],
     steps: [
       [{
         id: "c5-return", kind: "reach", target: "rover-return", xp: 60,
@@ -177,7 +204,9 @@ export const CHAPTERS: readonly Chapter[] = [
       }],
       [{
         id: "c5-assemble", kind: "puzzle", puzzle: "final-assembly", target: "rover-return", xp: 200,
-        text: { en: "Assemble the evidence around the rover", bn: "রোভারের চারপাশে প্রমাণ একত্র করো" },
+        text: { en: "Synthesize the NASA scientific conclusion around Opportunity", bn: "অপরচুনিটিকে ঘিরে NASA বৈজ্ঞানিক সিদ্ধান্তে উপনীত হও" },
+        onStart: [{ speaker: "eko", emotion: "hopeful", text: { en: "Test each hypothesis against the real evidence. Let's establish the true scientific conclusion.", bn: "আসল প্রমাণের ভিত্তিতে প্রতিটি অনুসিদ্ধান্ত পরীক্ষা করো। চলো সত্য বৈজ্ঞানিক সিদ্ধান্ত লিপিবদ্ধ করি।" } }],
+        onComplete: [{ speaker: "eko", emotion: "excited", text: { en: "Scientific conclusion verified! Opportunity's 15-year journey changed planetary exploration forever.", bn: "বৈজ্ঞানিক সিদ্ধান্ত প্রমাণিত! অপরচুনিটির ১৫ বছরের যাত্রা মহাকাশ বিজ্ঞানকে চিরতরে বদলে দিয়েছে।" } }],
       }],
       [{ id: "c5-finale", kind: "cutscene", cutscene: "finale", xp: 100, text: { en: "The Last Light", bn: "শেষ আলো" } }],
     ],

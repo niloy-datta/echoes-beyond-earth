@@ -23,7 +23,7 @@ URL switches: `?force2d` (2D mission console), `?quality=low|medium|high|ultra` 
 | --- | --- | --- | --- |
 | 01 | The Awakening | Intro cinematic, movement tutorial, first memory beacon | Final traverse map (PIA23178) |
 | 02 | Footprints in the Dust | Follow tracks to NASA's own Opportunity GLB; scan wheels, solar panels and the Pancam mast in any order; component-identification puzzle | Wheels, solar power, Legacy Pan (PIA22909) |
-| 03 | The Great Storm | Artistic storm reconstruction (sky, fog, wind and EKO's mood change); recover records; science decision on solar power | 2018 storm, last transmitted image (PIA22929), recovery attempts and end of mission |
+| 03 | The Great Storm | Artistic storm reconstruction (sky, fog, wind and EKO's mood change); recover records; **storm lab**: commit a prediction → drag τ (opacity) and watch the 3D sky darken → compare prediction, SIMULATED e^−τ model and OBSERVED JPL estimates → explain (wrong answers get an evidence-based hint) | 2018 storm, last transmitted image (PIA22929), recovery attempts and end of mission |
 | 04 | Echoes of the Past | Fictional holographic archive; restore four memory fragments (real NASA images on the panels); timeline reconstruction; link to the Memory Lens | Legacy Pan release (March 12, 2019) |
 | 05 | The Last Light | Return to Oppy, assemble the evidence (four-question challenge), finale cinematic, completion certificate, Passport stamp | — |
 
@@ -53,7 +53,8 @@ src/game/
 
 ## Performance & resilience
 
-* Quality presets Low / Medium / High / Ultra plus **Auto** (phones start Low, capable desktops may start Ultra), which steps down when the measured frame rate stays under 42 FPS (desktop) or 26 FPS (touch) for two 2.5-second windows.
+* Quality presets Low / Medium / High / Ultra plus **Auto** (phones start Low, capable desktops may start Ultra). Auto (`adaptQuality` in `settings.ts`) checks each 2.5-second window: two slow windows in a row (< 42 FPS desktop, < 26 FPS touch) first lower the render resolution (×0.85, then ×0.72; no shader recompile), then the tier, **Ultra → High → Medium → Low**. It climbs back only after eight smooth windows (≥ 57 / ≥ 45 FPS), never above the initial guess, and never to a tier it has abandoned twice (hysteresis, no oscillation).
+* The simulation keeps real-time pace on slow devices: `GameSession.advance()` splits a slow frame into ≤ 1/15 s substeps (catch-up capped at 0.25 s). Previously one tick clamped to 0.1 s per frame put the whole game into slow motion below 10 FPS; that, plus an iteration-capped test loop, caused the CI stall at `c4-reach`.
 * The explorer uses the committed rigged GLB at `/public/models/game/explorer-{ultra,high,low}.glb`. Regenerate it with `npm run assets:build -- explorer`; the generator records triangle counts, animation clips and SHA-256 hashes in the manifest. Terrain and rocks use the generated regolith/rock base-color, normal and ORM maps.
 * The FPS, preset and CPU frame time are measured and shown live (Settings → *Show performance*).
 * Instanced rocks, a centre-dense terrain grid, a shader-only sky and dust, frame-rate-independent simulation, and rendering paused while the tab is hidden.
@@ -75,7 +76,7 @@ Keyboard-only play; focus-trapped dialogs with Escape and focus return; the 2D c
 ## Tests
 
 * `npm test`: unit tests for content integrity, puzzles, terrain, player/camera/companion, the quest engine, saves, and full-campaign sessions (including save/resume, wrong answers and chapter replay).
-* `node scripts/e2e-game.mjs` (Playwright, against a served `out/`): main menu → new game → skippable cinematic → real WASD walking → reach and scan objectives → evidence card → Tab/M/J/pause → chapter completion + autosave → walk to the rover → out-of-order component scans → puzzle wrong-then-right → reload + Continue → all five chapters → completion screen + Passport stamp → museum navigation → 2D console campaign → mobile joystick + sprint toggle → existing museum routes. Set `GAME_SHOTS=<dir>` for screenshots.
+* `node scripts/e2e-game.mjs` (Playwright, against a served `out/`). Beyond the list below it checks that WASD still works after Pause → Resume (focus on the pause button), clicks through the storm lab UI, and **walks** into the Chapter 4 archive. Later steps are advanced by the session's accessible travel action within a wall-clock deadline; Chapter 4–5 puzzles are answered through the session API there (their validators are unit-tested). Covered: main menu → new game → skippable cinematic → real WASD walking → reach and scan objectives → evidence card → Tab/M/J/pause → chapter completion + autosave → walk to the rover → out-of-order component scans → puzzle wrong-then-right → reload + Continue → all five chapters → completion screen + Passport stamp → museum navigation → 2D console campaign → mobile joystick + sprint toggle → existing museum routes. Set `GAME_SHOTS=<dir>` for screenshots.
 
 ## Known limitations
 

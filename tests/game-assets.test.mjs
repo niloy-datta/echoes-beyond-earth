@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, statSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { NodeIO } from "@gltf-transform/core";
 import { ALL_EXTENSIONS } from "@gltf-transform/extensions";
 import { MeshoptDecoder } from "meshoptimizer";
@@ -84,11 +85,11 @@ test("session: interacting plays a physical action and holds movement until it e
 
 const io = new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({ "meshopt.decoder": MeshoptDecoder });
 await MeshoptDecoder.ready;
-const model = (n) => new URL(`../public/models/game/${n}.glb`, import.meta.url);
+const model = (n) => fileURLToPath(new URL(`../public/models/game/${n}.glb`, import.meta.url));
 
 test("assets: explorer GLBs are genuinely rigged and animated", async () => {
   for (const lod of ["high", "low"]) {
-    const doc = await io.read(model(`explorer-${lod}`).pathname.replace(/^\/(\w:)/, "$1"));
+    const doc = await io.read(model(`explorer-${lod}`));
     const root = doc.getRoot();
     const skins = root.listSkins();
     assert.equal(skins.length, 1);
@@ -105,7 +106,7 @@ test("assets: explorer GLBs are genuinely rigged and animated", async () => {
 });
 
 test("assets: EKO GLB has expression morph targets, clips and a manifest entry", async () => {
-  const doc = await io.read(model("eko-high").pathname.replace(/^\/(\w:)/, "$1"));
+  const doc = await io.read(model("eko-high"));
   const root = doc.getRoot();
   const eyes = root.listMeshes().find((m) => m.getName() === "eyesMesh");
   assert.ok(eyes, "eyes mesh");

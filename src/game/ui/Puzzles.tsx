@@ -4,10 +4,13 @@ import { useEffect, useMemo, useState } from "react";
 import { OBJECTIVE_BY_ID } from "../content/chapters";
 import { EVIDENCE_BY_ID } from "../content/evidence";
 import {
-  PUZZLE_BY_ID, TAU_RECHARGE, TAU_STORM_PEAK, TAU_USUAL, checkMatch, checkOrder, checkPower, checkQuiz, comparePrediction, directBeam, shuffledOrder,
+  PUZZLE_BY_ID, TAU_RECHARGE, TAU_STORM_PEAK, TAU_USUAL, checkMatch, checkOrder, checkPower, checkQuiz, checkCompare, checkConclusion,
+  comparePrediction, directBeam, illustrativeLight, shuffledOrder,
   type PowerPrediction, type Puzzle,
 } from "../content/puzzles";
 import type { GameSession } from "../core/session";
+import { evidenceOf } from "../core/progress";
+import { assetPath } from "@/lib/asset-path";
 import { Modal } from "./Modal";
 import { S } from "./strings";
 
@@ -232,6 +235,252 @@ function QuizPuzzle({ p, lang, submit }: { p: Extract<Puzzle, { kind: "quiz" }>;
   );
 }
 
+function ComparePuzzle({ p, lang, submit }: { p: Extract<Puzzle, { kind: "compare" }>; lang: Lang; submit: Submit }) {
+  const [slider, setSlider] = useState(50);
+  const [explored, setExplored] = useState(false);
+  const [choice, setChoice] = useState<number | null>(null);
+  const [state, setState] = useState<"idle" | "wrong" | "right">("idle");
+
+  const onSliderChange = (val: number) => {
+    setSlider(val);
+    if (val <= 20 || val >= 80) setExplored(true);
+  };
+
+  return (
+    <>
+      <div className="ll-compare-viewer">
+        <div className="ll-compare-container">
+          <div className="ll-compare-layer ll-compare-layer--after">
+            <img src={assetPath(p.after.image)} alt={p.after.title[lang]} />
+            <div className="ll-compare-badge ll-compare-badge--right">
+              <strong>{p.after.title[lang]}</strong>
+              <small>{p.after.sol} · Tau: {p.after.tau}</small>
+            </div>
+          </div>
+          <div className="ll-compare-layer ll-compare-layer--before" style={{ clipPath: `inset(0 ${100 - slider}% 0 0)` }}>
+            <img src={assetPath(p.before.image)} alt={p.before.title[lang]} />
+            <div className="ll-compare-badge ll-compare-badge--left">
+              <strong>{p.before.title[lang]}</strong>
+              <small>{p.before.sol} · Tau: {p.before.tau}</small>
+            </div>
+          </div>
+          <div className="ll-compare-divider" style={{ left: `${slider}%` }}>
+            <span className="ll-compare-handle">↔</span>
+          </div>
+        </div>
+
+        <label className="ll-range">
+          <span>{S.sliderInstruction[lang]}: {slider}%</span>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={slider}
+            data-autofocus
+            onChange={(e) => onSliderChange(Number(e.target.value))}
+          />
+        </label>
+        <p className="ll-muted text-xs">
+          {lang === "bn"
+            ? "NASA JPL Photojournal PIA22909 (লেগ্যাসি প্যান মোজাইক), PIA22929 (সল ৫১১১ শেষ বার্তা) এবং PIA22930 (শেষ ধারণকৃত ফ্রেমের থাম্বনেইল) থেকে সংকলিত।"
+            : "Compiled from NASA JPL Photojournal PIA22909 (Legacy Pan composite), PIA22929 (Sol 5111 Last Message), and PIA22930 (last captured Pancam thumbnails)."}
+        </p>
+      </div>
+
+      <fieldset className="ll-quiz" disabled={!explored}>
+        <legend>
+          {p.question[lang]}
+          {!explored && (
+            <small> — {lang === "bn" ? "প্রথমে স্লাইডার টেনে দুই ফ্রেম তুলনা করে দেখো" : "first drag the slider to compare both frames"}</small>
+          )}
+        </legend>
+        {p.options.map((o, i) => (
+          <button
+            key={i}
+            type="button"
+            role="radio"
+            aria-checked={choice === i}
+            className={`ll-choice ll-choice--block ${choice === i ? "is-selected" : ""}`}
+            onClick={() => { setChoice(i); setState("idle"); }}
+          >
+            {o[lang]}
+          </button>
+        ))}
+      </fieldset>
+      <Feedback state={state} lang={lang} />
+      {state === "wrong" && p.hints && choice !== null && p.hints[choice] && (
+        <p className="ll-hint text-sm" data-testid="compare-hint">
+          <strong>EKO:</strong> {p.hints[choice]![lang]}
+        </p>
+      )}
+      {state === "right" && (
+        <p className="ll-explanation text-xs text-signal">
+          ✓ {p.explanation[lang]}
+        </p>
+      )}
+      <div className="ll-actions">
+        <button
+          type="button"
+          className="ll-btn ll-btn--primary"
+          disabled={choice === null || !explored}
+          onClick={() => {
+            const ok = submit(checkCompare(p, choice ?? -1, explored));
+            setState(ok ? "right" : "wrong");
+          }}
+        >
+          {S.check[lang]}
+        </button>
+      </div>
+    </>
+  );
+}
+
+function ConclusionPuzzle({ p, lang, submit, session }: { p: Extract<Puzzle, { kind: "conclusion" }>; lang: Lang; submit: Submit; session?: GameSession }) {
+  const [selectedEvidence, setSelectedEvidence] = useState<string[]>([]);
+  const [chosenHypothesis, setChosenHypothesis] = useState<string | null>(null);
+  const [state, setState] = useState<"idle" | "wrong" | "right">("idle");
+  const [wrongHint, setWrongHint] = useState<string | null>(null);
+  const [showSynthesis, setShowSynthesis] = useState(false);
+
+  const owned = session ? evidenceOf(session.progress) : ["solar", "storm", "last-image", "wheels", "traverse"];
+
+  const toggleEvidence = (id: string) => {
+    setSelectedEvidence((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
+    setState("idle");
+    setWrongHint(null);
+  };
+
+  const hasAllEvidence = p.requiredEvidence.every((e) => selectedEvidence.includes(e));
+
+  const onSubmit = () => {
+    if (!chosenHypothesis) return;
+    const ok = checkConclusion(p, selectedEvidence, chosenHypothesis, session ? evidenceOf(session.progress) : undefined);
+    const accepted = submit(ok);
+    if (accepted) {
+      setState("right");
+      setShowSynthesis(true);
+      setWrongHint(null);
+    } else {
+      setState("wrong");
+      if (!hasAllEvidence) {
+        setWrongHint(
+          lang === "bn"
+            ? "ইকো ইঙ্গিত: সিদ্ধান্ত প্রমাণের জন্য অপরচুনিটির সৌরবিদ্যুৎ, ধুলিঝড় ও শেষ ট্রান্সমিশন—এই তিনটি প্রমাণই সংযুক্ত করা আবশ্যক।"
+            : "EKO Hint: To substantiate your conclusion, you must connect all three critical records: solar panels, the dust storm, and the final telemetry."
+        );
+      } else {
+        const hyp = p.hypotheses.find((h) => h.id === chosenHypothesis);
+        if (hyp?.hint) {
+          setWrongHint(`EKO: ${hyp.hint[lang]}`);
+        } else if (hyp) {
+          setWrongHint(`EKO: ${hyp.reason[lang]}`);
+        }
+      }
+    }
+  };
+
+  const candidateEvidence = ["solar", "storm", "last-image", "wheels", "traverse"];
+
+  return (
+    <div className="ll-conclusion-puzzle">
+      <section className="ll-conclusion-step">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-signal">
+          {lang === "bn" ? "ধাপ ১: প্রাসঙ্গিক NASA প্রমাণ নিশ্চিত করো" : "Step 1: Select Supporting NASA Evidence"}
+        </h3>
+        <p className="ll-muted text-xs">
+          {lang === "bn"
+            ? "অপরচুনিটির শক্তি ও ঝড়ের পরিণতি বিশ্লেষণে কোন প্রমাণগুলো প্রাসঙ্গিক? (কমপক্ষে ৩টি নির্বাচন করো)"
+            : "Which mission records directly address Opportunity's power loss and the storm? (Select at least 3)"}
+        </p>
+        <div className="ll-evidence-selector-grid">
+          {candidateEvidence.map((id) => {
+            const ev = EVIDENCE_BY_ID.get(id);
+            if (!ev) return null;
+            const isOwned = owned.includes(id);
+            const checked = selectedEvidence.includes(id);
+            return (
+              <button
+                key={id}
+                type="button"
+                disabled={!isOwned}
+                className={`ll-evidence-chip ${checked ? "is-selected" : ""} ${!isOwned ? "is-locked opacity-50 cursor-not-allowed" : ""}`}
+                onClick={() => isOwned && toggleEvidence(id)}
+                title={!isOwned ? (lang === "bn" ? "আগে প্রমাণ সংগ্রহ করো" : "Collect evidence first") : undefined}
+              >
+                <span>{isOwned ? (checked ? "✓" : "○") : "🔒"}</span>
+                <span>{isOwned ? ev.title[lang] : S.locked[lang]}</span>
+                <small className="ll-muted font-mono">{ev.piaId ?? ev.id}</small>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="ll-conclusion-step">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-signal">
+          {lang === "bn" ? "ধাপ ২: বৈজ্ঞানিক অনুসিদ্ধান্ত মূল্যায়ন" : "Step 2: Evaluate Scientific Hypotheses"}
+        </h3>
+        <p className="ll-muted text-xs">
+          {lang === "bn"
+            ? "সংগৃহীত প্রমাণের আলোকে কোন অনুসিদ্ধান্তটি সত্য প্রমাণিত হয়?"
+            : "Based on empirical evidence, which hypothesis is supported by NASA mission data?"}
+        </p>
+        <div role="radiogroup" className="ll-hypotheses-list">
+          {p.hypotheses.map((h) => {
+            const isSelected = chosenHypothesis === h.id;
+            return (
+              <div
+                key={h.id}
+                role="radio"
+                aria-checked={isSelected}
+                tabIndex={0}
+                className={`ll-hypothesis-card ${isSelected ? "is-selected" : ""}`}
+                onClick={() => { setChosenHypothesis(h.id); setState("idle"); setWrongHint(null); }}
+                onKeyDown={(e) => { if (e.key === " " || e.key === "Enter") { setChosenHypothesis(h.id); setState("idle"); setWrongHint(null); } }}
+              >
+                <div className="ll-hypothesis-header">
+                  <span className="ll-radio-dot">{isSelected ? "●" : "○"}</span>
+                  <strong>{h.claim[lang]}</strong>
+                </div>
+                <p className="ll-hypothesis-reason text-xs ll-muted">
+                  {lang === "bn" ? "প্রমাণ পরীক্ষা" : "Tested against"}: {EVIDENCE_BY_ID.get(h.testedEvidence)?.title[lang]} — {h.reason[lang]}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <Feedback state={state} lang={lang} />
+      {state === "wrong" && wrongHint && (
+        <p className="ll-hint text-sm" data-testid="conclusion-hint">
+          {wrongHint}
+        </p>
+      )}
+
+      {showSynthesis && (
+        <article className="ll-synthesis-card">
+          <h4>✦ {p.synthesis.title[lang]}</h4>
+          <p>{p.synthesis.takeaway[lang]}</p>
+        </article>
+      )}
+
+      <div className="ll-actions">
+        <button
+          type="button"
+          className="ll-btn ll-btn--primary"
+          disabled={!hasAllEvidence || !chosenHypothesis}
+          onClick={onSubmit}
+        >
+          {S.check[lang]}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function PuzzleDialog({ session, lang, onClose, onSolved }: { session: GameSession; lang: Lang; onClose: () => void; onSolved: () => void }) {
   const objective = session.puzzle ? OBJECTIVE_BY_ID.get(session.puzzle) : null;
   const puzzle = useMemo(() => (objective?.puzzle ? PUZZLE_BY_ID.get(objective.puzzle) : null), [objective]);
@@ -255,6 +504,8 @@ export function PuzzleDialog({ session, lang, onClose, onSolved }: { session: Ga
       {puzzle.kind === "power" && <PowerPuzzle p={puzzle} lang={lang} submit={submit} />}
       {puzzle.kind === "order" && <OrderPuzzle p={puzzle} lang={lang} submit={submit} />}
       {puzzle.kind === "quiz" && <QuizPuzzle p={puzzle} lang={lang} submit={submit} />}
+      {puzzle.kind === "compare" && <ComparePuzzle p={puzzle} lang={lang} submit={submit} />}
+      {puzzle.kind === "conclusion" && <ConclusionPuzzle p={puzzle} lang={lang} submit={submit} session={session} />}
     </Modal>
   );
 }

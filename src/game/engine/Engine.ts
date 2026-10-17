@@ -439,7 +439,8 @@ export class Engine {
 
   /** Expose a few debug values for automated browser tests. */
   debugInfo() {
-    return { rover: this.rover.userData.source ?? "loading", quality: this.view.quality, resolution: this.renderer.getPixelRatio(), fps: this.view.fps, frameMs: this.view.frameMs, calls: this.renderer.info.render.calls, footprints: this.astronaut.effects.printCount, triangles: this.renderer.info.render.triangles };
+    const prints = (this.astronaut as unknown as { effects?: { printCount?: number } }).effects?.printCount ?? 0;
+    return { rover: this.rover.userData.source ?? "loading", quality: this.view.quality, resolution: this.renderer.getPixelRatio(), fps: this.view.fps, frameMs: this.view.frameMs, calls: this.renderer.info.render.calls, footprints: prints, triangles: this.renderer.info.render.triangles };
   }
 
   dispose() {

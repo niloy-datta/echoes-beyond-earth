@@ -14,13 +14,15 @@ type Lang = "en" | "bn";
  * GameSession as the 3D renderer (north-up camera, so W/↑ walks north) and
  * offers an accessible "travel to" list for keyboard and screen-reader users.
  */
-export function Console2D({ session, lang, consume, onTravel, paused, onStorm }: {
+export function Console2D({ session, lang, consume, onTravel, paused, onStorm, onOpenBoard, onHint }: {
   session: GameSession;
   lang: Lang;
   consume: () => SessionInput;
   onTravel: (poi: string) => void;
   paused: boolean;
   onStorm?: (storm: number) => void;
+  onOpenBoard?: () => void;
+  onHint?: () => void;
 }) {
   const [bg, setBg] = useState("");
   const player = useRef<HTMLSpanElement>(null);
@@ -76,7 +78,21 @@ export function Console2D({ session, lang, consume, onTravel, paused, onStorm }:
         <span className="ll-console__north" aria-hidden>N ↑</span>
       </div>
       <aside className="ll-console__list" aria-label={lang === "bn" ? "যাওয়ার জায়গা" : "Destinations"}>
-        <p className="ll-kicker">{lang === "bn" ? "২ডি মিশন কনসোল" : "2D mission console"}</p>
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <p className="ll-kicker m-0">{lang === "bn" ? "২ডি মিশন কনসোল" : "2D mission console"}</p>
+          <div className="flex gap-1">
+            {onOpenBoard && (
+              <button type="button" className="ll-btn ll-btn--small" onClick={onOpenBoard} title={lang === "bn" ? "প্রমাণ বোর্ড" : "Evidence Board"}>
+                📋 <kbd>B</kbd>
+              </button>
+            )}
+            {onHint && (
+              <button type="button" className="ll-btn ll-btn--small" onClick={onHint} title={lang === "bn" ? "ইকো ইঙ্গিত" : "EKO Hint"}>
+                💡 <kbd>H</kbd>
+              </button>
+            )}
+          </div>
+        </div>
         <ul>
           {shown.map((poi) => (
             <li key={poi.id}>

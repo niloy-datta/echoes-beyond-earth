@@ -397,6 +397,14 @@ export class GameSession {
     if (!this.subtitle) this.nextLine();
   }
 
+  requestHint() {
+    if (this.cutscene || this.subtitle) return;
+    const hints = this.chapter.hints;
+    if (!hints || !hints.length) return;
+    const line = hints[Math.floor(Math.random() * hints.length)];
+    this.say([{ speaker: "eko", emotion: "curious", text: line }]);
+  }
+
   private nextLine() {
     const line = this.queue.shift();
     if (!line) { if (this.subtitle) { this.subtitle = null; this.changed(); } return; }

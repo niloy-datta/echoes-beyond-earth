@@ -546,3 +546,55 @@ test("progression: demoProgress grants complete access for 90s judge evaluation"
   assert.ok(evidenceOf(demo).length >= 8);
   assert.equal(demo.done.length, ALL_OBJECTIVES.length);
 });
+
+test("session: demo session is isolated, never calls persist on save, chapter replay or completion", () => {
+  let persistCalls = 0;
+  const demoSession = new GameSession(demoProgress(), () => { persistCalls++; }, true);
+  assert.equal(demoSession.isDemo, true);
+
+  // Manual and automated saves
+  demoSession.save();
+  assert.equal(persistCalls, 0, "manual save() must not invoke persist in demo mode");
+
+  // Chapter replay within demo
+  demoSession.replayChapter(3);
+  assert.equal(demoSession.progress.chapter, 3);
+  assert.equal(persistCalls, 0, "replayChapter() must not invoke persist in demo mode");
+
+  // Simulating gameplay completion
+  playSession(demoSession);
+  assert.equal(demoSession.completed, true);
+  assert.equal(persistCalls, 0, "completing campaign in demo mode must never invoke persist");
+});
+
+test("session: existing player save and fresh saves are preserved across demo execution", () => {
+  // 1. Existing save scenario: player at Chapter 2 with 350 XP and 1 achievement
+  const playerSave = {
+    ...startChapter(newProgress(), 1),
+    bestXp: 350,
+    achievements: ["first-step"],
+    stats: { distance: 42.5, time: 300, scans: 4, puzzles: 2 },
+  };
+  const snapshotBefore = JSON.stringify(playerSave);
+
+  // Launch and run demo
+  let mockStorage = JSON.stringify(playerSave);
+  const persist = (p) => { mockStorage = JSON.stringify(p); };
+
+  const demoSession = new GameSession(demoProgress(), persist, true);
+  demoSession.replayChapter(4);
+  playSession(demoSession);
+
+  // Verify storage was never touched
+  assert.equal(mockStorage, snapshotBefore, "player save in storage must remain completely untouched by demo session");
+
+  // 2. Fresh save scenario: player has no prior save (null)
+  let freshStorage = null;
+  const freshPersist = (p) => { freshStorage = JSON.stringify(p); };
+  const freshDemo = new GameSession(demoProgress(), freshPersist, true);
+  freshDemo.save();
+  freshDemo.replayChapter(2);
+  playSession(freshDemo);
+  assert.equal(freshStorage, null, "demo session must never create a persistent save for fresh users");
+});
+

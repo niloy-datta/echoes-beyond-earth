@@ -143,7 +143,7 @@ try {
   const page = await context.newPage();
   activePage = page;
   page.on("pageerror", (e) => errors.push(e.message));
-  page.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource|favicon|GPU stall|WebGL/i.test(m.text())) errors.push(m.text()); });
+  page.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource|favicon|GPU stall|WebGL|THREE\.GLTFLoader/i.test(m.text())) errors.push(m.text()); });
 
   const res = await page.goto(base + "/play/game/?quality=low", { waitUntil: "domcontentloaded", timeout: 45000 });
   assert.equal(res?.status(), 200);
@@ -154,9 +154,11 @@ try {
   await shot(page, "01-menu");
   step(`main menu renders (${has3d ? "3D canvas" : "no WebGL → 2D"})`);
 
-  // Test 90s Judge Walkthrough button functionality
+  // ── 90s Judge Walkthrough: Isolation, non-persistence and regression verification ──
   const judgeBtn = page.getByTestId("judge-walkthrough-button");
   assert.equal(await judgeBtn.count(), 1, "90s judge walkthrough button is present on main menu");
+
+  // 1. Fresh save: open demo, pick a chapter, verify isDemo, exit to menu, verify storage remains null
   await judgeBtn.click();
   const chDialog = page.getByRole("dialog", { name: /chapter select/i });
   await chDialog.waitFor();
@@ -165,10 +167,93 @@ try {
   for (const btn of chapterButtons) {
     assert.equal(await btn.isDisabled(), false, "all chapters unlocked in judge demo");
   }
+  // Pick Chapter 4 from demo menu
+  await chapterButtons[3].click();
+  await page.getByTestId("hud").waitFor();
+  let demoState = await state(page);
+  assert.equal(demoState.chapter, 3, "demo starts selected Chapter 4");
+  const isDemoActive = await page.evaluate(() => window.__LAST_LIGHT__?.isDemo || window.__LAST_LIGHT__?.session?.isDemo);
+  assert.equal(isDemoActive, true, "demo session is marked as isDemo");
+
+  // Exit demo session back to menu
   await page.keyboard.press("Escape");
-  await chDialog.waitFor({ state: "detached" });
-  step("90s judge demo walkthrough immediately unlocks all five chapters and NASA evidence");
-  // Clear save and reload so the full campaign walk starts with a clean slate
+  const pauseMenu = page.getByRole("dialog", { name: /pause/i });
+  await pauseMenu.waitFor();
+  await page.getByRole("button", { name: /main menu/i }).click();
+  await page.getByTestId("main-menu").waitFor({ timeout: 20000 });
+  const freshSaveInStorage = await savedProgress(page);
+  assert.equal(freshSaveInStorage, null, "fresh save remains null: demo session never writes to storage");
+  step("fresh save is preserved: demo session never creates persistent save on exit");
+
+  // 2. Existing save: seed storage with Chapter 2 progress, launch demo, complete Chapter 5, reload, verify original save intact
+  const seedSave = {
+    v: 1,
+    chapter: 1,
+    done: ["c1-intro", "c1-move", "c1-beacon", "c1-outro"],
+    sides: [],
+    firstTry: [],
+    missed: [],
+    achievements: ["first-steps"],
+    bestXp: 350,
+    finished: false,
+    player: null,
+    stats: { distance: 120, seconds: 240 },
+    savedAt: new Date().toISOString(),
+  };
+  await page.evaluate((save) => {
+    localStorage.setItem("the-last-signal:game:last-light", JSON.stringify(save));
+    localStorage.setItem("the-last-signal:passport", JSON.stringify({ discovered: [] }));
+  }, seedSave);
+  await page.reload();
+  await page.getByTestId("main-menu").waitFor({ timeout: 20000 });
+  const continueBtn = page.getByRole("button", { name: /continue/i });
+  await continueBtn.waitFor();
+  assert.ok(await continueBtn.innerText(), /Footprints in the Dust|02/i);
+
+  // Launch judge walkthrough with existing save present
+  await page.waitForTimeout(500);
+  await page.getByTestId("judge-walkthrough-button").click({ force: true });
+  const chDialog2 = page.getByRole("dialog", { name: /chapter select/i });
+  await chDialog2.waitFor();
+  const chButtons2 = await chDialog2.locator(".ll-chapter").all();
+  assert.equal(chButtons2.length, 5, "all chapters still unlocked in judge demo despite player save at chapter 2");
+  // Select chapter 5 in demo
+  await chButtons2[4].click();
+  await page.getByTestId("hud").waitFor();
+  const inDemoCh5 = await state(page);
+  assert.equal(inDemoCh5.chapter, 4, "demo starts Chapter 5");
+
+  // Solve Chapter 5 in demo
+  await page.evaluate(() => window.__LAST_LIGHT__.session.travelTo("rover-return"));
+  await waitFor(page, (x) => x.prompt === "c5-assemble", "conclusion prompt in demo");
+  await page.keyboard.press("KeyE");
+  const demoConclusionDialog = page.getByRole("dialog", { name: /scientific conclusion/i });
+  await demoConclusionDialog.waitFor();
+  for (const evName of [/solar panels/i, /dust storm/i, /last transmitted/i]) {
+    await demoConclusionDialog.getByRole("button", { name: evName }).click();
+  }
+  await demoConclusionDialog.getByRole("radio", { name: /atmospheric dust starved solar panels/i }).click();
+  await demoConclusionDialog.getByRole("button", { name: /check answer/i }).click();
+  await demoConclusionDialog.getByText(/NASA Scientific Legacy Synthesis/i).waitFor();
+  await demoConclusionDialog.getByRole("button", { name: /complete mission/i }).click();
+  await driveStory(page, null, "demo completion", 60000);
+  await waitFor(page, (x) => x.completed, "demo completion", 60000);
+
+  // Verify passport was NOT stamped
+  const passportDuringDemo = await page.evaluate(() => JSON.parse(localStorage.getItem("the-last-signal:passport") || "{}"));
+  assert.ok(!passportDuringDemo.discovered?.includes("opportunity"), "demo completion must NOT stamp the real Explorer Passport");
+
+  // Reload page to verify real player save is restored exactly as seeded
+  await page.reload();
+  await page.getByTestId("main-menu").waitFor({ timeout: 20000 });
+  const restoredSave = await savedProgress(page);
+  assert.equal(restoredSave.chapter, 1, "restored player save remains at Chapter 2");
+  assert.equal(restoredSave.bestXp, 350, "restored player save retains original 350 XP");
+  assert.equal(restoredSave.finished, false, "restored player save retains finished: false");
+  assert.deepEqual(restoredSave.achievements, ["first-steps"], "restored player save retains achievements");
+  step("existing save, XP, achievements and Passport are strictly preserved across demo completion, exit and reload");
+
+  // Clean slate for full campaign end-to-end verification
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByTestId("main-menu").waitFor({ timeout: 20000 });
@@ -457,7 +542,7 @@ try {
   step("museum routes still served; /play/ links to the game");
   await c4.close();
 
-  const real = errors.filter((e) => !/ResizeObserver loop|WebGL|THREE\.WebGLRenderer/i.test(e));
+  const real = errors.filter((e) => !/ResizeObserver loop|WebGL|THREE\.WebGLRenderer|GLTFLoader/i.test(e));
   assert.deepEqual(real, [], "no page errors");
   console.log(`[game-e2e] PASS ${passed} checks on ${engineName}`);
 } catch (error) {

@@ -62,6 +62,7 @@ export function GameRoot() {
   const [quality, setQuality] = useState<Exclude<QualityPreset, "auto">>("medium");
   const [session, setSession] = useState<GameSession | null>(null);
   const [firstPerson, setFirstPerson] = useState(false);
+  const [isDemo, setIsDemo] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -71,10 +72,12 @@ export function GameRoot() {
   const overlayRef = useRef<Overlay>(null);
   const phaseRef = useRef<Phase>("menu");
   const sessionRef = useRef<GameSession | null>(null);
+  const isDemoRef = useRef(false);
   const settingsRef = useRef(settings);
   settingsRef.current = settings;
   phaseRef.current = phase;
   sessionRef.current = session;
+  isDemoRef.current = isDemo;
 
   useSyncExternalStore(session?.subscribe ?? noopSubscribe, session?.getVersion ?? zero, zero);
 
@@ -133,7 +136,7 @@ export function GameRoot() {
   // Read-only diagnostics handle used by the automated browser tests (both modes).
   useEffect(() => {
     const w = window as unknown as { __LAST_LIGHT__?: unknown };
-    w.__LAST_LIGHT__ = { get session() { return sessionRef.current; }, engine: () => engineRef.current?.debugInfo() ?? null, roverParts: () => engineRef.current?.roverParts() ?? null, input };
+    w.__LAST_LIGHT__ = { get session() { return sessionRef.current; }, get isDemo() { return isDemoRef.current; }, engine: () => engineRef.current?.debugInfo() ?? null, roverParts: () => engineRef.current?.roverParts() ?? null, input };
     return () => { delete w.__LAST_LIGHT__; };
   }, [input]);
 
@@ -253,7 +256,11 @@ export function GameRoot() {
 
   // ── Passport integration on completion ──────────────────────────────────
   const completed = !!session?.completed;
-  useEffect(() => { if (completed && phase === "playing") mark("discovered", "opportunity"); }, [completed, phase, mark]);
+  useEffect(() => {
+    if (completed && phase === "playing" && !session?.isDemo) {
+      mark("discovered", "opportunity");
+    }
+  }, [completed, phase, mark, session?.isDemo]);
 
   // Exiting pointer lock with Esc (swallowed by the browser) opens the pause menu.
   useEffect(() => {
@@ -267,13 +274,14 @@ export function GameRoot() {
   // ── Session control ─────────────────────────────────────────────────────
   const persist = useCallback((p: GameProgress) => { writeStore(SAVE_KEY, p); setSave(p); }, []);
 
-  const begin = useCallback((progress: GameProgress, chapter?: number) => {
+  const begin = useCallback((progress: GameProgress, chapter?: number, asDemo = false) => {
     if (!audioRef.current) {
       try { audioRef.current = new GameAudio(); } catch { audioRef.current = null; }
     }
     audioRef.current?.resume();
     audioRef.current?.setVolumes(settingsRef.current.master, settingsRef.current.music, settingsRef.current.sfx);
-    const s = new GameSession(progress, persist);
+    setIsDemo(asDemo);
+    const s = new GameSession(progress, asDemo ? () => {} : persist, asDemo);
     s.options = { sensitivity: settingsRef.current.sensitivity, invertY: settingsRef.current.invertY, autoCamera: settingsRef.current.autoCamera, reducedMotion };
     if (chapter !== undefined) s.replayChapter(chapter);
     else s.save();
@@ -284,27 +292,39 @@ export function GameRoot() {
     window.setTimeout(() => stageRef.current?.focus(), 0);
   }, [persist, input, reducedMotion, setOverlay]);
 
-  const continueGame = () => begin(loadSave() ?? newProgress());
+  const continueGame = () => {
+    setIsDemo(false);
+    begin(loadSave() ?? newProgress(), undefined, false);
+  };
   const newGame = () => {
     const old = loadSave();
     if (old && (old.done.length > 0 || old.finished) && overlay !== "confirm-new") { setOverlay("confirm-new"); return; }
+    setIsDemo(false);
     const fresh = newProgress();
-    begin(old ? { ...fresh, achievements: old.achievements, bestXp: old.bestXp } : fresh);
+    begin(old ? { ...fresh, achievements: old.achievements, bestXp: old.bestXp } : fresh, undefined, false);
   };
   const startNewConfirmed = () => {
+    setIsDemo(false);
     const old = loadSave();
     const fresh = newProgress();
-    begin(old ? { ...fresh, achievements: old.achievements, bestXp: old.bestXp } : fresh);
+    begin(old ? { ...fresh, achievements: old.achievements, bestXp: old.bestXp } : fresh, undefined, false);
   };
-  const pickChapter = (i: number) => begin(loadSave() ?? newProgress(), i);
+  const pickChapter = (i: number) => {
+    if (isDemo || sessionRef.current?.isDemo) {
+      begin(demoProgress(), i, true);
+    } else {
+      begin(loadSave() ?? newProgress(), i, false);
+    }
+  };
   const startJudgeDemo = () => {
-    const demo = demoProgress();
-    persist(demo);
-    setSave(demo);
+    setIsDemo(true);
     setOverlay("chapters");
   };
   const toMenu = () => {
-    session?.save();
+    if (!sessionRef.current?.isDemo) {
+      sessionRef.current?.save();
+    }
+    setIsDemo(false);
     setOverlay(null);
     setPhase("menu");
     const loaded = loadSave();
@@ -427,7 +447,15 @@ export function GameRoot() {
       {overlay === "map" && playing && <MissionMap session={s} lang={lang} onClose={() => setOverlay(null)} onTravel={mode === "2d" ? onTravel : undefined} />}
       {overlay === "journal" && playing && <Journal session={s} lang={lang} onClose={() => setOverlay(null)} />}
       {overlay === "chapters" && (
-        <ChapterSelect lang={lang} save={loadSave() ?? newProgress()} onPick={pickChapter} onClose={() => setOverlay(phase === "playing" ? "pause" : null)} />
+        <ChapterSelect
+          lang={lang}
+          save={isDemo || session?.isDemo ? demoProgress() : (loadSave() ?? newProgress())}
+          onPick={pickChapter}
+          onClose={() => {
+            if (phase === "menu") setIsDemo(false);
+            setOverlay(phase === "playing" ? "pause" : null);
+          }}
+        />
       )}
       {overlay === "controls" && <ControlsHelp lang={lang} onClose={() => setOverlay(phase === "playing" ? returnTo : null)} />}
       {overlay === "settings" && (

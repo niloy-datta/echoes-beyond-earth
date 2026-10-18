@@ -94,11 +94,13 @@ export class GameSession {
   private version = 0;
   private listeners = new Set<() => void>();
   private cueListeners = new Set<(cue: Cue, detail?: { x: number; z: number }) => void>();
+  readonly isDemo: boolean;
   private persist: (p: GameProgress) => void;
 
-  constructor(progress: GameProgress | null, persist: (p: GameProgress) => void = () => {}) {
+  constructor(progress: GameProgress | null, persist: (p: GameProgress) => void = () => {}, isDemo = false) {
     this.progress = progress ?? newProgress();
-    this.persist = persist;
+    this.isDemo = isDemo;
+    this.persist = isDemo ? () => {} : persist;
     const colliders: Circle[] = this.rocks.filter((r) => r.collide > 0).map((r) => ({ x: r.x, z: r.z, r: r.collide, h: r.size * r.squash }));
     colliders.push({ x: ROVER_POSITION.x, z: ROVER_POSITION.z, r: 1.55, h: 1.55 });
     for (const [dx, dz] of ARCHIVE_PILLARS) colliders.push({ x: ARCHIVE_POSITION.x + dx, z: ARCHIVE_POSITION.z + dz, r: 0.4, h: 3.2 });
@@ -240,7 +242,9 @@ export class GameSession {
       player: this.completed || this.cutscene ? this.progress.player : { x: +p.x.toFixed(2), z: +p.z.toFixed(2), yaw: +p.yaw.toFixed(3) },
       savedAt: new Date().toISOString(),
     };
-    this.persist(this.progress);
+    if (!this.isDemo) {
+      this.persist(this.progress);
+    }
   }
 
   // ── Objectives ──────────────────────────────────────────────────────────

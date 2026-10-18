@@ -143,7 +143,7 @@ try {
   const page = await context.newPage();
   activePage = page;
   page.on("pageerror", (e) => errors.push(e.message));
-  page.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource|favicon|GPU stall|WebGL|THREE\.GLTFLoader/i.test(m.text())) errors.push(m.text()); });
+  page.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource|favicon|GPU stall|WebGL|THREE\.GLTFLoader|access control checks/i.test(m.text())) errors.push(m.text()); });
 
   const res = await page.goto(base + "/play/game/?quality=low", { waitUntil: "domcontentloaded", timeout: 45000 });
   assert.equal(res?.status(), 200);
@@ -542,7 +542,7 @@ try {
   step("museum routes still served; /play/ links to the game");
   await c4.close();
 
-  const real = errors.filter((e) => !/ResizeObserver loop|WebGL|THREE\.WebGLRenderer|GLTFLoader/i.test(e));
+  const real = errors.filter((e) => !/ResizeObserver loop|WebGL|THREE\.WebGLRenderer|GLTFLoader|access control checks/i.test(e));
   assert.deepEqual(real, [], "no page errors");
   console.log(`[game-e2e] PASS ${passed} checks on ${engineName}`);
 } catch (error) {

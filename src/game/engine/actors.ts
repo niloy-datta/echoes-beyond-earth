@@ -288,17 +288,28 @@ export function stylizedRover(): THREE.Group {
   return g;
 }
 
-/** Load NASA/Ames' Opportunity GLB through the same-origin Draco decoder. */
+/** Restore the material response of NASA's MER mesh under the Mars sky. */
+const MER_SURFACES: Record<string, { metalness: number; roughness: number }> = {
+  tex_panels_n: { metalness: .25, roughness: .32 }, tex_panels2_n: { metalness: .25, roughness: .32 },
+  tex_instruments: { metalness: .4, roughness: .45 }, tex_body_n: { metalness: .08, roughness: .55 },
+  tex_suspension_n: { metalness: .55, roughness: .42 }, Silver: { metalness: .9, roughness: .32 },
+  tex_mast: { metalness: .15, roughness: .55 }, foil_silver: { metalness: .95, roughness: .3 },
+  tex_arm: { metalness: .45, roughness: .45 },
+};
+
+/** Load a NASA rover GLB through same-origin Draco or meshopt decoders. */
 export async function loadOpportunity(url: string, decoderPath: string, targetHeight = 1.5): Promise<THREE.Object3D> {
-  const [{ GLTFLoader }, { DRACOLoader }] = await Promise.all([
+  const [{ GLTFLoader }, { DRACOLoader }, { MeshoptDecoder }] = await Promise.all([
     import("three/examples/jsm/loaders/GLTFLoader.js"),
     import("three/examples/jsm/loaders/DRACOLoader.js"),
+    import("three/examples/jsm/libs/meshopt_decoder.module.js"),
   ]);
   const draco = new DRACOLoader();
   draco.setDecoderPath(decoderPath);
   draco.setDecoderConfig({ type: "wasm" });
   const loader = new GLTFLoader();
   loader.setDRACOLoader(draco);
+  loader.setMeshoptDecoder(MeshoptDecoder);
   try {
     const gltf = await loader.loadAsync(url);
     const model = gltf.scene;
@@ -313,8 +324,13 @@ export async function loadOpportunity(url: string, decoderPath: string, targetHe
       const mesh = o as THREE.Mesh;
       if (mesh.isMesh) {
         mesh.castShadow = true; mesh.receiveShadow = true;
-        const mat = mesh.material as THREE.MeshStandardMaterial;
-        if (mat && "roughness" in mat) mat.roughness = Math.max(mat.roughness, 0.35);
+        for (const mat of (Array.isArray(mesh.material) ? mesh.material : [mesh.material]) as THREE.MeshStandardMaterial[]) {
+          if (!mat || !("roughness" in mat)) continue;
+          const surface = MER_SURFACES[mat.name];
+          if (surface) { mat.metalness = surface.metalness; mat.roughness = surface.roughness; }
+          else mat.roughness = Math.max(mat.roughness, .35);
+          mat.envMapIntensity = .9;
+        }
       }
     });
     const wrapper = new THREE.Group();

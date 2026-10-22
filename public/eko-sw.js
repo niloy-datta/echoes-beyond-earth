@@ -1,7 +1,7 @@
 /* EKO offline-first educational assets. No cross-origin resources are cached.
    The authentic NASA model viewer loads a Draco decoder online on demand.
    This worker is constrained to its registration scope (works with Pages basePath). */
-const VERSION = "eko-2026-10-15-v1";
+const VERSION = "eko-2026-10-23-v2";
 const MAX_FILES = 110;
 const BASE = self.registration.scope;
 const OFFLINE_PAGE = new URL("play/", BASE).href;
@@ -29,7 +29,7 @@ self.addEventListener("install", event => {
       // On the first page load, JS/CSS may have arrived before this worker.
       // Warm the exact same-origin app assets embedded in the exported HTML.
       const urls = new Set([
-        new URL("models/opportunity-mer-b.glb", BASE).href,
+        new URL("models/mer-rover-jpl.glb", BASE).href,
         new URL("images/nasa/pia23178.jpg", BASE).href,
       ]);
       for (const [, relative] of html.matchAll(/(?:src|href)=["']([^"']+)["']/gi)) {
@@ -59,6 +59,8 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   const request = event.request;
   const url = new URL(request.url);
+  // Development must see the latest Next bundles and local 3D assets.
+  if (url.hostname === "localhost" || url.hostname === "127.0.0.1") return;
   if (request.method !== "GET" || url.origin !== self.location.origin || !url.href.startsWith(BASE)) return;
   // Thousands of globe tiles should not evict the compact EKO offline pack.
   if (url.pathname.includes("/tiles/")) return;

@@ -126,7 +126,11 @@ export class Engine {
     this.rover.position.set(ROVER_POSITION.x, heightAt(ROVER_POSITION.x, ROVER_POSITION.z), ROVER_POSITION.z);
     this.rover.rotation.y = ROVER_HEADING;
     scene.add(this.rover);
-    loadOpportunity(options.assetBase + "/models/opportunity-mer-b.glb", options.assetBase + "/vendor/draco/")
+    loadOpportunity(options.assetBase + "/models/mer-rover-jpl.glb", options.assetBase + "/vendor/draco/")
+      .catch((error) => {
+        console.warn("Detailed MER model unavailable; using NASA/Ames Opportunity model.", error);
+        return loadOpportunity(options.assetBase + "/models/opportunity-mer-b.glb", options.assetBase + "/vendor/draco/");
+      })
       .then((model) => { if (!this.disposed) { this.rover.add(model); this.rover.userData.source = "nasa"; } })
       .catch((error) => {
         console.warn("NASA rover GLB unavailable; using stylized stand-in.", error);

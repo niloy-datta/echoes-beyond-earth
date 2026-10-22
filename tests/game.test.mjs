@@ -275,8 +275,8 @@ test("save system: round trip, corrupt data, tampering and replay", () => {
   assert.ok(replay.finished && replay.achievements.includes("last-light"));
   assert.ok(activeObjectives(replay).some((o) => o.id === "c3-intro"));
   assert.ok(levelXp(replay) >= xpOf(finished));
-  // Locked chapters cannot be started on a fresh save.
-  assert.equal(startChapter(newProgress(), 3).chapter, 0);
+  // Visitors may enter any chapter from Chapter Select on a fresh save.
+  assert.equal(startChapter(newProgress(), 3).chapter, 3);
 });
 
 import { GameSession } from "../src/game/core/session.ts";

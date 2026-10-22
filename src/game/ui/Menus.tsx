@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
+import { assetPath } from "@/lib/asset-path";
 import { ACHIEVEMENTS, CHAPTERS, LEVELS } from "../content/chapters";
 import { evidenceOf, isChapterComplete, levelOf, levelXp, unlockedChapters, type GameProgress } from "../core/progress";
 import { SUIT_COLORS, type GameSettings, type QualityPreset, type SuitAccent } from "../settings";
@@ -31,7 +33,7 @@ export function MainMenu({ lang, save, webgl, loading, onContinue, onNew, onChap
             </button>
           )}
           <button type="button" className={`ll-menu__item ${hasSave ? "" : "is-primary"}`} onClick={onNew}><span>{S.newGame[lang]}</span></button>
-          <button type="button" className="ll-menu__item" onClick={onChapter} disabled={!hasSave}><span>{S.chapterSelect[lang]}</span></button>
+          <button type="button" className="ll-menu__item" onClick={onChapter}><span>{S.chapterSelect[lang]}</span></button>
           {onDemo && (
             <button type="button" className="ll-menu__item is-demo" onClick={onDemo} data-testid="judge-walkthrough-button">
               <span>⚡ {S.judgeWalkthrough[lang]}</span>
@@ -60,11 +62,15 @@ export function MainMenu({ lang, save, webgl, loading, onContinue, onNew, onChap
 export function ChapterSelect({ lang, save, onPick, onClose }: { lang: Lang; save: GameProgress; onPick: (i: number) => void; onClose: () => void }) {
   const unlocked = unlockedChapters(save);
   return (
-    <Modal label={S.chapterSelect[lang]} onClose={onClose} wide>
+    <Modal label={S.chapterSelect[lang]} onClose={onClose} wide className="ll-chapter-panel">
       <header className="ll-panel__head">
         <h2>{S.chapterSelect[lang]}</h2>
         <button type="button" className="ll-btn" onClick={onClose}>{S.back[lang]}</button>
       </header>
+      <div className="ll-chapter-hero">
+        <Image src={assetPath("/images/nasa/pia22909.jpg")} width={900} height={201} unoptimized alt={lang === "bn" ? "NASA Opportunity রোভারের তোলা মঙ্গলের বাস্তব প্যানোরামা" : "Real Mars panorama photographed by NASA's Opportunity rover"} />
+        <div className="ll-chapter-hero__caption"><span>{lang === "bn" ? "আসল মঙ্গল · Opportunity Legacy Pan" : "REAL MARS · OPPORTUNITY LEGACY PAN"}</span><a href="https://images.nasa.gov/details/PIA22909" target="_blank" rel="noreferrer">NASA/JPL-Caltech ↗</a></div>
+      </div>
       <ol className="ll-chapters">
         {CHAPTERS.map((c, i) => {
           const open = unlocked.includes(i);

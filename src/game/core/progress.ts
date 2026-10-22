@@ -142,15 +142,9 @@ export function chaptersCompleted(progress: GameProgress): number {
   return CHAPTERS.filter((_, i) => isChapterComplete(progress, i)).length;
 }
 
-/** Chapters the player may start from Chapter Select. */
-export function unlockedChapters(progress: GameProgress): number[] {
-  if (progress.finished) return CHAPTERS.map((_, i) => i);
-  const out: number[] = [];
-  for (let i = 0; i < CHAPTERS.length; i++) {
-    out.push(i);
-    if (!isChapterComplete(progress, i)) break;
-  }
-  return out;
+/** Chapter Select lets visitors explore every chapter directly. */
+export function unlockedChapters(_progress: GameProgress): number[] {
+  return CHAPTERS.map((_, i) => i);
 }
 
 export function xpOf(progress: GameProgress): number {

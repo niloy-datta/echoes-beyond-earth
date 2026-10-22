@@ -227,7 +227,15 @@ kbd { font-family: var(--font-mono); font-size: 0.68em; padding: 0.1em 0.45em; b
 .ll-achievements small { display: block; color: var(--ll-muted); }
 
 .ll-chapters { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+.ll-chapter-panel { background: linear-gradient(160deg, #0a1720, #071017 65%, #140d0b); }
+.ll-chapter-hero { position: relative; height: clamp(7rem, 17vw, 11rem); overflow: hidden; margin: 0 0 1rem; border: 1px solid rgb(222 196 166 / .23); border-radius: 10px; background: #39251d; }
+.ll-chapter-hero img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 54%; filter: saturate(.9) contrast(1.08); }
+.ll-chapter-hero::after { position: absolute; inset: 0; content: ""; pointer-events: none; background: linear-gradient(0deg, rgb(6 13 18 / .88), transparent 60%); }
+.ll-chapter-hero__caption { position: absolute; z-index: 1; right: .9rem; bottom: .7rem; left: .9rem; display: flex; justify-content: space-between; gap: .8rem; color: #f5e8da; font: 600 .62rem var(--font-mono); letter-spacing: .1em; text-shadow: 0 2px 8px #000; }
+.ll-chapter-hero__caption a { color: #b5e8ed; text-decoration: underline; text-underline-offset: 3px; }
 .ll-chapter { width: 100%; display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; text-align: left; padding: 0.9rem 1rem; border-radius: 10px; border: 1px solid var(--ll-line); background: rgb(255 255 255 / 0.02); }
+.ll-chapter strong { color: #f3eee8; }
+.ll-chapter:hover:not(:disabled), .ll-chapter:focus-visible { transform: translateX(3px); box-shadow: inset 3px 0 var(--ll-amber), 0 10px 25px rgb(0 0 0 / .15); }
 .ll-chapter:hover:not(:disabled) { border-color: var(--ll-cyan); background: var(--ll-cyan-dim); }
 .ll-chapter:disabled { opacity: 0.4; }
 .ll-chapter__num { font: 600 1.4rem var(--font-mono); color: var(--ll-amber); }

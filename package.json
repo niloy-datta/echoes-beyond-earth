@@ -17,6 +17,7 @@
     "validate": "node scripts/validate-data.mjs",
     "postbuild": "node scripts/flatten-prefetch.mjs",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "test:demo": "node scripts/test-judge-demo.mjs",
     "quality:eko": "node --experimental-strip-types scripts/check-eko-quality.mjs",
     "assets:build": "node scripts/assets/build-all.mjs"
   },

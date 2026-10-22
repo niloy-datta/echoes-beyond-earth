@@ -9,6 +9,8 @@ __pycache__
 .tmp/
 .idea/
 .vscode/
+AGENTS.md
+
 
 # Unity generated project state
 UnityRealLook/[Ll]ibrary/

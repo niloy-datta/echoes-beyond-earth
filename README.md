@@ -127,11 +127,12 @@ Touch devices have on-screen movement and interaction controls. Game URL options
 npm run typecheck
 npm run validate
 npm test
+npm run test:demo
 npm run quality:eko
 npm run build
 ~~~
 
-An end-to-end browser test script is available at **scripts/e2e-game.mjs**. It uses Playwright against a running build and covers the campaign and major interaction flows; see [GAME.md](./GAME.md) for setup and test details.
+An end-to-end browser test script is available at **scripts/e2e-game.mjs**, and standalone judge demo isolation tests are runnable via `npm run test:demo`. Tests use Playwright against a running build and cover the campaign, walkthrough isolation, and major interaction flows; see [GAME.md](./GAME.md) for setup and test details.
 
 **Important:** Passing automated tests does not establish scientific peer review, physical-device performance, or full accessibility certification.
 

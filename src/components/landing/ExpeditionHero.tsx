@@ -20,6 +20,7 @@ const END = 2026;
 // Exhibit cards — each uses a real NASA photograph from sources.json.
 const CARDS: { href: string; desc: StringKey; image: string }[] = [
   { href: "/explore/", desc: "card.explore", image: "GSFC_20171208_Archive_e001861" },
+  { href: "/missions/", desc: "card.missions", image: "as11-37-5551" },
   { href: "/last-signal/", desc: "card.lastSignal", image: "PIA25287" },
   { href: "/lens/", desc: "card.lens", image: "as08-14-2383" },
   { href: "/legacy/", desc: "card.legacy", image: "PIA24542" },
@@ -409,7 +410,7 @@ function ExhibitCards({ img }: { img: (id: string) => string | undefined }) {
   const cards = CARDS.map((c) => ({ ...c, nav: NAV.find((n) => n.href === c.href)! }));
   return (
     <nav aria-label={t("exhibits.kicker")} className="-mx-[clamp(1rem,4vw,3.5rem)] mt-8 xl:mx-0 xl:mt-6">
-      <ol className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-[clamp(1rem,4vw,3.5rem)] pb-2 xl:grid xl:grid-cols-8 xl:gap-2 xl:overflow-visible xl:px-0 xl:pb-0">
+      <ol className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-[clamp(1rem,4vw,3.5rem)] pb-2 xl:grid xl:grid-cols-9 xl:gap-2 xl:overflow-visible xl:px-0 xl:pb-0">
         {cards.map((c, i) => (
           <motion.li
             key={c.href}

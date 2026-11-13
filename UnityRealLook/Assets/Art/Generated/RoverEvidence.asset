@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e66c6366d904e98bc83428217d4fd7, type: 3}
+  m_Name: RoverEvidence
+  m_EditorClassIdentifier: Unity.VisualScripting.Flow::Unity.VisualScripting.ScriptGraphAsset
+  _data:
+    _json: '{"graph":{"variables":{"Kind":"Flow","collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":"OPPORTUNITY 
+      /  SCIENCE RECOVERY","summary":"A rover interaction raises Rover.Evidence.Recovered.
+      This flow routes the mission name and cited evidence into the in-world science
+      brief.","pan":{"x":0.0,"y":0.0},"zoom":0.9,"elements":[{"argumentCount":2,"coroutine":false,"defaultValues":{"target":null,"name":{"$content":"Rover.Evidence.Recovered","$type":"System.String"}},"position":{"x":-260.0,"y":18.0},"guid":"9a36c5ad-ea92-4123-859d-d73c12f73f2b","$version":"A","$type":"Unity.VisualScripting.CustomEvent","$id":"9"},{"defaultValues":{"target":null},"position":{"x":150.0,"y":18.0},"guid":"6e22aa64-102b-4023-895e-6452f3080324","$version":"A","$type":"RoverEvidenceFlowUnit","$id":"11"},{"sourceUnit":{"$ref":"9"},"sourceKey":"trigger","destinationUnit":{"$ref":"11"},"destinationKey":"enter","guid":"9e4064f4-1d31-4864-adf7-2611d121d23f","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"9"},"sourceKey":"argument_0","destinationUnit":{"$ref":"11"},"destinationKey":"roverName","guid":"44e6f1a3-debc-4c2b-afb2-f7b78652da00","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"9"},"sourceKey":"argument_1","destinationUnit":{"$ref":"11"},"destinationKey":"evidence","guid":"0c69a575-4b11-4869-8a0a-6cdb7e3fbbc2","$type":"Unity.VisualScripting.ValueConnection"}],"$version":"A"}}'
+    _objectReferences: []

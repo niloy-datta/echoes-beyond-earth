@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-model href="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1B10.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://pds.nasa.gov/pds4/mission/mer/v1/PDS4_MER_1B00_1000.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<Product_Observational xmlns="http://pds.nasa.gov/pds4/pds/v1"
+    xmlns:mer="http://pds.nasa.gov/pds4/mission/mer/v1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pds.nasa.gov/pds4/pds/v1          https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1B10.xsd
+                        http://pds.nasa.gov/pds4/mission/mer/v1  https://pds.nasa.gov/pds4/mission/mer/v1/PDS4_MER_1B00_1000.xsd">
+    
+    <Identification_Area>
+        <logical_identifier>urn:nasa:pds:mer_pancam_derived_opacity:data:1tau880_5106_20181207a</logical_identifier>
+        <version_id>1.0</version_id>
+        <title>MER1 Pancam tau data</title>
+        <information_model_version>1.11.1.0</information_model_version>
+        <product_class>Product_Observational</product_class>
+        <Modification_History>
+            <Modification_Detail>
+                <modification_date>2019-10-01</modification_date>
+                <version_id>1.0</version_id>
+                <description>Migrated from PDS3 to PDS4.</description>
+            </Modification_Detail>
+        </Modification_History>
+    </Identification_Area>
+    <Observation_Area>
+        <Time_Coordinates>
+            <start_date_time>2004-01-27T08:03:18Z</start_date_time>
+            <stop_date_time>2018-06-05T13:03:59Z</stop_date_time>
+        </Time_Coordinates>
+        <Investigation_Area>
+            <name>Mars Exploration Rover</name>
+            <type>Mission</type>
+            <Internal_Reference>
+                <lid_reference>urn:nasa:pds:context:investigation:mission.mars_exploration_rover</lid_reference>
+                <reference_type>data_to_investigation</reference_type>
+            </Internal_Reference>
+        </Investigation_Area>
+        <Observing_System>
+            <Observing_System_Component>
+                <name>Mars Exploration Rover 1</name>
+                <type>Spacecraft</type>
+                <Internal_Reference>
+                    <lid_reference>urn:nasa:pds:context:instrument_host:spacecraft.mer1</lid_reference>
+                    <reference_type>is_instrument_host</reference_type>
+                </Internal_Reference>
+            </Observing_System_Component>
+            <Observing_System_Component>
+                <name>Panoramic Camera</name>
+                <type>Instrument</type>
+                <Internal_Reference>
+                    <lid_reference>urn:nasa:pds:context:instrument:pancam.mer1</lid_reference>
+                    <reference_type>is_instrument</reference_type>
+                </Internal_Reference>
+            </Observing_System_Component>
+        </Observing_System>
+        <Target_Identification>
+            <name>Mars</name>
+            <type>Planet</type>
+            <Internal_Reference>
+                <lid_reference>urn:nasa:pds:context:target:planet.mars</lid_reference>
+                <reference_type>data_to_target</reference_type>
+            </Internal_Reference>
+        </Target_Identification>
+    </Observation_Area>
+    
+    <File_Area_Observational>
+        <File>
+            <file_name>1tau880_5106_20181207a.tab</file_name>
+            <local_identifier>Mer1_tau</local_identifier>
+            <creation_date_time>2018-12-07T21:12:34</creation_date_time>
+        </File>
+        
+        <Header>
+            <offset unit="byte">0</offset>
+            <object_length unit="byte">412</object_length>
+            <parsing_standard_id>7-Bit ASCII Text</parsing_standard_id>
+            <description>The header contains key parameter values
+                used in the opacity computations, along
+                with column headings for the table object.</description>
+        </Header>
+        
+        <Table_Delimited>
+            <offset unit="byte">412</offset>
+            <parsing_standard_id>PDS DSV 1</parsing_standard_id>
+            <description>
+                This spreadsheet contains opacity
+                determinations for a given rover and
+                solar filter. Columns in the table
+                are fixed-width and separated by
+                commas. 
+            </description>
+            <records>8639</records>
+            <record_delimiter>Carriage-Return Line-Feed</record_delimiter>
+            <field_delimiter>Comma</field_delimiter>
+            <Record_Delimited>
+                <fields>8</fields>
+                <groups>0</groups>
+                <Field_Delimited>
+                    <name>pancam_product_id</name>
+                    <field_number>1</field_number>
+                    <data_type>ASCII_String</data_type>
+                    <description>The product_id of the Pancam solar
+                        filter image used for a given opacity
+                        determination.</description>
+                </Field_Delimited>
+                <Field_Delimited>
+                    <name>solar_longitude</name>
+                    <field_number>2</field_number>
+                    <data_type>ASCII_Real</data_type>
+                    <description>Martian season in degrees past
+                        northern spring equinox.</description>
+                </Field_Delimited>
+                <Field_Delimited>
+                    <name>solar_distance</name>
+                    <field_number>3</field_number>
+                    <data_type>ASCII_Real</data_type>
+                    <description>Mars-Sun distance in AU at time of
+                        observation.</description>
+                </Field_Delimited>
+                <Field_Delimited>
+                    <name>local_time</name>
+                    <field_number>4</field_number>
+                    <data_type>ASCII_Real</data_type>
+                    <description>Observation time in sols past the local
+                        Midnight preceding landing. The local
+                        solar time is given by multiplying the
+                        fractional component by 24 hours.
+                        Sol number is obtained by rounding up
+                        the local_time value. For example, noon
+                        on Sol 2 is given as local_time of 1.5.</description>
+                </Field_Delimited>
+                <Field_Delimited>
+                    <name>airmass</name>
+                    <field_number>5</field_number>
+                    <data_type>ASCII_Real</data_type>
+                    <description>Airmass factor relative to the
+                        zenith. It can be approximated as
+                        the secant of zenith angle for
+                        most observations, but is computed
+                        using a 13-km scale height to
+                        improve accuracy for low-Sun
+                        observations.</description>
+                </Field_Delimited>
+                <Field_Delimited>
+                    <name>solar_flux</name>
+                    <field_number>6</field_number>
+                    <data_type>ASCII_Real</data_type>
+                    <description>Observed solar flux in DN ms-1
+                        after subtracting
+                        background light. Computed using
+                        Pancam calibration parameters.
+                        A value of -1.0 indicates an image
+                        that resulted in a non-measurement
+                        opacity (e.g., due to missing packet
+                        and/or data saturation).</description>
+                </Field_Delimited>
+                <Field_Delimited>
+                    <name>atmospheric_opacity</name>
+                    <field_number>7</field_number>
+                    <data_type>ASCII_Real</data_type>
+                    <description>Measured atmospheric opacity using
+                        the current best relative calibration.
+                        A value of -1.0 indicates an image
+                        that resulted in a non-measurement
+                        opacity (e.g., due to missing packet
+                        and/or data saturation).</description>
+                </Field_Delimited>
+                <Field_Delimited>
+                    <name>opacity_error</name>
+                    <field_number>8</field_number>
+                    <data_type>ASCII_Real</data_type>
+                    <description>Relative error in the opacity
+                        measurement.
+                        A value of -1.0 indicates an image
+                        that resulted in a non-measurement
+                        opacity (e.g., due to missing packet
+                        and/or data saturation).</description>
+                </Field_Delimited>
+            </Record_Delimited>
+        </Table_Delimited>
+    </File_Area_Observational>
+</Product_Observational>    

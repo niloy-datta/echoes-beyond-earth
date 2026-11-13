@@ -1,0 +1,12 @@
+mars-*.webp — derived from CC0 (public domain) scans by Poly Haven, colour-graded
+toward Mars surface albedo and resized to 1K:
+  mars-regolith  <- gravelly_sand         https://polyhaven.com/a/gravelly_sand
+  mars-dust      <- red_sand              https://polyhaven.com/a/red_sand
+  mars-outcrop   <- rock_face             https://polyhaven.com/a/rock_face
+  mars-basalt    <- rock_ground_02        https://polyhaven.com/a/rock_ground_02
+  mars-boulder   <- rock_boulder_cracked  https://polyhaven.com/a/rock_boulder_cracked
+ORM maps follow glTF: R = ambient occlusion, G = roughness, B = metalness.
+
+../../models/mer-rover-jpl.glb — "Spirit and Opportunity Rover, 3D Model",
+NASA/JPL-Caltech (https://science.nasa.gov/resource/spirit-and-opportunity-rover-3d-model/),
+re-packed with meshopt compression and 1K WebP textures. NASA does not endorse this project.

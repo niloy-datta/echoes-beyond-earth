@@ -1,0 +1,475 @@
+// Browser tests for THE LAST LIGHT game route (/play/game/).
+// Covers: main menu, starting a game, real keyboard movement, interaction,
+// objective completion, puzzles, saving/resuming, chapter completion, mobile
+// touch controls, the 2D fallback, and museum navigation.
+// Set GAME_SHOTS=<dir> to also write screenshots for visual review.
+import assert from "node:assert/strict";
+import { mkdirSync } from "node:fs";
+import { join } from "node:path";
+import { chromium, firefox, webkit } from "playwright";
+
+const base = process.env.EKO_TEST_BASE || "http://127.0.0.1:4173";
+const engineName = process.env.EKO_BROWSER || "chromium";
+const shots = process.env.GAME_SHOTS || "";
+if (shots) mkdirSync(shots, { recursive: true });
+const engine = { chromium, firefox, webkit }[engineName];
+if (!engine) throw new Error("Unsupported browser: " + engineName);
+const browser = await engine.launch({
+  headless: true,
+  ...(engineName === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-webgl", "--ignore-gpu-blocklist", "--enable-unsafe-swiftshader"] } : {}),
+});
+
+const errors = [];
+const shot = async (page, name) => { if (shots) await page.screenshot({ path: join(shots, `${engineName}-${name}.png`) }); };
+const state = (page) => page.evaluate(() => {
+  const s = window.__LAST_LIGHT__?.session;
+  if (!s) return null;
+  return {
+    chapter: s.progress.chapter, done: [...s.progress.done], active: s.active.map((o) => o.id),
+    player: { x: s.player.x, z: s.player.z }, cutscene: s.cutscene?.id ?? null, puzzle: s.puzzle, card: !!s.evidenceCard,
+    prompt: s.prompt?.id ?? null, chapterCard: !!s.chapterCard, paused: s.paused, action: s.action?.clip ?? null, focus: document.activeElement?.tagName + "#" + (document.activeElement?.getAttribute("aria-label") ?? document.activeElement?.textContent?.slice(0, 30) ?? ""), completed: s.completed, finished: s.progress.finished, engine: window.__LAST_LIGHT__.engine?.() ?? null,
+  };
+});
+const waitFor = async (page, predicate, label, timeout = 20000) => {
+  const start = Date.now();
+  for (;;) {
+    const s = await state(page);
+    if (s && predicate(s)) return s;
+    if (Date.now() - start > timeout) throw new Error(`Timed out waiting for ${label}: ${JSON.stringify(s)}`);
+    await page.waitForTimeout(100);
+  }
+};
+const savedProgress = (page) => page.evaluate(() => JSON.parse(localStorage.getItem("the-last-signal:game:last-light") || "null"));
+
+/**
+ * Steer the camera toward a world point and hold W (+Shift) until `done`.
+ * Like a player, it sidesteps when a boulder blocks the straight line.
+ */
+async function walkTo(page, target, done, label, timeout = 150000) {
+  const is2d = (await page.locator('[data-mode="2d"]').count()) > 0;
+  if (is2d) return walk2d(page, target, done, label, timeout);
+  await page.keyboard.down("ShiftLeft");
+  await page.keyboard.down("KeyW");
+  const start = Date.now();
+  let best = Infinity, lastProgress = Date.now(), side = "KeyD";
+  try {
+    for (;;) {
+      const d = await page.evaluate(([tx, tz]) => {
+        const ses = window.__LAST_LIGHT__.session;
+        const dx = tx - ses.player.x, dz = tz - ses.player.z;
+        ses.rig = { ...ses.rig, yaw: Math.atan2(-dx, -dz), idle: 0 }; // aim the camera so "forward" faces the goal
+        return Math.hypot(dx, dz);
+      }, [target.x, target.z]);
+      const st = await state(page);
+      if (done(st, d)) return st;
+      if (d < best - 0.3) { best = d; lastProgress = Date.now(); }
+      else if (Date.now() - lastProgress > 2500) {
+        await page.keyboard.down(side);
+        await page.waitForTimeout(1500);
+        await page.keyboard.up(side);
+        side = side === "KeyD" ? "KeyA" : "KeyD";
+        lastProgress = Date.now();
+      }
+      if (Date.now() - start > timeout) throw new Error(`walk to ${label} timed out (${d.toFixed(1)} m left): ${JSON.stringify(st)}`);
+      await page.waitForTimeout(80);
+    }
+  } finally {
+    await page.keyboard.up("KeyW");
+    await page.keyboard.up("ShiftLeft");
+  }
+}
+
+/** 2D console is north-up: W = -z, S = +z, A = -x, D = +x. */
+async function walk2d(page, target, done, label, timeout) {
+  const held = new Set();
+  const hold = async (key, on) => { if (on && !held.has(key)) { await page.keyboard.down(key); held.add(key); } if (!on && held.has(key)) { await page.keyboard.up(key); held.delete(key); } };
+  const start = Date.now();
+  await page.keyboard.down("ShiftLeft");
+  try {
+    for (;;) {
+      const st = await state(page);
+      const dx = target.x - st.player.x, dz = target.z - st.player.z;
+      if (done(st, Math.hypot(dx, dz))) return st;
+      await hold("KeyD", dx > 0.4); await hold("KeyA", dx < -0.4);
+      await hold("KeyS", dz > 0.4); await hold("KeyW", dz < -0.4);
+      if (Date.now() - start > timeout) throw new Error(`2D walk to ${label} timed out`);
+      await page.waitForTimeout(80);
+    }
+  } finally {
+    for (const k of held) await page.keyboard.up(k);
+    await page.keyboard.up("ShiftLeft");
+  }
+}
+
+/**
+ * Advance the story through the session's accessible "travel to" action (the
+ * same action the 2D console offers screen-reader users) until objective
+ * `stopAt` is active, or the campaign completes. It never completes an
+ * objective directly: reach goals still need the player inside the radius,
+ * scans need a prompt, puzzles go through answerPuzzle. Bounded by wall time,
+ * not iterations, because chapter cards and cutscene delays run on game time.
+ */
+async function driveStory(page, stopAt, label, timeout = 120000) {
+  const deadline = Date.now() + timeout;
+  for (;;) {
+    const r = await page.evaluate((stop) => {
+      const ses = window.__LAST_LIGHT__.session;
+      if (stop ? ses.active.some((o) => o.id === stop) : ses.completed) return "done";
+      if (ses.chapterCard) return "wait";
+      if (ses.cutscene) { ses.skipCutscene(); return "step"; }
+      if (ses.evidenceCard) { ses.closeEvidence(); return "step"; }
+      if (ses.puzzle) { ses.answerPuzzle(true); return "step"; }
+      const o = ses.active[0];
+      if (!o || o.kind === "cutscene") return "wait";
+      ses.travelTo(o.target);
+      if (o.kind !== "reach") ses.interact();
+      return "step";
+    }, stopAt);
+    if (r === "done") return state(page);
+    if (Date.now() > deadline) throw new Error(`Timed out driving the story to ${label}: ${JSON.stringify(await state(page))}`);
+    await page.waitForTimeout(r === "wait" ? 150 : 40);
+  }
+}
+
+let passed = 0;
+const step = (msg) => { passed++; console.log(`[game-e2e] ✓ ${msg}`); };
+
+let activePage = null;
+try {
+  // ── Desktop 3D ────────────────────────────────────────────────────────
+  // GAME_E2E_SKIP_DESKTOP=1 runs only the 2D / mobile / museum sections (fast iteration).
+  if (process.env.GAME_E2E_SKIP_DESKTOP !== "1") {
+  const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, locale: "en-US" });
+  const page = await context.newPage();
+  activePage = page;
+  page.on("pageerror", (e) => errors.push(e.message));
+  page.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource|favicon|GPU stall|WebGL/i.test(m.text())) errors.push(m.text()); });
+
+  const res = await page.goto(base + "/play/game/?qa&quality=low", { waitUntil: "domcontentloaded", timeout: 45000 });
+  assert.equal(res?.status(), 200);
+  await page.getByTestId("main-menu").waitFor({ timeout: 20000 });
+  await page.getByRole("button", { name: /new game/i }).waitFor();
+  const has3d = await page.getByTestId("game-canvas").count();
+  await page.waitForTimeout(2500);
+  await shot(page, "01-menu");
+  step(`main menu renders (${has3d ? "3D canvas" : "no WebGL → 2D"})`);
+
+  await page.getByRole("button", { name: /new game/i }).click();
+  await page.getByTestId("onboarding").waitFor();
+  await page.getByLabel(/name for your certificate/i).fill("Test <Explorer>");
+  await page.locator('[data-band="junior"]').click();
+  await page.getByTestId("onboarding-start").click();
+  const gs = await page.evaluate(() => JSON.parse(localStorage.getItem("the-last-signal:game:settings") || "{}"));
+  assert.equal(gs.learnerBand, "junior");
+  assert.equal(gs.displayName, "Test Explorer", "display name is sanitized");
+  assert.equal(gs.onboarded, true);
+  step("optional onboarding stores a sanitized name and learner band locally");
+  await page.getByTestId("hud").waitFor();
+  let s = await waitFor(page, (x) => x.cutscene === "intro", "intro cinematic");
+  await page.waitForTimeout(2500);
+  await shot(page, "02-intro-cinematic");
+  await page.getByTestId("skip-cutscene").click();
+  s = await waitFor(page, (x) => x.active.includes("c1-move"), "movement tutorial");
+  step("new game starts; intro cinematic plays and is skippable");
+
+  // Real keyboard movement: hold W toward the ridge marker.
+  const before = s.player;
+  await page.locator(".ll-stage").focus();
+  // Software-rendered CI browsers can run at a few FPS, so wait on distance, not time.
+  await page.keyboard.down("KeyW");
+  s = await waitFor(page, (x) => Math.hypot(x.player.x - before.x, x.player.z - before.z) > 1.5, "W key moves the explorer", 30000);
+  await page.keyboard.up("KeyW");
+  await shot(page, "03-gameplay");
+  step("WASD moves the explorer");
+
+  s = await walkTo(page, { x: 5, z: 52 }, (st) => st.active.includes("c1-beacon"), "ridge");
+  step("reach objective completes (tutorial ridge)");
+
+  s = await walkTo(page, { x: -11, z: 36 }, (st) => st.prompt === "c1-beacon", "memory beacon");
+  await shot(page, "04-beacon-prompt");
+  await page.keyboard.press("KeyE");
+  await page.getByRole("dialog", { name: /final traverse map/i }).waitFor();
+  await shot(page, "05-evidence-card");
+  await page.getByRole("dialog").getByRole("button", { name: /keep exploring/i }).click();
+  step("E scans the beacon; NASA evidence card opens with the source");
+
+  // Inventory / map / journal / pause keyboard panels.
+  await page.locator(".ll-stage").focus();
+  await page.keyboard.press("Tab");
+  await page.getByRole("dialog", { name: /evidence/i }).waitFor();
+  await shot(page, "06-inventory");
+  await page.keyboard.press("Escape");
+  await page.keyboard.press("KeyM");
+  await page.getByRole("dialog", { name: /mission map/i }).waitFor();
+  await page.keyboard.press("Escape");
+  await page.keyboard.press("KeyJ");
+  await page.getByRole("dialog", { name: /mission journal/i }).waitFor();
+  await shot(page, "07-journal");
+  await page.keyboard.press("Escape");
+  await page.getByTestId("pause-button").click();
+  await page.getByRole("dialog", { name: /paused/i }).waitFor();
+  await page.getByRole("button", { name: /resume/i }).click();
+  step("Tab / M / J / pause panels open and close");
+
+  // Regression: Resume returns focus to the pause button; movement keys must
+  // still reach the game (they were ignored while any button had focus).
+  const focusTag = await page.evaluate(() => document.activeElement?.tagName);
+  const beforeW = await state(page);
+  if (!beforeW.cutscene && !beforeW.chapterCard) {
+    // Poll rather than sleep: software renderers in CI can run at 1–5 FPS.
+    await page.keyboard.down("KeyW");
+    let after = beforeW, moved = 0;
+    try {
+      for (const end = Date.now() + 8000; Date.now() < end && !after.cutscene && moved <= 0.3; await page.waitForTimeout(150)) {
+        after = await state(page);
+        moved = Math.hypot(after.player.x - beforeW.player.x, after.player.z - beforeW.player.z);
+      }
+    } finally { await page.keyboard.up("KeyW"); }
+    assert.ok(after.cutscene || moved > 0.3, `W moves after Resume (focus on ${focusTag}, moved ${moved.toFixed(2)} m, ${JSON.stringify(after)})`);
+    step(`movement keys work after Pause → Resume (focus on ${focusTag})`);
+  }
+
+  // Outro cinematic → chapter 2 begins.
+  s = await waitFor(page, (x) => x.cutscene === "ch1-outro" || x.chapter === 1, "chapter 1 outro");
+  if (s.cutscene) await page.keyboard.press("Enter");
+  s = await waitFor(page, (x) => x.chapter === 1, "chapter 2");
+  const saved = await savedProgress(page);
+  assert.ok(saved && saved.chapter === 1 && saved.done.includes("c1-beacon"), "chapter 1 completion autosaved");
+  step("chapter 1 completes and autosaves");
+
+  // Chapter 2 on foot: rover, three components, puzzle.
+  s = await walkTo(page, { x: 18, z: 7 }, (st) => !st.active.includes("c2-reach"), "rover site", 45000);
+  s = await waitFor(page, (x) => x.cutscene === "ch2-intro", "rover cinematic");
+  await page.waitForTimeout(2000);
+  await shot(page, "08-rover-cinematic");
+  await page.keyboard.press("Enter");
+  s = await waitFor(page, (x) => x.active.length === 3, "component scans");
+  // Deliberately out of order: mast, wheels, solar.
+  for (const [id, poi] of [["c2-mast", "comp-mast"], ["c2-wheels", "comp-wheels"], ["c2-solar", "comp-solar"]]) {
+    await page.evaluate((target) => window.__LAST_LIGHT__.session.travelTo(target), poi);
+    s = await waitFor(page, (x) => x.prompt === id, `prompt ${id}`);
+    await page.keyboard.press("KeyE");
+    await page.getByRole("dialog").getByRole("button", { name: /keep exploring/i }).click();
+  }
+  const roverSource = (await state(page)).engine?.rover;
+  await shot(page, "09-rover-components");
+  step(`three component scans in any order (rover model: ${roverSource ?? "2D"})`);
+
+  await page.evaluate(() => window.__LAST_LIGHT__.session.travelTo("rover-terminal"));
+  await waitFor(page, (x) => x.prompt === "c2-puzzle", "terminal prompt");
+  await page.keyboard.press("KeyE");
+  const dialog = page.getByRole("dialog", { name: /component identification/i });
+  await dialog.waitFor();
+  // Wrong first, then right.
+  for (const group of await dialog.getByRole("radiogroup").all()) await group.getByRole("radio").first().click();
+  await dialog.getByRole("button", { name: /check answer/i }).click();
+  await dialog.getByText(/not quite/i).waitFor();
+  const answers = { "Turned sunlight": /solar panels/i, "Carried the rover": /^wheels$/i, "Captured the 354": /pancam mast/i };
+  for (const [clue, part] of Object.entries(answers)) {
+    await dialog.getByRole("radiogroup", { name: new RegExp(clue) }).getByRole("radio", { name: part }).click();
+  }
+  await shot(page, "10-puzzle");
+  await dialog.getByRole("button", { name: /check answer/i }).click();
+  s = await waitFor(page, (x) => x.done.includes("c2-puzzle"), "puzzle solved");
+  step("component puzzle rejects wrong answers and accepts the right ones");
+
+  // Save & resume: reload the page and continue.
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await page.getByRole("button", { name: /continue/i }).waitFor({ timeout: 20000 });
+  await page.getByRole("button", { name: /continue/i }).click();
+  s = await waitFor(page, (x) => x.done.includes("c2-puzzle"), "resumed progress");
+  step("progress survives a reload and Continue resumes it");
+
+  // Chapter 3 through the travel action, then walk into the chapter-4 archive
+  // on foot: c4-reach is where CI previously stalled.
+  await driveStory(page, "c3-power", "storm lab");
+  if ((await state(page)).card) await page.getByRole("dialog").getByRole("button", { name: /keep exploring/i }).click();
+  await waitFor(page, (x) => !x.chapterCard && !x.cutscene && !x.card, "chapter 3 free play", 30000);
+  await page.evaluate(() => window.__LAST_LIGHT__.session.travelTo("storm-terminal"));
+  await waitFor(page, (x) => x.prompt === "c3-power", "storm terminal prompt");
+  await page.keyboard.press("KeyE");
+  const lab = page.getByRole("dialog", { name: /power in the storm/i });
+  await lab.waitFor();
+  const slider = lab.getByRole("slider");
+  assert.equal(await slider.isDisabled(), true, "experiment is locked until a prediction is made");
+  await lab.getByRole("radiogroup", { name: /your prediction/i }).getByRole("radio", { name: /about half/i }).click();
+  await slider.fill("1000");
+  await lab.getByTestId("storm-compare").waitFor();
+  const compare = await lab.getByTestId("storm-compare").innerText();
+  assert.match(compare, /OBSERVED/); assert.match(compare, /SIMULATED/); assert.match(compare, /disagrees/i);
+  await lab.getByRole("radio", { name: /wind recharged/i }).click();
+  await lab.getByRole("button", { name: /check answer/i }).click();
+  assert.match(await lab.getByTestId("storm-hint").innerText(), /solar panels and rechargeable batteries/i);
+  await lab.getByRole("radio", { name: /less sunlight/i }).click();
+  await shot(page, "10b-storm-lab");
+  await lab.getByRole("button", { name: /check answer/i }).click();
+  await waitFor(page, (x) => x.done.includes("c3-power"), "storm lab solved");
+  step("storm lab: prediction gates the experiment; model vs NASA record compared; wrong answer explained; right answer accepted");
+
+  await driveStory(page, "c4-reach", "chapter 4");
+  await waitFor(page, (x) => !x.chapterCard, "chapter 4 card", 30000);
+  s = await walkTo(page, { x: -38, z: -30 }, (st) => st.done.includes("c4-reach"), "archive", 150000);
+  step("walks into the chapter 4 archive (c4-reach)");
+  await driveStory(page, null, "campaign completion", 180000);
+  await waitFor(page, (x) => x.completed, "campaign completion", 60000);
+  await page.getByRole("dialog", { name: /mission complete/i }).waitFor();
+  await shot(page, "11-complete");
+  const passport = await page.evaluate(() => JSON.parse(localStorage.getItem("the-last-signal:passport") || "{}"));
+  assert.ok(passport.discovered?.includes("opportunity"), "completion stamps the Explorer Passport");
+  step("all five chapters complete (remaining steps driven by the travel action; ch4-5 puzzle UIs answered via the session API, not clicked); completion screen and passport stamp");
+
+  // Echo Chain: both chains lit after the campaign; pass the Surveyor 3 Claim Check by clicking.
+  await page.getByRole("button", { name: /keep exploring/i }).click();
+  await page.locator(".ll-stage").focus();
+  await page.keyboard.press("KeyC");
+  const board = page.getByTestId("echo-chain");
+  await board.waitFor();
+  assert.equal(await board.locator(".ll-chain__link.is-lit").count(), 8, "all eight Echo Chain links are lit");
+  const check = page.getByTestId("claim-check-surveyor-3");
+  // Junior band sees the two core claims: verified camera retrieval, unsupported "still sending pictures".
+  await check.getByRole("radiogroup", { name: /tv camera back to earth/i }).getByRole("radio", { name: /verified record/i }).click();
+  await check.getByRole("radiogroup", { name: /still sending pictures/i }).getByRole("radio", { name: /verified record/i }).click();
+  await check.getByRole("button", { name: /check answer/i }).click();
+  await check.getByText(/think again/i).waitFor();
+  await check.getByRole("radiogroup", { name: /still sending pictures/i }).getByRole("radio", { name: /not supported/i }).click();
+  await check.getByRole("button", { name: /check answer/i }).click();
+  await check.getByText(/claim check passed/i).waitFor();
+  s = await state(page);
+  const chains = await page.evaluate(() => window.__LAST_LIGHT__.session.progress.chains);
+  assert.ok(chains.includes("surveyor-3"), "claim check recorded in the save");
+  await shot(page, "11b-echo-chain");
+  await page.keyboard.press("Escape");
+  step("Echo Chain: 8 links lit, Claim Check rejects a wrong classification and records a correct one");
+
+  // Changing the learning level from Settings never touches progress or the saved game.
+  // Progress fields only: pausing autosaves position, timestamps and stats, which are expected to change.
+  const progressOf = () => page.evaluate(() => { const p = JSON.parse(localStorage.getItem("the-last-signal:game:last-light") || "{}"); return { chapter: p.chapter, done: p.done, sides: p.sides, achievements: p.achievements, finished: p.finished, chains: p.chains, bestXp: p.bestXp }; });
+  const progressBefore = await progressOf();
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: /^(settings|সেটিংস)$/i }).first().click();
+  await page.locator('[data-band="research"]').click();
+  await page.keyboard.press("Escape");
+  const stored = await page.evaluate(() => JSON.parse(localStorage.getItem("the-last-signal:game:settings") || "{}"));
+  assert.equal(stored.learnerBand, "research", "learning level saved in settings");
+  assert.deepEqual(await progressOf(), progressBefore, "progress unchanged by learning level");
+  step("learning level changed in Settings; saved game and progress unchanged");
+
+  // Reload → Continue returns to the completion screen with the Claim Check still saved.
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await page.getByTestId("main-menu").waitFor({ timeout: 20000 });
+  await page.getByRole("button", { name: /continue/i }).first().click();
+  await page.getByRole("dialog", { name: /mission complete/i }).waitFor({ timeout: 30000 });
+  assert.ok((await page.evaluate(() => window.__LAST_LIGHT__.session.progress.chains)).includes("surveyor-3"), "claim check survives reload");
+  step("reload + Continue: finished campaign and Claim Check survive");
+
+  // Museum navigation still works from the game.
+  await page.getByRole("link", { name: /open explorer passport/i }).click();
+  await page.waitForURL(/\/passport\/?$/);
+  await page.getByText(/last light/i).first().waitFor({ timeout: 15000 });
+  step("navigates back into the museum (Explorer Passport shows the game)");
+  await context.close();
+  }
+
+  // ── 2D fallback ───────────────────────────────────────────────────────
+  const c2 = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  const p2 = await c2.newPage();
+  p2.on("pageerror", (e) => errors.push(e.message));
+  await p2.goto(base + "/play/game/?qa&force2d&quality=low", { waitUntil: "domcontentloaded" });
+  await p2.getByText(/2D mission console/i).first().waitFor();
+  await p2.getByRole("button", { name: /new game/i }).click();
+  await p2.getByTestId("onboarding-skip").click();
+  await p2.getByTestId("console-2d").waitFor();
+  await p2.getByTestId("skip-cutscene").click();
+  await waitFor(p2, (x) => x.active.includes("c1-move"), "2D tutorial");
+  await p2.locator('[data-travel="ridge"]').click();
+  await waitFor(p2, (x) => x.active.includes("c1-beacon"), "2D travel completes objective");
+  await p2.locator('[data-travel="beacon-alpha"]').click();
+  await p2.getByTestId("interact-prompt").click();
+  await p2.getByRole("dialog", { name: /final traverse map/i }).waitFor();
+  await shot(p2, "12-console-2d");
+  step("2D console plays the same campaign without WebGL");
+  await c2.close();
+
+  // ── Mobile touch ──────────────────────────────────────────────────────
+  const c3 = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: engineName !== "firefox", deviceScaleFactor: 2 });
+  const p3 = await c3.newPage();
+  p3.on("pageerror", (e) => errors.push(e.message));
+  await p3.goto(base + "/play/game/?qa&touch&quality=low", { waitUntil: "domcontentloaded" });
+  await p3.getByRole("button", { name: /new game/i }).tap();
+  await p3.getByTestId("onboarding-skip").tap();
+  await p3.getByTestId("skip-cutscene").tap();
+  await waitFor(p3, (x) => x.active.includes("c1-move"), "mobile tutorial");
+  await p3.getByTestId("touch-controls").waitFor();
+  const start = (await state(p3)).player;
+  const stick = await p3.locator(".ll-stick").boundingBox();
+  const cx = stick.x + stick.width / 2, cy = stick.y + stick.height / 2;
+  // Drive the joystick with pointer events (touch).
+  await p3.locator(".ll-stick").dispatchEvent("pointerdown", { pointerId: 7, pointerType: "touch", clientX: cx, clientY: cy, isPrimary: true });
+  await p3.locator(".ll-stick").dispatchEvent("pointermove", { pointerId: 7, pointerType: "touch", clientX: cx, clientY: cy - 60, isPrimary: true });
+  await waitFor(p3, (x) => Math.hypot(x.player.x - start.x, x.player.z - start.z) > 1, "joystick movement", 30000);
+  await p3.locator(".ll-stick").dispatchEvent("pointerup", { pointerId: 7, pointerType: "touch", clientX: cx, clientY: cy - 60, isPrimary: true });
+
+  await shot(p3, "13-mobile");
+  await p3.getByRole("button", { name: /^sprint$/i }).tap();
+  assert.equal(await p3.getByRole("button", { name: /^sprint$/i }).getAttribute("aria-pressed"), "true");
+  step("mobile joystick and sprint toggle work");
+  await c3.close();
+
+  // ── Existing museum routes still render ──────────────────────────────
+  const c4 = await browser.newContext();
+  const p4 = await c4.newPage();
+  for (const route of ["/", "/play/", "/lens/", "/passport/", "/archive/"]) {
+    const r = await p4.goto(base + route, { waitUntil: "domcontentloaded" });
+    assert.equal(r?.status(), 200, route);
+  }
+  await p4.goto(base + "/play/", { waitUntil: "domcontentloaded" });
+  await p4.getByRole("link", { name: /the last light/i }).first().waitFor();
+  step("museum routes still served; /play/ links to the game");
+  await c4.close();
+
+  // ── Judge preview: isolated, never saved; QA handle hidden without ?qa ──
+  const c5 = await browser.newContext({ viewport: { width: 1280, height: 800 }, locale: "en-US" });
+  const p5 = await c5.newPage();
+  await p5.goto(base + "/play/game/?force2d&quality=low", { waitUntil: "domcontentloaded" });
+  await p5.getByTestId("main-menu").waitFor({ timeout: 20000 });
+  assert.equal(await p5.evaluate(() => typeof window.__LAST_LIGHT__), "undefined", "QA handle must not be exposed without ?qa");
+  assert.ok(await p5.getByRole("button", { name: /chapter select/i }).isDisabled(), "story chapter select stays locked on a fresh save");
+  await p5.getByTestId("judge-preview").click();
+  await p5.getByTestId("preview-hint").waitFor();
+  await p5.locator(".ll-chapter").nth(3).click();
+  await p5.getByTestId("preview-badge").waitFor();
+  await p5.waitForTimeout(1500);
+  const saved = await p5.evaluate(() => window.localStorage.getItem("the-last-signal:game:last-light"));
+  assert.equal(saved, null, "a judge preview must not write the campaign save");
+  step("judge preview opens chapter 4, shows a not-saved badge and writes no save");
+
+  // Live NASA archive check on an evidence card. Offline (blocked) is always tested;
+  // the real NASA request only with GAME_E2E_LIVE_NASA=1, so CI never depends on NASA uptime.
+  const live = process.env.GAME_E2E_LIVE_NASA === "1";
+  if (!live) await p5.route("https://images-api.nasa.gov/**", (r) => r.abort());
+  await p5.getByRole("button", { name: /^evidence/i }).first().click();
+  await p5.getByTestId("nasa-live-check").first().click();
+  if (live) {
+    await p5.getByTestId("nasa-live-record").first().waitFor({ timeout: 30000 });
+    const title = await p5.getByTestId("nasa-live-record").first().locator("strong").textContent();
+    assert.ok(title && title.length > 3, "live NASA record title");
+    await p5.waitForTimeout(1500);
+    await shot(p5, "14-nasa-live");
+    step(`live NASA Image Library record renders in the browser ("${title}")`);
+  } else {
+    await p5.getByText(/couldn't reach nasa's archive/i).first().waitFor({ timeout: 15000 });
+    step("NASA archive offline/blocked: evidence card falls back honestly to its stored copy");
+  }
+  await c5.close();
+
+  const real = errors.filter((e) => !/ResizeObserver loop|WebGL|THREE\.WebGLRenderer/i.test(e));
+  assert.deepEqual(real, [], "no page errors");
+  console.log(`[game-e2e] PASS ${passed} checks on ${engineName}`);
+} catch (error) {
+  console.error("[game-e2e] FAIL:", error);
+  if (activePage && shots) await activePage.screenshot({ path: join(shots, `${engineName}-FAILURE.png`) }).catch(() => {});
+  if (errors.length) console.error("[game-e2e] page errors:", errors);
+  process.exitCode = 1;
+} finally {
+  await browser.close();
+}

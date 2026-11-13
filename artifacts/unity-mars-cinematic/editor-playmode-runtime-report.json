@@ -1,0 +1,27 @@
+{
+  "label": "editor-playmode",
+  "unity": "6000.3.26f1",
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU (Direct3D12)",
+  "quality": "PC",
+  "screen": "977x603",
+  "perf_third_person_run_10s": { "frames": 3902, "avg_ms": 2.56, "avg_fps": 390.11, "p99_ms": 4.39, "max_ms": 21.71, "vsync": 1 },
+  "checks": [
+    "capture editor-playmode-01-astronaut-closeup.png: written",
+    "capture editor-playmode-02-rover-details.png: written",
+    "capture editor-playmode-03-mars-wide-landscape.png: written",
+    "capture editor-playmode-04-third-person-gameplay.png: written",
+    "capture editor-playmode-05-final-cinematic.png: written",
+    "PASS grounded at spawn: y=5.57",
+    "PASS boots on terrain: gap=0.00 m",
+    "PASS walk (W): moved 3.69 m, anim=walk",
+    "PASS sprint (Shift+W): walk=1.48 m/s, sprint=2.94 m/s, anim=land",
+    "PASS ground collision while moving: gap=0.01 m",
+    "PASS idle after release: anim=idle",
+    "PASS jump (Space, Mars gravity): apex 0.87 m, landed=True",
+    "PASS interact (E): anim=scan",
+    "PASS mouse look: camera yaw changed 13.87 deg",
+    "PASS pause (Esc): paused timeScale=0.00, resumed=1.00",
+    "perf: 3902 frames, avg 2.56 ms (390.11 fps), p99 4.39 ms, vSync=1"
+  ],
+  "failures": false
+}

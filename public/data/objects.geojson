@@ -1,0 +1,2855 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "ranger-7",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -20.6,
+          -10.6
+        ]
+      },
+      "properties": {
+        "id": "ranger-7",
+        "body": "moon",
+        "name": {
+          "en": "Ranger 7",
+          "bn": "রেঞ্জার ৭"
+        },
+        "mission": "Ranger 7",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1964-07-31",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত সংঘর্ষ"
+          },
+          "date": "1964-07-31",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Mare Cognitum",
+          "bn": "মেয়ার কগনিটাম"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:1964-041A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "surveyor-1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.34,
+          -2.47
+        ]
+      },
+      "properties": {
+        "id": "surveyor-1",
+        "body": "moon",
+        "name": {
+          "en": "Surveyor 1",
+          "bn": "সার্ভেয়ার ১"
+        },
+        "mission": "Surveyor 1",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "1966-06-02",
+          "verification": "verified",
+          "source": "img:PIA12910"
+        },
+        "end": {
+          "date": "1967-01-07",
+          "verification": "required",
+          "source": "nssdca:1966-045A",
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Oceanus Procellarum",
+          "bn": "ঝড়ের মহাসাগর (ওশেনাস প্রোসেলারাম)"
+        },
+        "image": "PIA12910",
+        "sources": [
+          "img:PIA12910",
+          "nssdca:1966-045A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "surveyor-3",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -23.42,
+          -3.02
+        ]
+      },
+      "properties": {
+        "id": "surveyor-3",
+        "body": "moon",
+        "name": {
+          "en": "Surveyor 3",
+          "bn": "সার্ভেয়ার ৩"
+        },
+        "mission": "Surveyor 3",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "1967-04-19",
+          "verification": "verified",
+          "source": "img:as12-48-7121"
+        },
+        "end": {
+          "date": "1967-05-04",
+          "verification": "required",
+          "source": "nssdca:1967-035A",
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Oceanus Procellarum",
+          "bn": "ঝড়ের মহাসাগর (ওশেনাস প্রোসেলারাম)"
+        },
+        "image": "as12-48-7121",
+        "sources": [
+          "img:as12-48-7121",
+          "img:AS12-48-7133",
+          "nssdca:1967-035A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-11",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.47,
+          0.67
+        ]
+      },
+      "properties": {
+        "id": "apollo-11",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 11 · Tranquility Base",
+          "bn": "অ্যাপোলো ১১ · ট্রাঙ্কুইলিটি বেস"
+        },
+        "mission": "Apollo 11",
+        "kind": "crewed-landing",
+        "status": "silent",
+        "arrived": {
+          "date": "1969-07-20",
+          "verification": "verified",
+          "source": "img:as11-40-5948"
+        },
+        "end": null,
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Sea of Tranquility",
+          "bn": "প্রশান্তি সাগর (মেয়ার ট্রাঙ্কুইলিটাটিস)"
+        },
+        "image": "as11-40-5948",
+        "sources": [
+          "img:as11-40-5948",
+          "img:as11-37-5551",
+          "img:PIA12909",
+          "nssdca:1969-059C"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-12",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -23.42,
+          -3.01
+        ]
+      },
+      "properties": {
+        "id": "apollo-12",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 12",
+          "bn": "অ্যাপোলো ১২"
+        },
+        "mission": "Apollo 12",
+        "kind": "crewed-landing",
+        "status": "silent",
+        "arrived": {
+          "date": "1969-11-19",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Surface experiments switched off",
+            "bn": "পৃষ্ঠ-পরীক্ষাগুলো বন্ধ করা হয়"
+          },
+          "date": "1977-09-30",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Ocean of Storms",
+          "bn": "ঝড়ের মহাসাগর (ওশেনাস প্রোসেলারাম)"
+        },
+        "image": "AS12-48-7133",
+        "sources": [
+          "img:AS12-48-7133",
+          "nssdca:1969-099C"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-14",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -17.47,
+          -3.65
+        ]
+      },
+      "properties": {
+        "id": "apollo-14",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 14",
+          "bn": "অ্যাপোলো ১৪"
+        },
+        "mission": "Apollo 14",
+        "kind": "crewed-landing",
+        "status": "silent",
+        "arrived": {
+          "date": "1971-02-05",
+          "verification": "verified",
+          "source": "img:as14-67-09361"
+        },
+        "end": {
+          "label": {
+            "en": "Surface experiments switched off",
+            "bn": "পৃষ্ঠ-পরীক্ষাগুলো বন্ধ করা হয়"
+          },
+          "date": "1977-09-30",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Fra Mauro highlands",
+          "bn": "ফ্রা মাউরো উচ্চভূমি"
+        },
+        "image": "as14-67-09361",
+        "sources": [
+          "img:as14-67-09361",
+          "nssdca:1971-008C"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-15",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.63,
+          26.13
+        ]
+      },
+      "properties": {
+        "id": "apollo-15",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 15",
+          "bn": "অ্যাপোলো ১৫"
+        },
+        "mission": "Apollo 15",
+        "kind": "crewed-landing",
+        "status": "silent",
+        "arrived": {
+          "date": "1971-07-30",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Surface experiments switched off",
+            "bn": "পৃষ্ঠ-পরীক্ষাগুলো বন্ধ করা হয়"
+          },
+          "date": "1977-09-30",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Hadley–Apennine",
+          "bn": "হ্যাডলি–অ্যাপেনাইন"
+        },
+        "image": "PIA13037",
+        "sources": [
+          "img:PIA13037",
+          "nssdca:1971-063C"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-16",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.5,
+          -8.97
+        ]
+      },
+      "properties": {
+        "id": "apollo-16",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 16",
+          "bn": "অ্যাপোলো ১৬"
+        },
+        "mission": "Apollo 16",
+        "kind": "crewed-landing",
+        "status": "silent",
+        "arrived": {
+          "date": "1972-04-21",
+          "verification": "verified",
+          "source": "img:as16-113-18347"
+        },
+        "end": {
+          "label": {
+            "en": "Surface experiments switched off",
+            "bn": "পৃষ্ঠ-পরীক্ষাগুলো বন্ধ করা হয়"
+          },
+          "date": "1977-09-30",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Descartes highlands",
+          "bn": "দেকার্ত উচ্চভূমি"
+        },
+        "image": "as16-113-18347",
+        "sources": [
+          "img:as16-113-18347",
+          "nssdca:1972-031C"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-17",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.77,
+          20.19
+        ]
+      },
+      "properties": {
+        "id": "apollo-17",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 17",
+          "bn": "অ্যাপোলো ১৭"
+        },
+        "mission": "Apollo 17",
+        "kind": "crewed-landing",
+        "status": "silent",
+        "arrived": {
+          "date": "1972-12-11",
+          "verification": "verified",
+          "source": "img:as17-147-22548"
+        },
+        "end": {
+          "label": {
+            "en": "Surface experiments switched off",
+            "bn": "পৃষ্ঠ-পরীক্ষাগুলো বন্ধ করা হয়"
+          },
+          "date": "1977-09-30",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Taurus–Littrow valley",
+          "bn": "টরাস–লিট্রো উপত্যকা"
+        },
+        "image": "as17-147-22548",
+        "sources": [
+          "img:as17-147-22548",
+          "nssdca:1972-096C"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lcross",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -48.7,
+          -84.7
+        ]
+      },
+      "properties": {
+        "id": "lcross",
+        "body": "moon",
+        "name": {
+          "en": "LCROSS",
+          "bn": "এলক্রস"
+        },
+        "mission": "LCROSS",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "2009-10-09",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত সংঘর্ষ"
+          },
+          "date": "2009-10-09",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Cabeus crater, south polar region",
+          "bn": "ক্যাবিয়াস খাদ, দক্ষিণ মেরু অঞ্চল"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:2009-031B"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "grail",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -26.6,
+          75.6
+        ]
+      },
+      "properties": {
+        "id": "grail",
+        "body": "moon",
+        "name": {
+          "en": "GRAIL · Ebb & Flow",
+          "bn": "গ্রেইল · এব ও ফ্লো"
+        },
+        "mission": "GRAIL",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "2012-12-17",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত সংঘর্ষ"
+          },
+          "date": "2012-12-17",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "North polar region",
+          "bn": "উত্তর মেরু অঞ্চল"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:2011-046A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "im-1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.4,
+          -80.1
+        ]
+      },
+      "properties": {
+        "id": "im-1",
+        "body": "moon",
+        "name": {
+          "en": "IM-1 Odysseus (NASA CLPS)",
+          "bn": "আইএম-১ ওডিসিয়াস (নাসা সিএলপিএস)"
+        },
+        "mission": "IM-1",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "2024-02-22",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "date": "2024-02",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Malapert A, south polar region",
+          "bn": "ম্যালাপার্ট এ, দক্ষিণ মেরু অঞ্চল"
+        },
+        "image": null,
+        "sources": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "blue-ghost-1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.8,
+          18.6
+        ]
+      },
+      "properties": {
+        "id": "blue-ghost-1",
+        "body": "moon",
+        "name": {
+          "en": "Blue Ghost Mission 1 (NASA CLPS)",
+          "bn": "ব্লু ঘোস্ট মিশন ১ (নাসা সিএলপিএস)"
+        },
+        "mission": "Blue Ghost M1",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "2025-03-02",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Mission ended",
+            "bn": "মিশন সমাপ্ত"
+          },
+          "date": "2025-03",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Mare Crisium",
+          "bn": "মেয়ার ক্রিসিয়াম"
+        },
+        "image": null,
+        "sources": []
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "viking-1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -47.95,
+          22.27
+        ]
+      },
+      "properties": {
+        "id": "viking-1",
+        "body": "mars",
+        "name": {
+          "en": "Viking 1 Lander",
+          "bn": "ভাইকিং ১ ল্যান্ডার"
+        },
+        "mission": "Viking 1",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "1976-07-20",
+          "verification": "verified",
+          "source": "img:PIA00381"
+        },
+        "end": {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "date": "1982-11-13",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Chryse Planitia",
+          "bn": "ক্রাইসি প্ল্যানিশিয়া"
+        },
+        "image": "PIA03165",
+        "sources": [
+          "img:PIA00381",
+          "img:PIA03165",
+          "nssdca:1975-075C"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "viking-2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.0,
+          48.0
+        ]
+      },
+      "properties": {
+        "id": "viking-2",
+        "body": "mars",
+        "name": {
+          "en": "Viking 2 Lander",
+          "bn": "ভাইকিং ২ ল্যান্ডার"
+        },
+        "mission": "Viking 2",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "1976-09-03",
+          "verification": "verified",
+          "source": "img:PIA04023"
+        },
+        "end": {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "date": "1980-04-11",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Utopia Planitia",
+          "bn": "ইউটোপিয়া প্ল্যানিশিয়া"
+        },
+        "image": "PIA04023",
+        "sources": [
+          "img:PIA04023",
+          "nssdca:1975-083C"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mars-polar-lander",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          165.2,
+          -76.57
+        ]
+      },
+      "properties": {
+        "id": "mars-polar-lander",
+        "body": "mars",
+        "name": {
+          "en": "Mars Polar Lander",
+          "bn": "মার্স পোলার ল্যান্ডার"
+        },
+        "mission": "Mars Polar Lander",
+        "kind": "lander",
+        "status": "lost",
+        "arrived": {
+          "date": "1999-12-03",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Contact lost",
+            "bn": "যোগাযোগ বিচ্ছিন্ন"
+          },
+          "date": "1999-12-03",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "South polar layered terrain (landing site never confirmed)",
+          "bn": "দক্ষিণ মেরুর স্তরীভূত ভূমি (অবতরণস্থল কখনো নিশ্চিত হয়নি)"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:1999-001A",
+          "ext:mpl-ellipse"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pathfinder",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -33.22,
+          19.13
+        ]
+      },
+      "properties": {
+        "id": "pathfinder",
+        "body": "mars",
+        "name": {
+          "en": "Mars Pathfinder & Sojourner",
+          "bn": "মার্স পাথফাইন্ডার ও সোজার্নার"
+        },
+        "mission": "Mars Pathfinder",
+        "kind": "rover",
+        "status": "silent",
+        "arrived": {
+          "date": "1997-07-04",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "date": "1997-09-27",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Ares Vallis",
+          "bn": "এরেস ভ্যালিস"
+        },
+        "image": "PIA04318",
+        "sources": [
+          "img:PIA04318",
+          "nssdca:1996-068A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "spirit",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          175.47,
+          -14.57
+        ]
+      },
+      "properties": {
+        "id": "spirit",
+        "body": "mars",
+        "name": {
+          "en": "Spirit (MER-A)",
+          "bn": "স্পিরিট (এমইআর-এ)"
+        },
+        "mission": "Mars Exploration Rover",
+        "kind": "rover",
+        "status": "silent",
+        "arrived": {
+          "date": "2004-01-04",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "date": "2010-03-22",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Gusev crater",
+          "bn": "গুসেভ খাদ"
+        },
+        "image": "PIA03250",
+        "sources": [
+          "img:PIA03250",
+          "nssdca:2003-027A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "opportunity",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.53,
+          -1.95
+        ]
+      },
+      "properties": {
+        "id": "opportunity",
+        "body": "mars",
+        "name": {
+          "en": "Opportunity (MER-B)",
+          "bn": "অপরচুনিটি (এমইআর-বি)"
+        },
+        "mission": "Mars Exploration Rover",
+        "kind": "rover",
+        "status": "silent",
+        "arrived": {
+          "date": "2004-01-25",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "date": "2018-06-10",
+          "verification": "verified",
+          "source": "img:PIA23178"
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Meridiani Planum → Endeavour crater",
+          "bn": "মেরিডিয়ানি প্লেনাম → এনডেভার খাদ"
+        },
+        "image": "PIA22909",
+        "sources": [
+          "img:PIA22909",
+          "img:PIA23178",
+          "nssdca:2003-032A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "phoenix",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -125.75,
+          68.22
+        ]
+      },
+      "properties": {
+        "id": "phoenix",
+        "body": "mars",
+        "name": {
+          "en": "Phoenix",
+          "bn": "ফিনিক্স"
+        },
+        "mission": "Phoenix",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "2008-05-25",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          },
+          "date": "2008-11-02",
+          "verification": "required",
+          "source": null
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Vastitas Borealis, northern plains",
+          "bn": "ভাস্টিটাস বোরিয়ালিস, উত্তরের সমভূমি"
+        },
+        "image": "PIA10701",
+        "sources": [
+          "img:PIA10701",
+          "nssdca:2007-034A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "curiosity",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          137.44,
+          -4.59
+        ]
+      },
+      "properties": {
+        "id": "curiosity",
+        "body": "mars",
+        "name": {
+          "en": "Curiosity",
+          "bn": "কিউরিওসিটি"
+        },
+        "mission": "Mars Science Laboratory",
+        "kind": "rover",
+        "status": "active",
+        "arrived": {
+          "date": "2012-08-06",
+          "verification": "required",
+          "source": "cap:PIA17064"
+        },
+        "end": null,
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Gale crater · Bradbury Landing",
+          "bn": "গেল খাদ · ব্র্যাডবেরি ল্যান্ডিং"
+        },
+        "image": "PIA19807",
+        "sources": [
+          "img:PIA19807",
+          "cap:PIA17064",
+          "nssdca:2011-070A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "insight",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.62,
+          4.5
+        ]
+      },
+      "properties": {
+        "id": "insight",
+        "body": "mars",
+        "name": {
+          "en": "InSight",
+          "bn": "ইনসাইট"
+        },
+        "mission": "InSight",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "2018-11-26",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Mission ended",
+            "bn": "মিশন সমাপ্ত"
+          },
+          "date": "2022-12-15",
+          "verification": "required",
+          "source": "img:PIA26635"
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Elysium Planitia",
+          "bn": "এলিসিয়াম প্ল্যানিশিয়া"
+        },
+        "image": "PIA25287",
+        "sources": [
+          "img:PIA25287",
+          "img:PIA23177",
+          "img:PIA24263",
+          "img:PIA26635",
+          "nssdca:2018-042A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "perseverance",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.45,
+          18.44
+        ]
+      },
+      "properties": {
+        "id": "perseverance",
+        "body": "mars",
+        "name": {
+          "en": "Perseverance",
+          "bn": "পারসিভিয়ারেন্স"
+        },
+        "mission": "Mars 2020",
+        "kind": "rover",
+        "status": "active",
+        "arrived": {
+          "date": "2021-02-18",
+          "verification": "verified",
+          "source": "cap:PIA24447"
+        },
+        "end": null,
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Jezero crater · Octavia E. Butler Landing",
+          "bn": "জেজেরো খাদ · অক্টাভিয়া ই. বাটলার ল্যান্ডিং"
+        },
+        "image": "PIA24542",
+        "sources": [
+          "img:PIA24542",
+          "img:PIA24482",
+          "cap:PIA24447",
+          "nssdca:2020-052A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ingenuity",
+      "geometry": null,
+      "properties": {
+        "id": "ingenuity",
+        "body": "mars",
+        "name": {
+          "en": "Ingenuity Mars Helicopter",
+          "bn": "ইনজেনুইটি মার্স হেলিকপ্টার"
+        },
+        "mission": "Mars 2020",
+        "kind": "helicopter",
+        "status": "silent",
+        "arrived": {
+          "date": "2021-02-18",
+          "verification": "required",
+          "source": null
+        },
+        "end": {
+          "label": {
+            "en": "Final flight",
+            "bn": "শেষ উড্ডয়ন"
+          },
+          "date": "2024-01-18",
+          "verification": "verified",
+          "source": "img:PIA26236"
+        },
+        "coordinates": {
+          "precision": "unknown",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-07",
+        "statusVerification": "required",
+        "site": {
+          "en": "Jezero crater · “Valinor Hills” (final airfield)",
+          "bn": "জেজেরো খাদ · “ভ্যালিনর হিলস” (শেষ বিমানক্ষেত্র)"
+        },
+        "image": "PIA26236",
+        "sources": [
+          "img:PIA26236",
+          "img:PIA26482",
+          "img:PIA24542"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mars-2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.0,
+          -45.0
+        ]
+      },
+      "properties": {
+        "id": "mars-2",
+        "body": "mars",
+        "name": {
+          "en": "Mars 2 Lander",
+          "bn": "মার্স ২ ল্যান্ডার"
+        },
+        "mission": "Mars 2 (USSR)",
+        "kind": "lander",
+        "status": "lost",
+        "arrived": {
+          "date": "1971-11-27",
+          "verification": "required",
+          "source": "nssdca:1971-045A"
+        },
+        "end": {
+          "date": "1971-11-27",
+          "verification": "required",
+          "source": "nssdca:1971-045A",
+          "label": {
+            "en": "Signal lost",
+            "bn": "সংকেত হারায়"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Crashed on arrival; site unconfirmed",
+          "bn": "অবতরণে বিধ্বস্ত; অবস্থান অনিশ্চিত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:1971-045A",
+          "ext:lakdawalla-mars-map"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mars-3",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -158.0,
+          -45.0
+        ]
+      },
+      "properties": {
+        "id": "mars-3",
+        "body": "mars",
+        "name": {
+          "en": "Mars 3 Lander",
+          "bn": "মার্স ৩ ল্যান্ডার"
+        },
+        "mission": "Mars 3 (USSR)",
+        "kind": "lander",
+        "status": "lost",
+        "arrived": {
+          "date": "1971-12-02",
+          "verification": "required",
+          "source": "nssdca:1971-049A"
+        },
+        "end": {
+          "date": "1971-12-02",
+          "verification": "required",
+          "source": "nssdca:1971-049A",
+          "label": {
+            "en": "Signal lost",
+            "bn": "সংকেত হারায়"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Ptolemaeus crater region",
+          "bn": "টলেমিয়াস ক্রেটার অঞ্চল"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:1971-049A",
+          "ext:lakdawalla-mars-map"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mars-6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -19.42,
+          -23.9
+        ]
+      },
+      "properties": {
+        "id": "mars-6",
+        "body": "mars",
+        "name": {
+          "en": "Mars 6 Lander",
+          "bn": "মার্স ৬ ল্যান্ডার"
+        },
+        "mission": "Mars 6 (USSR)",
+        "kind": "lander",
+        "status": "lost",
+        "arrived": {
+          "date": "1974-03-12",
+          "verification": "required",
+          "source": "nssdca:1973-052A"
+        },
+        "end": {
+          "date": "1974-03-12",
+          "verification": "required",
+          "source": "nssdca:1973-052A",
+          "label": {
+            "en": "Signal lost",
+            "bn": "সংকেত হারায়"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Margaritifer Terra",
+          "bn": "মার্গারিটিফার টেরা"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:1973-052A",
+          "ext:lakdawalla-mars-map"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sojourner",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -33.55,
+          19.33
+        ]
+      },
+      "properties": {
+        "id": "sojourner",
+        "body": "mars",
+        "name": {
+          "en": "Sojourner Rover",
+          "bn": "সোজার্নার রোভার"
+        },
+        "mission": "Mars Pathfinder",
+        "kind": "rover",
+        "status": "silent",
+        "arrived": {
+          "date": "1997-07-04",
+          "verification": "required",
+          "source": "nssdca:MESURPR"
+        },
+        "end": {
+          "date": "1997-09-27",
+          "verification": "required",
+          "source": "nssdca:MESURPR",
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Ares Vallis",
+          "bn": "এরিস ভ্যালিস"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:MESURPR",
+          "nssdca:1996-068A"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "deep-space-2",
+      "geometry": null,
+      "properties": {
+        "id": "deep-space-2",
+        "body": "mars",
+        "name": {
+          "en": "Deep Space 2 Probes (Scott & Amundsen)",
+          "bn": "ডিপ স্পেস ২ প্রোব (স্কট ও আমুন্ডসেন)"
+        },
+        "mission": "Mars Surveyor '98",
+        "kind": "impactor",
+        "status": "lost",
+        "arrived": {
+          "date": "1999-12-03",
+          "verification": "required",
+          "source": "nssdca:1999-001A"
+        },
+        "end": {
+          "date": "1999-12-03",
+          "verification": "required",
+          "source": "nssdca:1999-001A",
+          "label": {
+            "en": "Signal lost",
+            "bn": "সংকেত হারায়"
+          }
+        },
+        "coordinates": {
+          "precision": "unknown",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Near the Mars Polar Lander site (unknown)",
+          "bn": "মার্স পোলার ল্যান্ডারের কাছে (অজানা)"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:1999-001A",
+          "ext:lakdawalla-mars-map"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "beagle-2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.4295,
+          11.5265
+        ]
+      },
+      "properties": {
+        "id": "beagle-2",
+        "body": "mars",
+        "name": {
+          "en": "Beagle 2",
+          "bn": "বিগল ২"
+        },
+        "mission": "Mars Express (ESA/UK)",
+        "kind": "lander",
+        "status": "lost",
+        "arrived": {
+          "date": "2003-12-25",
+          "verification": "required",
+          "source": "cap:PIA19107"
+        },
+        "end": null,
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Isidis Planitia",
+          "bn": "আইসিডিস প্ল্যানিশিয়া"
+        },
+        "image": null,
+        "sources": [
+          "cap:PIA19107",
+          "ext:lakdawalla-mars-map"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "schiaparelli",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.21,
+          -2.05
+        ]
+      },
+      "properties": {
+        "id": "schiaparelli",
+        "body": "mars",
+        "name": {
+          "en": "Schiaparelli EDM Lander",
+          "bn": "স্কিয়াপারেলি ইডিএম ল্যান্ডার"
+        },
+        "mission": "ExoMars 2016 (ESA/Roscosmos)",
+        "kind": "lander",
+        "status": "lost",
+        "arrived": {
+          "date": "2016-10-19",
+          "verification": "required",
+          "source": "cap:PIA21135"
+        },
+        "end": {
+          "date": "2016-10-19",
+          "verification": "required",
+          "source": "cap:PIA21135",
+          "label": {
+            "en": "Signal lost",
+            "bn": "সংকেত হারায়"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Meridiani Planum",
+          "bn": "মেরিডিয়ানি প্ল্যানাম"
+        },
+        "image": null,
+        "sources": [
+          "cap:PIA21135"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tianwen-1-lander",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.9,
+          25.1
+        ]
+      },
+      "properties": {
+        "id": "tianwen-1-lander",
+        "body": "mars",
+        "name": {
+          "en": "Tianwen-1 Landing Platform",
+          "bn": "তিয়ানওয়েন-১ ল্যান্ডিং প্ল্যাটফর্ম"
+        },
+        "mission": "Tianwen-1 (CNSA)",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "2021-05-14",
+          "verification": "required",
+          "source": "ext:sfn-zhurong-hirise"
+        },
+        "end": null,
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Utopia Planitia",
+          "bn": "ইউটোপিয়া প্ল্যানিশিয়া"
+        },
+        "image": null,
+        "sources": [
+          "ext:sfn-zhurong-hirise"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zhurong",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.9,
+          25.1
+        ]
+      },
+      "properties": {
+        "id": "zhurong",
+        "body": "mars",
+        "name": {
+          "en": "Zhurong Rover",
+          "bn": "ঝুরং রোভার"
+        },
+        "mission": "Tianwen-1 (CNSA)",
+        "kind": "rover",
+        "status": "silent",
+        "arrived": {
+          "date": "2021-05-14",
+          "verification": "required",
+          "source": "ext:ut-zhurong"
+        },
+        "end": {
+          "date": "2022-05-20",
+          "verification": "required",
+          "source": "ext:ut-zhurong",
+          "label": {
+            "en": "Entered hibernation",
+            "bn": "হাইবারনেশনে যায়"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Utopia Planitia",
+          "bn": "ইউটোপিয়া প্ল্যানিশিয়া"
+        },
+        "image": null,
+        "sources": [
+          "ext:ut-zhurong",
+          "ext:sfn-zhurong-hirise"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ranger-4",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -130.7,
+          -15.5
+        ]
+      },
+      "properties": {
+        "id": "ranger-4",
+        "body": "moon",
+        "name": {
+          "en": "Ranger 4",
+          "bn": "রেঞ্জার ৪"
+        },
+        "mission": "Ranger 4",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1962-04-26",
+          "verification": "required",
+          "source": "sci:ranger-4"
+        },
+        "end": {
+          "date": "1962-04-26",
+          "verification": "required",
+          "source": "sci:ranger-4",
+          "label": {
+            "en": "Impact",
+            "bn": "আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Far side",
+          "bn": "চাঁদের দূর-পিঠ"
+        },
+        "image": null,
+        "sources": [
+          "sci:ranger-4",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ranger-6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.4806,
+          9.3864
+        ]
+      },
+      "properties": {
+        "id": "ranger-6",
+        "body": "moon",
+        "name": {
+          "en": "Ranger 6",
+          "bn": "রেঞ্জার ৬"
+        },
+        "mission": "Ranger 6",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1964-02-02",
+          "verification": "required",
+          "source": "sci:ranger-6"
+        },
+        "end": {
+          "date": "1964-02-02",
+          "verification": "required",
+          "source": "sci:ranger-6",
+          "label": {
+            "en": "Impact",
+            "bn": "আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Mare Tranquillitatis",
+          "bn": "মেয়ার ট্রাংকুইলিটাটিস"
+        },
+        "image": null,
+        "sources": [
+          "sci:ranger-6",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ranger-8",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7881,
+          2.6376
+        ]
+      },
+      "properties": {
+        "id": "ranger-8",
+        "body": "moon",
+        "name": {
+          "en": "Ranger 8",
+          "bn": "রেঞ্জার ৮"
+        },
+        "mission": "Ranger 8",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1965-02-20",
+          "verification": "required",
+          "source": "sci:ranger-8"
+        },
+        "end": {
+          "date": "1965-02-20",
+          "verification": "required",
+          "source": "sci:ranger-8",
+          "label": {
+            "en": "Impact",
+            "bn": "আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Mare Tranquillitatis",
+          "bn": "মেয়ার ট্রাংকুইলিটাটিস"
+        },
+        "image": null,
+        "sources": [
+          "sci:ranger-8",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ranger-9",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.3884,
+          -12.8281
+        ]
+      },
+      "properties": {
+        "id": "ranger-9",
+        "body": "moon",
+        "name": {
+          "en": "Ranger 9",
+          "bn": "রেঞ্জার ৯"
+        },
+        "mission": "Ranger 9",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1965-03-24",
+          "verification": "required",
+          "source": "sci:ranger-9"
+        },
+        "end": {
+          "date": "1965-03-24",
+          "verification": "required",
+          "source": "sci:ranger-9",
+          "label": {
+            "en": "Impact",
+            "bn": "আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Alphonsus crater",
+          "bn": "আলফোনসাস ক্রেটার"
+        },
+        "image": null,
+        "sources": [
+          "sci:ranger-9",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "surveyor-2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -12.0,
+          5.5
+        ]
+      },
+      "properties": {
+        "id": "surveyor-2",
+        "body": "moon",
+        "name": {
+          "en": "Surveyor 2",
+          "bn": "সার্ভেয়ার ২"
+        },
+        "mission": "Surveyor 2",
+        "kind": "impactor",
+        "status": "lost",
+        "arrived": {
+          "date": "1966-09-22",
+          "verification": "required",
+          "source": "sci:surveyor-2"
+        },
+        "end": {
+          "date": "1966-09-22",
+          "verification": "required",
+          "source": "sci:surveyor-2",
+          "label": {
+            "en": "Signal lost",
+            "bn": "সংকেত হারায়"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Southeast of Copernicus",
+          "bn": "কোপার্নিকাসের দক্ষিণ-পূর্বে"
+        },
+        "image": null,
+        "sources": [
+          "sci:surveyor-2",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "surveyor-4",
+      "geometry": null,
+      "properties": {
+        "id": "surveyor-4",
+        "body": "moon",
+        "name": {
+          "en": "Surveyor 4",
+          "bn": "সার্ভেয়ার ৪"
+        },
+        "mission": "Surveyor 4",
+        "kind": "lander",
+        "status": "lost",
+        "arrived": {
+          "date": "1967-07-17",
+          "verification": "required",
+          "source": "sci:surveyor-4"
+        },
+        "end": {
+          "date": "1967-07-17",
+          "verification": "required",
+          "source": "sci:surveyor-4",
+          "label": {
+            "en": "Signal lost",
+            "bn": "সংকেত হারায়"
+          }
+        },
+        "coordinates": {
+          "precision": "unknown",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Unknown (target: Sinus Medii)",
+          "bn": "অজানা (লক্ষ্য: সাইনাস মেডিই)"
+        },
+        "image": null,
+        "sources": [
+          "sci:surveyor-4",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "surveyor-5",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.1943,
+          1.4551
+        ]
+      },
+      "properties": {
+        "id": "surveyor-5",
+        "body": "moon",
+        "name": {
+          "en": "Surveyor 5",
+          "bn": "সার্ভেয়ার ৫"
+        },
+        "mission": "Surveyor 5",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "1967-09-11",
+          "verification": "required",
+          "source": "sci:surveyor-5"
+        },
+        "end": {
+          "date": "1967-12-16",
+          "verification": "required",
+          "source": "sci:surveyor-5",
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Mare Tranquillitatis",
+          "bn": "মেয়ার ট্রাংকুইলিটাটিস"
+        },
+        "image": null,
+        "sources": [
+          "sci:surveyor-5",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "surveyor-6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.4275,
+          0.4742
+        ]
+      },
+      "properties": {
+        "id": "surveyor-6",
+        "body": "moon",
+        "name": {
+          "en": "Surveyor 6",
+          "bn": "সার্ভেয়ার ৬"
+        },
+        "mission": "Surveyor 6",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "1967-11-10",
+          "verification": "required",
+          "source": "sci:surveyor-6"
+        },
+        "end": {
+          "date": "1967-12-14",
+          "verification": "required",
+          "source": "sci:surveyor-6",
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Sinus Medii",
+          "bn": "সাইনাস মেডিই"
+        },
+        "image": null,
+        "sources": [
+          "sci:surveyor-6",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "surveyor-7",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -11.5127,
+          -40.9812
+        ]
+      },
+      "properties": {
+        "id": "surveyor-7",
+        "body": "moon",
+        "name": {
+          "en": "Surveyor 7",
+          "bn": "সার্ভেয়ার ৭"
+        },
+        "mission": "Surveyor 7",
+        "kind": "lander",
+        "status": "silent",
+        "arrived": {
+          "date": "1968-01-10",
+          "verification": "required",
+          "source": "sci:surveyor-7"
+        },
+        "end": {
+          "date": "1968-02-21",
+          "verification": "required",
+          "source": "sci:surveyor-7",
+          "label": {
+            "en": "Last contact",
+            "bn": "শেষ যোগাযোগ"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "North rim of Tycho",
+          "bn": "টাইকো ক্রেটারের উত্তর পার্শ্ব"
+        },
+        "image": null,
+        "sources": [
+          "sci:surveyor-7",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-13-sivb",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -27.8875,
+          -2.555
+        ]
+      },
+      "properties": {
+        "id": "apollo-13-sivb",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 13 S-IVB Stage",
+          "bn": "অ্যাপোলো ১৩ এস-৪বি স্টেজ"
+        },
+        "mission": "Apollo 13",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1970-04-15",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts"
+        },
+        "end": {
+          "date": "1970-04-15",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Deliberate impact for seismic experiments",
+          "bn": "সিসমিক পরীক্ষার জন্য ইচ্ছাকৃত আঘাত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:apollo-impacts",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-14-sivb",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -26.0305,
+          -8.181
+        ]
+      },
+      "properties": {
+        "id": "apollo-14-sivb",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 14 S-IVB Stage",
+          "bn": "অ্যাপোলো ১৪ এস-৪বি স্টেজ"
+        },
+        "mission": "Apollo 14",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1971-02-04",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts"
+        },
+        "end": {
+          "date": "1971-02-04",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Deliberate impact for seismic experiments",
+          "bn": "সিসমিক পরীক্ষার জন্য ইচ্ছাকৃত আঘাত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:apollo-impacts",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-15-sivb",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -11.8245,
+          -1.2897
+        ]
+      },
+      "properties": {
+        "id": "apollo-15-sivb",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 15 S-IVB Stage",
+          "bn": "অ্যাপোলো ১৫ এস-৪বি স্টেজ"
+        },
+        "mission": "Apollo 15",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1971-07-29",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts"
+        },
+        "end": {
+          "date": "1971-07-29",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Deliberate impact for seismic experiments",
+          "bn": "সিসমিক পরীক্ষার জন্য ইচ্ছাকৃত আঘাত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:apollo-impacts",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-16-sivb",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -24.623,
+          1.921
+        ]
+      },
+      "properties": {
+        "id": "apollo-16-sivb",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 16 S-IVB Stage",
+          "bn": "অ্যাপোলো ১৬ এস-৪বি স্টেজ"
+        },
+        "mission": "Apollo 16",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1972-04-19",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts"
+        },
+        "end": {
+          "date": "1972-04-19",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Deliberate impact for seismic experiments",
+          "bn": "সিসমিক পরীক্ষার জন্য ইচ্ছাকৃত আঘাত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:apollo-impacts",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-17-sivb",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -12.3307,
+          -4.1681
+        ]
+      },
+      "properties": {
+        "id": "apollo-17-sivb",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 17 S-IVB Stage",
+          "bn": "অ্যাপোলো ১৭ এস-৪বি স্টেজ"
+        },
+        "mission": "Apollo 17",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1972-12-10",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts"
+        },
+        "end": {
+          "date": "1972-12-10",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Deliberate impact for seismic experiments",
+          "bn": "সিসমিক পরীক্ষার জন্য ইচ্ছাকৃত আঘাত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:apollo-impacts",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-12-ascent",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.2,
+          -3.94
+        ]
+      },
+      "properties": {
+        "id": "apollo-12-ascent",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 12 LM Ascent Stage",
+          "bn": "অ্যাপোলো ১২ এলএম অ্যাসেন্ট স্টেজ"
+        },
+        "mission": "Apollo 12",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1969-11-20",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts"
+        },
+        "end": {
+          "date": "1969-11-20",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Deliberate impact after docking",
+          "bn": "ডকিংয়ের পর ইচ্ছাকৃত আঘাত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:apollo-impacts",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-14-ascent",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -19.67,
+          -3.42
+        ]
+      },
+      "properties": {
+        "id": "apollo-14-ascent",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 14 LM Ascent Stage",
+          "bn": "অ্যাপোলো ১৪ এলএম অ্যাসেন্ট স্টেজ"
+        },
+        "mission": "Apollo 14",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1971-02-07",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts"
+        },
+        "end": {
+          "date": "1971-02-07",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Deliberate impact after docking",
+          "bn": "ডকিংয়ের পর ইচ্ছাকৃত আঘাত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:apollo-impacts",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-15-ascent",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.25,
+          26.36
+        ]
+      },
+      "properties": {
+        "id": "apollo-15-ascent",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 15 LM Ascent Stage",
+          "bn": "অ্যাপোলো ১৫ এলএম অ্যাসেন্ট স্টেজ"
+        },
+        "mission": "Apollo 15",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1971-08-03",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts"
+        },
+        "end": {
+          "date": "1971-08-03",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Deliberate impact after docking",
+          "bn": "ডকিংয়ের পর ইচ্ছাকৃত আঘাত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:apollo-impacts",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-17-ascent",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.49,
+          19.97
+        ]
+      },
+      "properties": {
+        "id": "apollo-17-ascent",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 17 LM Ascent Stage",
+          "bn": "অ্যাপোলো ১৭ এলএম অ্যাসেন্ট স্টেজ"
+        },
+        "mission": "Apollo 17",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1972-12-15",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts"
+        },
+        "end": {
+          "date": "1972-12-15",
+          "verification": "required",
+          "source": "nssdca:apollo-impacts",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Deliberate impact after docking",
+          "bn": "ডকিংয়ের পর ইচ্ছাকৃত আঘাত"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:apollo-impacts",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-15-lrv",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.6333,
+          26.13239
+        ]
+      },
+      "properties": {
+        "id": "apollo-15-lrv",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 15 Lunar Roving Vehicle",
+          "bn": "অ্যাপোলো ১৫ লুনার রোভিং ভেহিকল"
+        },
+        "mission": "Apollo 15",
+        "kind": "rover",
+        "status": "silent",
+        "arrived": {
+          "date": "1971-07-30",
+          "verification": "required",
+          "source": "nssdca:lunar-sites"
+        },
+        "end": {
+          "date": "1971-08-02",
+          "verification": "required",
+          "source": "nssdca:lunar-sites",
+          "label": {
+            "en": "Last drive",
+            "bn": "শেষ চালনা"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Hadley–Apennine (LM site; exact parking spot not verified)",
+          "bn": "হ্যাডলি–অ্যাপেনাইন (এলএম-এর স্থান; পার্কিং স্থান যাচাই হয়নি)"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:lunar-sites",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-16-lrv",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.5011,
+          -8.9734
+        ]
+      },
+      "properties": {
+        "id": "apollo-16-lrv",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 16 Lunar Roving Vehicle",
+          "bn": "অ্যাপোলো ১৬ লুনার রোভিং ভেহিকল"
+        },
+        "mission": "Apollo 16",
+        "kind": "rover",
+        "status": "silent",
+        "arrived": {
+          "date": "1972-04-21",
+          "verification": "required",
+          "source": "nssdca:lunar-sites"
+        },
+        "end": {
+          "date": "1972-04-23",
+          "verification": "required",
+          "source": "nssdca:lunar-sites",
+          "label": {
+            "en": "Last drive",
+            "bn": "শেষ চালনা"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Descartes Highlands (LM site; exact parking spot not verified)",
+          "bn": "দেকার্ত উচ্চভূমি (এলএম-এর স্থান; পার্কিং স্থান যাচাই হয়নি)"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:lunar-sites",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo-17-lrv",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.7723,
+          20.1911
+        ]
+      },
+      "properties": {
+        "id": "apollo-17-lrv",
+        "body": "moon",
+        "name": {
+          "en": "Apollo 17 Lunar Roving Vehicle",
+          "bn": "অ্যাপোলো ১৭ লুনার রোভিং ভেহিকল"
+        },
+        "mission": "Apollo 17",
+        "kind": "rover",
+        "status": "silent",
+        "arrived": {
+          "date": "1972-12-11",
+          "verification": "required",
+          "source": "nssdca:lunar-sites"
+        },
+        "end": {
+          "date": "1972-12-14",
+          "verification": "required",
+          "source": "nssdca:lunar-sites",
+          "label": {
+            "en": "Last drive",
+            "bn": "শেষ চালনা"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Taurus–Littrow (LM site; exact parking spot not verified)",
+          "bn": "টরাস–লিট্রো (এলএম-এর স্থান; পার্কিং স্থান যাচাই হয়নি)"
+        },
+        "image": null,
+        "sources": [
+          "nssdca:lunar-sites",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lunar-prospector",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.0,
+          -87.7
+        ]
+      },
+      "properties": {
+        "id": "lunar-prospector",
+        "body": "moon",
+        "name": {
+          "en": "Lunar Prospector",
+          "bn": "লুনার প্রসপেক্টর"
+        },
+        "mission": "Lunar Prospector",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "1999-07-31",
+          "verification": "required",
+          "source": "sci:lunar-prospector"
+        },
+        "end": {
+          "date": "1999-07-31",
+          "verification": "required",
+          "source": "sci:lunar-prospector",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "South polar region",
+          "bn": "দক্ষিণ মেরু অঞ্চল"
+        },
+        "image": null,
+        "sources": [
+          "sci:lunar-prospector",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lcross-shepherd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -49.61,
+          -84.719
+        ]
+      },
+      "properties": {
+        "id": "lcross-shepherd",
+        "body": "moon",
+        "name": {
+          "en": "LCROSS Shepherding Spacecraft",
+          "bn": "এলক্রস শেফার্ডিং মহাকাশযান"
+        },
+        "mission": "LCROSS",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "2009-10-09",
+          "verification": "required",
+          "source": "sci:lcross"
+        },
+        "end": {
+          "date": "2009-10-09",
+          "verification": "required",
+          "source": "sci:lcross",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Cabeus crater, south pole",
+          "bn": "ক্যাবিয়াস ক্রেটার, দক্ষিণ মেরু"
+        },
+        "image": null,
+        "sources": [
+          "sci:lcross",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ladee",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2494,
+          11.8494
+        ]
+      },
+      "properties": {
+        "id": "ladee",
+        "body": "moon",
+        "name": {
+          "en": "LADEE",
+          "bn": "ল্যাডি"
+        },
+        "mission": "LADEE",
+        "kind": "impactor",
+        "status": "silent",
+        "arrived": {
+          "date": "2014-04-18",
+          "verification": "required",
+          "source": "nasa:ladee-impact"
+        },
+        "end": {
+          "date": "2014-04-18",
+          "verification": "required",
+          "source": "nasa:ladee-impact",
+          "label": {
+            "en": "Planned impact",
+            "bn": "পরিকল্পিত আঘাত"
+          }
+        },
+        "coordinates": {
+          "precision": "approx",
+          "verification": "required"
+        },
+        "statusAsOf": "2026-10-16",
+        "statusVerification": "required",
+        "site": {
+          "en": "Western limb (LRO-located impact point)",
+          "bn": "চাঁদের পশ্চিম প্রান্ত (এলআরও-নির্ণীত আঘাতস্থল)"
+        },
+        "image": null,
+        "sources": [
+          "nasa:ladee-impact",
+          "nssdca:lunar-impacts"
+        ]
+      }
+    }
+  ]
+}

@@ -24,6 +24,9 @@ export function EkoTeaser() {
             <Link href="/play/game/" className="btn-signal">
               {bn ? "শেষ আলো খেলো" : "Play The Last Light"} →
             </Link>
+            <Link href="/play/quiz/#quick-mission" className="btn-ghost">
+              {bn ? "পাঁচ প্রশ্নের NASA কুইজ" : "Try the NASA mission quiz"} →
+            </Link>
             <Link href="/play/" className="btn-ghost">
               {bn ? "ক্লাসিক ইকো পাঠ" : "Classic EKO lesson"}
             </Link>

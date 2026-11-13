@@ -5,7 +5,7 @@ import { OBJECTIVE_BY_ID } from "../content/chapters";
 import { EVIDENCE_BY_ID } from "../content/evidence";
 import {
   PUZZLE_BY_ID, TAU_PREVIOUS_STORM, TAU_SOURCE, TAU_STORM_PEAK, TAU_USUAL, checkMatch, checkOrder, checkPower, checkQuiz, comparePrediction, directBeam, shuffledOrder,
-  questionFor, type PowerPrediction, type Puzzle,
+  PDS_TAU, questionFor, type PowerPrediction, type Puzzle,
 } from "../content/puzzles";
 import type { LearnerBand } from "../content/echoChain";
 import type { GameSession } from "../core/session";
@@ -144,6 +144,13 @@ function PowerPuzzle({ p, lang, submit }: { p: Extract<Puzzle, { kind: "power" }
                 ? "JPL-এর অনুমানে ১০ জুন ২০১৮ τ ছিল প্রায় ১০.৮ — JPL লিখেছে, আগের ঝড়ের τ ছিল ৫.৫-এর কিছু বেশি। ব্যাটারি ২৪ ভোল্টের নিচে নেমে রোভার লো-পাওয়ার ফল্ট মোডে চলে যায়; সেদিনই শেষ যোগাযোগ।"
                 : "JPL estimated τ ≈ 10.8 on June 10, 2018 — JPL notes the previous storm’s tau was \"somewhere above 5.5\". Its batteries dipped below 24 volts and it entered low-power fault mode; June 10 was the last contact."}{" "}
               <a href={TAU_SOURCE} target="_blank" rel="noreferrer" className="underline">NASA/JPL</a>
+            </li>
+            <li data-testid="pds-tau">
+              <Tag kind="observed" lang={lang} />{" "}
+              {bn
+                ? `NASA PDS তথ্য (প্যানক্যাম ৮৮০ ন্যানোমিটার): ২০০৪–২০১৮-এ সাধারণ দৈনিক τ ছিল ${PDS_TAU.typical}; ঝড় শুরুর সময় ৫১০২ সলে ${PDS_TAU.sol5102}, ৫১০৫ সলে ${PDS_TAU.sol5105}। টেবিলটি ৫ জুন ২০১৮-তে শেষ।`
+                : `NASA PDS data (Pancam 880 nm): typical daily τ over 2004–2018 was ${PDS_TAU.typical}; as the storm began it rose from ${PDS_TAU.sol5102} (sol 5102) to ${PDS_TAU.sol5105} (sol 5105). The table ends June 5, 2018.`}{" "}
+              <a href={PDS_TAU.url} target="_blank" rel="noreferrer" className="underline">{PDS_TAU.product}</a>
             </li>
           </ul>
           <p role="status" className={`ll-feedback ${verdict.matches ? "is-right" : "is-info"}`}>

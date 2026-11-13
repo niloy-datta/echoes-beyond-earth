@@ -256,6 +256,18 @@ export type PowerPrediction = "same" | "half" | "nearly-none";
  */
 export const TAU_SOURCE = "https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm";
 export const TAU_USUAL = 0.5;
+/**
+ * OBSERVED values computed from NASA PDS product 1TAU880_5106_20181207A
+ * (Opportunity Pancam 880 nm, median per sol; see scripts/data/build-mer1-opacity.mjs).
+ * A unit test checks these against public/data/nasa/mer1-opacity.json.
+ */
+export const PDS_TAU = {
+  product: "1TAU880_5106_20181207A",
+  url: "https://pds-geosciences.wustl.edu/mer/mer1_mer2-m-pancam-5-atmos-opacity-v1/merao_1xxx/data/1tau880_5106_20181207a.tab",
+  typical: 0.689,
+  sol5102: 0.758,
+  sol5105: 2.259,
+} as const;
 export const TAU_PREVIOUS_STORM = 5.5;
 export const TAU_STORM_PEAK = 10.8;
 

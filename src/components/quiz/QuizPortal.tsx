@@ -13,6 +13,7 @@ import {
   type AssessmentState, type QuizItem, type QuizSet,
 } from "@/game/core/assessment";
 import { escapeHtml } from "@/game/core/learningSummary";
+import { QuickMissionQuiz } from "@/components/quiz/QuickMissionQuiz";
 
 type Lang = "en" | "bn";
 type View = { kind: "home" } | { kind: "run"; set: QuizSet | { kind: "single"; id: string } };
@@ -290,6 +291,8 @@ export function QuizPortal() {
         <h1 className="display mt-5 text-[clamp(2.5rem,6vw,5rem)]">{bn ? "যা শিখলে, তা প্রমাণ দিয়ে যাচাই করো" : "Test what you learned against the evidence"}</h1>
         <p className="mt-6 max-w-3xl text-lg leading-relaxed text-lunar-2">{bn ? "প্রতিটি প্রশ্ন NASA-র রেকর্ড বা NASA-র আসল তথ্য থেকে। ভুল উত্তরে ভুল ধারণা, সূত্র আর প্রমাণ দেখানো হয়, তারপর আবার চেষ্টা করা যায়। সব ফলাফল শুধু এই ডিভাইসে থাকে; নাম বা জন্মতারিখ লাগে না।" : "Every question comes from a NASA record or real NASA data. A wrong answer shows the misconception, a hint and the evidence, then you can try again. Results stay on this device; no name or birth date is needed."}</p>
       </header>
+
+      <QuickMissionQuiz lang={lang} age={state.age} />
 
       <section aria-labelledby="age" className="mt-10">
         <h2 id="age" className="label">{bn ? "বয়স-গোষ্ঠী (ঐচ্ছিক)" : "Age group (optional)"}</h2>

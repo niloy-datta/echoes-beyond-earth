@@ -60,7 +60,7 @@ At its center is **The Last Light**, a five-chapter, third-person Mars adventure
 | **04 · Echoes of the Past** | Rebuild archived memories and investigate the Surveyor 3–Apollo 12 connection. |
 | **05 · The Last Light** | Bring the recovered evidence together, evaluate claims, and complete the story. |
 
-The game includes **autonomous local save/resume**, chapter progression, optional discoveries, achievements, and a **Judge preview** that demonstrates chapters without overwriting player saves or awarding progress. The 2D console uses the same underlying game session rather than a separate, unrelated story.
+The game includes **automatic local saving and resume**, chapter progression, optional discoveries, achievements, and a **Judge preview** that demonstrates chapters without overwriting player saves or awarding progress. The 2D console uses the same underlying game session rather than a separate, unrelated story.
 
 **Controls:** WASD / arrow keys to move, mouse to orbit, **E** to interact, **Tab** for evidence, **M** for map, **J** for journal, and **C** for Echo Chain. Touch devices provide an on-screen joystick and controls. For the full guide, see [GAME.md](GAME.md).
 
@@ -157,7 +157,7 @@ NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
 ```
 
-Enable email/password sign-in in Supabase and allowlist the exact ` /login/ ` redirect URLs used locally and in production (without the spaces shown here). Configure SMTP delivery if confirmation or password-reset emails will be used. **Never put a Supabase service-role or secret key into a `NEXT_PUBLIC_` variable.**
+Enable email/password sign-in in Supabase and allowlist the exact `/login/` redirect URLs used locally and in production. Configure SMTP delivery if confirmation or password-reset emails will be used. **Never put a Supabase service-role or secret key into a `NEXT_PUBLIC_` variable.**
 
 The game, its local progress, quizzes, and Judge preview do not require authentication.
 

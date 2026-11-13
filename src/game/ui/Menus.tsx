@@ -45,6 +45,7 @@ export function MainMenu({ lang, save, webgl, loading, onContinue, onNew, onChap
         {!webgl && <p className="ll-menu__note" role="status">{S.webglMissing[lang]}</p>}
         {loading && webgl && mode === "3d" && <p className="ll-menu__note" role="status">{S.loading[lang]}</p>}
         <div className="ll-menu__links">
+          <Link prefetch={false} href="/play/quiz/" data-testid="menu-quiz">{lang === "bn" ? "বিজ্ঞান কুইজ পোর্টাল" : "Science Quiz Portal"}</Link>
           <Link prefetch={false} href="/play/">{S.classic[lang]}</Link>
           <Link prefetch={false} href="/">{S.museum[lang]}</Link>
         </div>
@@ -374,6 +375,7 @@ export function CompletionScreen({ lang, progress, onReplay, onExplore, onMenu, 
           window.setTimeout(() => URL.revokeObjectURL(url), 2000);
         }}>{lang === "bn" ? "শেখার সারসংক্ষেপ (প্রিন্টযোগ্য)" : "Learning summary (printable)"}</button>
         <Link prefetch={false} href="/passport/" className="ll-btn">{S.passport[lang]} →</Link>
+        <Link prefetch={false} href="/play/quiz/" className="ll-btn" data-testid="complete-quiz">{lang === "bn" ? "শেখা যাচাই করো (কুইজ)" : "Check your learning (quiz)"} →</Link>
         <button type="button" className="ll-btn" onClick={onExplore}>{S.explore[lang]}</button>
         <button type="button" className="ll-btn" onClick={onReplay}>{S.replay[lang]}</button>
         <button type="button" className="ll-btn" onClick={onMenu}>{S.saveExit[lang]}</button>

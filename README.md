@@ -36,7 +36,7 @@ At its center is **The Last Light**, a five-chapter, third-person Mars adventure
 | **The Last Light** | Play five chapters on Mars, investigate Opportunity, and connect discoveries to lunar exploration. |
 | **Evidence investigations** | Open historical evidence cards and optionally compare them with NASA's live image archive records. |
 | **Echo Chain & Claim Check** | Build a *Hardware → Evidence → Discovery → Legacy* chain and classify supported versus unsupported claims. |
-| **Science and quiz portal** | Complete chapter quizzes, pre/post assessments, adaptive practice, and data-interpretation exercises. |
+| **Science and quiz portal** | Play a five-question interactive mission quiz with instant feedback and replay, or complete chapter quizzes, pre/post assessments, adaptive practice, and data-interpretation exercises. |
 | **Inclusive play modes** | Use 3D exploration or a 2D mission console, with keyboard/touch controls and accessibility settings. |
 | **Learning records** | Save local progress, review completed objectives, and generate a printable learning summary. |
 

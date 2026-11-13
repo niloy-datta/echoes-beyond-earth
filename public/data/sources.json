@@ -896,33 +896,6 @@
       "note": "Official caption retrieved from images-api.nasa.gov while compiling this dataset."
     },
     {
-      "id": "nssdca:1971-045A",
-      "title": "Mars 2",
-      "publisher": "NASA NSSDCA",
-      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-045A",
-      "kind": "catalog",
-      "verification": "required",
-      "note": "The linked NSSDCA catalog URL returned no spacecraft record on 2026-11-13. NASA’s Mars chronology confirms the mission, but this catalog identifier remains unverified: https://nssdc.gsfc.nasa.gov/planetary/chronology_mars.html"
-    },
-    {
-      "id": "nssdca:1971-049A",
-      "title": "Mars 3",
-      "publisher": "NASA NSSDCA",
-      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-049A",
-      "kind": "catalog",
-      "verification": "required",
-      "note": "The linked NSSDCA catalog URL returned no spacecraft record on 2026-11-13. NASA’s Mars chronology confirms the mission, but this catalog identifier remains unverified: https://nssdc.gsfc.nasa.gov/planetary/chronology_mars.html"
-    },
-    {
-      "id": "nssdca:1973-052A",
-      "title": "Mars 6",
-      "publisher": "NASA NSSDCA",
-      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1973-052A",
-      "kind": "catalog",
-      "verification": "required",
-      "note": "The linked NSSDCA catalog URL returned no spacecraft record on 2026-11-13. NASA’s Mars chronology confirms the mission, but this catalog identifier remains unverified: https://nssdc.gsfc.nasa.gov/planetary/chronology_mars.html"
-    },
-    {
       "id": "nssdca:MESURPR",
       "title": "Mars Pathfinder Rover (Sojourner)",
       "publisher": "NASA NSSDCA",
@@ -966,15 +939,6 @@
       "kind": "image-caption",
       "verification": "verified",
       "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
-    },
-    {
-      "id": "ext:sfn-zhurong-hirise",
-      "title": "NASA spacecraft spots Chinese rover on Martian surface",
-      "publisher": "Spaceflight Now",
-      "url": "https://spaceflightnow.com/2021/06/11/nasa-spacecraft-spots-chinese-rover-on-martian-surface/",
-      "kind": "mission-page",
-      "verification": "required",
-      "note": "The publisher returned HTTP 403 on 2026-11-13; the page content could not be checked."
     },
     {
       "id": "ext:ut-zhurong",
@@ -1146,6 +1110,15 @@
       "kind": "mission-page",
       "verification": "verified",
       "note": "Commercial lunar lander contracted under NASA CLPS task order, carrying 10 NASA science and technology demonstration payloads to Mare Crisium (landed March 2, 2025). Commercial operator: Firefly Aerospace."
+    },
+    {
+      "id": "nasa:giss-mars-landers",
+      "title": "Mars24 Sunclock — Mars Lander Missions",
+      "publisher": "NASA Goddard Institute for Space Studies",
+      "url": "https://www.giss.nasa.gov/tools/mars24/help/landers.html",
+      "kind": "mission-page",
+      "verification": "verified",
+      "note": "Checked 2026-11-13. Supports Mars 2, Mars 3 and Mars 6 descent dates and approximate sites, and Tianwen-1/Zhurong landing and hibernation history. Historical mission notes were updated in December 2023; this is not a current rover-status feed. Dates use UTC where specified. Approximate lander locations are not rover tracking coordinates."
     }
   ]
 }

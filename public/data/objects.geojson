@@ -1220,13 +1220,13 @@
         "status": "lost",
         "arrived": {
           "date": "1971-11-27",
-          "verification": "required",
-          "source": "nssdca:1971-045A"
+          "verification": "verified",
+          "source": "nasa:giss-mars-landers"
         },
         "end": {
           "date": "1971-11-27",
-          "verification": "required",
-          "source": "nssdca:1971-045A",
+          "verification": "verified",
+          "source": "nasa:giss-mars-landers",
           "label": {
             "en": "Signal lost",
             "bn": "সংকেত হারায়"
@@ -1237,14 +1237,14 @@
           "verification": "required"
         },
         "statusAsOf": "2026-10-16",
-        "statusVerification": "required",
+        "statusVerification": "verified",
         "site": {
           "en": "Crashed on arrival; site unconfirmed",
           "bn": "অবতরণে বিধ্বস্ত; অবস্থান অনিশ্চিত"
         },
         "image": null,
         "sources": [
-          "nssdca:1971-045A",
+          "nasa:giss-mars-landers",
           "ext:lakdawalla-mars-map"
         ]
       }
@@ -1271,13 +1271,13 @@
         "status": "lost",
         "arrived": {
           "date": "1971-12-02",
-          "verification": "required",
-          "source": "nssdca:1971-049A"
+          "verification": "verified",
+          "source": "nasa:giss-mars-landers"
         },
         "end": {
           "date": "1971-12-02",
-          "verification": "required",
-          "source": "nssdca:1971-049A",
+          "verification": "verified",
+          "source": "nasa:giss-mars-landers",
           "label": {
             "en": "Signal lost",
             "bn": "সংকেত হারায়"
@@ -1288,14 +1288,14 @@
           "verification": "required"
         },
         "statusAsOf": "2026-10-16",
-        "statusVerification": "required",
+        "statusVerification": "verified",
         "site": {
           "en": "Ptolemaeus crater region",
           "bn": "টলেমিয়াস ক্রেটার অঞ্চল"
         },
         "image": null,
         "sources": [
-          "nssdca:1971-049A",
+          "nasa:giss-mars-landers",
           "ext:lakdawalla-mars-map"
         ]
       }
@@ -1322,13 +1322,13 @@
         "status": "lost",
         "arrived": {
           "date": "1974-03-12",
-          "verification": "required",
-          "source": "nssdca:1973-052A"
+          "verification": "verified",
+          "source": "nasa:giss-mars-landers"
         },
         "end": {
           "date": "1974-03-12",
-          "verification": "required",
-          "source": "nssdca:1973-052A",
+          "verification": "verified",
+          "source": "nasa:giss-mars-landers",
           "label": {
             "en": "Signal lost",
             "bn": "সংকেত হারায়"
@@ -1339,14 +1339,14 @@
           "verification": "required"
         },
         "statusAsOf": "2026-10-16",
-        "statusVerification": "required",
+        "statusVerification": "verified",
         "site": {
           "en": "Margaritifer Terra",
           "bn": "মার্গারিটিফার টেরা"
         },
         "image": null,
         "sources": [
-          "nssdca:1973-052A",
+          "nasa:giss-mars-landers",
           "ext:lakdawalla-mars-map"
         ]
       }
@@ -1546,8 +1546,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          109.9,
-          25.1
+          109.93,
+          25.07
         ]
       },
       "properties": {
@@ -1562,8 +1562,8 @@
         "status": "silent",
         "arrived": {
           "date": "2021-05-14",
-          "verification": "required",
-          "source": "ext:sfn-zhurong-hirise"
+          "verification": "verified",
+          "source": "nasa:giss-mars-landers"
         },
         "end": null,
         "coordinates": {
@@ -1578,7 +1578,7 @@
         },
         "image": null,
         "sources": [
-          "ext:sfn-zhurong-hirise"
+          "nasa:giss-mars-landers"
         ]
       }
     },
@@ -1588,8 +1588,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          109.9,
-          25.1
+          109.93,
+          25.07
         ]
       },
       "properties": {
@@ -1604,13 +1604,13 @@
         "status": "silent",
         "arrived": {
           "date": "2021-05-14",
-          "verification": "required",
-          "source": "ext:ut-zhurong"
+          "verification": "verified",
+          "source": "nasa:giss-mars-landers"
         },
         "end": {
-          "date": "2022-05-20",
-          "verification": "required",
-          "source": "ext:ut-zhurong",
+          "date": "2022-05-18",
+          "verification": "verified",
+          "source": "nasa:giss-mars-landers",
           "label": {
             "en": "Entered hibernation",
             "bn": "হাইবারনেশনে যায়"
@@ -1629,7 +1629,7 @@
         "image": null,
         "sources": [
           "ext:ut-zhurong",
-          "ext:sfn-zhurong-hirise"
+          "nasa:giss-mars-landers"
         ]
       }
     },

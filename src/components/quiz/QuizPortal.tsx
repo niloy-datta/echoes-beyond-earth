@@ -252,6 +252,11 @@ export function QuizPortal() {
   const [ready, setReady] = useState(false);
   const [view, setView] = useState<View>({ kind: "home" });
   useEffect(() => { setState(sanitizeAssessment(readStore(ASSESSMENT_KEY, null))); setReady(true); }, []);
+  useEffect(() => {
+    if (ready && window.location.hash === "#quick-mission") {
+      requestAnimationFrame(() => document.getElementById("quick-mission")?.scrollIntoView({ block: "start" }));
+    }
+  }, [ready]);
   const save = (next: AssessmentState) => { setState(next); writeStore(ASSESSMENT_KEY, next); };
   const onAnswer = (id: string, choice: number) => { const r = answerItem(state, id, choice); save(r.state); return r.correct; };
   const chooseAge = (age: AgeGroup) => save(setAge(state, age));

@@ -194,7 +194,7 @@ The build emits `out/`. For a local preview of the exported site, run `npm run s
 
 ## Credits and acknowledgement
 
-Created and maintained by **[Niloy Datta](https://github.com/niloy-datta)** with project contributors. See the repository [contributors](https://github.com/niloy-datta/echoes-beyond-earth/graphs/contributors) and commit history for development attribution.
+Created and maintained by **[Niloy Datta](https://github.com/niloy-datta)** with contributions from the project team. Development history remains available through the repository's commit records.
 
 NASA and JPL imagery, mission pages, spacecraft resources, and planetary data remain credited to their original providers. Their availability does **not** imply NASA sponsorship, certification, or endorsement. Review the original sources and their usage guidance before reusing third-party assets.
 

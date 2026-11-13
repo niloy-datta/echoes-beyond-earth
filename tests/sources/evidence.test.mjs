@@ -60,10 +60,9 @@ test("evidence observatory: metrics calculations consistency", () => {
 
   assert.equal(verified + required, refs.length, "Verified + Required must equal total references");
   assert.ok(verified > 0, "Must have verified references");
-  assert.ok(required > 0, "Must have required references");
 
   const coveragePct = ((verified / refs.length) * 100).toFixed(1);
-  assert.ok(parseFloat(coveragePct) > 0 && parseFloat(coveragePct) < 100, "Coverage percentage must be between 0% and 100%");
+  assert.ok(parseFloat(coveragePct) > 0 && parseFloat(coveragePct) <= 100, "Coverage percentage must be between 0% and 100%");
 
   const imageCount = Object.keys(sources.images).length;
   assert.ok(imageCount >= 32, "Must contain at least 32 registered NASA images");

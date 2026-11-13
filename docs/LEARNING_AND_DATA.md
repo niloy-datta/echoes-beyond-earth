@@ -14,6 +14,8 @@
 
 ## Assessment methodology
 
+- Quick Mission Challenge: a five-question bilingual interactive practice round chooses one source-linked item from each chapter; correct answers and explanations appear instantly. Each replay rotates to different chapter items. Its score is ephemeral and does not modify pre/post results or mastery.
+
 - Competencies: spacecraft hardware, Mars environmental science, NASA mission history, interpreting evidence, observation versus hypothesis.
 - Pre- and post-assessments are parallel forms of 10 items (2 per competency), with different questions. The post-assessment opens only after the pre-assessment is complete.
 - Chapter quizzes: 5 items per chapter (4 new and 1 reviewed EKO item). There are also 5 optional advanced challenges.

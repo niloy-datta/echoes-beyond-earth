@@ -928,11 +928,11 @@ export const MISSION_TRACE_DATA: StaticMissionTraceNode[] = [
           "bn": "এনএসএসডিসিএ ক্যাটালগ এন্ট্রি"
         },
         "value": {
-          "en": "COSPAR ID 2003-027A (Secondary Reference · Catalog Pending)",
-          "bn": "কসপার আইডি ২০০৩-০২৭এ (অপেক্ষমান ক্যাটালগ)"
+          "en": "COSPAR ID 2003-027A (NASA catalog confirmed)",
+          "bn": "কসপার আইডি ২০০৩-০২৭এ (নাসা ক্যাটালগে নিশ্চিত)"
         },
         "sourceId": "nssdca:2003-027A",
-        "verification": "required"
+        "verification": "verified"
       }
     ],
     "sourceIds": [

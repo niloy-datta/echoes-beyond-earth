@@ -128,7 +128,7 @@ test("evidence observatory: PIA03250 and Spirit MER-A precision audit", () => {
   // 2. Spirit MER-A: dual reference
   const spiritCatalog = refMap.get("nssdca:2003-027A");
   assert.ok(spiritCatalog, "Missing nssdca:2003-027A reference");
-  assert.equal(spiritCatalog.verification, "required", "Original catalog record must remain 'required' (Catalog Pending)");
+  assert.equal(spiritCatalog.verification, "verified", "NASA's Spirit catalog record was checked against the source");
 
   const spiritMission = refMap.get("sci:mer-spirit");
   assert.ok(spiritMission, "Missing sci:mer-spirit reference");

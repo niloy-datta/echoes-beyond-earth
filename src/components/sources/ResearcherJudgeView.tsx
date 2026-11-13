@@ -41,7 +41,7 @@ Date of Ledger Compilation: ${stats.compiledDate}
 - NASA Planetary Data System (PDS) & Trek Basemaps: Global mosaics and coordinate frames.
 
 ## 4. TRANSPARENT UNVERIFIED DISCLOSURES
-- ${stats.requiredCount} spacecraft catalogue references are flagged "Source verification required".
+- ${stats.requiredCount} references are flagged "Source verification required".
 - Scientific Rationale: Rather than assuming validity or fabricating confirmations, records whose primary pages were not independently confirmed during initial compilation remain explicitly flagged.
 
 Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
@@ -157,10 +157,10 @@ Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
               </span>
             </div>
             <h4 className="text-sm font-bold text-lunar">
-              NASA Science Corroborated Facts vs. NSSDCA Catalog Pending
+              Spirit: NASA Science and NSSDCA Catalog
             </h4>
             <p className="text-xs text-dust leading-relaxed">
-              When dynamic NSSDCA web application content for ID <strong>2003-027A</strong> could not be audited via automated crawler at build time, the project refused to falsely stamp it as verified. Instead, the team linked the official <strong>NASA Science Spirit Mission Overview</strong> to corroborate mission facts (landing date, Gusev Crater, Husband Hill ascent), while keeping the original NSSDCA catalog entry as a secondary reference with status <span className="text-caution font-mono">&ldquo;Catalog Pending&rdquo;</span>.
+              NASA&apos;s NSSDCA catalog identifies <strong>2003-027A</strong> as Spirit. The NASA Science mission overview provides additional context for its landing, exploration of Gusev Crater, and ascent of Husband Hill.
             </p>
             <div className="pt-2 flex flex-wrap gap-2 text-[11px] font-mono">
               <a
@@ -350,10 +350,10 @@ Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
                 Each entry in the NSSDCA catalogue (e.g., Ranger, Surveyor, Apollo LM impactors) was recorded from NASA historical registries.
               </li>
               <li>
-                Whenever an automated verification crawler could not parse or reach the dynamic NSSDCA web application at build time, the entry was intentionally kept as <strong className="text-caution font-mono">&ldquo;Source verification required&rdquo;</strong>.
+                Catalog entries were checked against the spacecraft name and identifier on NASA&apos;s pages on November 13, 2026. A verified source record does not automatically verify every claim that cites it.
               </li>
               <li>
-                We refuse to silently flip unconfirmed links to &ldquo;verified&rdquo; to artificially inflate our verification rate. That commitment to truthfulness is the bedrock of this observatory.
+                Sources that returned no record or could not be accessed remain marked <strong className="text-caution font-mono">&ldquo;Source verification required&rdquo;</strong>.
               </li>
             </ul>
 

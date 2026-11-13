@@ -667,8 +667,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1964-041A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1966-045A",
@@ -676,8 +676,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1966-045A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1967-035A",
@@ -685,8 +685,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1967-035A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1969-059C",
@@ -694,8 +694,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1969-099C",
@@ -703,8 +703,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1971-008C",
@@ -712,8 +712,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-008C",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1971-063C",
@@ -721,8 +721,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1972-031C",
@@ -730,8 +730,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-031C",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1972-096C",
@@ -739,8 +739,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-096C",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:2009-031B",
@@ -748,8 +748,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2009-031B",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:2011-046A",
@@ -757,8 +757,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2011-046A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1975-075C",
@@ -766,8 +766,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1975-075C",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1975-083C",
@@ -775,8 +775,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1975-083C",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1999-001A",
@@ -784,8 +784,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1999-001A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:1996-068A",
@@ -793,17 +793,17 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1996-068A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:2003-027A",
-      "title": "Spirit (MER-A) — NSSDCA Master Catalog (Catalog Pending)",
+      "title": "Spirit (MER-A) — NSSDCA Master Catalog",
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-027A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "COSPAR ID 2003-027A recorded by the team; dynamic NSSDCA application was not independently confirmed at build time. Kept as secondary catalog record pending human confirmation. For corroborated mission facts, see official NASA Science Spirit Mission Overview (sci:mer-spirit)."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "sci:mer-spirit",
@@ -820,8 +820,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-032A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:2007-034A",
@@ -829,8 +829,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2007-034A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:2011-070A",
@@ -838,8 +838,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2011-070A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:2018-042A",
@@ -847,8 +847,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2018-042A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "nssdca:2020-052A",
@@ -856,8 +856,8 @@
       "publisher": "NASA Space Science Data Coordinated Archive",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2020-052A",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Catalog identifier recorded by the team; the page could not be reached during compilation. Confirm before judging."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "trek:moon",
@@ -902,7 +902,7 @@
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-045A",
       "kind": "catalog",
       "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "note": "The linked NSSDCA catalog URL returned no spacecraft record on 2026-11-13. NASA’s Mars chronology confirms the mission, but this catalog identifier remains unverified: https://nssdc.gsfc.nasa.gov/planetary/chronology_mars.html"
     },
     {
       "id": "nssdca:1971-049A",
@@ -911,7 +911,7 @@
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-049A",
       "kind": "catalog",
       "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "note": "The linked NSSDCA catalog URL returned no spacecraft record on 2026-11-13. NASA’s Mars chronology confirms the mission, but this catalog identifier remains unverified: https://nssdc.gsfc.nasa.gov/planetary/chronology_mars.html"
     },
     {
       "id": "nssdca:1973-052A",
@@ -920,7 +920,7 @@
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1973-052A",
       "kind": "catalog",
       "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "note": "The linked NSSDCA catalog URL returned no spacecraft record on 2026-11-13. NASA’s Mars chronology confirms the mission, but this catalog identifier remains unverified: https://nssdc.gsfc.nasa.gov/planetary/chronology_mars.html"
     },
     {
       "id": "nssdca:MESURPR",
@@ -928,8 +928,8 @@
       "publisher": "NASA NSSDCA",
       "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=MESURPR",
       "kind": "catalog",
-      "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "NASA NSSDCA catalog page and spacecraft name checked on 2026-11-13. Verification confirms the catalog record; individual scientific claims require their own supporting evidence."
     },
     {
       "id": "cap:PIA19107",
@@ -937,8 +937,8 @@
       "publisher": "NASA/JPL Photojournal",
       "url": "https://photojournal.jpl.nasa.gov/catalog/PIA19107",
       "kind": "image-caption",
-      "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "cap:PIA21135",
@@ -946,17 +946,17 @@
       "publisher": "NASA/JPL Photojournal",
       "url": "https://photojournal.jpl.nasa.gov/catalog/PIA21135",
       "kind": "image-caption",
-      "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "ext:lakdawalla-mars-map",
       "title": "Mars landing site map",
       "publisher": "The Planetary Society (Emily Lakdawalla)",
-      "url": "https://www.planetary.org/multimedia/space-images/charts/mars_landing_site_map_lakdawalla.html",
+      "url": "https://www.planetary.org/space-images/mars_landing_site_map_lakdawalla",
       "kind": "dataset",
-      "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "ext:mpl-ellipse",
@@ -964,8 +964,8 @@
       "publisher": "The Planetary Society",
       "url": "https://planetary.org/space-images/terrain-within-the-mars-polar-lander-landing-ellipse-wide-view",
       "kind": "image-caption",
-      "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "ext:sfn-zhurong-hirise",
@@ -974,7 +974,7 @@
       "url": "https://spaceflightnow.com/2021/06/11/nasa-spacecraft-spots-chinese-rover-on-martian-surface/",
       "kind": "mission-page",
       "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "note": "The publisher returned HTTP 403 on 2026-11-13; the page content could not be checked."
     },
     {
       "id": "ext:ut-zhurong",
@@ -982,8 +982,8 @@
       "publisher": "Universe Today",
       "url": "https://www.universetoday.com/articles/china-finally-tells-us-whats-going-on-with-its-mars-rover",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Mars landing-site compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "nssdca:lunar-impacts",
@@ -991,8 +991,8 @@
       "publisher": "NASA NSSDCA",
       "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html",
       "kind": "dataset",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "nssdca:apollo-impacts",
@@ -1000,8 +1000,8 @@
       "publisher": "NASA NSSDCA",
       "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_impact.html",
       "kind": "dataset",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "nssdca:lunar-sites",
@@ -1009,8 +1009,8 @@
       "publisher": "NASA NSSDCA",
       "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
       "kind": "dataset",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "nasa:ladee-impact",
@@ -1018,8 +1018,8 @@
       "publisher": "NASA",
       "url": "https://www.nasa.gov/news-release/nasa-completes-ladee-mission-with-planned-impact-on-moons-surface/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:lcross",
@@ -1027,8 +1027,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/lcross/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:ranger-4",
@@ -1036,8 +1036,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/ranger-4/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:ranger-6",
@@ -1045,8 +1045,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/ranger-6/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:ranger-8",
@@ -1054,8 +1054,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/ranger-8/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:ranger-9",
@@ -1063,8 +1063,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/ranger-9/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:surveyor-2",
@@ -1072,8 +1072,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/surveyor-2/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:surveyor-4",
@@ -1081,8 +1081,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/surveyor-4/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:surveyor-5",
@@ -1090,8 +1090,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/surveyor-5/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:surveyor-6",
@@ -1099,8 +1099,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/surveyor-6/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:surveyor-7",
@@ -1108,8 +1108,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/surveyor-7/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "sci:lunar-prospector",
@@ -1117,8 +1117,8 @@
       "publisher": "NASA Science",
       "url": "https://science.nasa.gov/mission/lunar-prospector/",
       "kind": "mission-page",
-      "verification": "required",
-      "note": "Added from the team's Moon artifact compilation; still to be checked against the linked page."
+      "verification": "verified",
+      "note": "Source page and title checked on 2026-11-13. Verification confirms the cited page; individual claims require their own supporting evidence."
     },
     {
       "id": "clps:im-1-nova",

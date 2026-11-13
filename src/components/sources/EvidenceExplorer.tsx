@@ -47,7 +47,7 @@ export function EvidenceExplorer({ references }: EvidenceExplorerProps) {
       return { url: "https://images.nasa.gov/details/PIA03250", label: "images.nasa.gov plate" };
     }
     if (r.id === "sci:mer-spirit") {
-      return { url: "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-027A", label: "NSSDCA Catalog 2003-027A (Catalog Pending)" };
+      return { url: "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-027A", label: "NSSDCA Catalog 2003-027A" };
     }
     if (r.id === "nssdca:2003-027A") {
       return { url: "https://science.nasa.gov/mission/mer-spirit/", label: "NASA Science Spirit Mission Page (Corroborated)" };
@@ -339,7 +339,7 @@ export function EvidenceExplorer({ references }: EvidenceExplorerProps) {
                 Mission Facts Corroborated ({references.filter((r) => getStatusDetail(r) === "facts-corroborated").length})
               </option>
               <option value="catalog-pending">
-                Catalog Pending ({references.filter((r) => getStatusDetail(r) === "catalog-pending").length})
+                Verification required ({references.filter((r) => getStatusDetail(r) === "catalog-pending").length})
               </option>
             </select>
           </div>
@@ -619,7 +619,7 @@ export function EvidenceExplorer({ references }: EvidenceExplorerProps) {
                       {status === "catalog-pending" && (
                         <span className="inline-flex items-center gap-1.5 rounded-full border border-caution/40 bg-caution/10 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-caution">
                           <span className="h-1.5 w-1.5 rounded-full border border-caution" />
-                          Catalog Pending
+                          Verification required
                         </span>
                       )}
                     </td>
@@ -690,7 +690,7 @@ export function EvidenceExplorer({ references }: EvidenceExplorerProps) {
                     {status === "catalog-pending" && (
                       <span className="inline-flex items-center gap-1 rounded-full border border-caution/40 bg-caution/10 px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider text-caution">
                         <span className="h-1.5 w-1.5 rounded-full border border-caution" />
-                        Catalog Pending
+                        Verification required
                       </span>
                     )}
                   </div>

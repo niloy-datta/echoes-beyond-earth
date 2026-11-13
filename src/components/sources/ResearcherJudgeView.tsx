@@ -132,7 +132,7 @@ Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
               Transparent Uncertainty
             </h4>
             <p className="mt-2 text-xs leading-relaxed text-dust">
-              {stats.requiredCount} catalogue records remain flagged as &ldquo;Verification required&rdquo; because automated confirmation was not achieved at build time.
+              {stats.requiredCount > 0 ? `${stats.requiredCount} source records still require verification.` : "The source register has no unresolved links. Approximate locations and unconfirmed mission claims retain their own uncertainty labels."}
             </p>
           </div>
         </div>
@@ -340,7 +340,7 @@ Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
           <span className="text-caution text-xl">⚠</span>
           <div>
             <h3 className="text-lg font-bold text-lunar">
-              Transparent Disclosure: Why {stats.requiredCount} Records Remain Flagged
+              Source Review and Scientific Uncertainty
             </h3>
             <p className="mt-2 text-xs leading-relaxed text-lunar-2 sm:text-sm">
               In academic research and space mission engineering, a source cannot be stamped as &ldquo;Verified&rdquo; merely because a URL was written down. During data compilation for Echoes Beyond Earth:
@@ -353,7 +353,7 @@ Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
                 Catalog entries were checked against the spacecraft name and identifier on NASA&apos;s pages on November 13, 2026. A verified source record does not automatically verify every claim that cites it.
               </li>
               <li>
-                Sources that returned no record or could not be accessed remain marked <strong className="text-caution font-mono">&ldquo;Source verification required&rdquo;</strong>.
+                Unavailable Mars catalog links were replaced with NASA GISS Mars24 mission notes. These historical notes support landing dates and approximate sites, but do not establish current rover status or exact rover positions.
               </li>
             </ul>
 

@@ -3,6 +3,7 @@
 import { useMemo, useState, useEffect } from "react";
 import type { TextSource, Verification } from "@/lib/types";
 import { useT } from "@/lib/i18n";
+import { gameUsageForSource } from "./gameUsage";
 
 interface EvidenceExplorerProps {
   references: TextSource[];
@@ -57,42 +58,6 @@ export function EvidenceExplorer({ references }: EvidenceExplorerProps) {
     }
     if (r.id === "clps:blue-ghost-1") {
       return { url: "https://science.nasa.gov/commercial-lunar-payload-services/", label: "NASA Science CLPS Delivery Tasks" };
-    }
-    return null;
-  };
-
-  // Determine museum and in-game evidence usage
-  const getGameUsage = (r: TextSource): string | null => {
-    const str = (r.id + " " + r.title + " " + (r.note || "")).toLowerCase();
-    if (str.includes("pia03250") || str.includes("mer-spirit") || str.includes("2003-027a")) {
-      return "Game: Chapter 4 (Spirit Husband Hill Archive & Atmospheric Storm Lab)";
-    }
-    if (str.includes("pia23178") || str.includes("pia22909") || str.includes("2003-032a") || str.includes("mer-b")) {
-      return "Game: Chapter 1 (Opportunity 45.16 km Traverse & Legacy Pan)";
-    }
-    if (str.includes("pia11436") || str.includes("mesurpr") || str.includes("pathfinder")) {
-      return "Game: Chapter 1 Side-Discovery (Sojourner First Mobile Rover)";
-    }
-    if (str.includes("as12-48-7133") || str.includes("as12-48-7121") || str.includes("surveyor 3") || str.includes("1967-035a")) {
-      return "Game: Chapter 2 Puzzle (Apollo 12 Precision Landing Near Surveyor 3)";
-    }
-    if (str.includes("pia03165") || str.includes("1975-075c") || str.includes("viking 1") || str.includes("pia04023")) {
-      return "Game: Chapter 3 (Viking Lander Chryse Planitia Soil Search)";
-    }
-    if (str.includes("pia25287") || str.includes("pia23177") || str.includes("insight") || str.includes("2018-042a")) {
-      return "Game: Chapter 5 (InSight Marsquake SEIS Seismometer Telemetry)";
-    }
-    if (str.includes("as11-40-5948") || str.includes("as11-37-5551") || str.includes("apollo 11") || str.includes("1969-059c")) {
-      return "Game: Chapter 4 Objective & Exhibit 01 (Apollo 11 Tranquility Base)";
-    }
-    if (str.includes("pia24542") || str.includes("perseverance") || str.includes("ingenuity") || str.includes("pia26236")) {
-      return "Exhibit 15 & Rover Legacy (Jezero Delta Sampling & Powered Flight)";
-    }
-    if (str.includes("trek:moon") || str.includes("trek:mars")) {
-      return "Basemap: High-Precision Global Planetary Coordinate Frameworks";
-    }
-    if (str.includes("clps") || str.includes("im-1") || str.includes("blue ghost")) {
-      return "Modern Lunar Exploration (Commercial Landers carrying NASA Instruments)";
     }
     return null;
   };
@@ -160,7 +125,7 @@ export function EvidenceExplorer({ references }: EvidenceExplorerProps) {
         const matchesId = r.id.toLowerCase().includes(q);
         const matchesNote = r.note?.toLowerCase().includes(q);
         const matchesUrl = r.url.toLowerCase().includes(q);
-        const gameUsage = getGameUsage(r);
+        const gameUsage = gameUsageForSource(r);
         const matchesGame = gameUsage?.toLowerCase().includes(q);
         if (!matchesTitle && !matchesPublisher && !matchesId && !matchesNote && !matchesUrl && !matchesGame) {
           return false;

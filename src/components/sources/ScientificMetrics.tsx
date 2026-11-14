@@ -55,7 +55,7 @@ export function ScientificMetrics({ stats }: ScientificMetricsProps) {
             <p className="mt-2 font-serif text-3xl italic text-signal lg:text-4xl">
               {localizeDigits(verifiedNum, lang)}
             </p>
-            <p className="mt-1 text-xs text-dust">Primary NASA verified links</p>
+            <p className="mt-1 text-xs text-dust">Sources marked verified in project ledger</p>
           </div>
 
           {/* 3. Verification Required */}
@@ -85,7 +85,7 @@ export function ScientificMetrics({ stats }: ScientificMetricsProps) {
             <p className="mt-2 font-serif text-3xl italic text-lunar lg:text-4xl">
               {stats.coveragePercentage}%
             </p>
-            <p className="mt-1 text-xs text-dust">Overall primary verified rate</p>
+            <p className="mt-1 text-xs text-dust">Share marked verified in project ledger</p>
           </div>
         </div>
 
@@ -93,10 +93,10 @@ export function ScientificMetrics({ stats }: ScientificMetricsProps) {
         <div className="mt-6 rounded-xl border border-hairline bg-void-2/40 p-4">
           <div className="flex items-center justify-between text-xs font-mono">
             <span className="text-signal">
-              ● Verified Primary Provenance: {stats.coveragePercentage}% ({verifiedNum})
+              ● Project-Ledger Verified: {stats.coveragePercentage}% ({verifiedNum})
             </span>
             <span className="text-caution">
-              ○ Awaiting Primary Audit: {(100 - coverageNum).toFixed(1)}% ({requiredNum})
+              ○ Flagged for Source Check: {(100 - coverageNum).toFixed(1)}% ({requiredNum})
             </span>
           </div>
 
@@ -126,7 +126,7 @@ export function ScientificMetrics({ stats }: ScientificMetricsProps) {
               <VerificationBadge status="verified" />
             </div>
             <p className="mt-2 text-xs leading-relaxed text-lunar-2">
-              Checked against official NASA mission catalogues, image captions from the NASA Image and Video Library, or published scientific datasets.
+              Marked verified by project maintainers against linked sources; this status is not NASA certification or independent peer review.
             </p>
           </div>
 
@@ -145,7 +145,7 @@ export function ScientificMetrics({ stats }: ScientificMetricsProps) {
               <span>Zero-Hallucination Policy</span>
             </div>
             <p className="mt-2 text-xs leading-relaxed text-lunar-2">
-              No coordinates, dates, quotes, or telemetry are synthetically invented. Where historical telemetry is lost or approximate, the observatory explicitly states so.
+              Facts and reconstructions are labelled separately. Scientific accuracy and numerical claims still require independent human review.
             </p>
           </div>
         </div>

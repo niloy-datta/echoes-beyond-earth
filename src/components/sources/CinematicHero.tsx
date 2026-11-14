@@ -76,7 +76,7 @@ export function CinematicHero({ activeView, onViewChange, stats }: CinematicHero
           </div>
 
           <div className="flex items-center gap-4 text-xs font-mono text-dust">
-            <span>NASA Space Apps Verified Archive</span>
+            <span>NASA Source-Linked Archive</span>
             <span aria-hidden className="text-hairline-strong">·</span>
             <span>Static Provenance Ledger</span>
           </div>

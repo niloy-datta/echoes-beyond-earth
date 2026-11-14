@@ -83,6 +83,29 @@ export function EvidenceObservatory({ initialSources }: EvidenceObservatoryProps
       {/* 2. Scientific Metrics Overview */}
       <ScientificMetrics stats={stats} />
 
+      <section className="container-x pt-6" aria-labelledby="challenge-source-heading">
+        <div className="rounded-xl border border-signal/30 bg-void-2/70 p-5 md:p-6">
+          <h2 id="challenge-source-heading" className="label text-signal">
+            2026 Space Apps · Challenge resource connection
+          </h2>
+          <p className="mt-2 max-w-4xl text-sm leading-relaxed text-lunar-2">
+            Chapter 4 investigates Surveyor 3 and Apollo 12 through NASA&apos;s NSSDCA
+            spacecraft record 1967-035A, supported by source-linked evidence and
+            claim-check activities. NSSDCA and Surveyor landers are named in this
+            challenge&apos;s official Resources tab. This mapping is documented by
+            the project team and is not an organizer eligibility certification.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            <a className="text-signal underline underline-offset-4" href="https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1967-035A" target="_blank" rel="noopener noreferrer">
+              NASA NSSDCA Surveyor 3 record
+            </a>
+            <a className="text-signal underline underline-offset-4" href="https://www.spaceappschallenge.org/2026/challenges/nasas-discarded-equipment-storytelling/?tab=resources" target="_blank" rel="noopener noreferrer">
+              Official 2026 challenge resources
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* 3. Main Content Views (TabPanels) */}
       <main className="container-x py-12 md:py-16">
         <div

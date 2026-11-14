@@ -23,19 +23,19 @@ Date of Ledger Compilation: ${stats.compiledDate}
 
 ## 1. EXECUTIVE EVIDENCE AUDIT (Under 60 Seconds)
 - Total Scientific References: ${stats.totalReferences}
-- Verified Primary Citations: ${stats.verifiedCount} (${stats.coveragePercentage}%)
+- Project-Ledger Verified References: ${stats.verifiedCount} (${stats.coveragePercentage}%)
 - Records Awaiting Primary Verification: ${stats.requiredCount}
 - Curated NASA Image Plates: ${stats.imageCount}
 - Historical Facts Sourced: ${stats.sourcedFactsCount}
 - Primary Archival Repositories: NASA NSSDCA, NASA Science, NASA Image and Video Library, JPL Photojournal, Planetary Data System, Moon Trek, Mars Trek.
 
 ## 2. WHAT THE PROJECT CLAIMS
-- Exact spatial landing coordinates and arrival dates for 57 lunar and martian exploration artifacts.
-- Zero-hallucination historical milestones and educational quizzes derived from verified mission telemetry.
+- Source-linked landing histories and approximate or unknown locations, with uncertainty labels.
+- Source-linked historical milestones, assessments, and a clearly labelled educational storm simulation.
 - Strict distinction between NASA-operated missions (Apollo, Viking, Surveyor, Curiosity, Perseverance) and commercial lunar landers carrying NASA CLPS payloads (IM-1 Odysseus, Blue Ghost 1).
 
 ## 3. PRIMARY EVIDENCE ORIGINS
-- NASA Image and Video Library: 35 plates with official JPL/JSC mission captions.
+- Curated NASA imagery: ${stats.imageCount} local plates, with source credits.
 - NASA Space Science Data Coordinated Archive (NSSDCA): Official spacecraft catalog identifiers.
 - NASA Science: Official mission retrospectives and CLPS initiative documentation.
 - NASA Planetary Data System (PDS) & Trek Basemaps: Global mosaics and coordinate frames.
@@ -44,7 +44,7 @@ Date of Ledger Compilation: ${stats.compiledDate}
 - ${stats.requiredCount} references are flagged "Source verification required".
 - Scientific Rationale: Rather than assuming validity or fabricating confirmations, records whose primary pages were not independently confirmed during initial compilation remain explicitly flagged.
 
-Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
+Status: PROJECT SOURCE LEDGER CHECK ONLY. Independent scientific review, physical-device QA and challenge-specific NASA resource mapping remain separate checks.
 `;
 
     navigator.clipboard.writeText(report).then(() => {
@@ -317,7 +317,7 @@ Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
                   Photographic Integrity & Non-Endorsement
                 </td>
                 <td className="px-3 py-3.5 text-dust">
-                  32 authentic NASA plates with official public domain attributions. Zero synthetic AI photographs.
+                  Curated NASA imagery with per-asset credits. Third-party rights and scientific attribution must be checked for release.
                 </td>
                 <td className="px-3 py-3.5 font-mono text-[11px] text-lunar-2">
                   images.nasa.gov (JSC, JPL, GSFC)
@@ -325,7 +325,7 @@ Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
                 <td className="px-3 py-3.5">
                   <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-signal uppercase">
                     <span className="h-1.5 w-1.5 rounded-full bg-signal" />
-                    100% NASA Archival
+                    NASA Credits Listed
                   </span>
                 </td>
               </tr>
@@ -363,11 +363,11 @@ Status: AUDITED & COMPLIANT WITH OPEN SCIENCE STANDARDS.
               </span>
               <span className="text-dust">·</span>
               <span className="font-mono text-xs text-dust">
-                Pending Independent Review: <span className="text-caution font-bold">{stats.requiredCount}</span>
+                Project-Flagged Required: <span className="text-caution font-bold">{stats.requiredCount}</span>
               </span>
               <span className="text-dust">·</span>
               <span className="font-mono text-xs text-dust">
-                Total Integrity Coverage: <span className="text-lunar font-bold">{stats.coveragePercentage}%</span>
+                Project Ledger Coverage: <span className="text-lunar font-bold">{stats.coveragePercentage}%</span>
               </span>
             </div>
           </div>

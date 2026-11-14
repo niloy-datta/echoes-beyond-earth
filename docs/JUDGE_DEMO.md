@@ -47,7 +47,7 @@ Do not present pre-rendered footage as real-time gameplay, and caption any cinem
 | Lunar soil solid enough to support an Apollo Lunar Module | Supported scientific interpretation | science.nasa.gov/mission/surveyor-3 |
 | Apollo 12 landed ~180 m (600 ft) away; TV camera, scoop and other parts returned to study ~2.5 years of exposure | Verified NASA record | science.nasa.gov *Apollo 12 and Surveyor 3*; NSSDCA |
 
-Deliberately **not** used: invented rover "last words", a "τ below 2 to recharge" threshold, a "usual τ 0.5" NASA value, and the Surveyor 3 bacteria story (no NASA statement obtained). The museum's 46 NSSDCA records remain flagged *Source verification required*.
+Deliberately **not** used: invented rover "last words", a "τ below 2 to recharge" threshold, a "usual τ 0.5" NASA value, and the Surveyor 3 bacteria story (no NASA statement obtained). The museum source ledger currently marks all 85 entries verified, but independent human review and documented evidence remain necessary.
 
 ## Internal readiness review (not a NASA score)
 
@@ -57,7 +57,7 @@ Uses the commonly published Space Apps judging themes as a checklist. No officia
 | --- | --- | --- | --- |
 | Impact | Five-chapter campaign plus a Moon mission; learning record and printable summary; optional age bands | No real learner testing yet | Run the five-question learner check below with real students |
 | Creativity | Echo Chain + Claim Check turn NASA evidence into player decisions; live NASA archive comparison | Moon is a record and board, not an explorable lunar scene | A small explorable Surveyor 3 site (reuse the engine) |
-| Validity | Claims traced to NASA pages read 2026-11-12; 62 unit + 23 browser checks per engine | Independent science review and Bangla review not done; 46 museum records pending | External reviewer pass; Bangla educator pass |
+| Validity | Claims traced to NASA pages read 2026-11-12; 62 unit + 23 browser checks per engine | Independent science review and Bangla review not done; the museum source ledger requiring independent review despite project-maintained verified flags | External reviewer pass; Bangla educator pass |
 | Relevance | Both challenge worlds: Opportunity (Mars) and Surveyor 3 / Apollo 12 (Moon), both silent hardware | Official Resources-tab mapping not confirmed (site unreachable from this machine) | Map at least one Resources-tab dataset to a visible interaction |
 | Presentation | Judge preview, 90-second script, backup screenshots, 2D and offline fallbacks | No recorded video; no phone FPS measurements | Record the 30-second video; measure on one Android and one iPhone |
 

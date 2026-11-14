@@ -622,3 +622,29 @@ test("storm lab: Beer–Lambert model, prediction comparison and explanatory hin
   power.prediction.options.forEach((o) => assert.ok(bilingual(o.label)));
   assert.ok(bilingual(power.prediction.question));
 });
+
+test("save: a forged finale badge cannot unlock campaign completion", () => {
+  const forged = sanitizeProgress({
+    ...newProgress(),
+    finished: true,
+    achievements: ["last-light"],
+    bestXp: 0,
+  });
+  assert.equal(forged.finished, false);
+  assert.ok(!forged.achievements.includes("last-light"));
+  assert.deepEqual(unlockedChapters(forged), [0]);
+
+  const impossiblePeak = sanitizeProgress({
+    ...newProgress(),
+    finished: true,
+    achievements: ["last-light"],
+    bestXp: MAX_XP + 1,
+  });
+  assert.equal(impossiblePeak.finished, false);
+
+  const genuineReplay = startChapter(playThrough(newProgress()), 1);
+  const resumed = sanitizeProgress(JSON.parse(JSON.stringify(genuineReplay)));
+  assert.equal(resumed.finished, true);
+  assert.ok(resumed.achievements.includes("last-light"));
+  assert.equal(resumed.chapter, 1);
+});

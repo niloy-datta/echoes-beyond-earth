@@ -97,9 +97,9 @@ const totalRefs = references.length;
 const coveragePct = totalRefs > 0 ? ((verifiedCount / totalRefs) * 100).toFixed(1) : "0.0";
 
 console.log(`Total Reference Records:        ${totalRefs}`);
-console.log(`Verified Primary References:    ${verifiedCount}`);
+console.log(`Project-Marked Verified Refs:    ${verifiedCount}`);
 console.log(`Verification Required Records:  ${requiredCount}`);
-console.log(`Verification Coverage Rate:     ${coveragePct}%`);
+console.log(`Project Ledger Marked-Verified:     ${coveragePct}%`);
 console.log(`Curated NASA Image Plates:      ${imageEntries.length}`);
 console.log(`Historical Facts Sourced:       ${validFactSources} / ${factsWithSources} linked`);
 console.log("\nReferences by Kind:");
@@ -112,6 +112,6 @@ if (errors.length > 0) {
   errors.forEach((e) => console.error(`  - ${e}`));
   process.exit(1);
 } else {
-  console.log(`\n✅ EVIDENCE OBSERVATORY AUDIT PASSED: 100% scientific integrity maintained.`);
+  console.log(`\n✅ REFERENCE STRUCTURE AUDIT PASSED. URL syntax, links in local data, and asset presence were checked. Scientific accuracy, independent review, and challenge eligibility were NOT certified by this script.`);
   process.exit(0);
 }

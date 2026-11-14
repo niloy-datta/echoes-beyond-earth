@@ -96,7 +96,7 @@ NASA data is used as **evidence**, not just as visual decoration. The project di
 - Original NASA evidence, computed data, simulations, and artistic scenes have distinct labels.
 - The project does not invent rover transmissions, telemetry, or famous “last words.”
 - The Mars world layout and fictional companion **EKO** are not presented as actual mission geography or NASA systems.
-- Some museum reference entries still require independent human verification; automated validation is not a substitute for scientific review.
+- The source ledger uses project-maintained verification flags; these are not a substitute for independent scientific review.
 
 See [data and learning documentation](docs/LEARNING_AND_DATA.md), [detailed game engineering notes](GAME.md), and the [release checklist](EKO_RELEASE_GATE.md) for evidence, caveats, and outstanding reviews.
 
@@ -180,7 +180,7 @@ The build emits `out/`. For a local preview of the exported site, run `npm run s
 - Local-only gameplay and learning records; the project does not report personal learner analytics to a server.
 - Historical source attribution and visible distinctions between factual records and simulated content.
 
-**Known validation gaps:** Real-world learner studies, independent Bangla science review, physical-device performance testing, and comprehensive assistive-technology testing remain open. The museum source ledger also includes entries explicitly marked **“Source verification required.”** These are documented limitations, not completed certifications.
+**Known validation gaps:** Real-world learner studies, independent Bangla science review, physical-device performance testing, and comprehensive assistive-technology testing remain open. As of November 14, 2026, the ledger lists 85 sources marked verified and zero marked required. Those labels are maintained by the team and do not constitute independent scientific certification.
 
 ## Project documentation
 

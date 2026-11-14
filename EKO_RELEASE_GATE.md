@@ -15,7 +15,7 @@
 
 ## Evidence and scientific review
 
-- Source ledger in `public/data/sources.json`: currently **84 records, 46 flagged "Source verification required"** (reported by `npm run validate`, October 17, 2026). The latter are mainly NSSDCA spacecraft records and must remain flagged until human verification against primary sources.
+- Source ledger history: the October 17, 2026 validation reported **84 records, 46 flagged** for verification. The November 14, 2026 repository now contains **85 records, all marked `verified` by the project**. These flags are not evidence of independent scientific peer review; a reviewer should independently spot-check mission claims and the original NASA pages.
 - The four EKO clue links are in `src/lib/eko-mission.ts`; each points to a NASA primary source.
 - Verify claims and dates, especially the difference between the last *transmitted* image and the last images *captured*. Verify translations with a fluent Bangla science educator.
 - Original rover GLB comes from NASA's [Opportunity 3D resource](https://science.nasa.gov/3d-resources/mars-exploration-rover-opportunity-mer-b/); the game world, beacon positions and companion character are artistic, not exact Martian geography.
@@ -28,7 +28,7 @@
 
 ### P0 competition and science
 - [ ] Obtain written reuse/pre-event-development ruling from organizer; attach decision to [issue #1](https://github.com/niloy-datta/echoes-beyond-earth/issues/1).
-- [ ] Review all 46 pending museum records against NASA/NSSDCA originals, then update flags only for documented matches.
+- [ ] Independently review project-marked source records against original NASA/NSSDCA pages; record reviewers, dates, caveats and any discrepancies. Do not equate a project-ledger `verified` flag with NASA endorsement.
 - [ ] Obtain independent review of all four EKO science clues, image dates and English/Bangla wording.
 - [ ] Review source attributions, artwork labels and NASA non-endorsement notice.
 

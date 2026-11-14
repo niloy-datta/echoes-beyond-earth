@@ -64,6 +64,7 @@ const OBJECTIVE_IDS = new Set(OBJECTIVE_BY_ID.keys());
 const SIDE_IDS = new Set(SIDE_DISCOVERIES.map((s) => s.id));
 const PUZZLE_IDS = new Set(PUZZLES.map((p) => p.id));
 const ACHIEVEMENT_IDS = new Set(ACHIEVEMENTS.map((a) => a.id));
+const REQUIRED_CAMPAIGN_XP = [...OBJECTIVE_BY_ID.values()].reduce((total, objective) => total + objective.xp, 0);
 
 function idList(raw: unknown, valid: Set<string>): string[] {
   if (!Array.isArray(raw)) return [];
@@ -97,8 +98,14 @@ export function sanitizeProgress(raw: unknown): GameProgress {
     }
     if (open) chaptersComplete++;
   }
-  const achievements = idList(r.achievements, ACHIEVEMENT_IDS);
-  const finished = r.finished === true && (chaptersComplete === CHAPTERS.length || achievements.includes("last-light"));
+  const claimedAchievements = idList(r.achievements, ACHIEVEMENT_IDS);
+  const previousXp = typeof r.bestXp === "number" && Number.isFinite(r.bestXp) ? r.bestXp : -1;
+  // A completed campaign may be replaying earlier chapters. Preserve that state
+  // only when the stored peak XP is consistent with having finished every objective.
+  const completedReplay = claimedAchievements.includes("last-light")
+    && previousXp >= REQUIRED_CAMPAIGN_XP && previousXp <= MAX_XP;
+  const finished = r.finished === true && (chaptersComplete === CHAPTERS.length || completedReplay);
+  const achievements = finished ? claimedAchievements : claimedAchievements.filter((id) => id !== "last-light");
   const maxChapter = Math.min(CHAPTERS.length - 1, chaptersComplete);
   const chapter = clamp(Math.round(finite(r.chapter, 0)), 0, finished ? CHAPTERS.length - 1 : maxChapter);
 

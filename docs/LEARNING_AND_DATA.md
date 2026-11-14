@@ -10,7 +10,7 @@
 - Processing: `node scripts/data/build-mer1-opacity.mjs` → `public/data/nasa/mer1-opacity.json` (provenance included). No interpolation; sols without measurements are absent.
 - Values used in the game: typical (median) daily tau 0.689; sol 5102 0.758; sol 5103 1.713; sol 5105 2.259; highest daily median 4.525 (sol 1234, 2007). Tests check that the shipped JSON is reproducible from the raw table and that the in-game numbers match it.
 - Limitation: the product ends on June 5, 2018. The tau of about 10.8 on June 10, 2018 is a separate JPL estimate and is labelled that way.
-- Metadata-only (linked, not parsed): NASA Image and Video Library records (live lookup on evidence cards), NSSDCA spacecraft records (46 still marked "Source verification required"), NASA Trek tiles (downloaded imagery, not a measurement product).
+- Metadata-only (linked, not parsed): NASA Image and Video Library records (live lookup on evidence cards), NSSDCA spacecraft records (project ledger currently marks all 85 sources verified, not independently certified), NASA Trek tiles (downloaded imagery, not a measurement product).
 
 ## Assessment methodology
 

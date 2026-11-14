@@ -189,6 +189,7 @@ The build emits `out/`. For a local preview of the exported site, run `npm run s
 | [Game design and engineering](GAME.md) | Campaign, mechanics, controls, technical implementation, and known limitations |
 | [Learning and NASA data](docs/LEARNING_AND_DATA.md) | Assessment methodology, PDS data provenance, and limitations |
 | [Judge demo walkthrough](docs/JUDGE_DEMO.md) | Proposed demo flow and evidence-focused presentation |
+| [2026 challenge NASA resource trace](docs/SPACEAPPS_2026_RESOURCE_MAP.md) | Official listed NSSDCA source, where it appears in the game, and remaining submission caveats |
 | [Prototype notes](EKO_PROTOTYPE.md) | EKO prototype scope and development notes |
 | [Release and eligibility checklist](EKO_RELEASE_GATE.md) | Reviews, performance checks, and competition permissions |
 

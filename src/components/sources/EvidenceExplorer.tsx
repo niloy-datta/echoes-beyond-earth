@@ -489,7 +489,7 @@ export function EvidenceExplorer({ references }: EvidenceExplorerProps) {
               {filtered.map((ref) => {
                 const status = getStatusDetail(ref);
                 const secondary = getSecondaryLink(ref);
-                const gameUsage = getGameUsage(ref);
+                const gameUsage = gameUsageForSource(ref);
                 const isCLPS = ref.id.startsWith("clps:");
 
                 return (
@@ -625,7 +625,7 @@ export function EvidenceExplorer({ references }: EvidenceExplorerProps) {
           {filtered.map((ref) => {
             const status = getStatusDetail(ref);
             const secondary = getSecondaryLink(ref);
-            const gameUsage = getGameUsage(ref);
+            const gameUsage = gameUsageForSource(ref);
             const isCLPS = ref.id.startsWith("clps:");
 
             return (
